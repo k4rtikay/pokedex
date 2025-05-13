@@ -1,0 +1,8 @@
+.type-tile{
+    width: 4rem;
+    padding: 0.2rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    font-weight: 200;
+}

@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+}
+
+.sidenav{
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    height: 100vh;
+    padding: 10px;
+    background-color: rgb(237, 237, 109)
+}
+
+.scrollPoke{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.nav-button{
+    display: flex;
+    gap: 35%;
+    margin: 2px;
+    border: 2px solid;
+    border-radius: 12px;
+    font-weight: bolder;
+    background-color: #f2eaea
+}
+
+.nav-button:hover{
+    transition: 0.1s ease-in;
+    background-color: rgb(216, 216, 248);
+}
+
+.nav-button-selected{
+    display: flex;
+    gap: 35%;
+    margin: 2px;
+    border: 2px solid rgb(141, 141, 254);   
+    border-radius: 12px;
+    font-weight: bolder;    
+    background-color:#4354e6;
+    color: white;
+    transition: 0.2s ease;
+}
+
+input{
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
