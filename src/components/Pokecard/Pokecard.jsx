@@ -9,7 +9,14 @@ export function Pokecard({selectedPokemon}){
     const [data,setData]=useState(null);
     const [loading, setLoading]=useState(false);
 
-     const { name, height, abilities, stats, types, moves, sprites } = data || {}
+     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
+
+     function heightInFeet(hght){
+        const totalInches = hght*3.937
+        const feet = Math.floor(totalInches/12)
+        const inch = Math.round(totalInches%12)
+        return `${feet}'${inch}"`
+     }
 
     useEffect(()=>{
 
@@ -24,7 +31,6 @@ export function Pokecard({selectedPokemon}){
         if(selectedPokemon in cache){
             setData(cache[selectedPokemon])
             console.log('pokemon found in cache')
-            console.log(cache[selectedPokemon])
             return
         }
 
@@ -65,7 +71,7 @@ export function Pokecard({selectedPokemon}){
 
 
     return (
-        <div className="pokeData">
+        <div className="pokeEntry">
             <div className="pokeImage">
                 <div className="pokeName">
                 <p>{getFullPokedexNumber(selectedPokemon)}</p>
@@ -85,6 +91,30 @@ export function Pokecard({selectedPokemon}){
                         <img src={back_shiny} alt={`shiny-back-sprite-of-${name}`} className="poke-sprite" />
                         <img src={front_shiny} alt={`shiny-front-sprite-of-${name}`} className="poke-sprite" />
                 </div>
+            </div>
+            <div className="pokeData">
+                    <p>Height: {heightInFeet(height) }</p>
+                    <p>Weight: {(weight*0.220462).toFixed(1)} lbs</p>
+                    <p>Abilities:</p>
+                    <ul>{abilities.map((ability, abilityIndex)=>{
+                        return <li key={abilityIndex}>{ability?.ability?.name}</li>
+                    })}</ul>
+                    <div className="stats">
+                        <p>Stats:</p>
+                        <ul>{
+                            stats.map((stat,statIndex)=>{
+                                return <li key={statIndex}>{stat?.stat?.name}: {stat.base_stat}</li>
+                            })
+                        }</ul>
+                    </div>
+                    <p>Moves:</p>
+                    <div className="moveSet">
+                        {
+                            moves.map((move, moveIndex)=>{
+                                return <button className="moveButton" key={moveIndex}>{move?.move?.name}</button>
+                            })
+                        }
+                    </div>
             </div>
         </div>
     )
