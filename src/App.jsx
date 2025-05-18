@@ -8,11 +8,13 @@ function App() {
 
   const [selectedPokemon, setSelectedPokemon] = useState(0);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);  
+
   return (
     <div className='App'>
     <Header/>
     <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon}/>
-    <Pokecard selectedPokemon={selectedPokemon}/>
+    <Pokecard selectedPokemon={selectedPokemon} setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen}/>
     </div>
   )
 }

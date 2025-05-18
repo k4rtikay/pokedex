@@ -1,0 +1,87 @@
+.modalContainer{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modalContainer.open {
+  animation: fadeIn 0.3s forwards;
+  pointer-events: auto;
+}
+
+.moveModal {
+  background-color: white;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transform: scale(0.8);
+  opacity: 0;
+  z-index: 100;
+  font-size: larger;
+  border-radius: 15px;
+  box-shadow: 
+    0 0 0 1px rgba(248, 201, 201, 0.8),
+    0 0 0 2px rgba(250, 134, 134, 0.701),
+    0 0 0 3px rgba(251, 76, 76, 0.821),
+    0 0 0 4px rgba(251, 6, 6, 0.852);
+  padding: 10px;
+  background: white;
+  background-image: url('C:\Users\KARTIKEY\Documents\repos\pokedex\src\assets\pokemmo-svgrepo-com(1).svg');
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.modalContainer.open .moveModal {
+  animation: scaleIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-underlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  opacity: 0.8;
+  z-index: 99;
+  border: none;
+  width: 100%;
+  box-shadow: unset;
+}
+
+.modal-underlay:hover {
+  transform: translate(0);
+  box-shadow: unset;
+}

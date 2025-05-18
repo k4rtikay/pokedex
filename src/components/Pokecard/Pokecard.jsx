@@ -2,12 +2,15 @@ import { useState, useEffect } from "react"
 import { first151Pokemon, getFullPokedexNumber, getPokedexNumber } from "../../utils";
 import { Typecard } from "../Typecard/Typecard";
 import './Pokecard.css'
+import { Modal } from "../Modal/Modal";
 
 
-export function Pokecard({selectedPokemon}){
+export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const [data,setData]=useState(null);
     const [loading, setLoading]=useState(false);
+    const [skill, setSkill] = useState(null);
+    const [moveLoading, setMoveLoading]=useState(false)
 
      const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
@@ -16,6 +19,58 @@ export function Pokecard({selectedPokemon}){
         const feet = Math.floor(totalInches/12)
         const inch = Math.round(totalInches%12)
         return `${feet}'${inch}"`
+     }
+
+     async function fetchPokemonMove(move, moveUrl){
+        if(moveLoading||!localStorage||!moveUrl) return
+
+        setSkill(null)
+
+        let moveCache={}
+
+        if(localStorage.getItem('poke-moves')){
+            moveCache=JSON.parse(localStorage.getItem('poke-moves'))
+        }
+
+        if(move in moveCache){
+            setSkill(moveCache[move])
+            console.log('move found in cache')
+            setIsModalOpen(true);
+            return
+        }
+
+        try{
+            setMoveLoading(true)
+            const moveRes = await fetch(moveUrl)
+            const moveData = await moveRes.json()
+
+            const description = moveData?.flavor_text_entries.filter(val => {
+                return val.version_group.name == 'firered-leafgreen'
+            })[0]?.flavor_text
+
+            const {name, accuracy, power, pp} = moveData
+
+            const skillData= {
+                name: name,
+                accuracy: accuracy,
+                power: power,
+                pp: pp,
+                description: description
+            }
+
+            moveCache[move]=skillData
+            localStorage.setItem('poke-moves', JSON.stringify(moveCache))
+            setSkill(skillData)
+
+            setIsModalOpen(true);
+ 
+        }
+        catch(err){
+            console.log(err)
+        }
+        finally{
+            setMoveLoading(false)
+        }
      }
 
     useEffect(()=>{
@@ -72,10 +127,27 @@ export function Pokecard({selectedPokemon}){
 
     return (
         <div className="pokeEntry">
+            {(isModalOpen)&&(
+                <Modal onClose={()=>{setIsModalOpen(false)}} isModalOpen={isModalOpen}>
+                    {skill?
+                    <>
+                        <h3>{skill.name.replaceAll('-',' ').toUpperCase()}</h3>
+                        <h4>Description:</h4>
+                        <p>{skill.description}</p>
+                        <h4>Stats:</h4>
+                        <ul>
+                            <li>Accuracy: {skill.accuracy?skill.accuracy:'---'}</li>
+                            <li>Power: {skill.power?skill.power:'---'}</li>
+                            <li>PP: {skill.pp}</li>
+                        </ul>
+                    </> : (<div>Loading....</div>)
+                    }
+                </Modal>
+            )}
             <div className="pokeImage">
                 <div className="pokeName">
                 <p>{getFullPokedexNumber(selectedPokemon)}</p>
-                <p>{name}</p>
+                <p>{name.toUpperCase()}</p>
                 </div>
                 <div className="typeContainer">
                     {
@@ -93,25 +165,30 @@ export function Pokecard({selectedPokemon}){
                 </div>
             </div>
             <div className="pokeData">
-                    <p>Height: {heightInFeet(height) }</p>
-                    <p>Weight: {(weight*0.220462).toFixed(1)} lbs</p>
-                    <p>Abilities:</p>
-                    <ul>{abilities.map((ability, abilityIndex)=>{
-                        return <li key={abilityIndex}>{ability?.ability?.name}</li>
-                    })}</ul>
+                    <span style={{color:'blue',marginBottom:'7px'}}>Height:</span> <span style={{marginBottom:'7px'}}>{heightInFeet(height) }</span>
+                    <span style={{color:'blue',marginBottom:'7px'}}>Weight:</span> <span style={{marginBottom:'7px'}}>{(weight*0.220462).toFixed(1)} lbs</span>
+                    <div className="abilites">
+                        <span style={{color:'blue'}}>Abilities:</span>
+                        <ul>{abilities.map((ability, abilityIndex)=>{
+                            return <li key={abilityIndex}>{ability?.ability?.name}</li>
+                        })}</ul>
+                    </div>
                     <div className="stats">
-                        <p>Stats:</p>
+                        <span style={{color:'blue'}}>Stats:</span>
                         <ul>{
                             stats.map((stat,statIndex)=>{
                                 return <li key={statIndex}>{stat?.stat?.name}: {stat.base_stat}</li>
                             })
                         }</ul>
                     </div>
-                    <p>Moves:</p>
+                    <span style={{color:'blue',marginBottom:'7px'}}>Moves:</span>
                     <div className="moveSet">
                         {
-                            moves.map((move, moveIndex)=>{
-                                return <button className="moveButton" key={moveIndex}>{move?.move?.name}</button>
+                            moves.map((moveObj, moveIndex)=>{
+                                return <button className="moveButton"
+                                key={moveIndex}
+                                onClick={()=>{fetchPokemonMove(moveObj?.move?.name,moveObj?.move?.url)}}>{moveObj?.move?.name.replaceAll('-',' ').toUpperCase()}
+                                </button>
                             })
                         }
                     </div>

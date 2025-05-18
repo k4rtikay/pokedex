@@ -1,23 +1,32 @@
 .pokeEntry{
     display: flex;
+    height: 100%;
+    width: 100%;
+    transition: all 1s ease-in-out;
 }
 
 .pokeImage{
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-    padding: 10px;
     padding: 12px;
+    padding-left: 2rem;
 }
 
 .pokeName{
     display: flex;
     gap: 12px;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .typeContainer{
     display: flex;
     gap: 12px;
+}
+
+.default-img{
+    margin-top: 1rem;
 }
 
 .sprites-container{
@@ -27,9 +36,14 @@
 
 .pokeData{
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
-    margin-left: 44px;
+    font-family: "VT323", monospace;
+    font-size: 1.4rem;
+    padding: 12px;
+    padding-left: 2rem;
+    height: 100vh;
 }
 
 ul{
@@ -41,22 +55,37 @@ ul{
 .moveSet{
     display: flex;
     flex-direction: column;
-    height: 320px;
+    flex: 0 0 1;
     overflow-y:auto;
     scrollbar-width: none;
-    border: 5px solid yellow;
-    padding: 4px;
-    border-radius: 19px;
+    border: 8px solid rgb(248, 248, 129);
+    padding: 8px;
+    border-radius: 19px;    
 }
 
 .moveButton{
     display: flex;
     justify-content: center;
-    width: 30vw;
     margin: 2px;
     padding: 4px;
-    border: 2px solid;
+    border: 2px solid;  
     border-radius: 10px;
     font-weight: bolder;
-    background-color: #f2eaea
+    background-color: #e2e2e2;
+    font-family: "VT323", monospace;
+    font-size: 1.2rem;
+}
+    
+.moveButton:hover{
+    background-color: rgb(233, 119, 119);
+    transform: scale(1.023) translateY(-1.6px);
+    transition: all 0.2s ease-in;
+}
+
+.stats,.abilites{
+    display: flex;
+    align-items: start;
+    gap: 17px;
+    margin-top: 5px;
+    margin-bottom: 19px;
 }

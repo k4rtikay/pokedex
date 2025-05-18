@@ -22,7 +22,13 @@ export function Sidenav({selectedPokemon,setSelectedPokemon}){
 
     return(
         <nav className="sidenav">
-            <h1>Pokedex</h1>
+            <div className="sideNavHeader">
+                <h1>Pokédex</h1>
+                <div className="sideNavHeader-buttons">
+                    <button className="darkModeBtn"><i class="fa-regular fa-moon"></i></button>
+                    <button className="userButton">Login</button>
+                </div>
+            </div>
             <input placeholder="E.g. 001 or Bulba.."
             onChange={(e)=>{
                 setSearchPokemon(e.target.value)

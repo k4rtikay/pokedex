@@ -4,8 +4,8 @@
 
 .sidenav{
     display: flex;
+    flex: 0 0 25%;
     flex-direction: column;
-    width: 25vw;
     height: 100vh;
     padding: 10px;
     background-color: rgb(237, 237, 109)
@@ -25,12 +25,15 @@
     border: 2px solid;
     border-radius: 12px;
     font-weight: bolder;
-    background-color: #f2eaea
+    background-color: #f2eaea;
+    font-family: "VT323", monospace;
+    font-size: larger
 }
 
 .nav-button:hover{
-    transition: 0.1s ease-in;
     background-color: rgb(216, 216, 248);
+    transform: scale(1.01) translateY(-1.6px);
+    transition: all 0.1s ease-in-out;
 }
 
 .nav-button-selected{
@@ -42,7 +45,14 @@
     font-weight: bolder;    
     background-color:#4354e6;
     color: white;
-    transition: 0.2s ease;
+    transform: scale(1.01) translateY(-1.6px);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-button-selected:hover{
+    transform: scale(1.01) translateY(-1.6px);
+    transition: all 0.3s ease-in-out;
+    background-color:#4354e6;
 }
 
 input{
@@ -51,4 +61,24 @@ input{
     padding: 5px;
     font-weight: bold;
     margin-bottom: 10px;
+    font-family: "VT323", monospace;
+    font-size: larger
+}
+
+.sideNavHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sideNavHeader-buttons{
+    display: flex;
+    gap: 5px;
+}
+
+.darkModeBtn, .userButton{
+    border: none;
+    background-color: rgba(0,0,0,0);
+    font-family: "VT323", monospace;
+    font-size: larger;
 }
