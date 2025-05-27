@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { first151Pokemon, getFullPokedexNumber, getPokedexNumber } from "../../utils";
 import { Typecard } from "../Typecard/Typecard";
 import './Pokecard.css'
+import './paletteButton.css'
 import { Modal } from "../Modal/Modal";
 
 
@@ -145,9 +146,12 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                 </Modal>
             )}
             <div className="pokeImage">
-                <div className="pokeName">
-                <p>{getFullPokedexNumber(selectedPokemon)}</p>
-                <p>{name.toUpperCase()}</p>
+                <div className="pokeImgHeader">
+                    <div className="pokeName">
+                        <p>{getFullPokedexNumber(selectedPokemon)}</p>
+                        <p>{name.toUpperCase()}</p>
+                    </div>
+                    <button className="btn-61"><span>Scan for Colors!</span></button>
                 </div>
                 <div className="typeContainer">
                     {

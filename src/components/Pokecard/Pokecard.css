@@ -8,9 +8,15 @@
 .pokeImage{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     padding: 12px;
     padding-left: 2rem;
+}
+
+.pokeImgHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .pokeName{
