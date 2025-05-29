@@ -1,4 +1,4 @@
-.modalContainer{
+.paletteModalContainer{
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -13,37 +13,26 @@
     pointer-events: none;
 }
 
-.modalContainer.open {
+.paletteModalContainer.open {
   animation: fadeIn 0.3s forwards;
   pointer-events: auto;
 }
 
-.moveModal {
-  background-color: white;
+.paletteModal {
   box-sizing: border-box;
   padding: 1.5rem;
-  max-width: 500px;
+  max-width: 900px;
   width: 90%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   transform: scale(0.8);
   opacity: 0;
   z-index: 100;
   font-size: larger;
-  border-radius: 15px;
-  box-shadow: 
-    0 0 0 3px rgba(248, 201, 201, 0.8),
-    0 0 0 4px rgba(250, 134, 134, 0.701),
-    0 0 0 6px rgba(251, 76, 76, 0.821),
-    0 0 0 8px rgba(251, 6, 6, 0.852);
-  padding: 10px;
-  background: white;
-  background-image: url('C:\Users\KARTIKEY\Documents\repos\pokedex\src\assets\pokemmo-svgrepo-com(1).svg');
-  background-size: 100px;
-  background-repeat: no-repeat;
-  background-position: bottom right;
+  border-radius: 15px;  
+  padding: 0;
 }
 
-.modalContainer.open .moveModal {
+.paletteModalContainer.open .paletteModal {
   animation: scaleIn 0.3s forwards;
 }
 
@@ -70,7 +59,7 @@
   }
 }
 
-.modal-underlay{
+.palette-modal-underlay{
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0);
@@ -81,7 +70,7 @@
   box-shadow: unset;
 }
 
-.modal-underlay:hover {
+.palettemodal-underlay:hover {
   transform: translate(0);
   box-shadow: unset;
 }

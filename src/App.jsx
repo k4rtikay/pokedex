@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import './App.css'
 import { Header } from './components/Header/Header'
 import { Sidenav } from './components/Sidenav/Sidenav'
@@ -10,11 +10,22 @@ function App() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);  
 
+  const [isPaletteModalOpen, setIsPaletteModalOpen] = useState(false); 
+
+  const [frontSprite, setFrontSprite] = useState(null);
+
+
   return (
     <div className='App'>
     <Header/>
     <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon}/>
-    <Pokecard selectedPokemon={selectedPokemon} setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen}/>
+    <Pokecard selectedPokemon={selectedPokemon} 
+    setIsModalOpen={setIsModalOpen} 
+    isModalOpen={isModalOpen} 
+    isPaletteModalOpen={isPaletteModalOpen} 
+    setIsPaletteModalOpen={setIsPaletteModalOpen}
+    frontSprite={frontSprite}
+    setFrontSprite={setFrontSprite} />
     </div>
   )
 }

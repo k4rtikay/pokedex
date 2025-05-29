@@ -4,25 +4,28 @@ import { Typecard } from "../Typecard/Typecard";
 import './Pokecard.css'
 import './paletteButton.css'
 import { Modal } from "../Modal/Modal";
+import { PaletteModal } from "../paletteModal/paletteModal";
+import colorthief from 'colorthief';
+import ViewPalette from "../paletteModal/ViewPalette";
 
 
-export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
+export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPaletteModalOpen, setIsPaletteModalOpen, frontSprite, setFrontSprite}){
 
     const [data,setData]=useState(null);
     const [loading, setLoading]=useState(false);
     const [skill, setSkill] = useState(null);
     const [moveLoading, setMoveLoading]=useState(false)
 
-     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
+    const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
-     function heightInFeet(hght){
+    function heightInFeet(hght){
         const totalInches = hght*3.937
         const feet = Math.floor(totalInches/12)
         const inch = Math.round(totalInches%12)
         return `${feet}'${inch}"`
-     }
+    }
 
-     async function fetchPokemonMove(move, moveUrl){
+    async function fetchPokemonMove(move, moveUrl){
         if(moveLoading||!localStorage||!moveUrl) return
 
         setSkill(null)
@@ -72,7 +75,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         finally{
             setMoveLoading(false)
         }
-     }
+    }
 
     useEffect(()=>{
 
@@ -125,6 +128,9 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const { back_default,back_shiny,front_default,front_shiny } = sprites
 
+    setFrontSprite(front_default)
+
+
 
     return (
         <div className="pokeEntry">
@@ -145,13 +151,26 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                     }
                 </Modal>
             )}
+
+
+            {(isPaletteModalOpen)&&(
+                <PaletteModal onClose={()=>{setIsPaletteModalOpen(false)}} isPaletteModalOpen={isPaletteModalOpen}>
+                    <>
+                    <ViewPalette frontSprite={frontSprite} isPaletteModalOpen={isPaletteModalOpen}/>
+                    </>
+                </PaletteModal>
+            )}
+
+
+
             <div className="pokeImage">
                 <div className="pokeImgHeader">
                     <div className="pokeName">
                         <p>{getFullPokedexNumber(selectedPokemon)}</p>
                         <p>{name.toUpperCase()}</p>
                     </div>
-                    <button className="btn-61"><span>Scan for Colors!</span></button>
+                    <button className="btn-61"
+                    onClick={()=>{setIsPaletteModalOpen(true)}}><span>Scan for Colors!</span></button>
                 </div>
                 <div className="typeContainer">
                     {
@@ -168,6 +187,9 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                         <img src={front_shiny} alt={`shiny-front-sprite-of-${name}`} className="poke-sprite" />
                 </div>
             </div>
+
+
+
             <div className="pokeData">
                     <span style={{color:'blue',marginBottom:'7px'}}>Height:</span> <span style={{marginBottom:'7px'}}>{heightInFeet(height) }</span>
                     <span style={{color:'blue',marginBottom:'7px'}}>Weight:</span> <span style={{marginBottom:'7px'}}>{(weight*0.220462).toFixed(1)} lbs</span>
@@ -191,7 +213,8 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                             moves.map((moveObj, moveIndex)=>{
                                 return <button className="moveButton"
                                 key={moveIndex}
-                                onClick={()=>{fetchPokemonMove(moveObj?.move?.name,moveObj?.move?.url)}}>{moveObj?.move?.name.replaceAll('-',' ').toUpperCase()}
+                                onClick={()=>{fetchPokemonMove(moveObj?.move?.name,moveObj?.move?.url)}}>
+                                    {moveObj?.move?.name.replaceAll('-',' ').toUpperCase()}
                                 </button>
                             })
                         }
@@ -200,3 +223,4 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         </div>
     )
 }
+
