@@ -34,22 +34,26 @@
 }
 
 .colorCopyBtn{
+    display: flex;
+    align-items: start;
+    justify-content: center;
     border: none;
     background:rgb(0,0,0, 0);
     font-family:"VT323", monospace;
     color: rgb(0,0,0, 0);
-    font-size: large;
+    font-size:20px;
     margin-top: 20px;
     font-weight:400;
     height: 100%;
     width: 100%;
     cursor: pointer;
-    text-align:center;
     font-weight: bold;
     vertical-align: top;
+    opacity: 0;
+    transition: ease-in 0.1s all;
 }
 
 .colorCopyBtn:hover{
-    color: white;
+    opacity: 1;
 }
 

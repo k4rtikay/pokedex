@@ -101,3 +101,13 @@ export function getPokedexNumber(index) {
 export function getFullPokedexNumber(index) {
     return `${index + 1 > 99 ? index + 1 : index + 1 > 9 ? `0${index + 1}` : `00${index + 1}`}`
 }
+
+export function colorForIntensity(red,green,blue){
+    const intensity = red*0.299 + green*0.587 + blue*0.114;
+
+    if(intensity>186){
+        return '#000000'
+    }else{
+        return '#ffffff'
+    }
+}

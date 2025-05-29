@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import ColorThief from 'colorthief';
 import './ViewPalette.css'
+import { colorForIntensity } from "../../utils";
 
 export default function ViewPalette({frontSprite,isPaletteModalOpen}){
 
@@ -40,7 +41,8 @@ export default function ViewPalette({frontSprite,isPaletteModalOpen}){
                     style={{backgroundColor:`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}}
                     key={domColorIndex}
                     className="paletteBar">
-                        <button className="colorCopyBtn">{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</button>
+                        <button className="colorCopyBtn"
+                        style={{color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}>{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</button>
                     </div>
                 )
             })}
