@@ -42,7 +42,10 @@ export default function ViewPalette({frontSprite,isPaletteModalOpen}){
                     key={domColorIndex}
                     className="paletteBar">
                         <button className="colorCopyBtn"
-                        style={{color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}>{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</button>
+                        style={{color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}>
+                            <p>{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</p>
+                            <p><i class="fa-regular fa-copy"></i></p>
+                        </button>
                     </div>
                 )
             })}

@@ -8,7 +8,9 @@
     flex-direction: column;
     height: 100vh;
     padding: 10px;
-    background-color: rgb(237, 237, 109)
+    background-color: var(--menu-color);
+    color: var(--pokemon-entry-color);
+    transition: 0.3s ease-in-out background-color;
 }
 
 .scrollPoke{
@@ -22,28 +24,30 @@
     display: flex;
     gap: 35%;
     margin: 2px;
-    border: 2px solid;
+    border: 2px solid #000000;
     border-radius: 12px;
     font-weight: bolder;
-    background-color: #f2eaea;
+    background-color: var(--secondary-bg-color);
     font-family: "VT323", monospace;
-    font-size: larger
+    font-size: larger;
+    color: var(--pokemon-entry-color);
 }
 
 .nav-button:hover{
-    background-color: rgb(216, 216, 248);
+    background-color: var(--button-primary-hover);
+    border: 2px solid var(--button-primary-border);
     transform: scale(1.01) translateY(-1.6px);
-    transition: all 0.1s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .nav-button-selected{
     display: flex;
     gap: 35%;
     margin: 2px;
-    border: 2px solid rgb(141, 141, 254);   
+    border: 2px solid var(--button-primary-border);   
     border-radius: 12px;
     font-weight: bolder;    
-    background-color:#4354e6;
+    background-color:var(--button-primary-bg);
     color: white;
     transform: scale(1.01) translateY(-1.6px);
     transition: all 0.3s ease-in-out;
@@ -52,7 +56,7 @@
 .nav-button-selected:hover{
     transform: scale(1.01) translateY(-1.6px);
     transition: all 0.3s ease-in-out;
-    background-color:#4354e6;
+    background-color:var(--button-primary-bg);
 }
 
 input{
@@ -81,4 +85,5 @@ input{
     background-color: rgba(0,0,0,0);
     font-family: "VT323", monospace;
     font-size: larger;
+    color: var(--options-color);
 }

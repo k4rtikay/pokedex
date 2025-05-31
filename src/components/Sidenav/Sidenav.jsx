@@ -25,7 +25,10 @@ export function Sidenav({selectedPokemon,setSelectedPokemon}){
             <div className="sideNavHeader">
                 <h1>Pokédex</h1>
                 <div className="sideNavHeader-buttons">
-                    <button className="darkModeBtn"><i className="fa-regular fa-moon"></i></button>
+                    <button className="darkModeBtn"
+                    onClick={()=>{
+                        {document.querySelector('body').classList.toggle('darkmode')};
+                    }}><i className="fa-regular fa-moon"></i></button>
                     <button className="userButton">Login</button>
                 </div>
             </div>
