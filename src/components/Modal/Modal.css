@@ -19,7 +19,8 @@
 }
 
 .moveModal {
-  background-color: white;
+  background-color: var(--background-color);
+  color: var(--pokemon-entry-color);
   box-sizing: border-box;
   padding: 1.5rem;
   max-width: 500px;
@@ -36,7 +37,6 @@
     0 0 0 6px rgba(251, 76, 76, 0.821),
     0 0 0 8px rgba(251, 6, 6, 0.852);
   padding: 10px;
-  background: white;
   background-image: url('C:\Users\KARTIKEY\Documents\repos\pokedex\src\assets\pokemmo-svgrepo-com(1).svg');
   background-size: 100px;
   background-repeat: no-repeat;

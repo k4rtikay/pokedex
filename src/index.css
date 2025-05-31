@@ -1,18 +1,19 @@
 :root{
-    --background-color:#FFFFFF;
-    --menu-color:#FFDE00;
-    --secondary-bg-color:#f4edbc;
+    --background-color:#fefdfb;
+    --menu-color:rgba(255, 255, 139, 0.925);
+    --secondary-bg-color:#f8f6f2;
 
     --button-primary-bg: #4354e6;
     --button-primary-hover:#b1b8f9;
-    --button-primary-border:#7a87f9;
+    --button-primary-border:#d4d8fb;
 
     --button-secondary-bg:#CC0000;
     --button-secondary-hover:#ffb3b3;
     --button-secondary-border:#f96e6e;
 
     --options-color: #000000;
-    --pokemon-entry-color:#000000;
+    --pokemon-entry-color:#2d3748;
+    --pokemon-entry-secondary-color:#4354e6;
     
 }
 
@@ -21,9 +22,9 @@ body{
 }
 
 body.darkmode{
-    --background-color:#242424;
+    --background-color:#2a2a2b;
     --menu-color:#404040;
-    --secondary-bg-color:#50504fc0;
+    --secondary-bg-color:#3a3a3c;
 
     --button-primary-bg: #CC0000;
     --button-primary-hover:#f16d6d86;
@@ -34,7 +35,8 @@ body.darkmode{
     --button-secondary-border:#7a87f9;
 
     --options-color: #ffffff;
-    --pokemon-entry-color:#ffffff;
+    --pokemon-entry-color:#e2e8f0;
+    --pokemon-entry-secondary-color:#abb0ff;
 }
 
 *{

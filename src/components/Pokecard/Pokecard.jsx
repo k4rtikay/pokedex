@@ -5,7 +5,6 @@ import './Pokecard.css'
 import './paletteButton.css'
 import { Modal } from "../Modal/Modal";
 import { PaletteModal } from "../paletteModal/paletteModal";
-import colorthief from 'colorthief';
 import ViewPalette from "../paletteModal/ViewPalette";
 
 
@@ -120,7 +119,8 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
 
     if(loading||!data){
         return(
-            <div>
+            <div
+            style={{backgroundColor:'var(--background-color)',width:'100%'}}>
                 <h4>Loading....</h4>
             </div>
         )
@@ -191,23 +191,23 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
 
 
             <div className="pokeData">
-                    <span style={{color:'blue',marginBottom:'7px'}}>Height:</span> <span style={{marginBottom:'7px'}}>{heightInFeet(height) }</span>
-                    <span style={{color:'blue',marginBottom:'7px'}}>Weight:</span> <span style={{marginBottom:'7px'}}>{(weight*0.220462).toFixed(1)} lbs</span>
+                    <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Height:</span> <span style={{marginBottom:'7px'}}>{heightInFeet(height) }</span>
+                    <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Weight:</span> <span style={{marginBottom:'7px'}}>{(weight*0.220462).toFixed(1)} lbs</span>
                     <div className="abilites">
-                        <span style={{color:'blue'}}>Abilities:</span>
+                        <span style={{color:'var(--pokemon-entry-secondary-color)'}}>Abilities:</span>
                         <ul>{abilities.map((ability, abilityIndex)=>{
                             return <li key={abilityIndex}>{ability?.ability?.name}</li>
                         })}</ul>
                     </div>
                     <div className="stats">
-                        <span style={{color:'blue'}}>Stats:</span>
+                        <span style={{color:'var(--pokemon-entry-secondary-color)'}}>Stats:</span>
                         <ul>{
                             stats.map((stat,statIndex)=>{
                                 return <li key={statIndex}>{stat?.stat?.name}: {stat.base_stat}</li>
                             })
                         }</ul>
                     </div>
-                    <span style={{color:'blue',marginBottom:'7px'}}>Moves:</span>
+                    <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Moves:</span>
                     <div className="moveSet">
                         {
                             moves.map((moveObj, moveIndex)=>{
