@@ -20,9 +20,8 @@
 
 .paletteModal {
   box-sizing: border-box;
-  padding: 1.5rem;
-  max-width: 900px;
-  width: 90%;
+  width: 100%;
+  max-width: 950px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   transform: scale(0.8);
   opacity: 0;
@@ -30,6 +29,7 @@
   font-size: larger;
   border-radius: 15px;  
   padding: 0;
+  box-sizing: border-box;
 }
 
 .paletteModalContainer.open .paletteModal {

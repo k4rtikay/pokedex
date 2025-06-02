@@ -2,7 +2,6 @@
   box-sizing: border-box;
   padding: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  transform: scale(0.8);
   z-index: 100;
   width: fit-content;
   font-size: larger;
@@ -13,4 +12,17 @@
   top: 80%;
   left: 50%;
   transform: translate(-50%,-50%);
+  transition: 0.2 ease-in all;
+  animation: scaleIn 0.2s forwards;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
