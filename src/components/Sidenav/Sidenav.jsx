@@ -28,7 +28,8 @@ export function Sidenav({selectedPokemon,setSelectedPokemon}){
                     <button className="darkModeBtn"
                     onClick={()=>{
                         {document.querySelector('body').classList.toggle('darkmode')};
-                    }}><i className="fa-regular fa-moon"></i></button>
+                    }}><i class="fa-regular fa-lightbulb"></i>
+                    </button>
                     <button className="userButton">Login</button>
                 </div>
             </div>

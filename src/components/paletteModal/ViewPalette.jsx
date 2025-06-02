@@ -2,10 +2,12 @@ import { useState, useEffect, useRef } from "react"
 import ColorThief from 'colorthief';
 import './ViewPalette.css'
 import { colorForIntensity } from "../../utils";
+import { ColorTooltip } from "./ColorTooltip";
 
 export default function ViewPalette({frontSprite,isPaletteModalOpen}){
 
     const [palette, setPalette] = useState(null)
+    const [copied, setCopied] = useState(false)
     const imgRef = useRef(null)
 
     useEffect(()=>{
@@ -42,7 +44,19 @@ export default function ViewPalette({frontSprite,isPaletteModalOpen}){
                     key={domColorIndex}
                     className="paletteBar">
                         <button className="colorCopyBtn"
-                        style={{color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}>
+                        style={{color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}
+                        onClick={async (e)=>{
+                            const text = e.currentTarget.innerText;
+                            try{
+                                await navigator.clipboard.writeText(text)
+                                setCopied(true)
+                                setTimeout(() => {
+                                    setCopied(false)
+                                }, 2000);
+                            } catch(err){
+                                console.log(err)
+                            }
+                        }}>
                             <p>{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</p>
                             <p><i class="fa-regular fa-copy"></i></p>
                         </button>
@@ -51,12 +65,15 @@ export default function ViewPalette({frontSprite,isPaletteModalOpen}){
             })}
             </div>
 
-             
             <img src={frontSprite}
             alt="Image of selected pokemon"
             ref={imgRef}
             crossOrigin="anonymous"
             className="paletteSprite" />
+
+            {copied&&
+                <ColorTooltip/>
+            }
             
 
         </div>

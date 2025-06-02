@@ -1,0 +1,16 @@
+.tooltip{
+  box-sizing: border-box;
+  padding: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transform: scale(0.8);
+  z-index: 100;
+  width: fit-content;
+  font-size: larger;
+  border-radius: 15px;  
+  color: var(--pokemon-entry-color);
+  background-color: var(--background-color);
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
