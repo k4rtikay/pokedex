@@ -5,7 +5,7 @@ import './Pokecard.css'
 import './paletteButton.css'
 import { Modal } from "../Modal/Modal";
 import { PaletteModal } from "../paletteModal/paletteModal";
-import ViewPalette from "../paletteModal/ViewPalette";
+import ViewPalette from "./paletteModal/ViewPalette";
 
 
 export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPaletteModalOpen, setIsPaletteModalOpen, frontSprite, setFrontSprite}){
