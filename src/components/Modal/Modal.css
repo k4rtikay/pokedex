@@ -105,3 +105,15 @@
     transform: scale(1) rotate(360deg);
   }
 }
+
+@media (max-width:768px){
+  .pokeballIcon{
+    width: 80px;
+  }
+}
+
+@media (max-width:450px){
+  .pokeballIcon{
+    width: 70px;
+  }
+}

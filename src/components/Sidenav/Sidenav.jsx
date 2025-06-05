@@ -1,8 +1,8 @@
 import {  first151Pokemon, getFullPokedexNumber } from "../../utils"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import './Sidenav.css'
 
-export function Sidenav({selectedPokemon,setSelectedPokemon}){
+export function Sidenav({selectedPokemon,setSelectedPokemon, isSideMenuOpen}){
     const [searchPokemon,setSearchPokemon]=useState('');
     let searchedList = [];
     if(searchPokemon===''){
@@ -20,8 +20,19 @@ export function Sidenav({selectedPokemon,setSelectedPokemon}){
     }
 
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+
+
     return(
-        <nav className="sidenav">
+        <nav className={`sidenav ${isMobile && !isSideMenuOpen ? 'hidden' : ''}`}>
             <input placeholder="E.g. 001 or Bulba.."
             onChange={(e)=>{
                 setSearchPokemon(e.target.value)
@@ -41,3 +52,4 @@ export function Sidenav({selectedPokemon,setSelectedPokemon}){
         </nav>
     )
 }
+

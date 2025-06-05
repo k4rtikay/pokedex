@@ -13,13 +13,17 @@
     transition: 0.3s ease-in-out background-color;
 }
 
+.sidenav.hidden {
+  display: none;
+}
+
 .scrollPoke{
     display: flex;
     flex: 1;
     min-height: 0;
     flex-direction: column;
     overflow-y: auto;
-    scrollbar-width: none;  
+    scrollbar-width: none;
 }
 
 .nav-button{
@@ -74,8 +78,23 @@ input{
     font-size: larger;
 }
 
-@media (max-width:768px) {
+@media (max-width:768px){
     .sidenav{
-        display: none;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        width: 50vw;
+    }
+
+    .scrollPoke{
+        flex-grow: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-button{
+        font-size: 1rem;
     }
 }
+

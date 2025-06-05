@@ -14,12 +14,14 @@ function App() {
 
   const [frontSprite, setFrontSprite] = useState(null);
 
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
+
 
   return (
     <div className='App'>
     <div className="sidePane">
-      <Header/>
-      <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon}/>
+      <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/>
+      <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/>
     </div>
     <Pokecard selectedPokemon={selectedPokemon} 
     setIsModalOpen={setIsModalOpen} 

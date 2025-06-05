@@ -6,6 +6,7 @@
     color: var(--options-color);
     padding: 2px 7px;
     margin: none;
+    height: 60px;
 }
 
 .sideNavHeader-buttons{
@@ -19,4 +20,26 @@
     font-family: "VT323", monospace;
     font-size: larger;
     color: var(--options-color);
+}
+
+.menu-button{
+    display: none;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    font-family: "VT323", monospace;
+    font-size: larger;
+    color: var(--options-color);
+}
+
+@media (max-width:768px){
+  .menu-button{
+    display: block;
+  }
+
+  .sideNavHeader {
+    flex-shrink: 0;
+    height: 60px;
+    width: 100vw;
+  }
+
 }
