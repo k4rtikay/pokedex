@@ -138,15 +138,18 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
                 <Modal onClose={()=>{setIsModalOpen(false)}} isModalOpen={isModalOpen}>
                     {skill?
                     <>
-                        <h3>{skill.name.replaceAll('-',' ').toUpperCase()}</h3>
-                        <h4>Description:</h4>
-                        <p>{skill.description}</p>
-                        <h4>Stats:</h4>
-                        <ul>
-                            <li>Accuracy: {skill.accuracy?skill.accuracy:'---'}</li>
-                            <li>Power: {skill.power?skill.power:'---'}</li>
-                            <li>PP: {skill.pp}</li>
-                        </ul>
+                        <div className="moveInfo">
+                            <h3>{skill.name.replaceAll('-',' ').toUpperCase()}</h3>
+                            <h4>Description:</h4>
+                            <p>{skill.description}</p>
+                            <h4>Stats:</h4>
+                            <ul>
+                                <li>Accuracy: {skill.accuracy?skill.accuracy:'---'}</li>
+                                <li>Power: {skill.power?skill.power:'---'}</li>
+                                <li>PP: {skill.pp}</li>
+                            </ul>
+                        </div>
+                        <img src="pokemmo-svgrepo-com(1).svg" alt="Pokeball-icon" className="pokeballIcon"/>
                     </> : (<div>Loading....</div>)
                     }
                 </Modal>

@@ -19,6 +19,8 @@
 }
 
 .moveModal {
+  display: flex;
+  gap: 12px;
   background-color: var(--background-color);
   color: var(--pokemon-entry-color);
   box-sizing: border-box;
@@ -37,10 +39,6 @@
     0 0 0 6px rgba(251, 76, 76, 0.821),
     0 0 0 8px rgba(251, 6, 6, 0.852);
   padding: 10px;
-  background-image: url('C:\Users\KARTIKEY\Documents\repos\pokedex\src\assets\pokemmo-svgrepo-com(1).svg');
-  background-size: 100px;
-  background-repeat: no-repeat;
-  background-position: bottom right;
 }
 
 .modalContainer.open .moveModal {
@@ -84,4 +82,23 @@
 .modal-underlay:hover {
   transform: translate(0);
   box-shadow: unset;
+}
+
+.pokeballIcon{
+  width: 100px;
+  animation: rotate-and-scale 0.5s ease-in-out;
+}
+
+@keyframes rotate-and-scale {
+  0%{
+    transform: scale(1) rotate(0deg);
+  }
+
+  50%{
+    transform: scale(1.5) rotate(180deg);
+  }
+
+  100%{
+    transform: scale(1) rotate(360deg);
+  }
 }

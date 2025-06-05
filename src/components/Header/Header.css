@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--menu-color);
-    padding: 2px;
+    color: var(--options-color);
+    padding: 2px 7px;
     margin: none;
 }
 
