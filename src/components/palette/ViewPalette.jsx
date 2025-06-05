@@ -4,7 +4,7 @@ import './ViewPalette.css'
 import { colorForIntensity } from "../../utils";
 import { ColorTooltip } from "./ColorTooltip";
 
-export default function ViewPalette({frontSprite,isPaletteModalOpen}){
+export function ViewPalette({frontSprite,isPaletteModalOpen}){
 
     const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)

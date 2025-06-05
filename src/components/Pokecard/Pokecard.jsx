@@ -4,8 +4,8 @@ import { Typecard } from "../Typecard/Typecard";
 import './Pokecard.css'
 import './paletteButton.css'
 import { Modal } from "../Modal/Modal";
-import { PaletteModal } from "./paletteModal/paletteModal";
-import ViewPalette from "./paletteModal/ViewPalette";
+import { ViewPalette } from "../palette/ViewPalette.jsx";
+import {PaletteModal} from "../palette/PaletteModal"
 
 
 export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPaletteModalOpen, setIsPaletteModalOpen, frontSprite, setFrontSprite}){
@@ -159,7 +159,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
             {(isPaletteModalOpen)&&(
                 <PaletteModal onClose={()=>{setIsPaletteModalOpen(false)}} isPaletteModalOpen={isPaletteModalOpen}>
                     <>
-                    <ViewPalette frontSprite={frontSprite} isPaletteModalOpen={isPaletteModalOpen}/>
+                    <ViewPalette frontSprite={frontSprite} isPaletteModalOpen={isPaletteModalOpen}></ViewPalette>
                     </>
                 </PaletteModal>
             )}
