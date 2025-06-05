@@ -16,12 +16,12 @@
 }
 
 .paletteBar{
-   flex: 1;
-   padding: 0;
-   margin: 0;
-   min-width: 0;
-   overflow-wrap: break-word;
-   display: flex;
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: break-word;
+    display: flex;
     flex-direction: column;
     align-items:center;
     justify-content: start;
@@ -62,3 +62,39 @@
     opacity: 1;
 }
 
+@media (max-width:768px){
+
+    .viewPalette{
+        height: 200px;
+        flex-direction: column;
+        border: 0 0 15px 15px;
+        overflow: hidden;
+    }
+    .paletteBarContainer{
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    .paletteBar{
+        flex:auto;
+        height: 67px;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .paletteSprite{
+        width: 190px;
+    }
+
+    .colorCopyBtn{
+        flex-direction: row;
+        gap: 12px;
+        width: 100%;
+    }
+}

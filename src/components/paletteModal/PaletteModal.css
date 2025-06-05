@@ -74,3 +74,11 @@
   transform: translate(0);
   box-shadow: unset;
 }
+
+@media (max-width:768px){
+  .paletteModal{
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+  }
+}
