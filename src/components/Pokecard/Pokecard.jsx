@@ -4,7 +4,7 @@ import { Typecard } from "../Typecard/Typecard";
 import './Pokecard.css'
 import './paletteButton.css'
 import { Modal } from "../Modal/Modal";
-import { PaletteModal } from "../paletteModal/paletteModal";
+import { PaletteModal } from "./paletteModal/paletteModal";
 import ViewPalette from "./paletteModal/ViewPalette";
 
 
