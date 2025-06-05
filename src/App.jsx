@@ -17,8 +17,10 @@ function App() {
 
   return (
     <div className='App'>
-    <Header/>
-    <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon}/>
+    <div className="sidePane">
+      <Header/>
+      <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon}/>
+    </div>
     <Pokecard selectedPokemon={selectedPokemon} 
     setIsModalOpen={setIsModalOpen} 
     isModalOpen={isModalOpen} 

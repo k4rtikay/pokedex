@@ -39,7 +39,7 @@
 
 .sprites-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .pokeData{
@@ -52,6 +52,11 @@
     padding: 12px;
     padding-left: 2rem;
     height: 100vh;
+}
+
+.data{
+    display: flex;
+    flex-direction: column;
 }
 
 ul{
@@ -68,7 +73,9 @@ ul{
     scrollbar-width: none;
     border: 8px solid var(--menu-color);
     padding: 8px;
-    border-radius: 19px;    
+    border-radius: 19px;
+    background-color: var(--menu-color);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.35);
 }
 
 .moveButton{
@@ -91,6 +98,7 @@ ul{
     color: white;
     transform: scale(1.023) translateY(-1.6px);
     transition: all 0.3s ease-in;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.35);
 }
 
 .stats,.abilites{
@@ -99,4 +107,60 @@ ul{
     gap: 17px;
     margin-top: 5px;
     margin-bottom: 19px;
+}
+
+@media (max-width:768px) {
+    .pokeEntry{
+        flex-direction: column;
+    }
+
+    .pokeImage{
+        min-height: 500px;
+        padding-left: 12px;
+        margin-bottom: 0;
+    }
+
+    .pokeData{
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 2rem;
+        gap: 22px;
+        padding-left: 12px;
+    }
+
+    .moveSet{
+        max-height:500px;
+        flex: 1;
+    }
+
+}
+
+@media (max-width:450px) {
+    .pokeData{
+        font-size: 1.3rem;
+    }
+
+    .moveSet{
+        max-height: 320px;
+    }
+
+    .moveButton{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width:390px) {
+    .sprites-container{
+        display: flex;
+        flex-wrap: wrap;
+        width: 300px;
+    }
+
+    .pokeData{
+        font-size: 1.1rem;
+    }
+
+    .moveButton{
+        font-size: 1rem;
+    }
 }

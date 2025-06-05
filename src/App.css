@@ -1,3 +1,22 @@
 .App{
     display: flex;
 }
+
+.sidePane{
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    height: 100vh;
+}
+
+@media (max-width:768px) {
+    .App{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidePane{
+        height: auto;
+        width: 100%;
+    }
+}

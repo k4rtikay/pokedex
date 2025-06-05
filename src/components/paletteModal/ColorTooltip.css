@@ -3,6 +3,8 @@
   padding: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   z-index: 100;
+  min-width: 20%;
+  text-align: center;
   width: fit-content;
   font-size: larger;
   border-radius: 15px;  
@@ -10,7 +12,7 @@
   background-color: var(--background-color);
   position: absolute;
   top: 80%;
-  left: 50%;
+  left: 40%;
   transform: translate(-50%,-50%);
   transition: 0.2 ease-in all;
   animation: scaleIn 0.2s forwards;

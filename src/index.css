@@ -18,7 +18,8 @@
 }
 
 body{
-    transition: all 1s ease-in-out;
+    transition: background 0.1 ease-in-out;
+    height: 100%;
 }
 
 body.darkmode{
@@ -46,4 +47,8 @@ body.darkmode{
 body{
     margin:0;
     font-family:'VT323',monospace;
+}
+
+button{
+    cursor: pointer;
 }

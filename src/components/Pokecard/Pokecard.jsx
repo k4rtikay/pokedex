@@ -191,24 +191,26 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
 
 
             <div className="pokeData">
-                    <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Height:</span> <span style={{marginBottom:'7px'}}>{heightInFeet(height) }</span>
-                    <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Weight:</span> <span style={{marginBottom:'7px'}}>{(weight*0.220462).toFixed(1)} lbs</span>
-                    <div className="abilites">
-                        <span style={{color:'var(--pokemon-entry-secondary-color)'}}>Abilities:</span>
-                        <ul>{abilities.map((ability, abilityIndex)=>{
-                            return <li key={abilityIndex}>{ability?.ability?.name}</li>
-                        })}</ul>
+                    <div className="data">
+                        <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Height:</span> <span style={{marginBottom:'7px'}}>{heightInFeet(height) }</span>
+                        <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Weight:</span> <span style={{marginBottom:'7px'}}>{(weight*0.220462).toFixed(1)} lbs</span>
+                        <div className="abilites">
+                            <span style={{color:'var(--pokemon-entry-secondary-color)'}}>Abilities:</span>
+                            <ul>{abilities.map((ability, abilityIndex)=>{
+                                return <li key={abilityIndex}>{ability?.ability?.name}</li>
+                            })}</ul>
+                        </div>
+                        <div className="stats">
+                            <span style={{color:'var(--pokemon-entry-secondary-color)'}}>Stats:</span>
+                            <ul>{
+                                stats.map((stat,statIndex)=>{
+                                    return <li key={statIndex}>{stat?.stat?.name}: {stat.base_stat}</li>
+                                })
+                            }</ul>
+                        </div>
                     </div>
-                    <div className="stats">
-                        <span style={{color:'var(--pokemon-entry-secondary-color)'}}>Stats:</span>
-                        <ul>{
-                            stats.map((stat,statIndex)=>{
-                                return <li key={statIndex}>{stat?.stat?.name}: {stat.base_stat}</li>
-                            })
-                        }</ul>
-                    </div>
-                    <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Moves:</span>
                     <div className="moveSet">
+                        <span style={{color:'var(--pokemon-entry-secondary-color)',marginBottom:'7px'}}>Moves:</span>
                         {
                             moves.map((moveObj, moveIndex)=>{
                                 return <button className="moveButton"

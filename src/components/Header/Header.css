@@ -1,0 +1,21 @@
+.sideNavHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--menu-color);
+    padding: 2px;
+    margin: none;
+}
+
+.sideNavHeader-buttons{
+    display: flex;
+    gap: 5px;
+}
+
+.darkModeBtn, .userButton{
+    border: none;
+    background-color: rgba(0,0,0,0);
+    font-family: "VT323", monospace;
+    font-size: larger;
+    color: var(--options-color);
+}
