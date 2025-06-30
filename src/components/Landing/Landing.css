@@ -1,0 +1,63 @@
+.landingPageContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mainLandingContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.landingPageContent h1{
+    font-size: 5rem;
+    color: #FCFF5F;
+    text-shadow:
+    -3px -3px 0 blue,
+     3px -3px 0 blue,
+    -3px  3px 0 blue,
+     3px  3px 0 blue;;
+}
+
+.landingPageContent li{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow:
+    -1.5px -1.5px 0 blue,
+     1.5px -1.5px 0 blue,
+    -1.5px  1.5px 0 blue,
+     1.5px  1.5px 0 blue;
+}
+
+.landingPageContent span{
+    color: #FCFF5F;
+    font-size: 2rem;
+}
+
+.loginOptions{
+    border: none;
+    margin: 2rem 0;
+    width: 12rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    font-family: 'VT323';
+    border-radius: 13px;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.landingPageContent p{
+    font-size: 1.5rem;
+    color: black;
+    opacity:0.7;
+}
