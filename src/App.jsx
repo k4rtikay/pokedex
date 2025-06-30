@@ -3,6 +3,8 @@ import './App.css'
 import { Header } from './components/Header/Header'
 import { Sidenav } from './components/Sidenav/Sidenav'
 import { Pokecard } from './components/Pokecard/Pokecard'
+import { Landing } from './components/Landing/Landing'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
 
@@ -18,7 +20,13 @@ function App() {
 
 
   return (
-    <div className='App'>
+    <Routes>
+      <Route path='/' element={<Landing />}></Route>
+    </Routes>
+  )
+}
+
+    /*<div className='App'>
     <div className="sidePane">
       <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/>
       <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/>
@@ -30,8 +38,6 @@ function App() {
     setIsPaletteModalOpen={setIsPaletteModalOpen}
     frontSprite={frontSprite}
     setFrontSprite={setFrontSprite} />
-    </div>
-  )
-}
+    </div>*/
 
 export default App
