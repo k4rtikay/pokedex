@@ -4,6 +4,12 @@
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    background-image: url(./pixelated-sky-background.png);
+    background-size: contain;
+    background-repeat: repeat;
+    background-position: center;
+    color: #E2E2E2;
+    font-size:1.5rem ;
 }
 
 .mainLandingContent{
@@ -14,34 +20,43 @@
 }
 
 .landingPageContent h1{
-    font-size: 5rem;
+    font-size: 4rem;
     color: #FCFF5F;
     text-shadow:
-    -3px -3px 0 blue,
-     3px -3px 0 blue,
-    -3px  3px 0 blue,
-     3px  3px 0 blue;;
+    -3px -3px 0 #1E3A9F,
+     3px -3px 0 #1E3A9F,
+    -3px  3px 0 #1E3A9F,
+     3px  3px 0 #1E3A9F;
+    margin: 1rem;
 }
 
+.landingPageContent ul{
+    margin: 1rem;
+}
 .landingPageContent li{
+    list-style-type: none;
     font-weight: bold;
-    font-size: 1.5rem;
     color: white;
     text-shadow:
-    -1.5px -1.5px 0 blue,
-     1.5px -1.5px 0 blue,
-    -1.5px  1.5px 0 blue,
-     1.5px  1.5px 0 blue;
+    -1.5px -1.5px 0 black,
+     1.5px -1.5px 0 black,
+    -1.5px  1.5px 0 black,
+     1.5px  1.5px 0 black;
 }
 
 .landingPageContent span{
     color: #FCFF5F;
-    font-size: 2rem;
+    font-size: 1.8rem;
+    text-shadow:
+    -1.5px -1.5px 0 #1E3A9F,
+     1.5px -1.5px 0 #1E3A9F,
+    -1.5px  1.5px 0 #1E3A9F,
+     1.5px  1.5px 0 #1E3A9F;
 }
 
 .loginOptions{
     border: none;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     width: 12rem;
     height: 4rem;
     font-size: 1.5rem;
@@ -54,10 +69,66 @@
      1px -1px 0 black,
     -1px  1px 0 black,
      1px  1px 0 black;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .landingPageContent p{
-    font-size: 1.5rem;
+    margin: 1rem;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+.landingPageContent footer{
+    padding: 0.5rem;
     color: black;
-    opacity:0.7;
+    font-size: 1rem;
+}
+
+.loginOptions:hover{
+    transform: scale(1.01) translateY(-1.6px);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
+}
+
+@media (max-width:768px){
+    .landingPageContent{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 1.5rem;
+    }
+
+    .landingPageContent footer{
+    padding: 5px;
+    color: black;
+    }
+
+    .landingPageContent h1{
+    font-size: 2.5rem;
+    margin: 2rem;
+    }
+
+    .landingPageContent span{
+    color: #FCFF5F;
+    font-size: 1.6rem;
+    }
+
+    .loginOptions{
+        margin: 1.2rem 0;
+        width: 10rem;
+        height: 3rem;
+    }
+
+    .landingPageContent li{
+        margin: 5px;
+    }
+}
+
+@media (max-width:1024px){
+    .landingPageContent{
+        background-size: cover;
+    }
 }
