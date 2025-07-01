@@ -28,6 +28,7 @@
     -3px  3px 0 #1E3A9F,
      3px  3px 0 #1E3A9F;
     margin: 1rem;
+    animation-delay: 0.2s;
 }
 
 .landingPageContent ul{
@@ -79,18 +80,25 @@
      1px -1px 0 black,
     -1px  1px 0 black,
      1px  1px 0 black;
+     animation-delay: 0.6s;
 }
 
 .landingPageContent footer{
     padding: 0.5rem;
     color: black;
     font-size: 1rem;
+    animation-delay: 0.8s;
 }
 
 .loginOptions:hover{
     transform: scale(1.01) translateY(-1.6px);
     transition: all 0.2s ease-in-out;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 @media (max-width:768px){
@@ -131,4 +139,9 @@
     .landingPageContent{
         background-size: cover;
     }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
