@@ -58,7 +58,7 @@ export function ViewPalette({frontSprite,isPaletteModalOpen}){
                             }
                         }}>
                             <p>{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</p>
-                            <p><i class="fa-regular fa-copy"></i></p>
+                            <p><i className="fa-regular fa-copy"></i></p>
                         </button>
                     </div>
                 )

@@ -1,18 +1,23 @@
+import { useNavigate } from 'react-router-dom'
 import './Landing.css'
 import './google-sign-in.css'
+
 export function Landing(){
+
+    const navigate = useNavigate();
+
     return(
         <div className="landingPageContent">
             <div className="mainLandingContent">
                 <h1 className='fade-in'>PokéBook</h1>
-                <ul className='fade-in'>
-                    <li>-Get <span>Pokédex</span> data</li>
-                    <li>-Get the <span>color palette</span> from your favorite pocket monsters</li>
-                    <li>-<span>Build a team</span> around your favorite mons.</li>
+                <ul>
+                    <li className='fade-in' style={{animationDelay:'0.3s'}}>-Get <span>Pokédex</span> data</li>
+                    <li className='fade-in' style={{animationDelay:'0.4s'}}>-Get the <span>color palette</span> from your favorite pocket monsters</li>
+                    <li className='fade-in' style={{animationDelay:'0.5s'}}>-<span>Build a team</span> around your favorite mons.</li>
                 </ul>
-                <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-secondary-bg)',animationDelay:'0.3s'}}>Sign in</button></li>
+                <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-secondary-bg)',animationDelay:'0.6s'}}>Sign in</button></li>
                 <li>
-                    <button className="gsi-material-button loginOptions fade-in" style={{animationDelay:'0.4s'}}>
+                    <button className="gsi-material-button loginOptions fade-in" style={{animationDelay:'0.7s'}}>
                     <div className="gsi-material-button-state"></div>
                     <div className="gsi-material-button-content-wrapper">
                         <div className="gsi-material-button-icon">
@@ -29,10 +34,11 @@ export function Landing(){
                     </div>
                     </button>
                 </li>
-                <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-primary-bg)',animationDelay:'0.5s'}}>Guest &gt;&gt;</button></li>              
+                <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-primary-bg)',animationDelay:'0.8s'}}
+                onClick={()=>navigate('/home')}>Guest &gt;&gt;</button></li>              
                 <p className='fade-in'>Not a registered user? <u>Sign Up</u>!</p>
             </div>
-            <footer className='fade-in'>Made with ❤️ by <a href="https://github.com/k4rtikay" className="underline">Kartik</a></footer>
+            <footer className='fade-in'>Made with ❤️ by <a href="https://github.com/k4rtikay" className="underline">k4rtikay</a></footer>
         </div>
     )
 }
