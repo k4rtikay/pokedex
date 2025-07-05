@@ -1,5 +1,7 @@
 .App{
     display: flex;
+    overflow: hidden;
+    scrollbar-width: none;
 }
 
 .sidePane{

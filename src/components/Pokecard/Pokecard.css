@@ -2,9 +2,10 @@
     display: flex;
     height: 100%;
     width: 100%;
-    transition: all 0.3s ease-in-out;
+    transition: 0.3s ease-in-out background-color;
     background-color: var(--background-color);
     color: var(--pokemon-entry-color);
+    overflow-y:auto;
 }
 
 .pokeImage{
