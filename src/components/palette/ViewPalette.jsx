@@ -19,7 +19,7 @@ export function ViewPalette({frontSprite,isPaletteModalOpen}){
                 const colors = colorThief.getPalette(img,6)
                 setPalette(colors)
             }catch(err){
-                console.log(err)
+                console.error(err)
             }
         }
 
