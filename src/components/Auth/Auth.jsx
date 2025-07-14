@@ -33,13 +33,13 @@ export default function Auth(){
                 <h1>{mode=='signup'? 'Register' : 'Sign in'}</h1>
                 <h4>To save your favorite palettes and more!</h4>
                     <span>
-                        <label htmlFor="username">Username:</label>
-                        <input id='username' name='username' type="text" placeholder='e.g, pokefan123'/>
+                        <label htmlFor="email">Email:</label>
+                        <input id='email' name='email' type="text" placeholder='e.g, mymail@gmail.com' />
                     </span>
                     {(mode==='signup')&&(
                         <span>
-                        <label htmlFor="email">Email:</label>
-                        <input id='email' name='email' type="text" placeholder='e.g, mymail@gmail.com' />
+                        <label htmlFor="username">Username:</label>
+                        <input id='username' name='username' type="text" placeholder='e.g, pokefan123'/>                            
                         </span>
                     )}
                     <span>
