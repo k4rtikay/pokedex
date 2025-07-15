@@ -89,3 +89,8 @@
 .fa-caret-right{
     vertical-align: -2.5px;
 }
+
+.error{
+    color: red;
+    font-size: 1rem;
+}

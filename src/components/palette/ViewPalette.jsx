@@ -72,7 +72,7 @@ export function ViewPalette({frontSprite,isPaletteModalOpen}){
             className="paletteSprite" />
 
             {copied&&
-                <ColorTooltip/>
+                <ColorTooltip text={'Color Copied!'}/>
             }
             
 

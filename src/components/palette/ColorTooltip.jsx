@@ -1,7 +1,7 @@
 import './ColorTooltip.css'
 
-export function ColorTooltip(){
+export function ColorTooltip({ text }){
     return(
-        <div className="tooltip ">Color Copied!</div>
+        <div className="tooltip ">{text}</div>
     )
 }

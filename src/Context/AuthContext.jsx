@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, createContext } from "react";
-import { auth } from "../../firebase.js";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth, googleProvider } from "../../firebase.js";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 const AuthContext =  createContext();
 
@@ -13,7 +13,7 @@ export function AuthProvider({ children }){
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
-        const unsubscribe = auth.onAuthStateChanged(user =>{
+        const unsubscribe = onAuthStateChanged(auth,user =>{
             setGlobalUser(user)
             setIsLoading(false)
         })
@@ -21,12 +21,21 @@ export function AuthProvider({ children }){
         return unsubscribe
     },[])
 
-    function signup(email,password){
-        return createUserWithEmailAndPassword(email,password)
+    async function signup(auth,email,password,username){
+        try{
+            const userCrendential =  await createUserWithEmailAndPassword(auth,email,password)
+            const user = userCrendential.user
+            await updateProfile(user,{
+                displayName: username
+            })
+            return user
+        }catch(err){
+            throw err
+        }
     }
 
-    function login(email,password){
-        return signInWithEmailAndPassword(email,password)
+    function login(auth,email,password){
+        return signInWithEmailAndPassword(auth,email,password)
     }
 
     function logout(){
@@ -34,7 +43,19 @@ export function AuthProvider({ children }){
         return signOut(auth)
     }
 
-    const value = { globalUser,logout, login, signup }
+    async function googleSignIn(){
+        try{
+            const result = await signInWithPopup(auth,googleProvider)
+            const user = result.user
+            console.log('signed with google')
+            return user
+        }catch(err){
+            console.error(err.message)
+            throw err
+        }
+    }
+
+    const value = { globalUser, setGlobalUser,logout, login, signup, googleSignIn }
 
     return (
         <AuthContext.Provider value={value}>

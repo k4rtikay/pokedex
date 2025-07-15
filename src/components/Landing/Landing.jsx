@@ -2,10 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import './Landing.css'
 import './google-sign-in.css'
 import { motion } from 'framer-motion';
+import { useAuth } from '../../Context/AuthContext';
 
 export default function Landing(){
 
     const navigate = useNavigate();
+    const { googleSignIn } = useAuth()
 
     return(
         <motion.div
@@ -31,7 +33,10 @@ export default function Landing(){
                     <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-secondary-bg)',animationDelay:'0.6s'}}
                     onClick={()=> navigate('/auth?mode=signin')}>Sign in</button></li>
                     <li>
-                        <button className="gsi-material-button loginOptions fade-in" style={{animationDelay:'0.7s'}}>
+                        <button className="gsi-material-button loginOptions fade-in" style={{animationDelay:'0.7s'}}
+                        onClick={async ()=>{
+                            await googleSignIn()
+                            navigate('/home')}}>
                         <div className="gsi-material-button-state"></div>
                         <div className="gsi-material-button-content-wrapper">
                             <div className="gsi-material-button-icon">
@@ -49,7 +54,8 @@ export default function Landing(){
                         </button>
                     </li>
                     <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-primary-bg)',animationDelay:'0.8s'}}
-                    onClick={()=>navigate('/home')}>Guest &gt;&gt;</button></li>
+                    onClick={()=>{
+                        navigate('/home')}}>Guest &gt;&gt;</button></li>
                     <p className='fade-in'>Not a registered user? <button className='sign-up-button'
                     onClick={()=>navigate('/auth?mode=signup')}>Sign Up</button>!</p>
                 </div>
