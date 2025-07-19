@@ -37,17 +37,17 @@ export default function MainAppLayout() {
             filter: "blur(5px)",            
         }}>
             <div className='App'>
-            <div className="sidePane">
-            <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/>
-            <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/>
-            </div>
-            <Pokecard selectedPokemon={selectedPokemon}
-            setIsModalOpen={setIsModalOpen}
-            isModalOpen={isModalOpen}
-            isPaletteModalOpen={isPaletteModalOpen}
-            setIsPaletteModalOpen={setIsPaletteModalOpen}
-            frontSprite={frontSprite}
-            setFrontSprite={setFrontSprite} />
+                <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/>
+                <div className="contentPane">
+                    <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/>
+                    <Pokecard selectedPokemon={selectedPokemon}
+                    setIsModalOpen={setIsModalOpen}
+                    isModalOpen={isModalOpen}
+                    isPaletteModalOpen={isPaletteModalOpen}
+                    setIsPaletteModalOpen={setIsPaletteModalOpen}
+                    frontSprite={frontSprite}
+                    setFrontSprite={setFrontSprite} />
+                </div>
             </div>
         </motion.div>
     )

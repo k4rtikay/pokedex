@@ -20,7 +20,7 @@ export const first151Pokemon = [
 
 export const pokemonTypeColors = {
     normal: {
-        color: "#6C6C6C",
+        color: "#fdf9f9ff",
         background: "#A8A77A"
     },
     fire: {

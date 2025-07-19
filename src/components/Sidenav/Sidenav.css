@@ -4,8 +4,8 @@
 
 .sidenav{
     display: flex;
-    flex: 1;
     flex-direction: column;
+    width: 500px;
     min-height: 0;
     padding: 10px;
     background-color: var(--menu-color);
@@ -33,7 +33,7 @@
     border: 2px solid #000000;
     border-radius: 19px;
     font-weight: bolder;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--background-color);
     font-family: "VT323", monospace;
     font-size: larger;
     color: var(--pokemon-entry-color);

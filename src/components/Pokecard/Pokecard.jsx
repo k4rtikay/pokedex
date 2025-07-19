@@ -14,8 +14,10 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
     const [loading, setLoading]=useState(false);
     const [skill, setSkill] = useState(null);
     const [moveLoading, setMoveLoading]=useState(false)
+    const [description, setDescription] = useState('')
+    const [desLoading, setDesLoading] = useState(false)
 
-    const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
+    const { name, height, weight, abilities, stats, types, moves, sprites, species } = data || {}
 
     function heightInFeet(hght){
         const totalInches = hght*3.937
@@ -25,6 +27,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
     }
 
     async function fetchPokemonMove(move, moveUrl){
+
         if(moveLoading||!localStorage||!moveUrl) return
 
         setSkill(null)
@@ -76,6 +79,47 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
         }
     }
 
+
+    async function getPokemonDescription(species,desUrl) {
+         if(desLoading||!localStorage||!desUrl) return
+
+        setDescription(null)
+
+        let descriptionCache={}
+
+        if(localStorage.getItem('poke-descriptions')){
+            descriptionCache=JSON.parse(localStorage.getItem('poke-descriptions'))
+        }
+
+        if(species in descriptionCache){
+            setDescription(descriptionCache[species])
+            console.log('description found in cache')
+            return
+        }
+
+        try{
+            setDesLoading(true)
+            const descriptionRes = await fetch(desUrl)
+            const descriptionData = await descriptionRes.json()
+
+            const pokeDescription =descriptionData?.flavor_text_entries.find(entry=>(entry.version.name==='firered' && entry.language.name==='en'))?.flavor_text
+            descriptionCache[species]=pokeDescription
+            localStorage.setItem('poke-descriptions', JSON.stringify(descriptionCache))
+            setDescription(pokeDescription)
+
+
+            return
+ 
+        }
+        catch(err){
+            console.log(err)
+        }
+        finally{
+            setDesLoading(false)
+        }
+    }
+
+
     useEffect(()=>{
 
         if(loading||!localStorage) return
@@ -116,6 +160,14 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
 
 
     },[selectedPokemon])
+
+    useEffect(()=>{
+        if(species && species.url){
+            getPokemonDescription(species.name,species.url)
+        }
+    },[species])
+
+ 
 
     if(loading||!data){
         return(
@@ -182,12 +234,17 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
                     })
                     }
                 </div>
-                <img className="default-img" src={`/pokemon/${getFullPokedexNumber(selectedPokemon)}.png`} alt={`${name}-big-image`}/>
-                <div className="sprites-container">
-                        <img src={back_default} alt={`Back-sprite-of-${name}`} className="poke-sprite" />
-                        <img src={front_default} alt={`Front-sprite-of-${name}`} className="poke-sprite" />
-                        <img src={back_shiny} alt={`shiny-back-sprite-of-${name}`} className="poke-sprite" />
-                        <img src={front_shiny} alt={`shiny-front-sprite-of-${name}`} className="poke-sprite" />
+                <div className="pokeImgContent">
+                    <img className="default-img" src={`/pokemon/${getFullPokedexNumber(selectedPokemon)}.png`} alt={`${name}-big-image`}/>
+                    <div className="sprites-container">
+                            <img src={back_default} alt={`Back-sprite-of-${name}`} className="poke-sprite" />
+                            <img src={front_default} alt={`Front-sprite-of-${name}`} className="poke-sprite" />
+                            <img src={back_shiny} alt={`shiny-back-sprite-of-${name}`} className="poke-sprite" />
+                            <img src={front_shiny} alt={`shiny-front-sprite-of-${name}`} className="poke-sprite" />
+                    </div>
+                </div>
+                <div className="pokeDes">
+                    <p style={{margin:'0'}}>{description}</p>
                 </div>
             </div>
 

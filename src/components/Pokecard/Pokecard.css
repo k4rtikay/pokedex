@@ -1,19 +1,23 @@
 .pokeEntry{
     display: flex;
-    height: 100%;
     width: 100%;
     transition: 0.3s ease-in-out background-color;
     background-color: var(--background-color);
     color: var(--pokemon-entry-color);
     overflow-y:auto;
+    font-size: 1.4rem;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    border: 3px solid;
 }
 
 .pokeImage{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     padding: 12px;
     padding-left: 2rem;
+    width: 100%;
 }
 
 .pokeImgHeader{
@@ -34,25 +38,45 @@
     gap: 12px;
 }
 
+.pokeImgContent{
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
 .default-img{
     margin-top: 1rem;
+    width: 380px;
+    height: 380px;
 }
 
 .sprites-container{
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+}
+
+.pokeDes{
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    height: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 
+    0 0 0 3px rgba(248, 201, 201, 0.8),
+    0 0 0 4px rgba(250, 134, 134, 0.701),
+    0 0 0 6px rgba(251, 76, 76, 0.821),
+    0 0 0 8px rgba(251, 6, 6, 0.852);
 }
 
 .pokeData{
     display: flex;
-    flex: 1;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     font-family: "VT323", monospace;
-    font-size: 1.4rem;
     padding: 12px;
     padding-left: 2rem;
-    height: 100vh;
 }
 
 .data{
@@ -72,9 +96,8 @@ ul{
     flex: 0 0 1;
     overflow-y:auto;
     scrollbar-width: none;
-    border: 8px solid var(--menu-color);
     padding: 8px;
-    border-radius: 19px;
+    border-radius: 20px;
     background-color: var(--menu-color);
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.35);
 }
@@ -87,10 +110,10 @@ ul{
     border: 2px solid #000000;  
     border-radius: 10px;
     font-weight: bolder;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--background-color);
     font-family: "VT323", monospace;
     font-size: 1.2rem;
-    color: var(--options-color);
+    color: var(--pokemon-entry-color);
 }
     
 .moveButton:hover{
