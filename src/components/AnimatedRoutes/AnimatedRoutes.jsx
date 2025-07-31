@@ -4,7 +4,7 @@ import MainAppLayout from '../MainAppLayout/MainAppLayout'
 import { AnimatePresence, isValidMotionProp } from 'framer-motion';
 import Auth from '../Auth/Auth';
 import { useAuth } from '../../Context/AuthContext';
-import SavedPalette from '../palette/SavedPalette';
+import SavedPaletteWindow from '../palette/SavedPaletteWindow';
 
 
 export default function AnimatedRoutes(){   
@@ -19,6 +19,6 @@ export default function AnimatedRoutes(){
                 <Route path='/auth' element={<Auth/>}></Route>
             </Routes>
         </AnimatePresence>
-        //<SavedPalette></SavedPalette>
+        // <SavedPaletteWindow/>
     )
 }

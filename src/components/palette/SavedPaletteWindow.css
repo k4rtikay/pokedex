@@ -1,0 +1,44 @@
+.savedPaletteWindow{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.savedPaletteContainer{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.savedPaletteHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.savedPaletteHeader input{
+    height: 40px;
+    width: 300px;
+    flex-shrink: 0;
+    font-weight: lighter;
+    border: 3px solid;
+}
+
+.savedPaletteHeader h1{
+    margin: 0;
+    padding: 0;
+}
+
+.guestPaletteWindow{
+    flex-grow: 1;
+}
+
+.frame{
+    color: white;
+    backdrop-filter: blur(5px);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background:linear-gradient(#FFFFFF,#3c3c3c);
+}
