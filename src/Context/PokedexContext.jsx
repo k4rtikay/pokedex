@@ -4,7 +4,8 @@ import { usePokemon } from "../hooks/usePokemon";
 const PokedexContext = createContext();
 
 export function PokedexProvider({children}){
-    const [selectedPokemon, setSelectedPokemon] = useState(0);
+    const [selectedPokemon, setSelectedPokemon] = useState(0)
+    const [isPaletteModalOpen, setIsPaletteModalOpen] = useState(false)
 
     const { data, description, loading } = usePokemon(selectedPokemon)
 
@@ -14,7 +15,9 @@ export function PokedexProvider({children}){
         data,
         description,
         loading,
-        frontSprite: data?.sprites?.front_default
+        frontSprite: data?.sprites?.front_default,
+        isPaletteModalOpen,
+        setIsPaletteModalOpen
     }
 
     return (

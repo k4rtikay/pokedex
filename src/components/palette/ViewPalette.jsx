@@ -3,8 +3,11 @@ import ColorThief from 'colorthief';
 import './ViewPalette.css'
 import { colorForIntensity } from "../../utils";
 import { ColorTooltip } from "./ColorTooltip";
+import { usePokedex } from "../../Context/PokedexContext";
 
-export function ViewPalette({frontSprite,isPaletteModalOpen}){
+export function ViewPalette(){
+
+    const {frontSprite,isPaletteModalOpen} = usePokedex()
 
     const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)

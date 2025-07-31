@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import { first151Pokemon, getFullPokedexNumber, getPokedexNumber } from "../../utils";
+import { useState } from "react"
+import { getFullPokedexNumber } from "../../utils";
 import { Typecard } from "../Typecard/Typecard";
 import './Pokecard.css'
 import './paletteButton.css'
@@ -9,12 +9,12 @@ import {PaletteModal} from "../palette/PaletteModal"
 import { usePokedex } from "../../Context/PokedexContext.jsx";
 
 
-export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPaletteModalOpen, setIsPaletteModalOpen, frontSprite, setFrontSprite}){
+export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const [skill, setSkill] = useState(null);
     const [moveLoading, setMoveLoading]=useState(false)
 
-    const { data, description, loading } = usePokedex();
+    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen } = usePokedex();
 
     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
@@ -89,8 +89,6 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
 
     const { back_default,back_shiny,front_default,front_shiny } = sprites
 
-    setFrontSprite(front_default)
-
     return (
         <div className="pokeEntry">
             {(isModalOpen)&&(
@@ -118,7 +116,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
             {(isPaletteModalOpen)&&(
                 <PaletteModal onClose={()=>{setIsPaletteModalOpen(false)}} isPaletteModalOpen={isPaletteModalOpen}>
                     <>
-                    <ViewPalette frontSprite={frontSprite} isPaletteModalOpen={isPaletteModalOpen}></ViewPalette>
+                    <ViewPalette></ViewPalette>
                     </>
                 </PaletteModal>
             )}
