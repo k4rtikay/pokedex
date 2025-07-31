@@ -4,13 +4,16 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './Context/AuthContext.jsx'
+import { PokedexProvider } from './Context/PokedexContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <PokedexProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PokedexProvider>
     </AuthProvider>
-  </StrictMode>,
+  </StrictMode>
 )

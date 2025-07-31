@@ -6,18 +6,17 @@ import './paletteButton.css'
 import { Modal } from "../Modal/Modal";
 import { ViewPalette } from "../palette/ViewPalette.jsx";
 import {PaletteModal} from "../palette/PaletteModal"
+import { usePokedex } from "../../Context/PokedexContext.jsx";
 
 
 export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPaletteModalOpen, setIsPaletteModalOpen, frontSprite, setFrontSprite}){
 
-    const [data,setData]=useState(null);
-    const [loading, setLoading]=useState(false);
     const [skill, setSkill] = useState(null);
     const [moveLoading, setMoveLoading]=useState(false)
-    const [description, setDescription] = useState('')
-    const [desLoading, setDesLoading] = useState(false)
 
-    const { name, height, weight, abilities, stats, types, moves, sprites, species } = data || {}
+    const { data, description, loading } = usePokedex();
+
+    const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
     function heightInFeet(hght){
         const totalInches = hght*3.937
@@ -79,96 +78,6 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
         }
     }
 
-
-    async function getPokemonDescription(species,desUrl) {
-         if(desLoading||!localStorage||!desUrl) return
-
-        setDescription(null)
-
-        let descriptionCache={}
-
-        if(localStorage.getItem('poke-descriptions')){
-            descriptionCache=JSON.parse(localStorage.getItem('poke-descriptions'))
-        }
-
-        if(species in descriptionCache){
-            setDescription(descriptionCache[species])
-            console.log('description found in cache')
-            return
-        }
-
-        try{
-            setDesLoading(true)
-            const descriptionRes = await fetch(desUrl)
-            const descriptionData = await descriptionRes.json()
-
-            const pokeDescription =descriptionData?.flavor_text_entries.find(entry=>(entry.version.name==='firered' && entry.language.name==='en'))?.flavor_text
-            descriptionCache[species]=pokeDescription
-            localStorage.setItem('poke-descriptions', JSON.stringify(descriptionCache))
-            setDescription(pokeDescription)
-
-
-            return
- 
-        }
-        catch(err){
-            console.log(err)
-        }
-        finally{
-            setDesLoading(false)
-        }
-    }
-
-
-    useEffect(()=>{
-
-        if(loading||!localStorage) return
-
-        let cache={}
-        
-        if(localStorage.getItem('pokedex')){
-            cache = JSON.parse(localStorage.getItem('pokedex'))
-        }
-
-        if(selectedPokemon in cache){
-            setData(cache[selectedPokemon])
-            console.log('pokemon found in cache')
-            return
-        }
-
-        async function fetchPokemon(){
-            setLoading(true)
-            try{
-                let baseUrl = 'https://pokeapi.co/api/v2/'
-                let suffix = `pokemon/${getPokedexNumber(selectedPokemon)}`
-                let res = await fetch(baseUrl+suffix);
-                let resData = await res.json();
-                console.log("fetched pokemon")
-                setData(resData)
-                console.log(resData)
-                cache[selectedPokemon]=resData
-                localStorage.setItem('pokedex', JSON.stringify(cache))
-            }catch(err){
-                console.log(err)
-            }finally{
-                setLoading(false)
-            }
-        }
-
-        fetchPokemon()
-
-
-
-    },[selectedPokemon])
-
-    useEffect(()=>{
-        if(species && species.url){
-            getPokemonDescription(species.name,species.url)
-        }
-    },[species])
-
- 
-
     if(loading||!data){
         return(
             <div
@@ -181,8 +90,6 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen, isPalett
     const { back_default,back_shiny,front_default,front_shiny } = sprites
 
     setFrontSprite(front_default)
-
-
 
     return (
         <div className="pokeEntry">

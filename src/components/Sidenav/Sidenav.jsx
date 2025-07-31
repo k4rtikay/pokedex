@@ -1,8 +1,11 @@
 import {  first151Pokemon, getFullPokedexNumber } from "../../utils"
 import { useState,useEffect } from "react"
 import './Sidenav.css'
+import { usePokedex } from "../../Context/PokedexContext";
 
-export function Sidenav({selectedPokemon,setSelectedPokemon, isSideMenuOpen}){
+export function Sidenav({isSideMenuOpen}){
+    const { selectedPokemon, setSelectedPokemon } = usePokedex();
+
     const [searchPokemon,setSearchPokemon]=useState('');
     let searchedList = [];
     if(searchPokemon===''){

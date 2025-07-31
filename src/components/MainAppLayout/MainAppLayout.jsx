@@ -3,9 +3,10 @@ import { Sidenav } from "../Sidenav/Sidenav";
 import { Pokecard } from "../Pokecard/Pokecard";
 import { useState } from "react";
 import { animate, motion } from "framer-motion";
+import { usePokedex } from "../../Context/PokedexContext";
 
 export default function MainAppLayout() {
-    const [selectedPokemon, setSelectedPokemon] = useState(0);
+    const { selectedPokemon, setSelectedPokemon } = usePokedex();
 
     const [isModalOpen, setIsModalOpen] = useState(false);  
 
