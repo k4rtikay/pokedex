@@ -1,38 +1,44 @@
 import { useState, useEffect, useRef } from "react"
 import ColorThief from 'colorthief';
 import './ViewPalette.css'
-import { colorForIntensity } from "../../utils";
+import { colorForIntensity, randomPokemonNumber } from "../../utils";
 import { ColorTooltip } from "./ColorTooltip";
 import { usePokedex } from "../../Context/PokedexContext";
 
 export function ViewPalette(){
 
-    const {frontSprite,isPaletteModalOpen} = usePokedex()
+    const {frontSprite, selectedPokemon, setSelectedPokemon} = usePokedex()
 
     const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
     const imgRef = useRef(null)
 
-    useEffect(()=>{
-        const img = imgRef.current
-        const colorThief = new ColorThief()
+    const handleImageLoad = () => {
+        const img = imgRef.current;
+        const colorThief = new ColorThief();
+        try {
+            // This will now run on the correct, fully loaded image
+            const colors = colorThief.getPalette(img, 6);
+            setPalette(colors);
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
-        function handleLoad(){
-            try{
-                const colors = colorThief.getPalette(img,6)
-                setPalette(colors)
-            }catch(err){
-                console.error(err)
+    useEffect(()=>{
+        const handleSpacebar = (event) => {
+            if(event.key==' '){
+                setSelectedPokemon(randomPokemonNumber())
+                event.preventDefault()
             }
         }
 
-        if(img?.complete){
-            handleLoad()
-        }else{
-            img?.addEventListener('load',handleLoad)
-            return (()=>{img?.removeEventListener('load',handleLoad)})
+        window.addEventListener('keydown',handleSpacebar)
+
+        return ()=>{
+            window.removeEventListener('keydown',handleSpacebar)
         }
-    },[isPaletteModalOpen])
+    },[])
 
 
     return (
@@ -72,7 +78,9 @@ export function ViewPalette(){
             alt="Image of selected pokemon"
             ref={imgRef}
             crossOrigin="anonymous"
-            className="paletteSprite" />
+            className="paletteSprite"
+            loading="lazy"
+            onLoad={handleImageLoad} />
 
             {copied&&
                 <ColorTooltip text={'Color Copied!'}/>

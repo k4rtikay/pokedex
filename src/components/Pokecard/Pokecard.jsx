@@ -114,15 +114,6 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
             )}
 
 
-            {(isPaletteModalOpen)&&(
-                <PaletteModal onClose={()=>{setIsPaletteModalOpen(false)}} isPaletteModalOpen={isPaletteModalOpen}>
-                    <>
-                    <ViewPalette></ViewPalette>
-                    </>
-                </PaletteModal>
-            )}
-
-
 
             <div className="pokeImage">
                 <div className="pokeImgHeader">

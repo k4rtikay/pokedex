@@ -4,14 +4,16 @@ import { Pokecard } from "../Pokecard/Pokecard";
 import { useState } from "react";
 import { animate, motion } from "framer-motion";
 import { usePokedex } from "../../Context/PokedexContext";
+import { PaletteModal } from "../palette/PaletteModal";
+import { ViewPalette } from "../palette/ViewPalette";
 
 export default function MainAppLayout() {
-    const { selectedPokemon, setSelectedPokemon } = usePokedex();
+    const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen } = usePokedex();
 
     const [isModalOpen, setIsModalOpen] = useState(false);  
 
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
-
+    
 
     return(
         <motion.div
@@ -41,6 +43,13 @@ export default function MainAppLayout() {
                     setIsModalOpen={setIsModalOpen}
                     isModalOpen={isModalOpen} />
                 </div>
+                {(isPaletteModalOpen)&&(
+                    <PaletteModal onClose={()=>{setIsPaletteModalOpen(false)}} isPaletteModalOpen={isPaletteModalOpen}>
+                        <>
+                        <ViewPalette></ViewPalette>
+                        </>
+                    </PaletteModal>
+                )}
             </div>
         </motion.div>
     )

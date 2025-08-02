@@ -1,7 +1,7 @@
 import {createPortal} from 'react-dom'
 import './PaletteModal.css'
 
-export function PaletteModal({onClose,isPaletteModalOpen,children, imgRef}){
+export function PaletteModal({onClose,isPaletteModalOpen,children}){
     if(isPaletteModalOpen==false) return
 
 

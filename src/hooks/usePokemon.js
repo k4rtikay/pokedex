@@ -1,17 +1,29 @@
 import { useState, useEffect } from "react";
 import { getPokedexNumber } from "../utils";
 
+const CACHE_LIMIT = 50;
+
 function useCache(cacheKey){
     const getCache = () => {
         const dataFromStorage = localStorage.getItem(cacheKey);
 
-        // Add this console.log to see what's being read
-        //console.log(`For key "${cacheKey}", localStorage returned:`, dataFromStorage);
-
         return JSON.parse(dataFromStorage || '{}');
-        
-        JSON.parse(localStorage.getItem(cacheKey) || {})};
-    const setCache = (data) => localStorage.setItem(cacheKey, JSON.stringify(data))
+    };
+    const setCache = (key,value) =>{
+        const currentCache = getCache()
+
+        currentCache[key] = value
+
+        //to prevent exceeding limits of localStorage, we delete the oldest entry from the cache every time it exceeds a given limit, here, CACHE_LIMIT
+
+        let keys = Object.keys(currentCache)
+        if(keys.length>CACHE_LIMIT){
+            const oldestKey = currentCache[0]
+            delete currentCache[oldestKey]
+        }
+
+        localStorage.setItem(cacheKey, JSON.stringify(currentCache))
+    }
 
     return{ getCache, setCache }
 }
@@ -42,8 +54,7 @@ export function usePokemon(pokemon){
                     console.log("fetched pokemon")
                     setData(resData)
                     console.log(resData)
-                    pokedexCache[pokemon]=resData
-                    setPokedexCache(pokedexCache)
+                    setPokedexCache(pokedexCache, resData)
                 }
                 
             }catch(err){
