@@ -62,6 +62,14 @@
     opacity: 1;
 }
 
+.colorCopyBtn button{
+    border: none;
+    background: none;
+    font-size: inherit;
+    margin: 10px;
+    color: inherit;
+}
+
 @media (max-width:768px){
 
     .viewPalette{
