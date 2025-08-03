@@ -7,7 +7,7 @@ import { usePokedex } from "../../Context/PokedexContext";
 
 export function ViewPalette(){
 
-    const {frontSprite, selectedPokemon, setSelectedPokemon} = usePokedex()
+    const {frontSprite, setSelectedPokemon} = usePokedex()
 
     const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
@@ -17,10 +17,28 @@ export function ViewPalette(){
         const img = imgRef.current;
         const colorThief = new ColorThief();
         try {
-            // This will now run on the correct, fully loaded image
-            const colors = colorThief.getPalette(img, 6);
-            setPalette(colors);
-            console.log(palette)
+
+            const newColors = colorThief.getPalette(img, 6);
+            console.log('newcolors' + newColors)
+            
+            if(!palette){
+                const initialPalette = newColors.map(colorVal => ({color: colorVal, isLocked: false}))
+                setPalette(initialPalette)
+                return
+            }
+
+            const updatedPalette = palette.map((oldColorObject, index)=>{
+                if(oldColorObject.isLocked){
+                    return oldColorObject
+                }
+
+                return {
+                    color: newColors[index],
+                    isLocked: false
+                }
+            })
+
+            setPalette(updatedPalette)
         } catch (err) {
             console.error(err);
         }
@@ -41,12 +59,15 @@ export function ViewPalette(){
         }
     },[])
 
+    console.log(palette)
+
 
     return (
         <div className="viewPalette">
 
             <div className="paletteBarContainer">
-                {palette?.map((domColor, domColorIndex)=>{
+                {palette?.map((domColors, domColorIndex)=>{
+                    const domColor = domColors.color
                 return(
                     <div
                     style={{backgroundColor:`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}}
@@ -69,7 +90,8 @@ export function ViewPalette(){
                                     console.log(err)
                                 }
                             }}><i className="fa-regular fa-copy"></i></button>
-                            <button><i className="fa-solid fa-lock"></i></button>
+                            <button
+                            onClick={()=>{domColors.isLocked = !domColors.isLocked}}><i className="fa-solid fa-lock"></i></button>
                         </div>
                     </div>
                 )
