@@ -4,6 +4,7 @@ import './ViewPalette.css'
 import { colorForIntensity, randomPokemonNumber } from "../../utils";
 import { ColorTooltip } from "./ColorTooltip";
 import { usePokedex } from "../../Context/PokedexContext";
+import { color } from "framer-motion";
 
 export function ViewPalette(){
 
@@ -44,6 +45,21 @@ export function ViewPalette(){
         }
     }
 
+    const handleColorLocking = (lockedIndex)=>{
+        const newPalette = palette.map((colorObj, colorIndex)=>{
+            if(colorIndex!==lockedIndex){
+                return colorObj
+            }else{
+                return {
+                    ...colorObj,
+                    isLocked: !colorObj.isLocked
+                }
+            }
+        })
+
+        setPalette(newPalette)
+    }
+
     useEffect(()=>{
         const handleSpacebar = (event) => {
             if(event.key==' '){
@@ -57,7 +73,7 @@ export function ViewPalette(){
         return ()=>{
             window.removeEventListener('keydown',handleSpacebar)
         }
-    },[])
+    },[setSelectedPokemon])
 
     console.log(palette)
 
@@ -70,14 +86,13 @@ export function ViewPalette(){
                     const domColor = domColors.color
                 return(
                     <div
-                    style={{backgroundColor:`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}}
+                    style={{backgroundColor:`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`,color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}
                     key={domColorIndex}
-                    className="paletteBar">
-                        <div className="colorCopyBtn"
-                        style={{color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}
-                        >
-                            <p>{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</p>
+                    className={"paletteBar " + (domColors.isLocked?"is-locked":"")}>
+                        <div className="colorCopyBtn">
+                            <p className="colorValue">{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</p>
                             <button
+                            className="color-options"
                             onClick={async (e)=>{
                                 const text = e.currentTarget.parentElement.innerText;
                                 try{
@@ -91,7 +106,11 @@ export function ViewPalette(){
                                 }
                             }}><i className="fa-regular fa-copy"></i></button>
                             <button
-                            onClick={()=>{domColors.isLocked = !domColors.isLocked}}><i className="fa-solid fa-lock"></i></button>
+                                className={'color-options lockButton ' + (domColors.isLocked?'lockedColor':'')}
+                                onClick={()=>{handleColorLocking(domColorIndex)}}>
+                                    <i className="fa-solid fa-lock"></i>
+                                    <i className="fa-solid fa-unlock"></i>
+                            </button>
                         </div>
                     </div>
                 )
@@ -113,5 +132,4 @@ export function ViewPalette(){
 
         </div>
     )
-
 }
