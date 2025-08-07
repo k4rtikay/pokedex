@@ -20,6 +20,7 @@
 
 .moveModal {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   background-color: var(--background-color);
   color: var(--pokemon-entry-color);
