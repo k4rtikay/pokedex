@@ -9,12 +9,11 @@ import { Modal } from "../Modal/Modal";
 
 export function ViewPalette(){
 
-    const {frontSprite, setSelectedPokemon} = usePokedex()
+    const {frontSprite, setSelectedPokemon, savePalette, setSavePalette} = usePokedex()
 
     const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
     const imgRef = useRef(null)
-    const [savePalette, setSavePalette] = useState([])
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const [paletteName, setPaletteName] = useState('')
 

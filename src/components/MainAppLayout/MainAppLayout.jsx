@@ -8,11 +8,11 @@ import { PaletteModal } from "../palette/PaletteModal";
 import { ViewPalette } from "../palette/ViewPalette";
 
 export default function MainAppLayout() {
-    const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen } = usePokedex();
+    const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen, isSideMenuOpen } = usePokedex();
 
     const [isModalOpen, setIsModalOpen] = useState(false);  
 
-    const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
+    //const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
     
 
     return(
@@ -36,7 +36,7 @@ export default function MainAppLayout() {
             filter: "blur(5px)",            
         }}>
             <div className='App'>
-                <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/>
+                {/* <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/> */}
                 <div className="contentPane">
                     <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/>
                     <Pokecard selectedPokemon={selectedPokemon}

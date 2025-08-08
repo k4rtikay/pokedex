@@ -16,7 +16,7 @@
     gap: 5px;
 }
 
-.darkModeBtn, .userButton{
+.headerButton{
     border: none;
     background-color: rgba(0,0,0,0);
     font-family: "VT323", monospace;

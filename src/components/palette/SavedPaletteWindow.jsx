@@ -1,16 +1,13 @@
+import { usePokedex } from "../../Context/PokedexContext"
 import { Header } from "../Header/Header"
 import './SavedPaletteWindow.css'
 
 export default function SavedPaletteWindow(){
-    
-    const fakeSavedPalette = {
-        name: 'Charizard',
-        sprite: 'vlala',   
-    }
 
+    const { savePalette, setSavePalette } = usePokedex()
+    
     return(
         <div className="savedPaletteWindow">
-            <Header></Header>
             <div className="savedPaletteContainer">
                 <div className="savedPaletteHeader">
                     <h1>Saved Palettes</h1>
