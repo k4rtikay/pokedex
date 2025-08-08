@@ -1,6 +1,6 @@
 import { usePokedex } from "../../Context/PokedexContext"
-import { Header } from "../Header/Header"
 import './SavedPaletteWindow.css'
+import SavedPalette from "./SavedPalette"
 
 export default function SavedPaletteWindow(){
 
@@ -20,6 +20,15 @@ export default function SavedPaletteWindow(){
                         </span>
                     </div>
                 </div> */}
+                <div className="savedPalettesPane">
+                    {
+                        savePalette.map((ColPalette, colPaletteIndex)=>{
+                            return(
+                                <SavedPalette palette={ColPalette.palette} name={ColPalette.name} key={colPaletteIndex}/>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

@@ -1,0 +1,62 @@
+.paletteCard{
+    height: 300px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.palette-color-stripes{
+    display: flex;
+    overflow: hidden;
+    height: 100px;
+    width: 100%;
+    min-width: 0;
+}
+
+.savedColorStripe{
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: start;
+    height: 100%;
+}
+
+.palette-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.palette-content p{
+    margin: 8px;
+    font-size: 1.4rem;
+}
+
+.saved-palette-options{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.palette-sprites-container{
+    margin-top: 16px;
+    display: flex; 
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.palette-sprites-container img{
+    width: 64px;
+    height: auto;
+}

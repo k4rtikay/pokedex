@@ -42,3 +42,11 @@
     align-items: center;
     background:linear-gradient(#FFFFFF,#3c3c3c);
 }
+
+.savedPalettesPane{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    padding: 10px;
+
+}
