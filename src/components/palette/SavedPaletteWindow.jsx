@@ -1,10 +1,10 @@
-import { usePokedex } from "../../Context/PokedexContext"
 import './SavedPaletteWindow.css'
 import SavedPalette from "./SavedPalette"
+import { useDatabase } from "../../Context/DatabaseContext"
 
 export default function SavedPaletteWindow(){
 
-    const { savePalette, setSavePalette } = usePokedex()
+    const { savePalette } = useDatabase()
     
     return(
         <div className="savedPaletteWindow">

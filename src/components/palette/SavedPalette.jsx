@@ -1,5 +1,3 @@
-
-import { useState } from 'react';
 import './SavedPalette.css'
 
 export default function SavedPalette(props){

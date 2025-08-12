@@ -2,6 +2,7 @@ import { useState, useEffect, useContext, createContext } from "react";
 import { auth, googleProvider } from "../../firebase.js";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
+
 const AuthContext =  createContext();
 
 export function useAuth(){
@@ -54,7 +55,6 @@ export function AuthProvider({ children }){
             throw err
         }
     }
-
     const value = { globalUser, setGlobalUser,logout, login, signup, googleSignIn }
 
     return (

@@ -5,11 +5,13 @@ import { colorForIntensity, randomPokemonNumber } from "../../utils";
 import { ColorTooltip } from "./ColorTooltip";
 import { usePokedex } from "../../Context/PokedexContext";
 import { Modal } from "../Modal/Modal";
+import { useDatabase } from "../../Context/DatabaseContext";
 
 
 export function ViewPalette(){
 
-    const {frontSprite, setSelectedPokemon, savePalette, setSavePalette} = usePokedex()
+    const {frontSprite, setSelectedPokemon} = usePokedex()
+    const {savePalette, setSavePalette} = useDatabase()
 
     const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
