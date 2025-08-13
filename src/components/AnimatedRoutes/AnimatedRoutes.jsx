@@ -9,7 +9,7 @@ import Layout from './Layout';
 
 
 export default function AnimatedRoutes(){   
-    const {globalUser} = useAuth()
+    // const {globalUser} = useAuth()
     let location = useLocation();
 
     return (

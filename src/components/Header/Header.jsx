@@ -27,7 +27,9 @@ export function Header({isSideMenuOpen,setIsSideMenuOpen}){
                 className='headerButton'
                 onClick={async ()=>{
                     if(globalUser){
+                        console.log('logging out..')
                         await logout()
+                        console.log('navigating..')
                         navigate('/')
                     }else{
                         navigate('/app/auth?mode=signin')

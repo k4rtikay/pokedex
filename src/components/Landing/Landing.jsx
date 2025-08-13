@@ -36,7 +36,7 @@ export default function Landing(){
                         <button className="gsi-material-button loginOptions fade-in" style={{animationDelay:'0.7s'}}
                         onClick={async ()=>{
                             await googleSignIn()
-                            navigate('/app/home')}}>
+                            navigate('/app')}}>
                         <div className="gsi-material-button-state"></div>
                         <div className="gsi-material-button-content-wrapper">
                             <div className="gsi-material-button-icon">

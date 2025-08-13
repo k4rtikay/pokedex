@@ -18,7 +18,7 @@ function useCache(cacheKey){
 
         let keys = Object.keys(currentCache)
         if(keys.length>CACHE_LIMIT){
-            const oldestKey = currentCache[0]
+            const oldestKey = keys[0]
             delete currentCache[oldestKey]
         }
 
@@ -54,7 +54,7 @@ export function usePokemon(pokemon){
                     console.log("fetched pokemon")
                     setData(resData)
                     console.log(resData)
-                    setPokedexCache(pokedexCache, resData)
+                    setPokedexCache(pokemon, resData)
                 }
                 
             }catch(err){

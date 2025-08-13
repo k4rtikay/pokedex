@@ -11,7 +11,7 @@ export default function Auth(){
 
     function redirect(){
         setTimeout(() => {
-            navigate('/app/home')
+            navigate('/app')
         }, 1000);
     }
 

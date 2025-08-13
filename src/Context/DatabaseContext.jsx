@@ -1,4 +1,4 @@
-import { collection, deleteDoc, getDoc, query } from "firebase/firestore";
+import { collection, deleteDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useAuth } from "./AuthContext";
 import { useContext, createContext, useState, useEffect } from "react";
@@ -12,21 +12,30 @@ export function useDatabase(){
 export function DatabaseProvider({children}){
     const { globalUser } = useAuth()
     const [loading, setLoading] = useState(false)
-    const [savePalette, setSavePalette] = useState()
+    const [savePalette, setSavePalette] = useState([])
 
     useEffect(()=>{
         if(globalUser){
-            setLoading(true)
-            //query the saved palettes to fetch the palettes for the logged in users
-            const palettesRef = collection(db,'palettes')
-            const q = query(palettesRef,where('userId','==',globalUser.uid ))
+            const fetchPalettes = async () => {
+                setLoading(true);
+                try {
+                    const palettesRef = collection(db, 'palettes');
+                    const q = query(palettesRef, where('userId', '==', globalUser.uid));
+                    
+                    // ✅ Use getDocs (plural) to fetch multiple documents
+                    const querySnapshot = await getDocs(q);
+                    
+                    const palettesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    setSavePalette(palettesData);
+                } catch (error) {
+                    console.error("Error fetching palettes:", error);
+                    setSavePalette([]); // Reset to empty on error
+                } finally {
+                    setLoading(false);
+                }
+            };
 
-            async ()=>{
-                const querySnapshot = await getDoc(q)
-                const palettesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-                setSavePalette(palettesData)
-                setLoading(false)
-            }
+            fetchPalettes()
         } else {
             setSavePalette([])
             setLoading(false)
@@ -48,7 +57,8 @@ export function DatabaseProvider({children}){
         savePalette,
         setSavePalette,
         addPalette,
-        deletePalette
+        deletePalette,
+        loading
     }
 
     return(

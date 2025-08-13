@@ -57,6 +57,8 @@ export function AuthProvider({ children }){
     }
     const value = { globalUser, setGlobalUser,logout, login, signup, googleSignIn }
 
+    window.forceLogout = logout;
+
     return (
         <AuthContext.Provider value={value}>
             {!isLoading && children}
