@@ -6,6 +6,7 @@ import { ColorTooltip } from "./ColorTooltip";
 import { usePokedex } from "../../Context/PokedexContext";
 import { Modal } from "../Modal/Modal";
 import { useDatabase } from "../../Context/DatabaseContext";
+import { p } from "framer-motion/client";
 
 
 export function ViewPalette(){
@@ -68,8 +69,10 @@ export function ViewPalette(){
 
     const handleSavingPalettes = (name) => {
         if (!name.trim()) {
-            alert("Please enter a palette name.");
-            return;
+            // alert("Please enter a palette name.");
+            return (
+                <p>No name assigned.</p>
+            )
         }
 
         const newSavedPalette = {
@@ -110,10 +113,12 @@ export function ViewPalette(){
     return (
         <div className="viewPalette">
             <Modal onClose={()=>{setIsSaveModalOpen(false)}} isModalOpen={isSaveModalOpen}>
-                <p><b>Save Palette</b></p>
-                <p>Enter a name for the palette:</p>
-                <input placeholder="Sample Palette" onChange={(e)=>setPaletteName(e.target.value)} required></input>
-                <button type="submit"onClick={()=>{handleSavingPalettes(paletteName)}}>Save</button>
+                <form onSubmit={()=>{handleSavingPalettes(paletteName)}}>
+                    <p><b>Save Palette</b></p>
+                    <label htmlFor="save-palette-name">Enter a name for the palette:</label>
+                    <input id="save-palette-name" placeholder="Sample Palette" onChange={(e)=>setPaletteName(e.target.value)} required></input>
+                    <button type="submit" disabled={!paletteName}>Save</button>
+                </form>
             </Modal>
 
             <button className="palette-window-button save-palette-button"
@@ -146,12 +151,12 @@ export function ViewPalette(){
                                     } catch(err){
                                         console.log(err)
                                     }
-                                }}><i className="fa-regular fa-copy"></i></button>
+                                }}><i aria-label="copy button" className="fa-regular fa-copy"></i></button>
                                 <button
                                     className={'color-options lockButton ' + (domColors.isLocked?'lockedColor':'')}
                                     onClick={()=>{handleColorLocking(domColorIndex)}}>
-                                        <span className="fa-solid fa-lock"></span>
-                                        <span className="fa-solid fa-unlock"></span>
+                                        <span aria-label="lock button" className="fa-solid fa-lock"></span>
+                                        <span aria-label="unlock button" className="fa-solid fa-unlock"></span>
                                 </button>
                             </div>
                         </div>
