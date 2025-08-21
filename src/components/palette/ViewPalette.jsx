@@ -11,7 +11,7 @@ import { useDatabase } from "../../Context/DatabaseContext";
 export function ViewPalette(){
 
     const {frontSprite, setSelectedPokemon} = usePokedex()
-    const {savePalette, setSavePalette} = useDatabase()
+    const {savePalette, setSavePalette, addPalette} = useDatabase()
 
     const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
@@ -67,21 +67,23 @@ export function ViewPalette(){
     }
 
     const handleSavingPalettes = (name) => {
-    if (!name.trim()) {
-        alert("Please enter a palette name.");
-        return;
-    }
+        if (!name.trim()) {
+            alert("Please enter a palette name.");
+            return;
+        }
 
-    const newSavedPalette = {
-        name: name,
-        palette: palette
-    };
+        const newSavedPalette = {
+            name: name,
+            palette: palette
+        };
 
-    setSavePalette(prevSavedPalettes => [...prevSavedPalettes, newSavedPalette]);
+        setSavePalette(prevSavedPalettes => [...prevSavedPalettes, newSavedPalette]);
 
-    // Close the modal and reset the input field
-    setIsSaveModalOpen(false);
-    setPaletteName('');
+        addPalette(newSavedPalette)
+
+        // Close the modal and reset the input field
+        setIsSaveModalOpen(false);
+        setPaletteName('');
     }
 
     //console.log(palette)
@@ -147,8 +149,8 @@ export function ViewPalette(){
                                 <button
                                     className={'color-options lockButton ' + (domColors.isLocked?'lockedColor':'')}
                                     onClick={()=>{handleColorLocking(domColorIndex)}}>
-                                        <i className="fa-solid fa-lock"></i>
-                                        <i className="fa-solid fa-unlock"></i>
+                                        <span className="fa-solid fa-lock"></span>
+                                        <span className="fa-solid fa-unlock"></span>
                                 </button>
                             </div>
                         </div>

@@ -16,7 +16,8 @@ export default function SavedPaletteWindow(){
             </div>
         )
     }
-    
+
+    console.log(savePalette)    
     
     return(
         <div className="savedPaletteWindow">

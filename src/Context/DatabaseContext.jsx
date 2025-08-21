@@ -1,4 +1,4 @@
-import { collection, deleteDoc, getDocs, query, where } from "firebase/firestore";
+import { collection, deleteDoc, getDocs, query, where, doc, addDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useAuth } from "./AuthContext";
 import { useContext, createContext, useState, useEffect } from "react";
@@ -22,7 +22,6 @@ export function DatabaseProvider({children}){
                     const palettesRef = collection(db, 'palettes');
                     const q = query(palettesRef, where('userId', '==', globalUser.uid));
                     
-                    // ✅ Use getDocs (plural) to fetch multiple documents
                     const querySnapshot = await getDocs(q);
                     
                     const palettesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -63,7 +62,7 @@ export function DatabaseProvider({children}){
 
     return(
         <DatabaseContext.Provider value={value}>
-            {!loading && children}
+            {children}
         </DatabaseContext.Provider>
     )
 }
