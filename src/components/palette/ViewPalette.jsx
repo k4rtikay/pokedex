@@ -125,17 +125,18 @@ export function ViewPalette(){
             <div className="paletteBarContainer">
                 {palette?.map((domColors, domColorIndex)=>{
                     const domColor = domColors.color
+                    const rgbString = `rgb(${domColor[0]},${domColor[1]},${domColor[2]})`
                     return(
                         <div
                         style={{backgroundColor:`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`,color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}
                         key={domColorIndex}
                         className={"paletteBar " + (domColors.isLocked?"is-locked":"")}>
                             <div className="colorCopyBtn">
-                                <p className="colorValue">{`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`}</p>
+                                <p className="colorValue">{rgbString}</p>
                                 <button
                                 className="color-options"
                                 onClick={async (e)=>{
-                                    const text = e.currentTarget.parentElement.innerText;
+                                    const text = rgbString;
                                     try{
                                         await navigator.clipboard.writeText(text)
                                         setCopied(true)
