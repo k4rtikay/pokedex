@@ -2,7 +2,6 @@ import './SavedPaletteWindow.css'
 import SavedPalette from "./SavedPalette"
 import { useDatabase } from "../../Context/DatabaseContext"
 import { useAuth } from '../../Context/AuthContext'
-import { div } from 'framer-motion/client'
 
 export default function SavedPaletteWindow(){
 
