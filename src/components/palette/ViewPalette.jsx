@@ -154,9 +154,12 @@ export function ViewPalette(){
                                 }}><i aria-label="copy button" className="fa-regular fa-copy"></i></button>
                                 <button
                                     className={'color-options lockButton ' + (domColors.isLocked?'lockedColor':'')}
+                                    aria-label={domColors.isLocked?'lock button':'unlock button'}
                                     onClick={()=>{handleColorLocking(domColorIndex)}}>
-                                        <span aria-label="lock button" className="fa-solid fa-lock"></span>
-                                        <span aria-label="unlock button" className="fa-solid fa-unlock"></span>
+                                    {
+                                        domColors.isLocked?<span className="fa-solid fa-lock"></span>
+                                        :<span className="fa-solid fa-unlock"></span>
+                                    }
                                 </button>
                             </div>
                         </div>

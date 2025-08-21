@@ -87,23 +87,6 @@
 }
 
 
-.fa-lock{
-    display: none;
-}
-
-.fa-unlock{
-    display: block;
-}
-
-.lockedColor .fa-lock{
-    display: block;
-
-}
-
-.lockedColor .fa-unlock{
-    display: none;
-}
-
 /* using ::after psuedo-element to add more clarity to the locked swatch for the user by adding an indicative bar at the bottom */
 .paletteBar.is-locked {
   position: relative;
