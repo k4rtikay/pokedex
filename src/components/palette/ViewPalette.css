@@ -38,14 +38,26 @@
     justify-content: start;
 }
 
-.paletteSprite{
-    display: block;
-    max-height: auto;
-    width: 350px;
+.paletteSpriteContainer{
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    pointer-events: none;
+}
+
+.paletteSprite{
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    /* width: 80%;
+    height: auto; */
+    transform: scale(2);
     pointer-events: none;
 }
 

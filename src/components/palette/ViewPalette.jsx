@@ -11,14 +11,18 @@ import { p } from "framer-motion/client";
 
 export function ViewPalette(){
 
-    const {frontSprite, setSelectedPokemon} = usePokedex()
+    const {frontSprite, setSelectedPokemon, data} = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
+    const [spriteToShow, setSpriteToShow] = useState(null);
 
     const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
     const imgRef = useRef(null)
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const [paletteName, setPaletteName] = useState('')
+    let { name: pokemonName } = data || {}
+
+    console.log(pokemonName)
 
     const handleImageLoad = () => {
         const img = imgRef.current;
@@ -107,7 +111,20 @@ export function ViewPalette(){
         }
     },[setSelectedPokemon, isSaveModalOpen])
 
-    console.log(savePalette)
+    useEffect(()=>{
+        // pokemonName = pokemonName.toLowerCase()
+
+        
+
+        const animUrl = `/api/sprites/black-white/anim/normal/${pokemonName}.gif`
+        const animFrontSprite = new Image()
+
+        animFrontSprite.src = animUrl
+
+        animFrontSprite.onload = () =>{
+            setSpriteToShow(animUrl)
+        }
+    },[frontSprite])
 
 
     return (
@@ -167,13 +184,15 @@ export function ViewPalette(){
                 })}
             </div>
 
-            <img src={frontSprite}
-            alt="Image of selected pokemon"
-            ref={imgRef}
-            crossOrigin="anonymous"
-            className="paletteSprite"
-            loading="lazy"
-            onLoad={handleImageLoad} />
+            <div className="paletteSpriteContainer">
+                <img src={spriteToShow}
+                alt="Image of selected pokemon"
+                ref={imgRef}
+                crossOrigin="anonymous"
+                className="paletteSprite"
+                loading="lazy"
+                onLoad={handleImageLoad} />
+            </div>
 
             {copied&&
                 <ColorTooltip text={'Color Copied!'}/>
