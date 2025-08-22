@@ -55,8 +55,6 @@
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: -webkit-crisp-edges;
-    /* width: 80%;
-    height: auto; */
     transform: scale(2);
     pointer-events: none;
 }
