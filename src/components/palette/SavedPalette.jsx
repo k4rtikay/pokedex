@@ -1,16 +1,20 @@
+import { useDatabase } from '../../Context/DatabaseContext';
 import './SavedPalette.css'
 
 export default function SavedPalette(props){
 
-    const { palette, name } = props;
+    const { id,palette, name } = props;
+    const { deletePalette } = useDatabase()
     const uniqueSprites = [...new Set(palette.map(p => p.sourceSprite))];
+
+    console.log(id)
+
     return(
         <div>
             <div className="paletteCard">
                 <div className="palette-color-stripes">
                     {palette.map((paletteObj,paletteObjIndex)=>{
                         const stripeBg = `rgb(${paletteObj.color.join(', ')})`
-                        console.log(stripeBg)
                         return(
                             <div key={paletteObjIndex} style={{backgroundColor:stripeBg}} className='savedColorStripe'></div>
                         )
@@ -19,9 +23,10 @@ export default function SavedPalette(props){
                 <div className="palette-content">
                     <p>{name}</p>
                     <div className='saved-palette-options'>
-                        <i className="fa-solid fa-file-export"></i>
-                        <i className="fa-solid fa-pen-to-square"></i>
-                        <i className="fa-regular fa-trash-can"></i>
+                        <button><span className="fa-solid fa-file-export"></span></button>
+                        <button><span className="fa-solid fa-pen-to-square"></span></button>
+                        <button
+                        onClick={()=>{deletePalette(id)}}><span className="fa-regular fa-trash-can"></span></button>
                     </div>
                     <div className="palette-sprites-container">
                     {

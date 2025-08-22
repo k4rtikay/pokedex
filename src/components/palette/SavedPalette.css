@@ -9,6 +9,17 @@
     border-radius: 20px;
 }
 
+.paletteCard button{
+    border: none;
+    background: none;
+    font-size: 1.1rem;
+}
+
+.paletteCard button:hover{
+    opacity: 0.5;
+    transition: 0.2s ease-in opacity;
+}
+
 .palette-color-stripes{
     display: flex;
     overflow: hidden;

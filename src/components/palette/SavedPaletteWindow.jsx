@@ -34,7 +34,7 @@ export default function SavedPaletteWindow(){
                             savePalette.map((ColPalette, colPaletteIndex)=>{
                                 return(
 
-                                    <SavedPalette palette={ColPalette.palette} name={ColPalette.name} key={colPaletteIndex}/>
+                                    <SavedPalette palette={ColPalette.palette} name={ColPalette.name} key={colPaletteIndex} id={ColPalette.id}/>
 
                                 )
 

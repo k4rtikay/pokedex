@@ -82,13 +82,15 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
     if(loading||!data){
         return(
             <div
-            style={{backgroundColor:'var(--background-color)',width:'100%'}}>
-                <h4>Loading....</h4>
+            className="loading-div">
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${selectedPokemon+1}.png`} alt="silhoutte of a pokemon" />
             </div>
         )
     }
 
     const { back_default,back_shiny,front_default,front_shiny } = sprites
+
+    console.log(selectedPokemon)
 
     return (
         <div className="pokeEntry">
@@ -108,7 +110,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                             </ul>
                         </div>
                         <img src="pokemmo-svgrepo-com(1).svg" alt="Pokeball-icon" className="pokeballIcon"/>
-                    </> : (<div>Loading....</div>)
+                    </> : (<div className="loading-div">Loading....</div>)
                     }
                 </Modal>
             )}

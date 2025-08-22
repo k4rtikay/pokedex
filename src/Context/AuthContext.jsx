@@ -55,7 +55,7 @@ export function AuthProvider({ children }){
             throw err
         }
     }
-    const value = { globalUser, setGlobalUser,logout, login, signup, googleSignIn }
+    const value = { globalUser, setGlobalUser,logout, login, signup, googleSignIn, isLoading }
 
     window.forceLogout = logout;
 
