@@ -31,10 +31,10 @@ export default function SavedPaletteWindow(){
 
                     <div className="savedPalettesPane">
                         {
-                            savePalette.map((ColPalette, colPaletteIndex)=>{
+                            savePalette.map((ColPalette)=>{
                                 return(
 
-                                    <SavedPalette palette={ColPalette.palette} name={ColPalette.name} key={colPaletteIndex} id={ColPalette.id}/>
+                                    <SavedPalette palette={ColPalette.palette} name={ColPalette.name} key={ColPalette.id} id={ColPalette.id}/>
 
                                 )
 

@@ -1,4 +1,4 @@
-import { collection, deleteDoc, getDocs, query, where, doc, addDoc, onSnapshot } from "firebase/firestore";
+import { collection, deleteDoc, getDocs, query, where, doc, addDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useAuth } from "./AuthContext";
 import { useContext, createContext, useState, useEffect } from "react";
@@ -47,12 +47,17 @@ export function DatabaseProvider({children}){
         await deleteDoc(doc(db, 'palettes',paletteId))
     }
 
+    async function updatePalette(newPalette, paletteId) {
+        await updateDoc(doc(db,'palettes',paletteId),newPalette)
+    }
+
     const value = {
         savePalette,
         setSavePalette,
         addPalette,
         deletePalette,
-        loading
+        loading,
+        updatePalette
     }
 
     return(
