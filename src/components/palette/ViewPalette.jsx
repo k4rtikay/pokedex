@@ -6,7 +6,7 @@ import { ColorTooltip } from "./ColorTooltip";
 import { usePokedex } from "../../Context/PokedexContext";
 import { Modal } from "../Modal/Modal";
 import { useDatabase } from "../../Context/DatabaseContext";
-import { p } from "framer-motion/client";
+import { PaletteBar } from "./PaletteBar";
 
 
 export function ViewPalette(){
@@ -33,7 +33,7 @@ export function ViewPalette(){
             // console.log('newcolors' + newColors)
             
             if(!palette){
-                const initialPalette = newColors.map(colorVal => ({color: colorVal, isLocked: false, sourceSprite: frontSprite}))
+                const initialPalette = newColors.map(colorVal => ({id: Math.random().toString(36).slice(2, 9),color: colorVal, isLocked: false, sourceSprite: frontSprite}))
                 setPalette(initialPalette)
                 return
             }
@@ -44,9 +44,9 @@ export function ViewPalette(){
                 }
 
                 return {
+                    ...oldColorObject,
                     color: newColors[index],
-                    isLocked: false,
-                    sourceSprite: frontSprite
+                    sourceSprite: frontSprite,
                 }
             })
 
@@ -56,9 +56,9 @@ export function ViewPalette(){
         }
     }
 
-    const handleColorLocking = (lockedIndex)=>{
-        const newPalette = palette.map((colorObj, colorIndex)=>{
-            if(colorIndex!==lockedIndex){
+    const handleColorLocking = (idToLock)=>{
+        const newPalette = palette.map((colorObj)=>{
+            if(colorObj.id!==idToLock){
                 return colorObj
             }else{
                 return {
@@ -69,6 +69,13 @@ export function ViewPalette(){
         })
 
         setPalette(newPalette)
+    }
+
+    const handleCopy = () => {
+        setCopied(true);
+        setTimeout(() => {
+            setCopied(false);
+        }, 2000);
     }
 
     const handleSavingPalettes = (name) => {
@@ -145,43 +152,14 @@ export function ViewPalette(){
             <button className="palette-window-button close-palette-modal">✕ Close</button>
 
             <div className="paletteBarContainer">
-                {palette?.map((domColors, domColorIndex)=>{
-                    const domColor = domColors.color
-                    const rgbString = `rgb(${domColor[0]},${domColor[1]},${domColor[2]})`
-                    return(
-                        <div
-                        style={{backgroundColor:`rgb(${domColor[0]},${domColor[1]},${domColor[2]})`,color:colorForIntensity(domColor[0],domColor[1],domColor[2])}}
-                        key={domColorIndex}
-                        className={"paletteBar " + (domColors.isLocked?"is-locked":"")}>
-                            <div className="colorCopyBtn">
-                                <p className="colorValue">{rgbString}</p>
-                                <button
-                                className="color-options"
-                                onClick={async (e)=>{
-                                    const text = rgbString;
-                                    try{
-                                        await navigator.clipboard.writeText(text)
-                                        setCopied(true)
-                                        setTimeout(() => {
-                                            setCopied(false)
-                                        }, 2000);
-                                    } catch(err){
-                                        console.log(err)
-                                    }
-                                }}><i aria-label="copy button" className="fa-regular fa-copy"></i></button>
-                                <button
-                                    className={'color-options lockButton ' + (domColors.isLocked?'lockedColor':'')}
-                                    aria-label={domColors.isLocked?'lock button':'unlock button'}
-                                    onClick={()=>{handleColorLocking(domColorIndex)}}>
-                                    {
-                                        domColors.isLocked?<span className="fa-solid fa-lock"></span>
-                                        :<span className="fa-solid fa-unlock"></span>
-                                    }
-                                </button>
-                            </div>
-                        </div>
-                    )
-                })}
+                {palette?.map((colorObj) => (
+                    <PaletteBar
+                        key={colorObj.id}
+                        colorObject={colorObj}
+                        onLock={handleColorLocking}
+                        onCopy={handleCopy}
+                    />
+                ))}
             </div>
 
             <div className="paletteSpriteContainer">

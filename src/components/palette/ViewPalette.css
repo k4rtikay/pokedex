@@ -59,59 +59,7 @@
     pointer-events: none;
 }
 
-.colorCopyBtn{
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: start;
-    border: none;
-    background:rgb(0,0,0, 0);
-    font-family:"VT323", monospace;
-    font-size:20px;
-    margin-top: 20px;
-    height: 100%;
-    cursor: pointer;
-    font-weight: bold;
-    opacity: 0;
-    transition: ease-in 0.1s all;
-}
 
-.colorCopyBtn:hover{
-    opacity: 1;
-}
-
-
-
-.colorCopyBtn button{
-    border: none;
-    background: none;
-    font-size: inherit;
-    margin: 10px;
-    color: inherit;
-}
-
-.color-options:hover{
-    transform: scale(1.2);
-    transition: all 0.1s ease-in;
-}
-
-
-/* using ::after psuedo-element to add more clarity to the locked swatch for the user by adding an indicative bar at the bottom */
-.paletteBar.is-locked {
-  position: relative;
-}
-
-.paletteBar.is-locked::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 8px;
-  background-color: var(--options-color);
-  opacity: 0.5;
-}
 
 @media (max-width:768px){
 
