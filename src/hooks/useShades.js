@@ -1,6 +1,6 @@
 import tinycolor from "tinycolor2";
 
-const shadesGenerator = (inputColor) => {
+const useShadesGenerator = (inputColor) => {
   const baseColor = tinycolor(inputColor)
   const { h, s, l } = baseColor.toHsl()
   const totalShades = 20
@@ -37,4 +37,4 @@ const shadesGenerator = (inputColor) => {
   return shadesArray
 }
 
-export default shadesGenerator
+export default useShadesGenerator

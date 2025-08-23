@@ -15,6 +15,7 @@
     opacity: 0;
     transition: ease-in 0.1s all;
     overflow: hidden;
+    width: 100%;
 }
 
 .colorCopyBtn:hover{
@@ -51,4 +52,27 @@
   height: 8px;
   background-color: var(--options-color);
   opacity: 0.5;
+}
+
+.shadesContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.shadesContainer button, .shadesContainer p{
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+.shade{
+    flex-grow: 1;
+}
+
+.closeShades{
+    background: none;
+    font-size: 1.5rem;
+    padding: 5px;
 }
