@@ -2,8 +2,9 @@ import './PaletteBar.css'
 import { useState } from 'react';
 import { colorForIntensity } from '../../utils';
 import useShadesGenerator from '../../hooks/useShades';
+import tinycolor from 'tinycolor2';
 
-export function PaletteBar({ colorObject, onLock, onCopy }) {
+export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
   const { color, isLocked, id } = colorObject;
   const rgbString = `rgb(${color.join(', ')})`;
   const [isShadesOn, setIsShadesOn] = useState(false)
@@ -29,12 +30,17 @@ export function PaletteBar({ colorObject, onLock, onCopy }) {
                 <div className="shadesContainer">
                     {
                         shadesArray.map((colorObj,colorObjIndex)=>{
+                            const rgbObj = tinycolor(colorObj.color)
+                            const rgbArray = Object.values(rgbObj).slice(1,4)
                             return(
                                 <button className="shade"
                                 style={{backgroundColor:colorObj.color}}
                                 key={colorObjIndex}
-                                onClick={()=>{setIsShadesOn(false)}}>
-                                    {colorObj.isOriginal&&'o'}
+                                onClick={()=>{
+                                    onShadeSelect(rgbArray,id)
+                                    setIsShadesOn(false)}}>
+                                    <span className='colorString'>{colorObj.color}</span>
+                                    <span className='originalMarker'>{colorObj.isOriginal&&'o'}</span>
                                 </button>
                             )
                         })

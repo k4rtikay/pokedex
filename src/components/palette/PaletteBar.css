@@ -71,6 +71,14 @@
     flex-grow: 1;
 }
 
+.colorString{
+    opacity: 0;
+}
+
+.colorString:hover{
+    opacity: 1;
+}
+
 .closeShades{
     background: none;
     font-size: 1.5rem;

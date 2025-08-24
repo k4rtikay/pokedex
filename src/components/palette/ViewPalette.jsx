@@ -7,6 +7,7 @@ import { usePokedex } from "../../Context/PokedexContext";
 import { Modal } from "../Modal/Modal";
 import { useDatabase } from "../../Context/DatabaseContext";
 import { PaletteBar } from "./PaletteBar";
+import { color } from "framer-motion";
 
 
 export function ViewPalette(){
@@ -69,6 +70,23 @@ export function ViewPalette(){
         })
 
         setPalette(newPalette)
+    }
+
+    const handleShadeSelection = (shade,id) =>{
+        const newPalette = palette.map((colorObj)=>{
+            console.log('setting shade..')
+            if(colorObj.id==id){
+                return {
+                    ...colorObj,
+                    color: shade
+                }
+            }else{
+                return colorObj
+            }
+        })
+
+        setPalette(newPalette)
+        console.log('shade set!!!!!!')
     }
 
     const handleCopy = () => {
@@ -158,6 +176,7 @@ export function ViewPalette(){
                         colorObject={colorObj}
                         onLock={handleColorLocking}
                         onCopy={handleCopy}
+                        onShadeSelect = {handleShadeSelection}
                     />
                 ))}
             </div>
