@@ -4,10 +4,7 @@
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    background-image: url(/pixelated-sky-background.png);
-    background-size: contain;
-    background-repeat: repeat;
-    background-position: center;
+    background-color: #FFFBE7;
     color: #E2E2E2;
     font-size:1.5rem ;
 }
