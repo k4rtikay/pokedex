@@ -24,13 +24,21 @@ export default function Landing(){
         }}>
             <div className="landingPageContent">
                 <div className="mainLandingContent">
-                    <h1 className='fade-in'>PokéBook</h1>
-                    <ul>
-                        <li className='fade-in' style={{animationDelay:'0.3s'}}>-Get <span>Pokédex</span> data</li>
-                        <li className='fade-in' style={{animationDelay:'0.4s'}}>-Get the <span>color palette</span> from your favorite pocket monsters</li>
-                        <li className='fade-in' style={{animationDelay:'0.5s'}}>-<span>Build a team</span> around your favorite mons.</li>
-                    </ul>
-                    <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-secondary-bg)',animationDelay:'0.6s'}}
+                    <div className="landingPageLeft">
+                        <h1 className='fade-in'>PokéBook</h1>
+                        <ul>
+                            <li className='fade-in' style={{animationDelay:'0.3s'}}>-Get <span>Pokédex</span> data</li>
+                            <li className='fade-in' style={{animationDelay:'0.4s'}}>-Get the <span>color palette</span> from your favorite pocket monsters</li>
+                            <li className='fade-in' style={{animationDelay:'0.5s'}}>-<span>Build a team</span> around your favorite mons.</li>
+                        </ul>
+                    </div>
+                    <div className="landingPageRight">
+                        <div className="illustrations">
+                            <img src="pokemon-palette.png" alt="image of color palette from the pokemon pikachu" className="paletteIllustration" />
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="sprite art of pikachu" className="spriteIllustration" />
+                        </div>
+                    </div>
+                    {/* <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-secondary-bg)',animationDelay:'0.6s'}}
                     onClick={()=> navigate('/app/auth?mode=signin')}>Sign in</button></li>
                     <li>
                         <button className="gsi-material-button loginOptions fade-in" style={{animationDelay:'0.7s'}}
@@ -58,6 +66,7 @@ export default function Landing(){
                         navigate('/app')}}>Guest &gt;&gt;</button></li>
                     <p className='fade-in'>Not a registered user? <button className='sign-up-button'
                     onClick={()=>navigate('/app/auth?mode=signup')}>Sign Up</button>!</p>
+                </div> */}
                 </div>
                 <footer className='fade-in'>Made with ❤️ by <a href="https://github.com/k4rtikay" className="underline">k4rtikay</a></footer>
             </div>
