@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import './Landing.css'
+import './Landing.scss'
 import './google-sign-in.css'
 import { motion } from 'framer-motion';
 import { useAuth } from '../../Context/AuthContext';
@@ -22,53 +22,39 @@ export default function Landing(){
             opacity: 0.3,
             filter: "blur(5px)"
         }}>
-            <div className="landingPageContent">
-                <div className="mainLandingContent">
-                    <div className="landingPageLeft">
-                        <h1 className='fade-in'>PokéBook</h1>
-                        <ul>
-                            <li className='fade-in' style={{animationDelay:'0.3s'}}>-Get <span>Pokédex</span> data</li>
-                            <li className='fade-in' style={{animationDelay:'0.4s'}}>-Get the <span>color palette</span> from your favorite pocket monsters</li>
-                            <li className='fade-in' style={{animationDelay:'0.5s'}}>-<span>Build a team</span> around your favorite mons.</li>
+            <div className="lp-container">
+                <div className="lp-content">
+                    <div className="lp-image-container">
+                        <img src="pokemon-palette.png" alt="image of color palette from the pokemon pikachu" className="lp-image--primary" />
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="sprite art of pikachu" className="lp-image--secondary" />
+                    </div>
+                    <div className="lp-text">
+                        {/* <h1 className='fade-in'>PokéBook</h1> */}
+                        <h1 className='lp-title'>POKÉMON <span className='lp-title--stylized'>
+                            <span>C</span>
+                            <span>O</span>
+                            <span>L</span>
+                            <span>O</span>
+                            <span>R</span>
+                            <span>S</span></span> FOR CREATIVE PROJECTS.</h1>
+                        <p className='lp-subtitle'>Where Pokémon meets professional design tools</p>
+                    </div>
+                    <div className="lp-actions">
+                        <button className='lp-actions--primary'>Start Creating</button>
+                        <button className='lp-actions--secondary'>Sign In</button>
+                    </div>
+                    <div className="lp-list-wrapper">
+                        <ul className="lp-list">
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">lock</span> Advanced Color Locking</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">looks</span> 20-Shade Color Explorer</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">casino</span> Spacebar Generation</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">bookmark_heart</span> Smart Palette Management</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">ios_share</span> Designer-Ready Export</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">family_star</span> Animated Sprite Integration</li>
                         </ul>
                     </div>
-                    <div className="landingPageRight">
-                        <div className="illustrations">
-                            <img src="pokemon-palette.png" alt="image of color palette from the pokemon pikachu" className="paletteIllustration" />
-                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="sprite art of pikachu" className="spriteIllustration" />
-                        </div>
-                    </div>
-                    {/* <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-secondary-bg)',animationDelay:'0.6s'}}
-                    onClick={()=> navigate('/app/auth?mode=signin')}>Sign in</button></li>
-                    <li>
-                        <button className="gsi-material-button loginOptions fade-in" style={{animationDelay:'0.7s'}}
-                        onClick={async ()=>{
-                            await googleSignIn()
-                            navigate('/app')}}>
-                        <div className="gsi-material-button-state"></div>
-                        <div className="gsi-material-button-content-wrapper">
-                            <div className="gsi-material-button-icon">
-                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" xmlnsXlink="http://www.w3.org/1999/xlink" style={{display: "block"}}>
-                                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
-                                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
-                                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
-                                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
-                                <path fill="none" d="M0 0h48v48H0z"></path>
-                            </svg>
-                            </div>
-                            <span className="gsi-material-button-contents">Sign in</span>
-                            <span style={{display: 'none'}}>Sign in with Google</span>
-                        </div>
-                        </button>
-                    </li>
-                    <li><button className="loginOptions fade-in" style={{backgroundColor:'var(--button-primary-bg)',animationDelay:'0.8s'}}
-                    onClick={()=>{
-                        navigate('/app')}}>Guest &gt;&gt;</button></li>
-                    <p className='fade-in'>Not a registered user? <button className='sign-up-button'
-                    onClick={()=>navigate('/app/auth?mode=signup')}>Sign Up</button>!</p>
-                </div> */}
+
                 </div>
-                <footer className='fade-in'>Made with ❤️ by <a href="https://github.com/k4rtikay" className="underline">k4rtikay</a></footer>
             </div>
         </motion.div>
     )

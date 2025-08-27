@@ -1,0 +1,142 @@
+@use '../../styles/mixins' as m;
+@use '../../styles/variables.scss' as v;
+
+.lp-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: clamp(16px, 30vw, 50px);
+    font-family: v.$secondary-font ;
+    background-color: v.$background-color;
+    overflow: hidden;
+}
+
+.lp-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px
+}
+
+.lp-image{
+    width: 100%;
+    display: flex;
+}
+
+.lp-image-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .lp-image--primary{
+        width: clamp(300px, 80vw, 500px);
+        border-radius: 0.5rem;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.25);
+    }
+    .lp-image--secondary{
+        width: clamp(160px, 40vw, 480px);
+        position: absolute;
+        top: clamp(50%, 5vw, 60%);
+        left: 50%;
+    }
+}
+
+.lp-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        width: 100%;
+    }
+
+    .lp-title{
+        font-family: v.$primary-font;
+        margin: clamp(2rem, 4vw, 4rem) 0px;
+        font-size: clamp(2rem, 5vw, 6rem);
+
+        $stylized-text-colors: #F4D03C,#A34B08,#2C1C0E,#44444C,#DC9404,#E45C44;
+
+        .lp-title--stylized{
+            @for $i from 1 through length($stylized-text-colors){
+            span:nth-child(#{$i}){
+                color: nth($stylized-text-colors ,$i);
+                }
+            }
+        }
+    }
+
+    .lp-subtitle{
+        font-family: v.$primary-font;
+        margin-bottom: clamp(2rem, 3vw, 3rem);
+        font-size: clamp(1rem, 3vw, 4rem);  
+    }
+}
+
+.lp-actions{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(2rem, 3vw, 3rem);
+
+    button{
+        border: none;
+        cursor: pointer;
+    }
+
+    .lp-actions--primary{
+        background-color: v.$button-primary-bg;
+        color: white;
+        font-family: v.$primary-font;
+        padding: clamp(0.7rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+        border-radius: 0.5rem;
+        font-size: clamp(1.1rem, 3vw, 1.5rem);
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25); 
+    }
+
+    .lp-actions--secondary{
+        background-color: transparent;
+        color: black;
+        font-family: v.$secondary-font;
+        border: 2px solid black;
+        padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+        border-radius: 0.5rem;
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25); 
+    }
+}
+
+.lp-list-wrapper{
+    display: flex;
+    justify-content: center;
+    .lp-list{
+        list-style: none;
+        margin: clamp(2rem, 4vw, 3rem) 0;
+
+        .lp-list--item{
+            margin: clamp(1rem, 3vw, 2.5rem) 0;
+            font-size: clamp(1rem, 3vw, 2rem);
+
+            .lp-list--icon{
+                margin-right: clamp(0.5rem, 2vw, 1rem);
+            }
+        }
+    }    
+}
+
+/* .landingPageContent h1{
+    font-size: 4rem;
+    color: #FCFF5F;
+    text-shadow:
+    -3px -3px 0 #1E3A9F,
+     3px -3px 0 #1E3A9F,
+    -3px  3px 0 #1E3A9F,
+     3px  3px 0 #1E3A9F;
+    margin: 1rem;
+    animation-delay: 0.2s;
+} */
