@@ -3,6 +3,7 @@ import './Landing.scss'
 import './google-sign-in.css'
 import { motion } from 'framer-motion';
 import { useAuth } from '../../Context/AuthContext';
+import { Header } from '../Header/Header';
 
 export default function Landing(){
 
@@ -22,6 +23,7 @@ export default function Landing(){
             opacity: 0.3,
             filter: "blur(5px)"
         }}>
+            <Header></Header>
             <div className="lp-container">
                 <div className="lp-content">
                     <div className="lp-image-container">

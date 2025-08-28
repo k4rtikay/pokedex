@@ -1,0 +1,49 @@
+@use '../../styles/variables.scss' as v;
+
+.h-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(1rem, 5vw, 3rem ) clamp(1.5rem, 5vw, 4rem);
+    margin: none;
+    background-color: v.$background-color;
+    font-family: v.$primary-font;
+    position: relative;
+
+    button{
+      border: none;
+      background: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+}
+
+.h-title{
+  color: #F3D617;
+  text-shadow:
+  -2px -2px 0 #4370F4,
+    2px -2px 0 #4370F4,
+  -2px  2px 0 #4370F4,
+    2px  2px 0 #4370F4;
+  margin: 1rem;
+  animation-delay: 0.2s;
+  font-size: clamp(2rem, 8vw, 4rem);
+}
+
+.h-icon{
+  font-size: clamp(1.8rem ,6vw, 5rem);
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 320,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.h-container--menu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+}
