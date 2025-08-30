@@ -1,5 +1,5 @@
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import './Auth.css'
+import './Auth.scss'
 import { motion } from 'framer-motion'
 import { useAuth } from '../../Context/AuthContext'
 import { useState } from 'react'
@@ -50,59 +50,39 @@ export default function Auth(){
     }
 
     return(
-        <motion.div
-        initial={{
-            opacity: 0.3,
-            filter: "blur(10px)"
-        }}
-        animate={{
-            opacity: 1,
-            filter: "blur(0px)",
-            transition:{
-                type: 'spring',
-                stiffness: 120,
-                damping: 25
-            }
-        }
-        }
-        exit={{
-            opacity: 0.3,
-            filter: "blur(5px)",            
-        }}
-        >
-            <div className="LoginContainer">
-                <form action="" className="Loginform">
-                <h1>{mode=='signup'? 'Register' : 'Sign in'}</h1>
-                <h4>To save your favorite palettes and more!</h4>
+        <div className="auth-container">
+            <form action="" className="auth-form">
+            {/* <h1>{mode=='signup'? 'Register' : 'Sign in'}</h1> */}
+            <h1>Pokebook</h1>
+            <h4>To save your favorite palettes and more!</h4>
+                <span>
+                    <label htmlFor="email">Email:</label>
+                    <input id='email' name='email' type="text" placeholder='e.g, mymail@gmail.com' onChange={(e)=>{{
+                        setEmail(e.target.value)
+                    }}} />
+                </span>
+                {(mode==='signup')&&(
                     <span>
-                        <label htmlFor="email">Email:</label>
-                        <input id='email' name='email' type="text" placeholder='e.g, mymail@gmail.com' onChange={(e)=>{{
-                            setEmail(e.target.value)
-                        }}} />
+                    <label htmlFor="username">Username:</label>
+                    <input id='username' name='username' type="text" placeholder='e.g, pokefan123' onChange={(e)=>{
+                        setUsername(e.target.value)
+                    }}/>                            
                     </span>
-                    {(mode==='signup')&&(
-                        <span>
-                        <label htmlFor="username">Username:</label>
-                        <input id='username' name='username' type="text" placeholder='e.g, pokefan123' onChange={(e)=>{
-                            setUsername(e.target.value)
-                        }}/>                            
-                        </span>
-                    )}
-                    <span>
-                        <label htmlFor='password'>Password:</label>
-                        <input id='password' name='password' type="password" placeholder='Enter password' onChange={(e)=>{
-                            setPassword(e.target.value)
-                        }}/>
-                    </span>
-                    <button type='submit'
-                    onClick={(e)=>{
-                        e.preventDefault()
-                       !isAuthenticating&&handleAuthenticate(email,password,username)
-                    }}>Enter<i className="fa-solid fa-caret-right"></i></button>
-                    {error && (<p className='error'>{error}</p>)}
-                    { isSuccess && <p>Success!</p>}
-                </form>
-            </div>
-        </motion.div>
+                )}
+                <span>
+                    <label htmlFor='password'>Password:</label>
+                    <input id='password' name='password' type="password" placeholder='Enter password' onChange={(e)=>{
+                        setPassword(e.target.value)
+                    }}/>
+                </span>
+                <button type='submit'
+                onClick={(e)=>{
+                    e.preventDefault()
+                    !isAuthenticating&&handleAuthenticate(email,password,username)
+                }}>Enter<i className="fa-solid fa-caret-right"></i></button>
+                {error && (<p className='error'>{error}</p>)}
+                { isSuccess && <p>Success!</p>} 
+            </form>
+        </div>
     )
 }

@@ -6,7 +6,6 @@ import PopupMenu from '../PopupMenu/PopupMenu'
 
 export function Header({isSideMenuOpen,setIsSideMenuOpen}){
     const { globalUser,logout } = useAuth()
-    const navigate = useNavigate();
     const [isMenuActive, setIsMenuActive] = useState(false)
 
     return(

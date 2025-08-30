@@ -1,18 +1,42 @@
-.LoginContainer{
+@use '../../styles/variables.scss' as v;
+
+.auth-container{
     display: flex;
-    height: 100vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(/pixelated-sky-background.png);
-    background-size: contain;
-    background-repeat: repeat;
-    background-position: center;
-    font-size: 1.5rem;
     box-sizing: border-box;
+    width: clamp(320px, 15vw, 450px);
+    height: clamp(600px, 15vw, 720px);
+    padding: clamp(1rem, 3vw, 2rem);
+    font-family: v.$secondary-font;
 }
 
-.Loginform{
+.auth-form{
+    background-color: var(--background-color);
+    border-radius: 16px;
+    display: flex;
+    padding: clamp(2rem, 5vw, 2.5rem);
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+
+    h1{
+        margin: 0;
+        padding: 0;
+        font-size: 2rem;
+        color: #FCFF5F;
+        text-shadow:
+        -2px -2px 0 #1E3A9F,
+        2px -2px 0 #1E3A9F,
+        -2px  2px 0 #1E3A9F,
+        2px  2px 0 #1E3A9F;
+        font-family: v.$primary-font;
+    }
+}
+
+/* .Loginform{
     width: 400px;
     background-color: var(--background-color);
     border-radius: 20px;
@@ -93,4 +117,4 @@
 .error{
     color: red;
     font-size: 1rem;
-}
+} */
