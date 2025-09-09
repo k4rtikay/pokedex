@@ -8,11 +8,23 @@ import { auth } from '../../../firebase'
 export default function Auth(){
 
     const navigate = useNavigate()
+    const [isSignIn, setIsSignIn] = useState(true)
 
     function redirect(){
         setTimeout(() => {
             navigate('/app')
         }, 1000);
+    }
+
+    const variants = {
+        signin:{
+            x: '0%',
+            transition: {duration: 0.3, ease: [0.68, -0.6, 0.32, 1.35]}
+        },
+        signout:{
+            x: '100%',
+            transition: {duration: 0.3, ease: [0.68, -0.6, 0.32, 1.35]}
+        }
     }
 
 
@@ -54,7 +66,23 @@ export default function Auth(){
             <form action="" className="auth-form">
             {/* <h1>{mode=='signup'? 'Register' : 'Sign in'}</h1> */}
             <h1>Pokebook</h1>
-            <h4>To save your favorite palettes and more!</h4>
+            <div className="auth-mode--toggle">
+                <label style={{fontFamily: isSignIn&&'Pixelify Sans,Segoe UI, Tahoma, Geneva, Verdana, sans-serif'}}>
+                    <input type="radio" name='auth-mode' value={"signIn"}
+                    onChange={()=>{setIsSignIn(true)}}
+                    checked={isSignIn}></input>
+                Sign In</label>
+                <label style={{fontFamily: !isSignIn&&'Pixelify Sans,Segoe UI, Tahoma, Geneva, Verdana, sans-serif'}}>
+                    <input type="radio" name='auth-mode' value={"signUp"}
+                    onChange={()=>{setIsSignIn(false)}}
+                    checked={!isSignIn}></input>
+                Sign Up</label>
+                <motion.span 
+                className='auth-mode--indicator'
+                variants={variants}
+                initial={isSignIn?'signin':'signout'}
+                animate={isSignIn?'signin':'signout'}></motion.span>
+            </div>
                 <span>
                     <label htmlFor="email">Email:</label>
                     <input id='email' name='email' type="text" placeholder='e.g, mymail@gmail.com' onChange={(e)=>{{

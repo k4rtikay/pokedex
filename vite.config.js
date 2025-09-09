@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
-    port: 3000,
+    port: 3004,
     proxy: {
       '/api':{
         target: 'https://img.pokemondb.net',
