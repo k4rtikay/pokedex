@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
 
-
 export default function PopupMenu(){
     const [isMenuActive, setIsMenuActive] = useState(false)
     const {globalUser} = useAuth()

@@ -3,7 +3,7 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   -webkit-appearance: none;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   background-image: none;
   border: none;
   -webkit-border-radius: 4px;
@@ -23,7 +23,7 @@
   transition: background-color .218s, border-color .218s, box-shadow .218s;
   vertical-align: middle;
   white-space: nowrap;
-  max-width: 400px;
+  max-width: 250px;
   min-width: min-content;
 }
 
@@ -45,7 +45,8 @@
   height: 100%;
   justify-content: center;
   position: relative;
-  width: 100%;
+  width: 250px;
+  
 }
 
 .gsi-material-button .gsi-material-button-contents {
@@ -53,8 +54,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: top;
-    color:#f2f2f2;
-    font-size: 24px;
+    color:black;
+    font-size: 16px;
 }
 
 .gsi-material-button .gsi-material-button-state {

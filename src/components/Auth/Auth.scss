@@ -7,7 +7,6 @@
     justify-content: center;
     box-sizing: border-box;
     width: clamp(320px, 15vw, 450px);
-    height: clamp(600px, 15vw, 720px);
     padding: clamp(1rem, 3vw, 2rem);
     font-family: v.$secondary-font;
 }
@@ -34,10 +33,35 @@
         2px  2px 0 #1E3A9F;
         font-family: v.$primary-font;
     }
+
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000000;
+        border-radius: 12px;
+        border: none;
+        color: rgb(232, 232, 232);
+        min-height: 40px;
+        min-width: 100px;
+        font-size: 1.1rem;
+        font-family: v.$secondary-font;
+        box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .auth-OAuth{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(249, 254, 254);
+        color: black;
+        font-family: v.$secondary-font;
+        border-radius: 16px;
+    }
 }
 
 .auth-mode--toggle{
-    height: clamp(2.2rem, 5vw, 3.2rem);
+    height: clamp(2.2rem, 5vw, 3rem);
     width: 250px;
     display: flex;
     align-items: center;
@@ -67,7 +91,34 @@
         position: absolute;
         border-radius: 12px;
         box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
+
+        :focus{
+            transition: all 0.1s ease-in;
+            border: 2px solid var(--button-primary-bg);
+        }
+        
     }
+}
+
+.auth-form--input{
+    margin-top: 8px;
+
+    input{
+        margin-bottom: 16px;
+        margin-top: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        font-family: v.$secondary-font;
+        font-weight: 450;
+        font-size: 1.1rem;
+
+        :focus{
+            transition: all 0.2s ease-in;
+            transform: scale(1.01);
+            border: 2px solid var(--button-primary-bg);
+        }
+    }
+
+    
 }
 
 /* .Loginform{
@@ -127,14 +178,6 @@
     margin-bottom: 5px;
     height: auto;
     width: 200px;
-}
-
-.Loginform input{
-    border: 2px solid rgba(0,0,0, 0.7);
-    font-weight: lighter;
-    font-size: 1.3rem;
-    padding: 5px 10px;
-    outline: none;
 }
 
 .Loginform input:focus{

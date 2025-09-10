@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import './Landing.scss'
-import './google-sign-in.css'
 import { motion } from 'framer-motion';
 import { useAuth } from '../../Context/AuthContext';
 import { Header } from '../Header/Header';
@@ -8,7 +7,7 @@ import { Header } from '../Header/Header';
 export default function Landing(){
 
     const navigate = useNavigate();
-    const { googleSignIn } = useAuth()
+    
 
     return(
         <motion.div
