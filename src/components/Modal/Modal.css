@@ -1,14 +1,13 @@
 .modalContainer{
     position: fixed;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     z-index: 100;
     top: 0;
     left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0);
     opacity: 0;
     pointer-events: none;
 }
@@ -19,27 +18,15 @@
 }
 
 .moveModal {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--background-color);
-  color: var(--pokemon-entry-color);
-  box-sizing: border-box;
-  padding: 1.5rem;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  transform: scale(0.8);
+  /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35); */
   opacity: 0;
-  z-index: 100;
-  font-size: larger;
+  z-index: 1000;
   border-radius: 15px;
-  box-shadow: 
+  /* box-shadow: 
     0 0 0 3px rgba(248, 201, 201, 0.8),
     0 0 0 4px rgba(250, 134, 134, 0.701),
     0 0 0 6px rgba(251, 76, 76, 0.821),
-    0 0 0 8px rgba(251, 6, 6, 0.852);
-  padding: 10px;
+    0 0 0 8px rgba(251, 6, 6, 0.852); */
 }
 
 .modalContainer.open .moveModal {

@@ -3,11 +3,14 @@ import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../../Context/AuthContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import { Modal } from '../Modal/Modal'
+import Auth from '../Auth/Auth'
 
 
 export default function PopupMenu(){
     const [isMenuActive, setIsMenuActive] = useState(false)
-    const {globalUser} = useAuth()
+    const [isAuthOpen, setIsAuthOpen] = useState(false)
+    const { globalUser,logout } = useAuth()
     const navigate = useNavigate();
 
     const variants = {
@@ -69,6 +72,11 @@ export default function PopupMenu(){
 
     return(
         <div className="menu-container" ref = {dropdownRef}>
+
+            <Modal isModalOpen={isAuthOpen} onClose={()=>{setIsAuthOpen(false)}}>
+                <Auth></Auth>
+            </Modal>
+
                  <>
                     <div className={"menu-top "}>
                         <button className="menu-trigger"
@@ -106,7 +114,8 @@ export default function PopupMenu(){
                                                 console.log('navigating..')
                                                 navigate('/')
                                             }else{
-                                                navigate('/app/auth?mode=signin')
+                                                setIsAuthOpen(true)
+                                                setIsMenuActive(false)
                                         }}}>{globalUser?'Sign Out':'Sign In'}</motion.button>
                                         <footer>Made with ❤️ by k4rtikay </footer>
                                 </motion.div>

@@ -3,10 +3,14 @@ import './Landing.scss'
 import { motion } from 'framer-motion';
 import { useAuth } from '../../Context/AuthContext';
 import { Header } from '../Header/Header';
+import Auth from '../Auth/Auth';
+import { Modal } from '../Modal/Modal';
+import { useState } from 'react';
 
 export default function Landing(){
 
     const navigate = useNavigate();
+    const [isAuthOpen, setIsAuthOpen] = useState(false)
     
 
     return(
@@ -42,7 +46,8 @@ export default function Landing(){
                     </div>
                     <div className="lp-actions">
                         <button className='lp-actions--primary'>Start Creating</button>
-                        <button className='lp-actions--secondary'>Sign In</button>
+                        <button className='lp-actions--secondary'
+                        onClick={()=>{setIsAuthOpen(true)}}>Sign In</button>
                     </div>
                     <div className="lp-list-wrapper">
                         <ul className="lp-list">
@@ -57,6 +62,12 @@ export default function Landing(){
 
                 </div>
             </div>
+
+            <Modal isModalOpen={isAuthOpen} onClose={()=>{setIsAuthOpen(false)}}>
+                <Auth></Auth>
+            </Modal>
+
+
         </motion.div>
     )
 }
