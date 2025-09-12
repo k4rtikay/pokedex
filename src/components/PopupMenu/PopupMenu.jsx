@@ -21,7 +21,7 @@ export default function PopupMenu(){
             top: '-24px',
             left: '-10px',
 	        transition: {duration: 0.5, ease: [0.68, -0.6, 0.32, 1.35]}
-        },
+    },
         closed:{
             width: 2,
             height: 2,

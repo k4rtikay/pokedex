@@ -1,15 +1,38 @@
 import {createPortal} from 'react-dom'
 import './Modal.css'
+import { motion, AnimatePresence, easeIn } from 'framer-motion'
 
 export function Modal({isModalOpen, onClose, children}){
-    if(isModalOpen==false) return
+
+    const modalVariants = {
+        hidden: { opacity: 0, scale: 0.8, transition: {duration: 0.3, ease: [0.68, -0.6, 0.32, 1.35]} },
+        visible: { opacity: 1, scale: 1, transition: {duration: 0.3, ease: [0.68, -0.6, 0.32, 1.35]} }
+    }
+
+    const blurVariants = {
+        hidden: {background : 'rgba(0,0,0,0)', backdropFilter: 'blur(0px)', opacity:0, transition: {easeIn}},
+        visible: {background: 'rgba(0,0,0,0.2)', backdropFilter: 'blur(8px)', opacity:1, transition: {easeIn}}
+    }
 
     return createPortal(
-        <div className={`modalContainer ${isModalOpen?' open':''}`}>
-            <button onClick={onClose} className='modal-underlay'></button>
-            <div className="moveModal">
-                {children}
-            </div>
-        </div>, document.querySelector('#modal-root')
+        <AnimatePresence>
+            {isModalOpen && (
+                <motion.div className={`modalContainer`}
+                variants={blurVariants}
+                initial={'hidden'}
+                animate={'visible'}
+                exit={'hidden'}>
+                <button onClick={onClose} className='modal-underlay'></button>
+                <motion.div className="moveModal"
+                variants={modalVariants}
+                initial={'hidden'}
+                animate={'visible'}
+                exit={'hidden'}
+                key={'modal'}>
+                    {children}
+                </motion.div>
+            </motion.div>
+            )} 
+        </AnimatePresence>,document.querySelector('#modal-root')
     )
 }

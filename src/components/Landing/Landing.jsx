@@ -45,7 +45,8 @@ export default function Landing(){
                         <p className='lp-subtitle'>Where Pokémon meets professional design tools</p>
                     </div>
                     <div className="lp-actions">
-                        <button className='lp-actions--primary'>Start Creating</button>
+                        <button className='lp-actions--primary'
+                        onClick={()=>{navigate('/app')}}>Start Creating</button>
                         <button className='lp-actions--secondary'
                         onClick={()=>{setIsAuthOpen(true)}}>Sign In</button>
                     </div>
