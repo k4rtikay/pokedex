@@ -38,7 +38,7 @@ export default function MainAppLayout() {
             <div className='App'>
                 {/* <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/> */}
                 <div className="contentPane">
-                    <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/>
+                    {/* <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/> */}
                     <Pokecard selectedPokemon={selectedPokemon}
                     setIsModalOpen={setIsModalOpen}
                     isModalOpen={isModalOpen} />
