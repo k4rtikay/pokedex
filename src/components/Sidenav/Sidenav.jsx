@@ -2,6 +2,7 @@ import {  first151Pokemon, getFullPokedexNumber } from "../../utils"
 import { useState,useEffect } from "react"
 import './Sidenav.scss'
 import { usePokedex } from "../../Context/PokedexContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Sidenav({setIsSearchActive, isSearchActive}){
     const { selectedPokemon, setSelectedPokemon } = usePokedex();
@@ -25,6 +26,17 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+     const variants = {
+        hidden:{
+            x: '100%',
+            transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
+        },
+        visible:{
+            x: 0,
+            transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
+        }
+    }
+
     // useEffect(() => {
     // const handleResize = () => setIsMobile(window.innerWidth <= 768);
     // window.addEventListener('resize', handleResize);
@@ -45,28 +57,36 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
 
 
     return(
-        <nav className={`sidenav`}>
-            <div className="sn-header">
-                <p>Search</p>
-                <button aria-label="button to close the search sidemenu"
-                onClick={()=>{setIsSearchActive(false)}}><span class="material-symbols-rounded">close</span></button></div>
-            <input placeholder="E.g. 001 or Bulba.."
-            onChange={(e)=>{
-                setSearchPokemon(e.target.value)
-            }}></input>
-            <div className="sn-list">
-                {searchedList.map((pokemon)=>{
-                    const truePokedexNumber = first151Pokemon.indexOf(pokemon)
-                    return <button key={pokemon} className={`sn-button ${selectedPokemon===first151Pokemon.indexOf(pokemon)?'sn-button--selected':""}`}
-                    onClick={()=>{
-                        setSelectedPokemon(truePokedexNumber)
-                    }}>
-                        <p>{getFullPokedexNumber(truePokedexNumber)}</p>
-                        <p>{pokemon}</p>
-                    </button>
-            })}
-            </div>
-        </nav>
+            <AnimatePresence>
+                {isSearchActive &&
+                <motion.nav className={`sidenav`}
+                variants={variants}
+                initial={'hidden'}
+                animate={'visible'}
+                exit={'hidden'}
+                key={'sidenav'}>
+                    <div className="sn-header">
+                        <p>Search</p>
+                        <button aria-label="button to close the search sidemenu"
+                        onClick={()=>{setIsSearchActive(false)}}><span className="material-symbols-rounded">close</span></button></div>
+                    <input placeholder="E.g. 001 or Bulba.."
+                    onChange={(e)=>{
+                        setSearchPokemon(e.target.value)
+                    }}></input>
+                    <div className="sn-list">
+                        {searchedList.map((pokemon)=>{
+                            const truePokedexNumber = first151Pokemon.indexOf(pokemon)
+                            return <button key={pokemon} className={`sn-button ${selectedPokemon===first151Pokemon.indexOf(pokemon)?'sn-button--selected':""}`}
+                            onClick={()=>{
+                                setSelectedPokemon(truePokedexNumber)
+                            }}>
+                                <p>{getFullPokedexNumber(truePokedexNumber)}</p>
+                                <p>{pokemon}</p>
+                            </button>
+                    })}
+                    </div>
+                </motion.nav>}
+            </AnimatePresence>
     )
 }
 

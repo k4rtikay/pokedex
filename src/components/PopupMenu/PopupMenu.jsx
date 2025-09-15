@@ -52,7 +52,7 @@ export default function PopupMenu(){
         closed:{
             opacity: 0,
             x: -100,
-            transition: {duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1]}
+            transition: {duration: 0.5, ease: [0.16, 1, 0.3, 1]}
         }
     }
 
@@ -117,7 +117,7 @@ export default function PopupMenu(){
                                                 setIsAuthOpen(true)
                                                 setIsMenuActive(false)
                                         }}}>{globalUser?'Sign Out':'Sign In'}</motion.button>
-                                        <footer>Made with ❤️ by k4rtikay </footer>
+                                        <footer>Made with ❤️ by <a href='https://github.com/k4rtikay' target="_blank">k4rtikay</a> </footer>
                                 </motion.div>
                         )
                     }

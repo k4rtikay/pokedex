@@ -13,7 +13,7 @@
     height: 100vh;
     overflow: hidden;
     padding: 16px 8px;
-    width: clamp(240px, 32vw, 560px);
+    width: clamp(240px, 40vw, 560px);
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
     font-family: v.$secondary-font;
 
@@ -24,6 +24,7 @@
         align-items: center;
         padding: 2px 8px;
         margin-bottom: 16px;
+        margin-top: 8px;
         font-size: 1.5rem;
         letter-spacing: 1px;
         font-family: v.$primary-font;
@@ -80,6 +81,7 @@
 
 body.sidenav-open{
     overflow: hidden;
+    position: fixed;
 
     .contentPane,.menu-top{
         pointer-events: none;

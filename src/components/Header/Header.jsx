@@ -51,11 +51,7 @@ export function Header({isSideMenuOpen,setIsSideMenuOpen}){
             <h1 className="h-title">Pokebook</h1>
             <button className='h-search'
             onClick={()=>{setIsSearchActive(!isSearchActive)}}><span className="h-icon material-symbols-rounded">search</span></button>
-            {
-                isSearchActive&&(
-                    <Sidenav isSearchActive={isSearchActive} setSelectedPokemon={setSelectedPokemon} setIsSearchActive={setIsSearchActive}/>
-                )
-            }
+                <Sidenav isSearchActive={isSearchActive} setSelectedPokemon={setSelectedPokemon} setIsSearchActive={setIsSearchActive}/>
         </div>
     )
 }
