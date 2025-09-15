@@ -1,11 +1,12 @@
 import {  first151Pokemon, getFullPokedexNumber } from "../../utils"
-import { useState,useEffect } from "react"
+import { useState,useEffect,useRef } from "react"
 import './Sidenav.scss'
 import { usePokedex } from "../../Context/PokedexContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Sidenav({setIsSearchActive, isSearchActive}){
     const { selectedPokemon, setSelectedPokemon } = usePokedex();
+    const sidenavref = useRef()
 
     const [searchPokemon,setSearchPokemon]=useState('');
     let searchedList = [];
@@ -54,6 +55,18 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
         return () => document.body.classList.remove('sidenav-open')
     }, [isSearchActive])
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (sidenavref.current && !sidenavref.current.contains(event.target)) {
+                setIsSearchActive(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [sidenavref]);
+
 
 
     return(
@@ -64,7 +77,8 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
                 initial={'hidden'}
                 animate={'visible'}
                 exit={'hidden'}
-                key={'sidenav'}>
+                key={'sidenav'}
+                ref={sidenavref}>
                     <div className="sn-header">
                         <p>Search</p>
                         <button aria-label="button to close the search sidemenu"
