@@ -43,13 +43,13 @@ export default function MainAppLayout() {
                     setIsModalOpen={setIsModalOpen}
                     isModalOpen={isModalOpen} />
                 </div>
-                {(isPaletteModalOpen)&&(
+                {/* {(isPaletteModalOpen)&&(
                     <PaletteModal onClose={()=>{setIsPaletteModalOpen(false)}} isPaletteModalOpen={isPaletteModalOpen}>
                         <>
                         <ViewPalette></ViewPalette>
                         </>
                     </PaletteModal>
-                )}
+                )} */}
             </div>
         </motion.div>
     )

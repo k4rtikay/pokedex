@@ -76,6 +76,7 @@
         flex:1;
         background: transparent;
         z-index: 2;
+        margin-right: 10px;
         transition: 0.3s all ease-in;
     }
 
@@ -109,6 +110,8 @@
         font-family: v.$secondary-font;
         font-weight: 450;
         font-size: 1.1rem;
+        border-radius: 12px;
+        padding: 8px;
 
         :focus{
             transition: all 0.2s ease-in;
