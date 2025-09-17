@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react"
 import ColorThief from 'colorthief';
-import './ViewPalette.css'
+import './ViewPalette.scss'
 import { colorForIntensity, randomPokemonNumber } from "../../utils";
 import { ColorTooltip } from "./ColorTooltip";
 import { usePokedex } from "../../Context/PokedexContext";
 import { Modal } from "../Modal/Modal";
 import { useDatabase } from "../../Context/DatabaseContext";
 import { PaletteBar } from "./PaletteBar";
-import { color } from "framer-motion";
 
 
 export function ViewPalette(){
@@ -154,20 +153,20 @@ export function ViewPalette(){
 
     return (
         <div className="viewPalette">
-            <Modal onClose={()=>{setIsSaveModalOpen(false)}} isModalOpen={isSaveModalOpen}>
+            {/* <Modal onClose={()=>{setIsSaveModalOpen(false)}} isModalOpen={isSaveModalOpen}>
                 <form onSubmit={()=>{handleSavingPalettes(paletteName)}}>
                     <p><b>Save Palette</b></p>
                     <label htmlFor="save-palette-name">Enter a name for the palette:</label>
                     <input id="save-palette-name" placeholder="Sample Palette" onChange={(e)=>setPaletteName(e.target.value)} required></input>
                     <button type="submit" disabled={!paletteName}>Save</button>
                 </form>
-            </Modal>
+            </Modal> */}
 
-            <button className="palette-window-button save-palette-button"
+            {/* <button className="palette-window-button save-palette-button"
             onClick={()=>{
                 setIsSaveModalOpen(true)
             }}><i className="fa-regular fa-heart"></i> Save</button>
-            <button className="palette-window-button close-palette-modal">✕ Close</button>
+            <button className="palette-window-button close-palette-modal">✕ Close</button> */}
 
             <div className="paletteBarContainer">
                 {palette?.map((colorObj) => (

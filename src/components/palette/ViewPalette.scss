@@ -1,0 +1,130 @@
+/* .viewPalette{
+    padding: 5px;
+    margin: 0;
+}
+
+.palette-window-button{
+    border: none;
+    border-radius: 4px;
+    margin: 5px;
+    background: rgba(105, 153, 234, 0.5);
+    border: 2px solid rgba(0,0,0,0.2);
+    color: var(--options-color);
+}
+
+.close-palette-modal{
+    background: rgba(251, 0, 0, 0.5) ;
+}
+
+.paletteBarContainer{
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+    min-height: 600px;
+    width: 100%;
+}
+
+.paletteBar{
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: start;
+    width: 100%;
+}
+
+.paletteSpriteContainer{
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+}
+
+.paletteSprite{
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    transform: scale(2);
+    pointer-events: none;
+}
+
+
+
+@media (max-width:768px){
+
+    .viewPalette{
+        flex-direction: column;
+        border: 0 0 15px 15px;
+        overflow: hidden;
+    }
+    .paletteBarContainer{
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    .paletteBar{
+        flex:auto;
+        height: 67px;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .paletteSprite{
+        width: 190px;
+    }
+
+    .colorCopyBtn{
+        flex-direction: row;
+        gap: 12px;
+        width: 100%;
+    }
+} */
+
+@use '../../styles/variables.scss' as v;
+
+
+.viewPalette{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex-grow: 1;
+    font-family: v.$secondary-font;
+
+    .paletteBarContainer{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        overflow: hidden;
+    }
+
+    .paletteSpriteContainer{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        .paletteSprite{
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
+            transform: scale(1.8);
+            pointer-events: none;
+        }
+    }
+}
