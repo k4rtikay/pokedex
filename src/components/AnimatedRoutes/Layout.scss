@@ -1,0 +1,15 @@
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-content {
+  flex-grow: 1; /* Make this area fill the remaining space */
+  min-height: 0; /* Prevent overflow issues */
+
+  /* This is important: make sure the content inside can flex too */
+  display: flex;
+  flex-direction: column;
+}

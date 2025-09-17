@@ -4,11 +4,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: clamp(1rem, 5vw, 3rem ) clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(0.5rem, 3vw, 1.2rem ) clamp(1rem, 3vw, 1.2rem);
     margin: none;
     background-color: v.$background-color;
     font-family: v.$primary-font;
     position: relative;
+    flex-shrink: 0;
 
     button{
       border: none;

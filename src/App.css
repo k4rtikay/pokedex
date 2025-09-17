@@ -1,4 +1,4 @@
-.App{
+/* .App{
     display: flex;
     overflow: hidden;
     scrollbar-width: none;
@@ -12,9 +12,9 @@
     flex: 1;
     position: relative;
     overflow: hidden;
-}
+} */
 
-@media (max-width:768px) {
+/* @media (max-width:768px) {
     .App{
         display: flex;
         flex-direction: column;
@@ -27,4 +27,4 @@
         flex-direction: column;
     }
     
-}
+} */

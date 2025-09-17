@@ -6,6 +6,7 @@ import { animate, motion } from "framer-motion";
 import { usePokedex } from "../../Context/PokedexContext";
 import { PaletteModal } from "../palette/PaletteModal";
 import { ViewPalette } from "../palette/ViewPalette";
+import './MainAppLayout.scss'
 
 export default function MainAppLayout() {
     const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen, isSideMenuOpen } = usePokedex();
@@ -34,15 +35,14 @@ export default function MainAppLayout() {
         exit={{
             opacity: 0.3,
             filter: "blur(5px)",            
-        }}>
-            <div className='App'>
+        }}
+        style={{flexGrow:'1', display: 'flex', flexDirection: 'column'}}>
+            <div className='app'>
                 {/* <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/> */}
-                <div className="contentPane">
                     {/* <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/> */}
                     <Pokecard selectedPokemon={selectedPokemon}
                     setIsModalOpen={setIsModalOpen}
                     isModalOpen={isModalOpen} />
-                </div>
                 {/* {(isPaletteModalOpen)&&(
                     <PaletteModal onClose={()=>{setIsPaletteModalOpen(false)}} isPaletteModalOpen={isPaletteModalOpen}>
                         <>
