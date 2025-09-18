@@ -9,11 +9,11 @@ import { useDatabase } from "../../Context/DatabaseContext";
 import { PaletteBar } from "./PaletteBar";
 
 
-export function ViewPalette(){
+export function ViewPalette({shiny}){
 
     const {frontSprite, setSelectedPokemon, data, palette, setPalette} = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
-    const [spriteToShow, setSpriteToShow] = useState(null);
+    // const [spriteToShow, setSpriteToShow] = useState(null);
 
     // const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
@@ -117,7 +117,7 @@ export function ViewPalette(){
         setPaletteName('');
     }
 
-    console.log(palette)
+    // console.log(palette)
 
     useEffect(()=>{
         const handleSpacebar = (event) => {
@@ -135,20 +135,23 @@ export function ViewPalette(){
         }
     },[setSelectedPokemon, isSaveModalOpen])
 
-    useEffect(()=>{
-        // pokemonName = pokemonName.toLowerCase()
+    // useEffect(()=>{
+    //     // pokemonName = pokemonName.toLowerCase()
 
         
 
-        const animUrl = `/api/sprites/black-white/anim/normal/${pokemonName}.gif`
-        const animFrontSprite = new Image()
+    //     const animUrl = `/api/sprites/black-white/anim/${shiny?'normal':'shiny'}/${pokemonName}.gif`
+    //     const animFrontSprite = new Image()
 
-        animFrontSprite.src = animUrl
+    //     animFrontSprite.src = animUrl
 
-        animFrontSprite.onload = () =>{
-            setSpriteToShow(animUrl)
-        }
-    },[frontSprite])
+    //     animFrontSprite.onload = () =>{
+    //         setSpriteToShow(animUrl)
+    //     }
+    // },[frontSprite])
+
+    // const animUrl = `/api/sprites/black-white/anim/${shiny?'normal':'shiny'}/${pokemonName}.gif`
+    // setSpriteToShow(animUrl)
 
 
     return (
@@ -181,7 +184,7 @@ export function ViewPalette(){
             </div>
 
             <div className="paletteSpriteContainer">
-                <img src={spriteToShow}
+                <img src={`/api/sprites/black-white/anim/${shiny?'shiny':'normal'}/${pokemonName}.gif`}
                 alt="Image of selected pokemon"
                 ref={imgRef}
                 crossOrigin="anonymous"

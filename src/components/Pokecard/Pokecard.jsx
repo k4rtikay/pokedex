@@ -16,6 +16,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
     // const [moveLoading, setMoveLoading]=useState(false)
 
     const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon } = usePokedex();
+    const [isShiny, setIsShiny] = useState(false)
 
     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
@@ -90,7 +91,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const { back_default,back_shiny,front_default,front_shiny } = sprites
 
-    // console.log(selectedPokemon)
+    console.log(isShiny)
 
     return (
         // <div className="pokeEntry">
@@ -189,13 +190,14 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
         <div className="pokecard">
             <main>
-                <ViewPalette></ViewPalette>
+                <ViewPalette shiny = {isShiny}></ViewPalette>
             </main>
             <footer className="pc-action">
                 <button className="pc-action--primary"
                 onClick={()=>{setSelectedPokemon(randomPokemonNumber())}}>Generate</button>
                 <span className="secondary">
-                    <button className="pc-action--secondary"><span className="material-symbols-rounded">star_shine</span></button>
+                    <button className="pc-action--secondary"
+                    onClick={()=>{setIsShiny(!isShiny)}}><span className="material-symbols-rounded">star_shine</span></button>
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">ios_share</span></button>
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">favorite</span></button>
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">palette</span></button>
