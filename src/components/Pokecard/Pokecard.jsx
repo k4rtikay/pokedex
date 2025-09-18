@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { getFullPokedexNumber } from "../../utils";
+import { getFullPokedexNumber, randomPokemonNumber } from "../../utils";
 import { Typecard } from "../Typecard/Typecard";
 import './Pokecard.scss'
 import './paletteButton.css'
@@ -15,7 +15,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
     const { skill, loading: moveLoading, fetchMove } = usePokemonMove();
     // const [moveLoading, setMoveLoading]=useState(false)
 
-    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen } = usePokedex();
+    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon } = usePokedex();
 
     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
@@ -90,7 +90,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const { back_default,back_shiny,front_default,front_shiny } = sprites
 
-    console.log(selectedPokemon)
+    // console.log(selectedPokemon)
 
     return (
         // <div className="pokeEntry">
@@ -192,7 +192,8 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                 <ViewPalette></ViewPalette>
             </main>
             <footer className="pc-action">
-                <button className="pc-action--primary">Generate</button>
+                <button className="pc-action--primary"
+                onClick={()=>{setSelectedPokemon(randomPokemonNumber())}}>Generate</button>
                 <span className="secondary">
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">star_shine</span></button>
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">ios_share</span></button>

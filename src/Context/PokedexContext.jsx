@@ -7,6 +7,7 @@ export function PokedexProvider({children}){
     const [selectedPokemon, setSelectedPokemon] = useState(0)
     const [isPaletteModalOpen, setIsPaletteModalOpen] = useState(false)
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
+    const [palette, setPalette] = useState(null)
 
     const { data, description, loading } = usePokemon(selectedPokemon)
 
@@ -21,6 +22,8 @@ export function PokedexProvider({children}){
         setIsPaletteModalOpen,
         setIsSideMenuOpen,
         isSideMenuOpen,
+        palette,
+        setPalette
     }
 
     return (

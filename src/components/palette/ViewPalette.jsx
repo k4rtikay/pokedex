@@ -11,18 +11,18 @@ import { PaletteBar } from "./PaletteBar";
 
 export function ViewPalette(){
 
-    const {frontSprite, setSelectedPokemon, data} = usePokedex()
+    const {frontSprite, setSelectedPokemon, data, palette, setPalette} = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
     const [spriteToShow, setSpriteToShow] = useState(null);
 
-    const [palette, setPalette] = useState(null)
+    // const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
     const imgRef = useRef(null)
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const [paletteName, setPaletteName] = useState('')
     let { name: pokemonName } = data || {}
 
-    console.log(pokemonName)
+    // console.log(pokemonName)
 
     const handleImageLoad = () => {
         const img = imgRef.current;
@@ -117,7 +117,7 @@ export function ViewPalette(){
         setPaletteName('');
     }
 
-    //console.log(palette)
+    console.log(palette)
 
     useEffect(()=>{
         const handleSpacebar = (event) => {

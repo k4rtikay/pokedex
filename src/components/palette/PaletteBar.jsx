@@ -60,7 +60,7 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
                       className="color-options"
                       onClick={handleCopy}
                       >
-                      <span class="material-symbols-rounded">content_copy</span>
+                      <span className="material-symbols-rounded">content_copy</span>
                       </button>
                       <button
                       className={`color-options lockButton ${isLocked ? 'lockedColor' : ''}`}
@@ -68,13 +68,13 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
                       onClick={() => onLock(id)} // Pass the unique ID up to the parent
                       >
                       {isLocked
-                          ? <span class="material-symbols-rounded">lock</span>
-                          : <span class="material-symbols-rounded">lock_open_right</span>
+                          ? <span className="material-symbols-rounded">lock</span>
+                          : <span className="material-symbols-rounded">lock_open_right</span>
                       }
                       </button>
                       <button className='color-options' aria-label='show shades button'
                       onClick={()=>{setIsShadesOn(true)}}>
-                          <span class="material-symbols-rounded">table_rows</span>
+                          <span className="material-symbols-rounded">table_rows</span>
                       </button>
                     </span>
                 </div>

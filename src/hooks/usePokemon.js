@@ -53,7 +53,7 @@ export function usePokemon(pokemon){
                     let resData = await res.json();
                     console.log("fetched pokemon")
                     setData(resData)
-                    console.log(resData)
+                    // console.log(resData)
                     setPokedexCache(pokemon, resData)
                 }
                 
