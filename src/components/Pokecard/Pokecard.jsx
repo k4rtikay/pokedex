@@ -91,7 +91,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const { back_default,back_shiny,front_default,front_shiny } = sprites
 
-    console.log(isShiny)
+    // console.log(isShiny)
 
     return (
         // <div className="pokeEntry">

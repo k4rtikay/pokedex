@@ -3,13 +3,14 @@ import { useState } from 'react';
 import { colorForIntensity } from '../../utils';
 import useShadesGenerator from '../../hooks/useShades';
 import tinycolor from 'tinycolor2';
+import { Modal } from '../Modal/Modal';
 
 export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
   const { color, isLocked, id } = colorObject;
   const rgbString = `rgb(${color.join(', ')})`;
   const [isShadesOn, setIsShadesOn] = useState(false)
 
-  const shadesArray = useShadesGenerator(rgbString)
+  const shadesArray = useShadesGenerator(rgbString,8)
 
   const handleCopy = () => {
     navigator.clipboard.writeText(rgbString);
@@ -25,32 +26,35 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
       }}
       className={`paletteBar ${isLocked ? "is-locked" : ""}`}
     >
-        {
-            isShadesOn ?
-                <div className="shadesContainer">
-                    {
-                        shadesArray.map((colorObj,colorObjIndex)=>{
-                            const rgbObj = tinycolor(colorObj.color)
-                            const rgbArray = Object.values(rgbObj).slice(1,4)
-                            return(
-                                <button className="shade"
-                                style={{backgroundColor:colorObj.color}}
-                                key={colorObjIndex}
-                                onClick={()=>{
-                                    onShadeSelect(rgbArray,id)
-                                    setIsShadesOn(false)}}>
-                                    <span className='colorString'>{colorObj.color}</span>
-                                    <span className='originalMarker'>{colorObj.isOriginal&&'o'}</span>
-                                </button>
-                            )
-                        })
-                    }
-
-                    <button
-                    className='closeShades'
-                    aria-label='button to close shades overlay'
-                    onClick={()=>{setIsShadesOn(false)}}><span className="fa-solid fa-xmark"></span></button>
-                </div> :
+        {/* {
+            // isShadesOn ? */}
+                <Modal onClose={()=>{setIsShadesOn(false)}} isModalOpen={isShadesOn}>
+                  <div className="shadesContainer">
+                      {
+                          shadesArray.map((colorObj,colorObjIndex)=>{
+                              const rgbObj = tinycolor(colorObj.color)
+                              const rgbArray = Object.values(rgbObj).slice(1,4)
+                              return(
+                                  <button className="shade"
+                                  style={{backgroundColor:colorObj.color, color: colorForIntensity(rgbArray[0], rgbArray[1], rgbArray[2])}}
+                                  key={colorObjIndex}
+                                  onClick={()=>{
+                                      onShadeSelect(rgbArray,id)
+                                      setIsShadesOn(false)}}>
+                                      <span className='colorString'>{colorObj.color}</span>
+                                      <span className='originalMarker'
+                                      >{colorObj.isOriginal&&<span 
+                                      style={{backgroundColor: colorForIntensity(rgbArray[0], rgbArray[1], rgbArray[2])}}></span>}</span>
+                                  </button>
+                              )
+                          })
+                      }
+                      {/* <button
+                      className='closeShades'
+                      aria-label='button to close shades overlay'
+                      onClick={()=>{setIsShadesOn(false)}}><span className="fa-solid fa-xmark"></span></button> */}
+                  </div>
+                </Modal>
 
                 <div className="colorCopyBtn">
                     <p className="colorValue">{rgbString}</p>
@@ -80,7 +84,7 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
                 </div>
 
                 
-        }
+        {/* } */}
         
     </div>
   );

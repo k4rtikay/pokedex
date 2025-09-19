@@ -1,9 +1,9 @@
 import tinycolor from "tinycolor2";
 
-const useShadesGenerator = (inputColor) => {
+const useShadesGenerator = (inputColor, num) => {
   const baseColor = tinycolor(inputColor)
   const { h, s, l } = baseColor.toHsl()
-  const totalShades = 20
+  const totalShades = num
   const shadesArray = []
 
   //Generate the full gradient
