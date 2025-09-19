@@ -8,6 +8,7 @@ import { ViewPalette } from "../palette/ViewPalette.jsx";
 import {PaletteModal} from "../palette/PaletteModal"
 import { usePokedex } from "../../Context/PokedexContext.jsx";
 import { usePokemonMove } from "../../hooks/usePokemonMove.js";
+import SavedPaletteWindow from "../palette/SavedPaletteWindow.jsx";
 
 
 export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
@@ -17,6 +18,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon } = usePokedex();
     const [isShiny, setIsShiny] = useState(false)
+    const [isLibraryOpen, setIsLibraryOpen] = useState(false)
 
     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
@@ -191,6 +193,10 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         <div className="pokecard">
             <main>
                 <ViewPalette shiny = {isShiny}></ViewPalette>
+                {
+                    isLibraryOpen &&
+                    <SavedPaletteWindow></SavedPaletteWindow>
+                }
             </main>
             <footer className="pc-action">
                 <button className="pc-action--primary"
@@ -200,7 +206,8 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                     onClick={()=>{setIsShiny(!isShiny)}}><span className="material-symbols-rounded">star_shine</span></button>
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">ios_share</span></button>
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">favorite</span></button>
-                    <button className="pc-action--secondary"><span className="material-symbols-rounded">palette</span></button>
+                    <button className="pc-action--secondary"
+                    onClick={()=>{setIsLibraryOpen(!isLibraryOpen)}}><span className="material-symbols-rounded">palette</span></button>
                 </span>
             </footer>
         </div>

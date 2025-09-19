@@ -16,7 +16,7 @@ export default function Auth(){
     function redirect(){
         setTimeout(() => {
             navigate('/app')
-        }, 1000);
+        }, 3000);
     }
 
     const variants = {
@@ -32,8 +32,6 @@ export default function Auth(){
 
 
     const { login, signup } = useAuth();
-    const [searchParams] = useSearchParams()
-    const mode = searchParams.get('mode') ?? 'signin'
     const [isAuthenticating, setIsAuthenticating]= useState(false)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -46,15 +44,15 @@ export default function Auth(){
             setIsSuccess(false)
             setIsAuthenticating(true)
             setError(null)
-            if(mode=='signin'){
+            if(isSignIn){
                 await login(auth,email, password)
                 redirect()
                 setIsSuccess(true)
             }
             else{
                 await signup(auth,email, password, username)
-                redirect()
                 setIsSuccess(true)
+                redirect()
             }        
         }catch(err){
             console.error(err.message)

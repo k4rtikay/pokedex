@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    position: absolute;
+    background-color: rgba(239, 239, 239, 1);
 }
 
 .savedPaletteContainer{
