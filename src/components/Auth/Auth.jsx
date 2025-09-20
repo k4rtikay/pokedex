@@ -47,7 +47,7 @@ export default function Auth(){
             if(isSignIn){
                 await login(auth,email, password)
                 redirect()
-                setIsSuccess(true)
+                setIsSuccess(true)  
             }
             else{
                 await signup(auth,email, password, username)

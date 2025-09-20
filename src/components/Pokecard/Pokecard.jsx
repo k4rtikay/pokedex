@@ -191,12 +191,12 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         // </div>
 
         <div className="pokecard">
+            {
+                isLibraryOpen &&
+                    <SavedPaletteWindow setIsLibraryOpen={setIsLibraryOpen}></SavedPaletteWindow>
+            }
             <main>
                 <ViewPalette shiny = {isShiny}></ViewPalette>
-                {
-                    isLibraryOpen &&
-                    <SavedPaletteWindow></SavedPaletteWindow>
-                }
             </main>
             <footer className="pc-action">
                 <button className="pc-action--primary"
