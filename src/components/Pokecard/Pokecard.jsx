@@ -18,6 +18,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon } = usePokedex();
     const [isShiny, setIsShiny] = useState(false)
+    const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const [isLibraryOpen, setIsLibraryOpen] = useState(false)
 
     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
@@ -193,7 +194,9 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         <div className="pokecard">
             <SavedPaletteWindow isLibraryOpen={isLibraryOpen} setIsLibraryOpen={setIsLibraryOpen}></SavedPaletteWindow>
             <main>
-                <ViewPalette shiny = {isShiny}></ViewPalette>
+                <ViewPalette shiny={isShiny}
+                isSaveModalOpen={isSaveModalOpen}
+                setIsSaveModalOpen={setIsSaveModalOpen}></ViewPalette>
             </main>
             <footer className="pc-action">
                 <button className="pc-action--primary"
@@ -202,7 +205,8 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                     <button className="pc-action--secondary"
                     onClick={()=>{setIsShiny(!isShiny)}}><span className="material-symbols-rounded">star_shine</span></button>
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">ios_share</span></button>
-                    <button className="pc-action--secondary"><span className="material-symbols-rounded">favorite</span></button>
+                    <button className="pc-action--secondary"
+                    onClick={()=>{setIsSaveModalOpen(true)}}><span className="material-symbols-rounded">favorite</span></button>
                     <button className="pc-action--secondary"
                     onClick={()=>{setIsLibraryOpen(!isLibraryOpen)}}><span className="material-symbols-rounded">palette</span></button>
                 </span>

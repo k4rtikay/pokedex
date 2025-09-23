@@ -9,7 +9,7 @@ import { useDatabase } from "../../Context/DatabaseContext";
 import { PaletteBar } from "./PaletteBar";
 
 
-export function ViewPalette({shiny}){
+export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
 
     const {frontSprite, setSelectedPokemon, data, palette, setPalette} = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
@@ -18,7 +18,6 @@ export function ViewPalette({shiny}){
     // const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
     const imgRef = useRef(null)
-    const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const [paletteName, setPaletteName] = useState('')
     let { name: pokemonName } = data || {}
 
@@ -156,14 +155,20 @@ export function ViewPalette({shiny}){
 
     return (
         <div className="viewPalette">
-            {/* <Modal onClose={()=>{setIsSaveModalOpen(false)}} isModalOpen={isSaveModalOpen}>
-                <form onSubmit={()=>{handleSavingPalettes(paletteName)}}>
-                    <p><b>Save Palette</b></p>
+            <Modal onClose={()=>{setIsSaveModalOpen(false)}} isModalOpen={isSaveModalOpen}>
+                <form className="vp-save" onSubmit={()=>{handleSavingPalettes(paletteName)}}>
+                    <h1>Save Palette</h1>
+                    <span>
+                        {palette?.map((colorObj,colorObjIndex) => (
+                            <div style={{backgroundColor: `rgb(${colorObj.color.join(', ')})`}}
+                            key={colorObjIndex}></div>
+                        ))}
+                    </span>
                     <label htmlFor="save-palette-name">Enter a name for the palette:</label>
                     <input id="save-palette-name" placeholder="Sample Palette" onChange={(e)=>setPaletteName(e.target.value)} required></input>
                     <button type="submit" disabled={!paletteName}>Save</button>
                 </form>
-            </Modal> */}
+            </Modal>
 
             {/* <button className="palette-window-button save-palette-button"
             onClick={()=>{
