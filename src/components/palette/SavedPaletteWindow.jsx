@@ -22,14 +22,14 @@ export default function SavedPaletteWindow({isLibraryOpen,setIsLibraryOpen}){
         }
     }
 
-    if(loading){
-        console.log('loading palettes')
-        return(
-            <div>
-                <p>Palettes are loading...</p>
-            </div>
-        )
-    }
+    // if(loading){
+    //     console.log('loading palettes')
+    //     return(
+    //         <div>
+    //             <p>Palettes are loading...</p>
+    //         </div>
+    //     )
+    // }
 
     console.log(savePalette)    
     

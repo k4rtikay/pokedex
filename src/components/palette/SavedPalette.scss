@@ -1,12 +1,12 @@
 .paletteCard{
-    height: 300px;
-    width: 240px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 2px solid;
     overflow: hidden;
     border-radius: 20px;
+    padding: 8px;
 }
 
 .paletteCard button{
@@ -23,9 +23,10 @@
 .palette-color-stripes{
     display: flex;
     overflow: hidden;
-    height: 100px;
+    height: 80px;
     width: 100%;
     min-width: 0;
+    border-radius: 12px;
 }
 
 .savedColorStripe{
@@ -46,6 +47,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    span{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .palette-content p{
@@ -54,13 +62,11 @@
 }
 
 .saved-palette-options{
-    width: 50%;
     display: flex;
-    justify-content: space-around;
+    gap: 16px;
 }
 
 .palette-sprites-container{
-    margin-top: 16px;
     display: flex; 
     align-items: center;
     justify-content: space-around;

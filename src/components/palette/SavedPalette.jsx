@@ -1,6 +1,6 @@
 import { useState,useEffect,useRef } from 'react';
 import { useDatabase } from '../../Context/DatabaseContext';
-import './SavedPalette.css'
+import './SavedPalette.scss'
 import { Modal } from '../Modal/Modal';
 
 export default function SavedPalette(props){
@@ -58,25 +58,27 @@ export default function SavedPalette(props){
                     })}
                 </div>
                 <div className="palette-content">
-                    {
-                        (!isBeingEdited)? <p>{editedName}</p> : 
-                        <form onSubmit={()=>{handleUpdatePalette(editedName)}}>
-                            <input type="text" value={editedName} onBlur={()=>{
-                                console.log('onblur fired')
-                                setEditedName(name)
-                                setIsBeingEdited(false)
-                            }} onChange={(e)=>{
-                                setEditedName(e.target.value)
-                            }} ref={inputRef}/>
-                            <button type='submit' onMouseDown={()=>{handleUpdatePalette(editedName)}}>update</button>
-                        </form>
-                    }
-                    <div className='saved-palette-options'>
-                        <button><span className="fa-solid fa-file-export"></span></button>
-                        <button onClick={()=>{setIsBeingEdited(true)}}><span className="fa-solid fa-pen-to-square"></span></button>
-                        <button
-                        onClick={()=>{setIsDeleteModalOpen(true)}}><span className="fa-regular fa-trash-can"></span></button>
-                    </div>
+                    <span>
+                        {
+                            (!isBeingEdited)? <p>{editedName}</p> :
+                            <form onSubmit={()=>{handleUpdatePalette(editedName)}}>
+                                <input type="text" value={editedName} onBlur={()=>{
+                                    console.log('onblur fired')
+                                    setEditedName(name)
+                                    setIsBeingEdited(false)
+                                }} onChange={(e)=>{
+                                    setEditedName(e.target.value)
+                                }} ref={inputRef}/>
+                                <button type='submit' onMouseDown={()=>{handleUpdatePalette(editedName)}}>update</button>
+                            </form>
+                        }
+                        <div className='saved-palette-options'>
+                            <button><span className="fa-solid fa-file-export"></span></button>
+                            <button onClick={()=>{setIsBeingEdited(true)}}><span className="fa-solid fa-pen-to-square"></span></button>
+                            <button
+                            onClick={()=>{setIsDeleteModalOpen(true)}}><span className="fa-regular fa-trash-can"></span></button>
+                        </div>
+                    </span>
                     <div className="palette-sprites-container">
                     {
                         uniqueSprites.map((image, imageIndex) => {

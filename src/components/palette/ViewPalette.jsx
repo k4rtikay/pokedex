@@ -109,6 +109,8 @@ export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
 
         setSavePalette(prevSavedPalettes => [...prevSavedPalettes, newSavedPalette]);
 
+        console.log(newSavedPalette)
+
         addPalette(newSavedPalette)
 
         // Close the modal and reset the input field
@@ -156,7 +158,9 @@ export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
     return (
         <div className="viewPalette">
             <Modal onClose={()=>{setIsSaveModalOpen(false)}} isModalOpen={isSaveModalOpen}>
-                <form className="vp-save" onSubmit={()=>{handleSavingPalettes(paletteName)}}>
+                <form className="vp-save" onSubmit={(event)=>{
+                    event.preventDefault()
+                    handleSavingPalettes(paletteName)}}>
                     <h1>Save Palette</h1>
                     <span>
                         {palette?.map((colorObj,colorObjIndex) => (
