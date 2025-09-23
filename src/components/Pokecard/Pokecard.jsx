@@ -191,10 +191,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         // </div>
 
         <div className="pokecard">
-            {
-                isLibraryOpen &&
-                    <SavedPaletteWindow setIsLibraryOpen={setIsLibraryOpen}></SavedPaletteWindow>
-            }
+            <SavedPaletteWindow isLibraryOpen={isLibraryOpen} setIsLibraryOpen={setIsLibraryOpen}></SavedPaletteWindow>
             <main>
                 <ViewPalette shiny = {isShiny}></ViewPalette>
             </main>

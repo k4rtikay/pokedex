@@ -27,7 +27,7 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-     const variants = {
+    const variants = {
         hidden:{
             x: '100%',
             transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
