@@ -45,9 +45,14 @@ export default function SavedPalette(props){
         <div>
             <div className="paletteCard">
                 <Modal isModalOpen={isDeleteModalOpen} onClose={()=>{setIsDeleteModalOpen(false)}}>
-                    <p>Are you sure you want to delete this palette?</p>
-                    <button onClick={()=>{setIsDeleteModalOpen(false)}}>Cancel</button>
-                    <button onClick={()=>{deletePalette(id)}}>Delete</button>
+                    <form className='plc-delete' method="dialog">
+                        <h1>Delete Palette</h1>
+                        <p>Are you sure you want to delete this palette?</p>
+                        <span>
+                            <button onClick={()=>{setIsDeleteModalOpen(false)}}>Cancel</button>
+                            <button className='plc-delete--btn' onClick={()=>{deletePalette(id)}}>Delete</button>
+                        </span>
+                    </form>
                 </Modal>
                 <div className="palette-color-stripes">
                     {palette.map((paletteObj,paletteObjIndex)=>{
@@ -73,10 +78,10 @@ export default function SavedPalette(props){
                             </form>
                         }
                         <div className='saved-palette-options'>
-                            <button onClick={()=>{setIsBeingEdited(true)}}><span class="material-symbols-rounded">border_color</span></button>
-                            <button><span class="material-symbols-rounded">ios_share</span></button>
+                            <button onClick={()=>{setIsBeingEdited(true)}}><span className="material-symbols-rounded">border_color</span></button>
+                            <button><span className="material-symbols-rounded">ios_share</span></button>
                             <button
-                            onClick={()=>{setIsDeleteModalOpen(true)}}><span class="material-symbols-rounded">delete</span></button>
+                            onClick={()=>{setIsDeleteModalOpen(true)}}><span className="material-symbols-rounded">delete</span></button>
                         </div>
                     </span>
                     <div className="palette-sprites-container">
