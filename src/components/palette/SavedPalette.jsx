@@ -69,14 +69,14 @@ export default function SavedPalette(props){
                                 }} onChange={(e)=>{
                                     setEditedName(e.target.value)
                                 }} ref={inputRef}/>
-                                <button type='submit' onMouseDown={()=>{handleUpdatePalette(editedName)}}>update</button>
+                                <button type='submit' onMouseDown={()=>{handleUpdatePalette(editedName)}}><span class="material-symbols-rounded">check</span></button>
                             </form>
                         }
                         <div className='saved-palette-options'>
-                            <button><span className="fa-solid fa-file-export"></span></button>
-                            <button onClick={()=>{setIsBeingEdited(true)}}><span className="fa-solid fa-pen-to-square"></span></button>
+                            <button onClick={()=>{setIsBeingEdited(true)}}><span class="material-symbols-rounded">border_color</span></button>
+                            <button><span class="material-symbols-rounded">ios_share</span></button>
                             <button
-                            onClick={()=>{setIsDeleteModalOpen(true)}}><span className="fa-regular fa-trash-can"></span></button>
+                            onClick={()=>{setIsDeleteModalOpen(true)}}><span class="material-symbols-rounded">delete</span></button>
                         </div>
                     </span>
                     <div className="palette-sprites-container">

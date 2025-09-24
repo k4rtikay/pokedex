@@ -3,10 +3,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid;
+    border: 1px solid rgba(0, 0, 0, 0.31);
     overflow: hidden;
     border-radius: 20px;
     padding: 8px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .paletteCard button{
@@ -46,34 +47,98 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 
     span{
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: relative;
+
+        form{
+            display: flex;
+            justify-content: start;
+            padding: 0;
+            margin: 0;
+
+            input{  
+                width: 60%;
+                height: 32px;
+                margin: 2px 0;
+                border: none;
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: 600;
+                outline: none;
+                appearance: none;
+                -webkit-appearance: none;
+                border-bottom: 2px solid #CCC;
+                border-radius: 0;
+                transition: border-color 0.3s ease;
+
+                &:focus{
+                    border-bottom-color: #000000;
+                }
+            }
+
+            button{
+                padding: 0;
+                margin:0;
+                display: inline;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                margin: -10px;
+                margin-left: 2px;
+            }
+        }
     }
 }
 
 .palette-content p{
     margin: 8px;
-    font-size: 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .saved-palette-options{
     display: flex;
     gap: 16px;
+
+    button{
+        padding: 0;
+        margin:0;
+        display: inline;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin: -10px;
+
+        .material-symbols-rounded {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 350,
+        'GRAD' 0,
+        'opsz' 24
+        }
+    }
 }
 
 .palette-sprites-container{
     display: flex; 
-    align-items: center;
-    justify-content: space-around;
     flex-wrap: wrap;
+    padding: 0;
+    margin-top: 8px;
+    width: 100%;
+    height: 50px;
 }
 
 .palette-sprites-container img{
-    width: 64px;
-    height: auto;
+    transform: scale(1);
+    padding: 0;
+    margin: 0;
+    height: 100%;
 }
