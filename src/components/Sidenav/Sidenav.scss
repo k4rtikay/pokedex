@@ -79,14 +79,14 @@
     }
 }
 
-body.sidenav-open{
+body.menu-open{
     overflow: hidden;
     // position: fixed;
 
-    .contentPane,.menu-top{
+    .app{
         pointer-events: none;
     }
-}
+}   
 
 /* .sidenav{
     display: flex;

@@ -70,6 +70,15 @@ export default function PopupMenu(){
         };
     }, [dropdownRef]);
 
+    useEffect(() => {
+        if (isMenuActive) {
+            document.body.classList.add('menu-open')
+        } else {
+            document.body.classList.remove('menu-open')
+        }
+        return () => document.body.classList.remove('menu-open')
+    }, [isMenuActive])
+
     return(
         <div className="menu-container" ref = {dropdownRef}>
 

@@ -45,14 +45,13 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
     // return () => window.removeEventListener('resize', handleResize);
     // }, []);
 
-    // In your SideNav component
     useEffect(() => {
         if (isSearchActive) {
-            document.body.classList.add('sidenav-open')
+            document.body.classList.add('menu-open')
         } else {
-            document.body.classList.remove('sidenav-open')
+            document.body.classList.remove('menu-open')
         }
-        return () => document.body.classList.remove('sidenav-open')
+        return () => document.body.classList.remove('menu-open')
     }, [isSearchActive])
 
     useEffect(() => {

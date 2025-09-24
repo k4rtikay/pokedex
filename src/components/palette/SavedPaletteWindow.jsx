@@ -3,7 +3,7 @@ import SavedPalette from "./SavedPalette"
 import { useDatabase } from "../../Context/DatabaseContext"
 import { useAuth } from '../../Context/AuthContext'
 import { AnimatePresence,motion } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 export default function SavedPaletteWindow({isLibraryOpen,setIsLibraryOpen}){
 
@@ -30,6 +30,27 @@ export default function SavedPaletteWindow({isLibraryOpen,setIsLibraryOpen}){
     //         </div>
     //     )
     // }
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (savedPalettesRef.current && !savedPalettesRef.current.contains(event.target)) {
+                setIsLibraryOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [savedPalettesRef]);
+
+    useEffect(() => {
+        if (isLibraryOpen) {
+            document.body.classList.add('menu-open')
+        } else {
+            document.body.classList.remove('menu-open')
+        }
+        return () => document.body.classList.remove('menu-open')
+    }, [isLibraryOpen])
 
     console.log(savePalette)    
     
