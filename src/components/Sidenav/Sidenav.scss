@@ -17,6 +17,12 @@
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
     font-family: v.$secondary-font;
 
+    > div{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
     .sn-header{
         display: flex;
         align-items: center;
@@ -29,15 +35,15 @@
         letter-spacing: 1px;
         font-family: v.$primary-font;
     }
+}
 
-    input{
+input{
         border: 2.5px solid rgba(0, 0, 0, 0.18);
         width: 100%;
         border-radius: 12px;
         padding: 8px;
         font-size: inherit;
     }
-}
 
 .sn-list{
     overflow-y: auto;
@@ -59,6 +65,7 @@
         font-size: 1.1rem;
         font-family: v.$secondary-font;
         transition: all 0.2s ease-in;
+        border: 1px solid rgba(0, 0, 0, 0.18);
 
         &:hover{
             transform: scale(1.01) translateY(-1px);
@@ -92,103 +99,20 @@ body.menu-open{
     }
 }   
 
-/* .sidenav{
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    padding: 10px;
-    background-color: var(--menu-color);
-    color: var(--pokemon-entry-color);
-    transition: 0.3s ease-in-out background-color;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 100;
-    overflow: hidden;
-}
-
-.sidenav.hidden {
-  display: none;
-}
-
-.scrollPoke{
-    display: flex;
-    flex: 1;
-    min-height: 0;
-    flex-direction: column;
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
-.nav-button{
-    display: flex;
-    gap: 35%;
-    margin: 2px;
-    border: 2px solid #000000;
-    border-radius: 19px;
-    font-weight: bolder;
-    background-color: var(--background-color);
-    font-family: "VT323", monospace;
-    font-size: larger;
-    color: var(--pokemon-entry-color);
-}
-
-.nav-button:hover{
-    background-color: var(--button-primary-hover);
-    border: 2px solid var(--button-primary-border);
-    transform: scale(1.01) translateY(-1.6px);
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25); 
-}
-
-.nav-button-selected{
-    display: flex;
-    gap: 35%;
-    margin: 2px;
-    border: 2px solid var(--button-primary-border);   
-    border-radius: 19px;
-    font-weight: bolder;    
-    background-color:var(--button-primary-bg);
-    color: white;
-    transform: scale(1.01) translateY(-1.6px);
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.35); 
-}
-
-.nav-button-selected:hover{
-    transform: scale(1.01) translateY(-1.6px);
-    transition: all 0.3s ease-in-out;
-    background-color:var(--button-primary-bg);
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.35); 
-}
-
-input{
-    border: 2px solid;
-    border-radius: 10px;
-    padding: 5px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-family: "VT323", monospace;
-    font-size: larger;
-} */
-
-/* @media (max-width:768px){
+@media (min-width:1024px){
     .sidenav{
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        width: 50vw;
+    position: relative;
+    background-color: transparent;
+    height: 100vh;
+    overflow: hidden;
+    padding: 16px 8px;
+    width: 250px;
+    font-family: v.$secondary-font;
     }
 
-    .scrollPoke{
-        flex-grow: 1;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .nav-button{
-        font-size: 1rem;
-    }
-} */
+    // .sn-list{
+    //     height: 100%;
+    //     overflow-y: auto;
+    // }
+}
 
