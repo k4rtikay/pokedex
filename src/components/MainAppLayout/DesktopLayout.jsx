@@ -1,5 +1,5 @@
 import { usePokedex } from "../../Context/PokedexContext";
-import { Pokecard } from "../Pokecard/Pokecard";
+import PokecardDesktop from "../Pokecard/PokecardDesktop";
 import SidenavDesktop from "../Sidenav/SidenavDesktop";
 import './MainAppLayout.scss'
 
@@ -9,7 +9,7 @@ export default function DesktopLayout(){
     return(
         <div className="dl-container">
             <SidenavDesktop></SidenavDesktop>
-            <Pokecard selectedPokemon={selectedPokemon}
+            <PokecardDesktop selectedPokemon={selectedPokemon}
             setIsModalOpen={setIsModalOpen}
             isModalOpen={isModalOpen}/>
         </div>

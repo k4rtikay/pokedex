@@ -257,7 +257,7 @@
         justify-content: center;
         font-family: v.$primary-font;
         border: none;
-        }
+    }
 
     .pc-action--primary{
         height: 40%;
@@ -273,7 +273,7 @@
     .pc-action--secondary{
         background: none;
         max-width: clamp(32px, 10vw, 45px);
-        max-height: clamp(32px, 10vw, 45px);;
+        max-height: clamp(32px, 10vw, 40px);;
         border: 2px solid #A18821;
         border-radius: 50%;
         padding: 8px;
