@@ -33,21 +33,18 @@ export default function PopupMenu(){
             transition: {duration: 0.5, ease: [0.87, 0, 0.13, 1]}
         },
         openDesktop:{
-            x: -145,
-            width: 200,
-            height: 200,
+            // x: -145,
+            scaleX: 1,
+            scaleY: 1,
             opacity: 1,
             top: '-24px',
-            left: '-45px',
+            left: '-190px',
 	        transition: {duration: 0.5, ease: [0.68, -0.6, 0.32, 1.35]}
         },
         closedDesktop:{
-            x:0,
-            width: 2,
-            height: 2,
+            scaleX: 0,
+            scaleY: 0,
             opacity: 0,
-            top: '0px',
-            left: '0px',
             transition: {duration: 0.5, ease: [0.87, 0, 0.13, 1]}
         }
     }
@@ -55,11 +52,11 @@ export default function PopupMenu(){
     const nameVariants ={
         open:{
             opacity: 1,
-            transition: {duration: 0.5, ease: [0.68, -0.6, 0.32, 1.35]}
+            transition: {duration: 0.7, ease: [0.68, -0.6, 0.32, 1.35]}
         },
         closed:{
             opacity: 0,
-            transition: {duration: 0.5, ease: [0.68, -0.6, 0.32, 1.35]}
+            transition: {duration: 0.4, ease: [0.68, -0.6, 0.32, 1.35]}
         }
     }
 
@@ -72,7 +69,7 @@ export default function PopupMenu(){
         closed:{
             opacity: 0,
             x: -100,
-            transition: {duration: 0.5, ease: [0.16, 1, 0.3, 1]}
+            transition: {duration: 0.2, ease: [0.16, 1, 0.3, 1]}
         }
     }
 
@@ -116,7 +113,7 @@ export default function PopupMenu(){
                         initial='closed'
                         aria-hidden={!isMenuActive}
                         animate={isMenuActive?'open':'closed'}
-                        style={{display: isMenuActive? 'block' : 'none'}}>{(globalUser?globalUser.displayName:'Guest')}</motion.div>
+                        style={{pointerEvents: isMenuActive? 'auto' : 'none'}}>{(globalUser?globalUser.displayName:'Guest')}</motion.div>
 
                     </div> 
                 </>

@@ -26,7 +26,7 @@
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    transform-origin: top right;
+    transform-origin: top left;
 }
 
 .menu-nav {
@@ -87,7 +87,8 @@ footer {
     .menu{
         align-items: end;
         gap: 0.7rem;
-        left: 200;
+        transform-origin: top right;
+        max-width: 200px;
 
         footer{
             font-size: 0.7rem;
