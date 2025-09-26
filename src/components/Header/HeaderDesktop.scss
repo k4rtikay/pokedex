@@ -1,0 +1,47 @@
+@use '../../styles/variables.scss' as v;
+
+.hd-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    margin: none;
+    background-color: v.$background-color;
+    font-family: v.$primary-font;
+    position: relative;
+    flex-shrink: 0;
+
+    button{
+      border: none;
+      background: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav{
+        font-family: v.$secondary-font;
+        display: flex;
+        justify-content: space-between;
+        width: 30%;
+
+        button{
+            font-family: inherit;
+            font-size: inherit;
+        }
+    }
+}
+
+.hd-title{
+  color: #F3D617;
+  text-shadow:
+  -2px -2px 0 #4370F4,
+    2px -2px 0 #4370F4,
+  -2px  2px 0 #4370F4,
+    2px  2px 0 #4370F4;
+  margin: 1rem;
+  animation-delay: 0.2s;
+  font-size: clamp(1.5rem, 8vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}

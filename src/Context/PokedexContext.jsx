@@ -8,8 +8,21 @@ export function PokedexProvider({children}){
     const [isPaletteModalOpen, setIsPaletteModalOpen] = useState(false)
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
     const [palette, setPalette] = useState(null)
+    const [isDesktop, setIsDesktop] = useState(false)
 
     const { data, description, loading } = usePokemon(selectedPokemon)
+
+    useEffect(()=>{
+        const handleResize =()=>{
+            setIsDesktop(window.innerWidth>=1024)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return (()=>{ window.removeEventListener('resize', handleResize)})
+    },[])
+
+
 
     const value = {
         selectedPokemon,
@@ -23,7 +36,8 @@ export function PokedexProvider({children}){
         setIsSideMenuOpen,
         isSideMenuOpen,
         palette,
-        setPalette
+        setPalette,
+        isDesktop
     }
 
     return (

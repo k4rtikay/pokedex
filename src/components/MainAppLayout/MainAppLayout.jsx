@@ -7,9 +7,11 @@ import { usePokedex } from "../../Context/PokedexContext";
 import { PaletteModal } from "../palette/PaletteModal";
 import { ViewPalette } from "../palette/ViewPalette";
 import './MainAppLayout.scss'
+import MobileLayout from "./MobileLayout";
+import DesktopLayout from "./DesktopLayout";
 
 export default function MainAppLayout() {
-    const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen, isSideMenuOpen } = usePokedex();
+    const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen, isSideMenuOpen, isDesktop } = usePokedex();
 
     const [isModalOpen, setIsModalOpen] = useState(false);  
 
@@ -38,18 +40,10 @@ export default function MainAppLayout() {
         }}
         style={{flexGrow:'1', display: 'flex', flexDirection: 'column'}}>
             <div className='app'>
-                {/* <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/> */}
-                    {/* <Sidenav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} isSideMenuOpen={isSideMenuOpen}/> */}
-                    <Pokecard selectedPokemon={selectedPokemon}
-                    setIsModalOpen={setIsModalOpen}
-                    isModalOpen={isModalOpen} />
-                {/* {(isPaletteModalOpen)&&(
-                    <PaletteModal onClose={()=>{setIsPaletteModalOpen(false)}} isPaletteModalOpen={isPaletteModalOpen}>
-                        <>
-                        <ViewPalette></ViewPalette>
-                        </>
-                    </PaletteModal>
-                )} */}
+                {isDesktop?<DesktopLayout/>:<MobileLayout/>}
+                {/* <Pokecard selectedPokemon={selectedPokemon}
+                setIsModalOpen={setIsModalOpen}
+                isModalOpen={isModalOpen} /> */}
             </div>
         </motion.div>
     )
