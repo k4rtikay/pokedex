@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { Modal } from '../Modal/Modal'
 import Auth from '../Auth/Auth'
+import { usePokedex } from '../../Context/PokedexContext'
 
 
 export default function PopupMenu(){
@@ -12,6 +13,7 @@ export default function PopupMenu(){
     const [isAuthOpen, setIsAuthOpen] = useState(false)
     const { globalUser,logout } = useAuth()
     const navigate = useNavigate();
+    const { isDesktop } = usePokedex()
 
     const variants = {
         open:{
@@ -21,8 +23,26 @@ export default function PopupMenu(){
             top: '-24px',
             left: '-10px',
 	        transition: {duration: 0.5, ease: [0.68, -0.6, 0.32, 1.35]}
-    },
+        },
         closed:{
+            width: 2,
+            height: 2,
+            opacity: 0,
+            top: '0px',
+            left: '0px',
+            transition: {duration: 0.5, ease: [0.87, 0, 0.13, 1]}
+        },
+        openDesktop:{
+            x: -145,
+            width: 200,
+            height: 200,
+            opacity: 1,
+            top: '-24px',
+            left: '-45px',
+	        transition: {duration: 0.5, ease: [0.68, -0.6, 0.32, 1.35]}
+        },
+        closedDesktop:{
+            x:0,
             width: 2,
             height: 2,
             opacity: 0,
@@ -90,12 +110,14 @@ export default function PopupMenu(){
                     <div className={"menu-top "}>
                         <button className="menu-trigger"
                         onClick={()=>{setIsMenuActive(true)}}><span className="h-icon material-symbols-rounded">account_circle</span></button>
+
                         <motion.div
                         variants={nameVariants}
                         initial='closed'
                         aria-hidden={!isMenuActive}
                         animate={isMenuActive?'open':'closed'}
-                        style={{pointerEvents: isMenuActive? 'auto' : 'none'}}>{(globalUser?globalUser.displayName:'Guest')}</motion.div>
+                        style={{display: isMenuActive? 'block' : 'none'}}>{(globalUser?globalUser.displayName:'Guest')}</motion.div>
+
                     </div> 
                 </>
                 <AnimatePresence>
@@ -104,14 +126,14 @@ export default function PopupMenu(){
                                 <motion.div
                                 key={'username'}
                                 variants={variants}
-                                initial= 'closed'
+                                initial= {isDesktop?'closedDesktop':'closed'}
                                 className='menu'
-                                animate= 'open' 
-                                exit={'closed'}
+                                animate= {isDesktop?'openDesktop':'open'} 
+                                exit={isDesktop?'closedDesktop':'closed'}
                                 >
                                         <div className="menu-nav">
-                                            <motion.button variants={navVariants}>About</motion.button>
-                                            <motion.button variants={navVariants}>Feedback</motion.button>
+                                            {!isDesktop&&<motion.button variants={navVariants}>About</motion.button>}
+                                            {!isDesktop&&<motion.button variants={navVariants}>Feedback</motion.button>}
                                             <motion.button variants={navVariants}>Dark Mode</motion.button>
                                         </div>
                                         <motion.button variants={navVariants}

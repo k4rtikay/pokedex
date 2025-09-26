@@ -4,30 +4,28 @@
 .menu-container{
     position: relative;
     font-family: v.$secondary-font;
-    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-size: 1.5rem;
 }
 
 .menu-trigger{
     border: none;
     background:none;
     cursor: pointer;
+    position: relative;
 }
 
 .menu{
     position: absolute;
-
     width: 240px;
     background-color: #F0F0F0;
     border-radius: 16px;
     z-index: 99;
     padding: 1rem;
     gap: 1rem;
-
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-
     transform-origin: top right;
 }
 
@@ -66,7 +64,38 @@ footer {
     gap: 1rem;
     top: -16px;
 
-    p{
-        transition: 0.5s ease-in all;
+    div{
+        font-weight: 500;
     }
+}
+
+@media (min-width: 1024px) {
+    .menu-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: 1rem;
+    }
+    
+    .menu-top{
+        position: absolute;
+        direction: rtl;
+        
+    }
+
+    .menu{
+        align-items: end;
+        gap: 0.7rem;
+        left: 200;
+
+        footer{
+            font-size: 0.7rem;
+        }
+    }
+
+    .menu-nav{
+        padding-top: 3.5rem;
+    }
+
 }

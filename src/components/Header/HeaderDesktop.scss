@@ -3,8 +3,9 @@
 .hd-container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    gap: 45%;
     margin: none;
     background-color: v.$background-color;
     font-family: v.$primary-font;
@@ -23,6 +24,7 @@
         font-family: v.$secondary-font;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 30%;
 
         button{
@@ -39,7 +41,6 @@
     2px -2px 0 #4370F4,
   -2px  2px 0 #4370F4,
     2px  2px 0 #4370F4;
-  margin: 1rem;
   animation-delay: 0.2s;
   font-size: clamp(1.5rem, 8vw, 2.5rem);
   font-weight: 500;
