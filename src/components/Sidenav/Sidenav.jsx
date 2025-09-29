@@ -8,6 +8,7 @@ import SearchList from "./SearchList";
 export function Sidenav({setIsSearchActive, isSearchActive}){
     // const { selectedPokemon, setSelectedPokemon } = usePokedex();
     const sidenavref = useRef()
+    const { isDesktop } = usePokedex()
 
     // const [searchPokemon,setSearchPokemon]=useState('');
     // let searchedList = [];
@@ -71,7 +72,7 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
 
     return(
             <AnimatePresence>
-                {isSearchActive &&
+                {(isSearchActive || isDesktop ) &&
                 <motion.nav className={`sidenav`}
                 variants={variants}
                 initial={'hidden'}

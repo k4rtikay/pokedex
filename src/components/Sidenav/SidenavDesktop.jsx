@@ -3,8 +3,12 @@ import './Sidenav.scss'
 
 export default function SidenavDesktop(){
     return(
-        <div className="sidenav">
-            <SearchList></SearchList>
-        </div>
+        // <aside='sidenav-desktop'>
+        //     <SearchList></SearchList>
+        // </aside>
+
+        <aside className="sidenav-desktop">
+           <SearchList></SearchList> 
+        </aside>
     )
 }

@@ -23,7 +23,7 @@ export default function SearchList(){
     }
 
     return(
-        <div>
+        <>
             <input placeholder="E.g. 001 or Bulba.."
             onChange={(e)=>{
                 setSearchPokemon(e.target.value)
@@ -41,6 +41,6 @@ export default function SearchList(){
                     </button>
             })}
             </div>
-        </div>
+        </>
     )
 }

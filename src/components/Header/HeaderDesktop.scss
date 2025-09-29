@@ -4,13 +4,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 1.5rem;
-    gap: 45%;
+    padding: 1rem;
+    gap: 55%;
     margin: none;
     background-color: v.$background-color;
     font-family: v.$primary-font;
     position: relative;
     flex-shrink: 0;
+    height: 70px;
 
     button{
       border: none;
@@ -42,7 +43,7 @@
   -2px  2px 0 #4370F4,
     2px  2px 0 #4370F4;
   animation-delay: 0.2s;
-  font-size: clamp(1.5rem, 8vw, 2.5rem);
+  font-size: clamp(1.5rem, 8vw, 1.8rem);
   font-weight: 500;
   letter-spacing: 0.1em;
 }
