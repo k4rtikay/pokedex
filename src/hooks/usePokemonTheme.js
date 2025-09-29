@@ -8,8 +8,8 @@ export default function useTheme(domColor){
         if(domColor) {
             const color = tinycolor(domColor)
             setThemeStyles({
-                '--accent-dark': color.darken(15).toString(),
-                '--accent-light': color.lighten(40).toString(),
+                '--accent-dark': color.darken(30).toString(),
+                '--accent-light': color.lighten(70).toString(),
             })
         }
     },[domColor])

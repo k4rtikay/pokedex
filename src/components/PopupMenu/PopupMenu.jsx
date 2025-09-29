@@ -108,12 +108,18 @@ export default function PopupMenu(){
                         <button className="menu-trigger"
                         onClick={()=>{setIsMenuActive(true)}}><span className="h-icon material-symbols-rounded">account_circle</span></button>
 
-                        <motion.div
-                        variants={nameVariants}
-                        initial='closed'
-                        aria-hidden={!isMenuActive}
-                        animate={isMenuActive?'open':'closed'}
-                        style={{pointerEvents: isMenuActive? 'auto' : 'none'}}>{(globalUser?globalUser.displayName:'Guest')}</motion.div>
+                        <AnimatePresence>
+                            {isMenuActive&&
+                                <motion.div
+                                variants={nameVariants}
+                                initial='closed'
+                                aria-hidden={!isMenuActive}
+                                animate={'open'}
+                                exit={'closed'}
+                                key={'name'}
+                                style={{}}>{(globalUser?globalUser.displayName:'Guest')}</motion.div>
+                            }
+                        </AnimatePresence>
 
                     </div> 
                 </>

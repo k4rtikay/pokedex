@@ -15,8 +15,7 @@ export default function MainAppLayout() {
     const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen, isSideMenuOpen, isDesktop, themeColor } = usePokedex();
 
     const [isModalOpen, setIsModalOpen] = useState(false); 
-    
-    const themeStyles = useTheme(themeColor)
+
 
     //const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
     
@@ -42,7 +41,7 @@ export default function MainAppLayout() {
             filter: "blur(5px)",            
         }}
         style={{flexGrow:'1', display: 'flex', flexDirection: 'column'}}>
-            <div className='app' style={themeStyles}>
+            <div className='app'>
                 {isDesktop?<DesktopLayout/>:<MobileLayout/>}
                 {/* <Pokecard selectedPokemon={selectedPokemon}
                 setIsModalOpen={setIsModalOpen}

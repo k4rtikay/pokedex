@@ -31,6 +31,18 @@
         button{
             font-family: inherit;
             font-size: inherit;
+            cursor: pointer;
+        }
+
+        .hd-library{
+          color: var(--accent-dark);
+          font-weight: 600;
+          cursor: pointer;
+        }
+
+        a{
+          text-decoration: none;
+          color: inherit;
         }
     }
 }

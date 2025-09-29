@@ -9,7 +9,7 @@ export default function HeaderDesktop(){
             <nav className='hd-container--nav'>
                 <a href="">About</a>
                 <a href=''>Feedback</a>
-                <button>Library</button>
+                <button className="hd-library">Library</button>
                 <span>
                     <PopupMenu></PopupMenu>
                 </span>
