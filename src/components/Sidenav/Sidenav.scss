@@ -81,10 +81,12 @@ input{
     }
 
     .sn-button--selected{
-        background-color: rgba(207, 207, 207, 1);
+        background-color: var(--accent-light);
         font-family: v.$primary-font;
         transition: all 0.2s ease-in;
         transform: scale(1.01);
+        color: var(--accent-dark);
+        font-weight: 600;
     }
 }
 

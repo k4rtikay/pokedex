@@ -9,11 +9,14 @@ import { ViewPalette } from "../palette/ViewPalette";
 import './MainAppLayout.scss'
 import MobileLayout from "./MobileLayout";
 import DesktopLayout from "./DesktopLayout";
+import useTheme from "../../hooks/usePokemonTheme";
 
 export default function MainAppLayout() {
-    const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen, isSideMenuOpen, isDesktop } = usePokedex();
+    const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen, isSideMenuOpen, isDesktop, themeColor } = usePokedex();
 
-    const [isModalOpen, setIsModalOpen] = useState(false);  
+    const [isModalOpen, setIsModalOpen] = useState(false); 
+    
+    const themeStyles = useTheme(themeColor)
 
     //const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
     
@@ -39,7 +42,7 @@ export default function MainAppLayout() {
             filter: "blur(5px)",            
         }}
         style={{flexGrow:'1', display: 'flex', flexDirection: 'column'}}>
-            <div className='app'>
+            <div className='app' style={themeStyles}>
                 {isDesktop?<DesktopLayout/>:<MobileLayout/>}
                 {/* <Pokecard selectedPokemon={selectedPokemon}
                 setIsModalOpen={setIsModalOpen}

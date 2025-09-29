@@ -264,22 +264,23 @@
     .pc-action--primary{
         height: 40%;
         width: 40%;
-        background-color: #000000;
+        background-color: var(--accent-dark);
         border-radius: 8px;
-        color: rgb(241, 241, 241);
+        color: var(--accent-light);
         letter-spacing: 2%;
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
         font-size: clamp(1rem, 2vw, 1.3rem);
+        font-weight: 600;
     }
 
     .pc-action--secondary{
         background: none;
         max-width: clamp(32px, 10vw, 45px);
         max-height: clamp(32px, 10vw, 40px);;
-        border: 2px solid #000000;
+        border: 2px solid var(--accent-dark);
         border-radius: 50%;
         padding: 8px;
-        color: #000000;
+        color: var(--accent-dark);
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
     }
 }
@@ -310,9 +311,9 @@
         }
 
         .pc-action--secondary{
-        background: rgb(189, 189, 189);
+        background: var(--accent-dark);
         border: none;
-        color: #313131;
+        color: var(--accent-light);
         }
     }
 }

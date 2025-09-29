@@ -11,7 +11,7 @@ import { PaletteBar } from "./PaletteBar";
 
 export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
 
-    const {frontSprite, setSelectedPokemon, data, palette, setPalette} = usePokedex()
+    const { frontSprite, setSelectedPokemon, data, palette, setPalette,setThemeColor } = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
     // const [spriteToShow, setSpriteToShow] = useState(null);
 
@@ -29,6 +29,7 @@ export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
         try {
 
             const newColors = colorThief.getPalette(img, 6);
+            setThemeColor(`rgb(${colorThief.getColor(img).join(', ')})`)
             // console.log('newcolors' + newColors)
             
             if(!palette){

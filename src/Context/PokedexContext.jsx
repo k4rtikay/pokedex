@@ -9,6 +9,7 @@ export function PokedexProvider({children}){
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
     const [palette, setPalette] = useState(null)
     const [isDesktop, setIsDesktop] = useState(false)
+    const [themeColor, setThemeColor] = useState([0,0,0])
 
     const { data, description, loading } = usePokemon(selectedPokemon)
 
@@ -37,7 +38,9 @@ export function PokedexProvider({children}){
         isSideMenuOpen,
         palette,
         setPalette,
-        isDesktop
+        isDesktop,
+        themeColor,
+        setThemeColor
     }
 
     return (
