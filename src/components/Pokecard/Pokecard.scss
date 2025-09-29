@@ -259,6 +259,21 @@
         justify-content: center;
         font-family: v.$primary-font;
         border: none;
+
+        &:hover{
+            transform: scale(1.01) translateY(-1px);
+            transition: all 0.1s ease-in;
+        }
+
+        &:focus{
+            transition: all 0.1s ease-in;
+            border: 1px solid var(--accent-dark);
+            transform: scale(1.01) translateY(-1px);
+        }
+        &:active {
+            transform: translateY(0px) scale(0.99);
+            filter: brightness(0.9);
+        }
     }
 
     .pc-action--primary{
@@ -314,6 +329,7 @@
         background: var(--accent-dark);
         border: none;
         color: var(--accent-light);
+        opacity: 0.9;
         }
     }
 }

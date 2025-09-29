@@ -68,6 +68,7 @@ input{
         font-family: v.$secondary-font;
         transition: all 0.2s ease-in;
         border: 1px solid rgba(0, 0, 0, 0.18);
+        height: fit-content;
 
         &:hover{
             transform: scale(1.01) translateY(-1px);
@@ -76,15 +77,18 @@ input{
 
         &:focus{
             transition: all 0.1s ease-in;
-            border: 2px solid var(--button-primary-bg);
+            border: 1px solid var(--accent-dark);
+            transform: scale(1.01) translateY(-1px);
+        }
+        &:active {
+            transform: translateY(0px) scale(0.99);
+            filter: brightness(0.9); /* Make it slightly darker */
         }
     }
 
     .sn-button--selected{
         background-color: var(--accent-dark);
-        font-family: v.$primary-font;
         transition: all 0.2s ease-in;
-        transform: scale(1.01);
         color: var(--accent-light);
         font-weight: 600;
     }
@@ -113,6 +117,7 @@ body.menu-open{
         padding: 16px 8px;
         width: 250px;
         font-family: v.$secondary-font;
+        opacity: 0.9;
         flex-shrink: 0;
         // height: 100% !important;
         height: calc(100vh - 70px);  //subtracting the height of the header to get the height of the sidenav
