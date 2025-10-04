@@ -259,6 +259,7 @@
         justify-content: center;
         font-family: v.$primary-font;
         border: none;
+        transition: all 0.2s ease-in;
 
         &:hover{
             transform: scale(1.01) translateY(-1px);

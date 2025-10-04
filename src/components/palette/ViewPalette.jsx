@@ -7,11 +7,12 @@ import { usePokedex } from "../../Context/PokedexContext";
 import { Modal } from "../Modal/Modal";
 import { useDatabase } from "../../Context/DatabaseContext";
 import { PaletteBar } from "./PaletteBar";
+import { motion, AnimatePresence } from "framer-motion";
 
 
-export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
+export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
-    const { frontSprite, setSelectedPokemon, data, palette, setPalette,setThemeColor } = usePokedex()
+    const { frontSprite, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny } = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
     // const [spriteToShow, setSpriteToShow] = useState(null);
 
@@ -28,8 +29,8 @@ export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
         const colorThief = new ColorThief();
         try {
 
-            const newColors = colorThief.getPalette(img, 6);
-            setThemeColor(`rgb(${colorThief.getColor(img).join(', ')})`)
+            const newColors = colorThief.getPalette(img, 6,1);
+            setThemeColor(`rgb(${colorThief.getColor(img,5  ).join(', ')})`)
             // console.log('newcolors' + newColors)
             
             if(!palette){
@@ -51,8 +52,10 @@ export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
             })
 
             setPalette(updatedPalette)
+            setIsGenerating(false)
         } catch (err) {
-            console.error(err);
+            console.error(err)
+            setIsGenerating(false)
         }
     }
 
@@ -119,12 +122,18 @@ export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
         setPaletteName('');
     }
 
+    const variants = {
+        entry: {},
+        exit:{}
+    }
+
     // console.log(palette)
 
     useEffect(()=>{
         const handleSpacebar = (event) => {
             if(event.key==' ' && isSaveModalOpen==false ){
                 setSelectedPokemon(randomPokemonNumber())
+                setIsGenerating(true)
                 console.log('randomizing......')
                 event.preventDefault()
             }
@@ -137,27 +146,9 @@ export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
         }
     },[setSelectedPokemon, isSaveModalOpen])
 
-    // useEffect(()=>{
-    //     // pokemonName = pokemonName.toLowerCase()
-
-        
-
-    //     const animUrl = `/api/sprites/black-white/anim/${shiny?'normal':'shiny'}/${pokemonName}.gif`
-    //     const animFrontSprite = new Image()
-
-    //     animFrontSprite.src = animUrl
-
-    //     animFrontSprite.onload = () =>{
-    //         setSpriteToShow(animUrl)
-    //     }
-    // },[frontSprite])
-
-    // const animUrl = `/api/sprites/black-white/anim/${shiny?'normal':'shiny'}/${pokemonName}.gif`
-    // setSpriteToShow(animUrl)
-
 
     return (
-        <div className="viewPalette">
+        <div className={`viewPalette ${isGenerating&&'is-loading'}`}>
             <Modal onClose={()=>{setIsSaveModalOpen(false)}} isModalOpen={isSaveModalOpen}>
                 <form className="vp-save" onSubmit={(event)=>{
                     event.preventDefault()
@@ -175,26 +166,22 @@ export function ViewPalette({ shiny,isSaveModalOpen,setIsSaveModalOpen }){
                 </form>
             </Modal>
 
-            {/* <button className="palette-window-button save-palette-button"
-            onClick={()=>{
-                setIsSaveModalOpen(true)
-            }}><i className="fa-regular fa-heart"></i> Save</button>
-            <button className="palette-window-button close-palette-modal">✕ Close</button> */}
-
-            <div className="paletteBarContainer">
-                {palette?.map((colorObj) => (
-                    <PaletteBar
-                        key={colorObj.id}
-                        colorObject={colorObj}
-                        onLock={handleColorLocking}
-                        onCopy={handleCopy}
-                        onShadeSelect = {handleShadeSelection}
-                    />
-                ))}
-            </div>
+            <AnimatePresence>
+                <motion.div className="paletteBarContainer">
+                    {palette?.map((colorObj) => (
+                        <PaletteBar
+                            key={colorObj.id}
+                            colorObject={colorObj}
+                            onLock={handleColorLocking}
+                            onCopy={handleCopy}
+                            onShadeSelect = {handleShadeSelection}
+                        />
+                    ))}
+                </motion.div>
+            </AnimatePresence>
 
             <div className="paletteSpriteContainer">
-                <img src={`/api/sprites/black-white/anim/${shiny?'shiny':'normal'}/${pokemonName}.gif`}
+                <img src={`/api/sprites/black-white/anim/${isShiny?'shiny':'normal'}/${pokemonName}.gif`}
                 alt="Image of selected pokemon"
                 ref={imgRef}
                 crossOrigin="anonymous"

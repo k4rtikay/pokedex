@@ -4,13 +4,16 @@ import { colorForIntensity } from '../../utils';
 import useShadesGenerator from '../../hooks/useShades';
 import tinycolor from 'tinycolor2';
 import { Modal } from '../Modal/Modal';
+import { usePokedex } from '../../Context/PokedexContext';
 
 export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
+  const { isDesktop } = usePokedex()
   const { color, isLocked, id } = colorObject;
   const rgbString = `rgb(${color.join(', ')})`;
   const [isShadesOn, setIsShadesOn] = useState(false)
+  const num = isDesktop?10:8;
 
-  const shadesArray = useShadesGenerator(rgbString,8)
+  const shadesArray = useShadesGenerator(rgbString,num)
 
   const handleCopy = () => {
     navigator.clipboard.writeText(rgbString);

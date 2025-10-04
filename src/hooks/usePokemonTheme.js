@@ -14,7 +14,7 @@ export default function useTheme(domColor){
         }
     },[domColor])
 
-    console.log(themeStyles)
+    // console.log(themeStyles)
 
     return themeStyles
 }

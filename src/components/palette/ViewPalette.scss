@@ -105,6 +105,8 @@
     position: relative;
     flex-grow: 1;
     font-family: v.$secondary-font;
+    transition: 0.3s all cubic-bezier(0.87, 0, 0.13, 1);
+
 
     .paletteBarContainer{
         // display: flex;
@@ -127,6 +129,7 @@
         left: 50%;
         transform: translate(-50%,-50%);
         pointer-events: none;
+        transition: 0.3s all cubic-bezier(0.87, 0, 0.13, 1);
 
         .paletteSprite{
             image-rendering: pixelated;
@@ -136,6 +139,10 @@
             pointer-events: none;
         }
     }
+}
+
+.viewPalette.is-loading{
+    filter: grayscale(100%);
 }
 
 .vp-save{

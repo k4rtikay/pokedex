@@ -10,6 +10,8 @@ export function PokedexProvider({children}){
     const [palette, setPalette] = useState(null)
     const [isDesktop, setIsDesktop] = useState(false)
     const [themeColor, setThemeColor] = useState([0,0,0])
+    const [isGenerating, setIsGenerating] = useState(false)
+    const [isShiny, setIsShiny] = useState(false)
 
     const { data, description, loading } = usePokemon(selectedPokemon)
 
@@ -40,7 +42,11 @@ export function PokedexProvider({children}){
         setPalette,
         isDesktop,
         themeColor,
-        setThemeColor
+        setThemeColor,
+        isGenerating,
+        setIsGenerating,
+        isShiny,
+        setIsShiny
     }
 
     return (

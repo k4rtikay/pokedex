@@ -4,7 +4,7 @@ import './Sidenav.scss'
 import { usePokedex } from "../../Context/PokedexContext";
 
 export default function SearchList(){
-    const { selectedPokemon, setSelectedPokemon } = usePokedex();
+    const { selectedPokemon, setSelectedPokemon, setIsGenerating } = usePokedex();
 
     const [searchPokemon,setSearchPokemon]=useState('');
     let searchedList = [];
@@ -34,6 +34,7 @@ export default function SearchList(){
                     const truePokedexNumber = first151Pokemon.indexOf(pokemon)
                     return <button key={pokemon} className={`sn-button ${selectedPokemon===first151Pokemon.indexOf(pokemon)?'sn-button--selected':""}`}
                     onClick={()=>{
+                        setIsGenerating(true)
                         setSelectedPokemon(truePokedexNumber)
                     }}>
                         <p>{getFullPokedexNumber(truePokedexNumber)}</p>

@@ -16,8 +16,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
     const { skill, loading: moveLoading, fetchMove } = usePokemonMove();
     // const [moveLoading, setMoveLoading]=useState(false)
 
-    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon } = usePokedex();
-    const [isShiny, setIsShiny] = useState(false)
+    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon, isGenerating, setIsGenerating, isShiny, setIsShiny } = usePokedex();
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const [isLibraryOpen, setIsLibraryOpen] = useState(false)
 
@@ -194,16 +193,20 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         <div className="pokecard">
             <SavedPaletteWindow isLibraryOpen={isLibraryOpen} setIsLibraryOpen={setIsLibraryOpen}></SavedPaletteWindow>
             <main>
-                <ViewPalette shiny={isShiny}
+                <ViewPalette
                 isSaveModalOpen={isSaveModalOpen}
                 setIsSaveModalOpen={setIsSaveModalOpen}></ViewPalette>
             </main>
             <footer className="pc-action">
                 <button className="pc-action--primary"
-                onClick={()=>{setSelectedPokemon(randomPokemonNumber())}}>Generate</button>
+                onClick={()=>{
+                    setSelectedPokemon(randomPokemonNumber())
+                    setIsGenerating(true)}}>Generate</button>
                 <span className="secondary">
                     <button className="pc-action--secondary"
-                    onClick={()=>{setIsShiny(!isShiny)}}><span className="material-symbols-rounded">star_shine</span></button>
+                    onClick={()=>{
+                        // setIsGenerating(true)
+                        setIsShiny(!isShiny)}}>{!isShiny?<span className="material-symbols-rounded">star_shine</span>:<span className="material-symbols-rounded">circle</span>}</button>
                     <button className="pc-action--secondary"><span className="material-symbols-rounded">ios_share</span></button>
                     <button className="pc-action--secondary"
                     onClick={()=>{setIsSaveModalOpen(true)}}><span className="material-symbols-rounded">favorite</span></button>
