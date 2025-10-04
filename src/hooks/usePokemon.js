@@ -32,6 +32,7 @@ export function usePokemon(pokemon){
     const [data,setData]=useState(null);
     const [loading, setLoading]=useState(false);
     const [description, setDescription] = useState('')
+        const [pokemonList, setPokemonList] = useState([])
     const { getCache: getPokedexCache, setCache: setPokedexCache } = useCache('pokedex')
     const { getCache: getDescCache, setCache: setDescCache } = useCache('descriptionCache')
 
@@ -68,31 +69,54 @@ export function usePokemon(pokemon){
     },[pokemon])
 
 
-     useEffect(() => {
-        const speciesUrl = data?.species?.url;
-        if (!speciesUrl) return;
+    //  useEffect(() => {
+    //     const speciesUrl = data?.species?.url;
+    //     if (!speciesUrl) return;
 
-        const fetchDescription = async () => {
-            try {
-                const descCache = getDescCache();
-                const speciesName = data.species.name;
-                if (descCache[speciesName]) {
-                    setDescription(descCache[speciesName])
-                } else {
-                    const descRes = await fetch(speciesUrl)
-                    const descData = await descRes.json()
-                    const enDescription = descData?.flavor_text_entries.find(entry=>(entry.version.name==='firered' && entry.language.name==='en'))?.flavor_text
-                    setDescription(enDescription || '')
-                    descCache[speciesName] = enDescription
-                    setDescCache(descCache)
-                }
-            } catch (err) {
-                console.error("Failed to fetch description", err);
+    //     const fetchDescription = async () => {
+    //         try {
+    //             const descCache = getDescCache();
+    //             const speciesName = data.species.name;
+    //             if (descCache[speciesName]) {
+    //                 setDescription(descCache[speciesName])
+    //             } else {
+    //                 const descRes = await fetch(speciesUrl)
+    //                 const descData = await descRes.json()
+    //                 const enDescription = descData?.flavor_text_entries.find(entry=>(entry.version.name==='firered' && entry.language.name==='en'))?.flavor_text
+    //                 setDescription(enDescription || '')
+    //                 descCache[speciesName] = enDescription
+    //                 setDescCache(descCache)
+    //             }
+    //         } catch (err) {
+    //             console.error("Failed to fetch description", err);
+    //         }
+    //     };
+
+    //     fetchDescription();
+    // }, [data?.species?.url]);
+
+    useEffect(()=>{
+        async function fetchPokemonList(){
+            setLoading(true)
+            try{
+                let baseUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=649'
+                let res = await fetch(baseUrl);
+                let resData = await res.json();
+                console.log("fetched pokemon list",resData)
+                resData = resData?.results.map((pokeObj)=>{return pokeObj.name})
+                console.log("fetched pokemon list",resData)
+                setPokemonList(resData)
+                
+            }catch(err){
+                console.error(err)
+            }finally{
+                setLoading(false)
             }
-        };
+        }
 
-        fetchDescription();
-    }, [data?.species?.url]);
 
-    return { data, description, loading}
+        fetchPokemonList()
+    },[])
+
+    return { data, pokemonList, loading}
 }

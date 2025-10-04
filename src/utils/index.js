@@ -113,5 +113,5 @@ export function colorForIntensity(red,green,blue){
 }
 
 export function randomPokemonNumber(){
-    return Math.floor(Math.random()*151)
+    return Math.floor(Math.random()*649)
 }

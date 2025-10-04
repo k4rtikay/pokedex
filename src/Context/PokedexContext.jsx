@@ -13,7 +13,7 @@ export function PokedexProvider({children}){
     const [isGenerating, setIsGenerating] = useState(false)
     const [isShiny, setIsShiny] = useState(false)
 
-    const { data, description, loading } = usePokemon(selectedPokemon)
+    const { data, pokemonList, loading } = usePokemon(selectedPokemon)
 
     useEffect(()=>{
         const handleResize =()=>{
@@ -31,7 +31,8 @@ export function PokedexProvider({children}){
         selectedPokemon,
         setSelectedPokemon,
         data,
-        description,
+        // description,
+        pokemonList,
         loading,
         frontSprite: data?.sprites?.front_default,
         isPaletteModalOpen,

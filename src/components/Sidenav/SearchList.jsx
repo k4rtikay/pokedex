@@ -4,22 +4,22 @@ import './Sidenav.scss'
 import { usePokedex } from "../../Context/PokedexContext";
 
 export default function SearchList(){
-    const { selectedPokemon, setSelectedPokemon, setIsGenerating } = usePokedex();
+    const { selectedPokemon, setSelectedPokemon, setIsGenerating, pokemonList } = usePokedex();
 
     const [searchPokemon,setSearchPokemon]=useState('');
     let searchedList = [];
     if(searchPokemon===''){
-        searchedList=first151Pokemon;
+        searchedList=pokemonList;
     }
     else if(/^[0-9]+$/.test(searchPokemon)){
         let numIndex = Number(searchPokemon)
-        if(numIndex>0&&numIndex<152){
-            searchedList= [first151Pokemon[numIndex-1]]
+        if(numIndex>0&&numIndex<650){
+            searchedList= [pokemonList[numIndex-1]]
         }else{
             searchedList=[]
         }  
     }else{
-        searchedList=first151Pokemon.filter((poke)=>poke.toLowerCase().startsWith(searchPokemon.toLowerCase()))
+        searchedList=pokemonList.filter((poke)=>poke.toLowerCase().startsWith(searchPokemon.toLowerCase()))
     }
 
     return(
@@ -31,8 +31,8 @@ export default function SearchList(){
 
             <div className="sn-list">
                 {searchedList.map((pokemon)=>{
-                    const truePokedexNumber = first151Pokemon.indexOf(pokemon)
-                    return <button key={pokemon} className={`sn-button ${selectedPokemon===first151Pokemon.indexOf(pokemon)?'sn-button--selected':""}`}
+                    const truePokedexNumber = pokemonList.indexOf(pokemon)
+                    return <button key={truePokedexNumber} className={`sn-button ${selectedPokemon===pokemonList.indexOf(pokemon)?'sn-button--selected':""}`}
                     onClick={()=>{
                         setIsGenerating(true)
                         setSelectedPokemon(truePokedexNumber)
