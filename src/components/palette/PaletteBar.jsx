@@ -9,7 +9,7 @@ import { usePokedex } from '../../Context/PokedexContext';
 export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
   const { isDesktop } = usePokedex()
   const { color, isLocked, id } = colorObject;
-  const rgbString = `rgb(${color.join(', ')})`;
+  const rgbString = color ? `rgb(${color.join(', ')})` : 'rgb(128, 128, 128)';
   const [isShadesOn, setIsShadesOn] = useState(false)
   const num = isDesktop?10:8;
 
@@ -25,7 +25,7 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
     <div
       style={{
         backgroundColor: rgbString,
-        color: colorForIntensity(color[0], color[1], color[2]),
+        color: color&&colorForIntensity(color[0], color[1], color[2]),
       }}
       className={`paletteBar ${isLocked ? "is-locked" : ""}`}
     >

@@ -26,6 +26,9 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
     const handleImageLoad = () => {
         const img = imgRef.current;
+        // const img = new Image()
+        // img.src = frontSprite
+        // img.crossOrigin = 'anonymous'
         const colorThief = new ColorThief();
         try {
 
@@ -127,7 +130,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
         exit:{}
     }
 
-    // console.log(palette)
+    console.log(palette)
 
     useEffect(()=>{
         const handleSpacebar = (event) => {
@@ -156,7 +159,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
                     <h1>Save Palette</h1>
                     <span>
                         {palette?.map((colorObj,colorObjIndex) => (
-                            <div style={{backgroundColor: `rgb(${colorObj.color.join(', ')})`}}
+                            <div style={{backgroundColor: `rgb(${ (colorObj.color && colorObj.color.join(', ')) || '128, 128, 128'})`}}
                             key={colorObjIndex}></div>
                         ))}
                     </span>
@@ -187,7 +190,8 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
                 crossOrigin="anonymous"
                 className="paletteSprite"
                 loading="lazy"
-                onLoad={handleImageLoad} />
+                onLoad={handleImageLoad}
+                />
             </div>
 
             {copied&&

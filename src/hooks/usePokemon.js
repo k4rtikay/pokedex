@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getPokedexNumber } from "../utils";
 
-const CACHE_LIMIT = 50;
+const CACHE_LIMIT = 100;
 
 function useCache(cacheKey){
     const getCache = () => {
@@ -32,9 +32,8 @@ export function usePokemon(pokemon){
     const [data,setData]=useState(null);
     const [loading, setLoading]=useState(false);
     const [description, setDescription] = useState('')
-        const [pokemonList, setPokemonList] = useState([])
+    const [pokemonList, setPokemonList] = useState([])
     const { getCache: getPokedexCache, setCache: setPokedexCache } = useCache('pokedex')
-    const { getCache: getDescCache, setCache: setDescCache } = useCache('descriptionCache')
 
 
     useEffect(()=>{
