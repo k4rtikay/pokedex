@@ -4,12 +4,14 @@ import { useDatabase } from "../../Context/DatabaseContext"
 import { useAuth } from '../../Context/AuthContext'
 import { AnimatePresence,motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
+import { usePokedex } from '../../Context/PokedexContext'
 
-export default function SavedPaletteWindow({isLibraryOpen,setIsLibraryOpen}){
+export default function SavedPaletteWindow(){
 
     const { savePalette,loading } = useDatabase()
     const {globalUser} = useAuth()
     const savedPalettesRef = useRef()
+    const { isDesktop, isLibraryOpen, setIsLibraryOpen } = usePokedex()
 
     const variants = {
         hidden:{
@@ -18,6 +20,14 @@ export default function SavedPaletteWindow({isLibraryOpen,setIsLibraryOpen}){
         },
         visible:{
             y: 0,
+            transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
+        },
+        hiddenDesktop:{
+            translateX: '0',
+            transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
+        },
+        visibleDesktop:{
+            translateX: '200px',
             transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
         }
     }
@@ -60,9 +70,9 @@ export default function SavedPaletteWindow({isLibraryOpen,setIsLibraryOpen}){
             {isLibraryOpen&&
                 <motion.div className="savedPaletteWindow"
                     variants={variants}
-                    initial={'hidden'}
-                    animate={'visible'}
-                    exit={'hidden'}
+                    initial={!isDesktop?'hidden':'hiddenDesktop'}
+                    animate={!isDesktop?'visible':'visibleDesktop'}
+                    exit={!isDesktop?'hidden':'hiddenDesktop'}
                     key={'savedPalettesWindow'}
                     ref={savedPalettesRef}>
                     <div className="savedPaletteContainer">

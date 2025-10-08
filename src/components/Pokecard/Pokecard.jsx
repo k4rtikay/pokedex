@@ -16,9 +16,9 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
     const { skill, loading: moveLoading, fetchMove } = usePokemonMove();
     // const [moveLoading, setMoveLoading]=useState(false)
 
-    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon, isGenerating, setIsGenerating, isShiny, setIsShiny } = usePokedex();
+    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon, isGenerating, setIsGenerating, isShiny, setIsShiny, isLibraryOpen, setIsLibraryOpen } = usePokedex();
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
-    const [isLibraryOpen, setIsLibraryOpen] = useState(false)
+    // const [isLibraryOpen, setIsLibraryOpen] = useState(false)
 
     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
@@ -191,7 +191,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         // </div>
 
         <div className="pokecard">
-            <SavedPaletteWindow isLibraryOpen={isLibraryOpen} setIsLibraryOpen={setIsLibraryOpen}></SavedPaletteWindow>
+            <SavedPaletteWindow></SavedPaletteWindow>
             <main>
                 <ViewPalette
                 isSaveModalOpen={isSaveModalOpen}

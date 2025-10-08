@@ -1,6 +1,7 @@
 import { usePokedex } from "../../Context/PokedexContext.jsx";
 import { ViewPalette } from "../palette/ViewPalette.jsx";
 import { useState } from "react";
+import SavedPaletteWindow from "../palette/SavedPaletteWindow.jsx";
 
 export default function PokecardDesktop(){
 
@@ -14,6 +15,7 @@ export default function PokecardDesktop(){
                 
             </header>
             <main>
+                <SavedPaletteWindow></SavedPaletteWindow>
                 <ViewPalette
                 isSaveModalOpen={isSaveModalOpen}
                 setIsSaveModalOpen={setIsSaveModalOpen}></ViewPalette>

@@ -12,6 +12,7 @@ export function PokedexProvider({children}){
     const [themeColor, setThemeColor] = useState([0,0,0])
     const [isGenerating, setIsGenerating] = useState(false)
     const [isShiny, setIsShiny] = useState(false)
+    const [isLibraryOpen, setIsLibraryOpen] = useState(false)
 
     const { data, pokemonList, loading } = usePokemon(selectedPokemon)
 
@@ -47,7 +48,9 @@ export function PokedexProvider({children}){
         isGenerating,
         setIsGenerating,
         isShiny,
-        setIsShiny
+        setIsShiny,
+        isLibraryOpen,
+        setIsLibraryOpen
     }
 
     return (
