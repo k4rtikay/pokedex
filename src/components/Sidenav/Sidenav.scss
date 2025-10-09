@@ -37,14 +37,14 @@
         letter-spacing: 1px;
         font-family: v.$primary-font;
     }
-}
 
-.sidenav input{
+    input{
         border: 2.5px solid rgba(0, 0, 0, 0.18);
         width: 100%;
         border-radius: 12px;
         padding: 8px;
         font-size: inherit;
+    }
 }
 
 .sn-list{
@@ -121,6 +121,14 @@ body.menu-open{
         flex-shrink: 0;
         // height: 100% !important;
         height: calc(100vh - 70px);  //subtracting the height of the header to get the height of the sidenav
+
+        input{
+            border: 2.5px solid rgba(0, 0, 0, 0.18);
+            width: 100%;
+            border-radius: 12px;
+            padding: 8px;
+            font-size: inherit;
+        }
 
 
         .sn-list{   

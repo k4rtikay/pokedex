@@ -23,35 +23,15 @@ export default function SavedPaletteWindow(){
             transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
         },
         hiddenDesktop:{
-            translateX: '0',
+            translateX: '1000px',
             transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
         },
         visibleDesktop:{
-            translateX: '200px',
+            translateX: '0px',
             transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
         }
     }
 
-    // if(loading){
-    //     console.log('loading palettes')
-    //     return(
-    //         <div>
-    //             <p>Palettes are loading...</p>
-    //         </div>
-    //     )
-    // }
-
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (savedPalettesRef.current && !savedPalettesRef.current.contains(event.target)) {
-                setIsLibraryOpen(false);
-            }
-        }
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [savedPalettesRef]);
 
     useEffect(() => {
         if (isLibraryOpen) {
@@ -62,7 +42,16 @@ export default function SavedPaletteWindow(){
         return () => document.body.classList.remove('menu-open')
     }, [isLibraryOpen])
 
-    console.log(savePalette)    
+    console.log(savePalette)
+
+    if(loading){
+        console.log('loading palettes')
+        return(
+            <div>
+                <p>Palettes are loading...</p>
+            </div>
+        )
+    }
     
     return(
         <AnimatePresence>

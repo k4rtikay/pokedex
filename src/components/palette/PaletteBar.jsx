@@ -61,7 +61,7 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
 
                 <div className="colorCopyBtn">
                     <p className="colorValue">{rgbString}</p>
-                    <span>
+                    <span className='paletteBar-actions'>
                       <button
                       aria-label="Copy color"
                       className="color-options"

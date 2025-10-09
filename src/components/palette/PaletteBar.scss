@@ -31,12 +31,24 @@
         padding: 0;
     }
 
+    .paletteBar-actions{
+        display: flex;
+        gap: 24px;
+    }
+
     button{
         border: none;
         background: none;
-        margin: 0px 10px;
         color: inherit;
         opacity: 0.8;
+        padding: 10px;
+        margin: -10px;
+
+        &:hover{
+            transform: scale(1.2);
+            transition: all 0.1s ease-in;
+            opacity: 1;
+        }
 
         .material-symbols-rounded {
             font-variation-settings:
@@ -47,18 +59,6 @@
         }
 
     }
-}
-
-// .colorCopyBtn:hover{
-//     opacity: 1;
-// }
-
-
-
-
-.color-options:hover{
-    transform: scale(1.2);
-    transition: all 0.1s ease-in;
 }
 
 
