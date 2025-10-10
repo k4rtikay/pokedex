@@ -9,19 +9,19 @@ import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyBkZGjV2b8z6noIjC9OgGj-1kyIDdFduaQ",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
 
-  authDomain: "pokebook-4a5b8.firebaseapp.com",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
 
-  projectId: "pokebook-4a5b8",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
 
-  storageBucket: "pokebook-4a5b8.firebasestorage.app",
+  storageBucket:import.meta.env.VITE_FIREBASE_STORAGE_BUCKET ,
 
-  messagingSenderId: "91802070258",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
 
-  appId: "1:91802070258:web:aa45011c0fe7faaa94b46b",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 
-  measurementId: "G-7P7VRFWVPF"
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 
 };
 
