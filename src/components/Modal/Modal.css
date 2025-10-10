@@ -15,6 +15,7 @@
 
 .moveModal {
   z-index: 1000;
+  will-change: transform, opacity;
 }
 
 

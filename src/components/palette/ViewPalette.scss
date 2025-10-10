@@ -130,12 +130,12 @@
         transform: translate(-50%,-50%);
         pointer-events: none;
         transition: 0.3s all cubic-bezier(0.87, 0, 0.13, 1);
+        transform-origin: center center;
 
         .paletteSprite{
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: -webkit-crisp-edges;
-            transform: scale(1.8);
             pointer-events: none;
         }
     }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import ColorThief from 'colorthief';
 import './ViewPalette.scss'
 import { colorForIntensity, randomPokemonNumber } from "../../utils";
@@ -14,21 +14,26 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
     const { frontSprite, selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny } = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
-    // const [spriteToShow, setSpriteToShow] = useState(null);
+    const [spriteToShow, setSpriteToShow] = useState(null);
 
     // const [palette, setPalette] = useState(null)
     const [copied, setCopied] = useState(false)
-    const imgRef = useRef(null)
     const [paletteName, setPaletteName] = useState('')
+    const [isImgLoading, setIsImgLoading] = useState(false)
     let { name: pokemonName } = data || {}
 
     // console.log(pokemonName)
 
-    const handleImageLoad = () => {
-        const img = imgRef.current;
+    const handleImageLoad = (e) => {
+        // const img = imgRef.current;
         // const img = new Image()
         // img.src = frontSprite
         // img.crossOrigin = 'anonymous'
+
+        const img = e.target
+
+        if (!img || img.naturalWidth === 0) return;
+
         const colorThief = new ColorThief();
         try {
 
@@ -130,6 +135,12 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
         exit:{}
     }
 
+    const spriteVariants = {
+        initial: {opacity: 0, scale:1},
+        animate: {opacity: 1, scale: 1.8, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }},
+        exit : {opacity: 0, scale: 1, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+    }
+
     console.log(palette)
 
     useEffect(()=>{
@@ -148,6 +159,21 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
             window.removeEventListener('keydown',handleSpacebar)
         }
     },[setSelectedPokemon, isSaveModalOpen])
+
+    useEffect(()=>{
+        setIsImgLoading(true)
+        const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${isShiny?'shiny/':''}${selectedPokemon+1}.gif`
+
+        const img = new Image()
+        img.crossOrigin = 'anonymous'
+        img.src=spriteUrl
+
+        img.onload=()=>{
+            handleImageLoad({target: img})
+            setSpriteToShow(spriteUrl)
+            setIsImgLoading(false)
+        }
+    },[selectedPokemon, isShiny])
 
 
     return (
@@ -183,17 +209,26 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
                 </motion.div>
             </AnimatePresence>
 
-            <div className="paletteSpriteContainer">
-                {/* <img src={`/api/sprites/black-white/anim/${isShiny?'shiny':'normal'}/${pokemonName}.gif`} */}
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${isShiny?'shiny/':''}${selectedPokemon+1}.gif`}
-                alt="Image of selected pokemon"
-                ref={imgRef}
-                crossOrigin="anonymous"
-                className="paletteSprite"
-                loading="lazy"
-                onLoad={handleImageLoad}
-                />
-            </div>
+                <div className="paletteSpriteContainer">
+                    <AnimatePresence mode="wait">
+                        {
+                            !isImgLoading && 
+                            <motion.img src={spriteToShow}
+                            alt="Image of selected pokemon"
+                            crossOrigin="anonymous"
+                            className="paletteSprite"
+                            loading="lazy"
+                            style={{transformOrigin: 'center center'}}
+
+                            key={spriteToShow}
+                            variants={spriteVariants}
+                            initial={'initial'}
+                            animate={'animate'}
+                            exit={'exit'}
+                            />
+                            }
+                    </AnimatePresence>
+                </div>
 
             {copied&&
                 <ColorTooltip text={'Color Copied!'}/>

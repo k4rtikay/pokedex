@@ -10,8 +10,8 @@ export function Modal({isModalOpen, onClose, children}){
     }
 
     const blurVariants = {
-        hidden: {background : 'rgba(0,0,0,0)', backdropFilter: 'blur(0px)', opacity:0, transition: {easeIn}},
-        visible: {background: 'rgba(0,0,0,0.2)', backdropFilter: 'blur(8px)', opacity:1, transition: {easeIn}}
+        hidden: {opacity:0, transition: {easeIn}},
+        visible: {opacity:1, transition: {easeIn}}
     }
 
     return createPortal(
