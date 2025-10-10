@@ -8,7 +8,7 @@ export function PokedexProvider({children}){
     const [isPaletteModalOpen, setIsPaletteModalOpen] = useState(false)
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
     const [palette, setPalette] = useState(null)
-    const [isDesktop, setIsDesktop] = useState(false)
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth>=1024)
     const [themeColor, setThemeColor] = useState([0,0,0])
     const [isGenerating, setIsGenerating] = useState(false)
     const [isShiny, setIsShiny] = useState(false)
