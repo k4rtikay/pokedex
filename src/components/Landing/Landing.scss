@@ -1,5 +1,6 @@
 @use '../../styles/mixins' as m;
 @use '../../styles/variables.scss' as v;
+@use "sass:list";
 
 .lp-container{
     display: flex;
@@ -63,9 +64,9 @@
         $stylized-text-colors: #F4D03C,#A34B08,#2C1C0E,#44444C,#DC9404,#E45C44;
 
         .lp-title--stylized{
-            @for $i from 1 through  length($stylized-text-colors){
+            @for $i from 1 through  list.length($stylized-text-colors){
             span:nth-child(#{$i}){
-                color: nth($stylized-text-colors ,$i);
+                color: list.nth($stylized-text-colors ,$i);
                 }
             }
         }
