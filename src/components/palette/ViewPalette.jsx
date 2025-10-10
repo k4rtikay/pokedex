@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
-    const { frontSprite, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny } = usePokedex()
+    const { frontSprite, selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny } = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
     // const [spriteToShow, setSpriteToShow] = useState(null);
 
@@ -184,7 +184,8 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
             </AnimatePresence>
 
             <div className="paletteSpriteContainer">
-                <img src={`/api/sprites/black-white/anim/${isShiny?'shiny':'normal'}/${pokemonName}.gif`}
+                {/* <img src={`/api/sprites/black-white/anim/${isShiny?'shiny':'normal'}/${pokemonName}.gif`} */}
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${isShiny?'shiny/':''}${selectedPokemon+1}.gif`}
                 alt="Image of selected pokemon"
                 ref={imgRef}
                 crossOrigin="anonymous"
