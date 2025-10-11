@@ -43,15 +43,6 @@ export default function SavedPaletteWindow(){
     }, [isLibraryOpen])
 
     console.log(savePalette)
-
-    if(loading){
-        console.log('loading palettes')
-        return(
-            <div>
-                <p>Palettes are loading...</p>
-            </div>
-        )
-    }
     
     return(
         <AnimatePresence>

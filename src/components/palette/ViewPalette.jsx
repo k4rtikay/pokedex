@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
-    const { frontSprite, selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny } = usePokedex()
+    const { frontSprite, selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny, isDesktop } = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
     const [spriteToShow, setSpriteToShow] = useState(null);
 
@@ -137,7 +137,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
     const spriteVariants = {
         initial: {opacity: 0, scale:1},
-        animate: {opacity: 1, scale: 1.8, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }},
+        animate: {opacity: 1, scale: isDesktop?1.8:1.5, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }},
         exit : {opacity: 0, scale: 1, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
     }
 

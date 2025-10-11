@@ -82,17 +82,6 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
     //     }
     // }
 
-    if(loading||!data){
-        return(
-            <div
-            className="loading-div">
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${selectedPokemon+1}.png`} alt="silhoutte of a pokemon" />
-            </div>
-        )
-    }
-
-    const { back_default,back_shiny,front_default,front_shiny } = sprites
-
     // console.log(isShiny)
 
     return (
