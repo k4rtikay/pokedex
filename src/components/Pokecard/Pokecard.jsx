@@ -199,18 +199,22 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
             </main>
             <footer className="pc-action">
                 <button className="pc-action--primary"
+                disabled={isGenerating}
                 onClick={()=>{
                     setSelectedPokemon(randomPokemonNumber())
                     setIsGenerating(true)}}>Generate</button>
                 <span className="secondary">
                     <button className="pc-action--secondary"
+                    disabled={isGenerating}
                     onClick={()=>{
                         // setIsGenerating(true)
                         setIsShiny(!isShiny)}}>{!isShiny?<span className="material-symbols-rounded">star_shine</span>:<span className="material-symbols-rounded">circle</span>}</button>
-                    <button className="pc-action--secondary"><span className="material-symbols-rounded">ios_share</span></button>
+                    <button className="pc-action--secondary" disabled={isGenerating}><span className="material-symbols-rounded">ios_share</span></button>
                     <button className="pc-action--secondary"
+                    disabled={isGenerating}
                     onClick={()=>{setIsSaveModalOpen(true)}}><span className="material-symbols-rounded">favorite</span></button>
                     <button className="pc-action--secondary"
+                    disabled={isGenerating}
                     onClick={()=>{setIsLibraryOpen(!isLibraryOpen)}}><span className="material-symbols-rounded">palette</span></button>
                 </span>
             </footer>

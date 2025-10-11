@@ -145,7 +145,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
     useEffect(()=>{
         const handleSpacebar = (event) => {
-            if(event.key==' ' && isSaveModalOpen==false ){
+            if(event.key==' ' && isSaveModalOpen==false && !isGenerating ){
                 setSelectedPokemon(randomPokemonNumber())
                 setIsGenerating(true)
                 console.log('randomizing......')
@@ -158,7 +158,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
         return ()=>{
             window.removeEventListener('keydown',handleSpacebar)
         }
-    },[setSelectedPokemon, isSaveModalOpen])
+    },[setSelectedPokemon, isSaveModalOpen, isGenerating])
 
     useEffect(()=>{
         setIsImgLoading(true)
