@@ -6,19 +6,31 @@ import tinycolor from 'tinycolor2';
 import { Modal } from '../Modal/Modal';
 import { usePokedex } from '../../Context/PokedexContext';
 
-export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
+export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format, onFormatCycle }) {
   const { isDesktop } = usePokedex()
   const { color, isLocked, id } = colorObject;
-  const rgbString = color ? `rgb(${color.join(', ')})` : 'rgb(128, 128, 128)';
   const [isShadesOn, setIsShadesOn] = useState(false)
-  const num = isDesktop?10:8;
+  const num = isDesktop?10:8
+  const tinyColorInstance = color ? tinycolor({ r: color[0], g: color[1], b: color[2] }) : tinycolor('grey')
 
-  const shadesArray = useShadesGenerator(rgbString,num)
 
   const handleCopy = () => {
     navigator.clipboard.writeText(rgbString);
     onCopy();
   };
+
+  let displayString;
+
+  if (format === 'hex') {
+    displayString = tinyColorInstance.toHexString();
+  } else if (format === 'hsl') {
+    displayString = tinyColorInstance.toHslString();
+  } else {
+    displayString = tinyColorInstance.toRgbString();
+  }
+
+  const rgbString = tinyColorInstance.toRgbString();
+  const shadesArray = useShadesGenerator(rgbString,num)
 
 
   return (
@@ -60,7 +72,8 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect }) {
                 </Modal>
 
                 <div className="colorCopyBtn">
-                    <p className="colorValue">{rgbString}</p>
+                    <button className="colorValue"
+                    onClick={onFormatCycle}>{displayString}</button>
                     <span className='paletteBar-actions'>
                       <button
                       aria-label="Copy color"

@@ -20,6 +20,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
     const [copied, setCopied] = useState(false)
     const [paletteName, setPaletteName] = useState('')
     const [isImgLoading, setIsImgLoading] = useState(false)
+    const [colorFormat, setColorFormat] = useState('rgb')
     let { name: pokemonName } = data || {}
 
     // console.log(pokemonName)
@@ -130,6 +131,12 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
         setPaletteName('');
     }
 
+    const cycleColorFormat = () => {
+        if (colorFormat === 'rgb') setColorFormat('hex');
+        else if (colorFormat === 'hex') setColorFormat('hsl');
+        else setColorFormat('rgb');
+    }
+
     const variants = {
         entry: {},
         exit:{}
@@ -204,6 +211,8 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
                             onLock={handleColorLocking}
                             onCopy={handleCopy}
                             onShadeSelect = {handleShadeSelection}
+                            format = {colorFormat}
+                            onFormatCycle={cycleColorFormat}
                         />
                     ))}
                 </motion.div>
