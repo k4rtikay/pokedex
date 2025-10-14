@@ -115,3 +115,32 @@ export function colorForIntensity(red,green,blue){
 export function randomPokemonNumber(){
     return Math.floor(Math.random()*649)
 }
+
+export function formatPokemonName(name){
+    const exceptionMap = {
+        'nidoran-f': 'Nidoran ♀',
+        'nidoran-m': 'Nidoran ♂',
+        'porygon-z': 'Porygon-Z',
+        'ho-oh': 'Ho-Oh',
+        'basculin-red-striped': 'Basculin',
+        'mr-mime': 'Mr. Mime',
+        'deoxys-normal' : 'Deoxys',
+        'wormadam-plant' : 'Wormadam',
+        'landorus-incarnate' : 'Landorus',
+        'thundurus-incarnate' : 'Thundurus',
+        'tornadus-incarnate' : 'Tornadus',
+        'meloetta-aria' : 'Meloetta',
+        'keldeo-ordinary' : 'Keldeo',
+        'mime-jr' : 'Mime Jr.',
+        'giratina-altered' : 'Giratina',
+        'darmanitan-standard' : 'Darmanitan',    
+    }
+
+    if(exceptionMap[name]){
+        return exceptionMap[name]
+    }else{
+        let formattedName = name.replace(/-/g, ' ').replace(/\b\w/g, char=>char.toUpperCase())
+
+        return formattedName
+    }
+}

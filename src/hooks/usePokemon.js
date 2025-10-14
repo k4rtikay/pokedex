@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPokedexNumber } from "../utils";
+import { formatPokemonName, getPokedexNumber } from "../utils";
 
 const CACHE_LIMIT = 100;
 
@@ -103,8 +103,8 @@ export function usePokemon(pokemon){
                 let resData = await res.json();
                 console.log("fetched pokemon list",resData)
                 resData = resData?.results.map((pokeObj)=>{return pokeObj.name})
-                console.log("fetched pokemon list",resData)
-                setPokemonList(resData)
+                let formattedList = resData.map((name)=>{return formatPokemonName(name) })
+                setPokemonList(formattedList)
                 
             }catch(err){
                 console.error(err)

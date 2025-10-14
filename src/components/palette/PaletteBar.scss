@@ -1,7 +1,6 @@
 @use '../../styles/variables.scss' as v;
 
 .paletteBar{
-    // flex-grow: 1;
     font-family: v.$secondary-font;
     letter-spacing: 0.02em;
     min-height: 0;
@@ -9,7 +8,7 @@
     align-items: center;
 }
 
-.colorCopyBtn{
+.colorSwatch{
     color: inherit;
     display: flex;
     align-items:center; 
@@ -131,23 +130,9 @@
     }
 }
 
-// .shadesContainer button, .shadesContainer p{
-//     margin: 0;
-//     border: none;
-//     padding: 0;
-// }
-
 .shade{
     flex-grow: 1;
 }
-
-// .colorString{
-//     opacity: 0;
-// }
-
-// .colorString:hover{
-//     opacity: 1;
-// }
 
 .closeShades{
     background: none;
@@ -156,7 +141,7 @@
 }
 
 @media (min-width: 1024px){
-    .colorCopyBtn{
+    .colorSwatch{
         padding: 8px 16px;
     }
 }

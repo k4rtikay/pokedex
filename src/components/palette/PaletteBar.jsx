@@ -71,7 +71,7 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format,
                   </div>
                 </Modal>
 
-                <div className="colorCopyBtn">
+                <div className="colorSwatch">
                     <button className="colorValue"
                     onClick={onFormatCycle}>{displayString}</button>
                     <span className='paletteBar-actions'>
