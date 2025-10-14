@@ -2,7 +2,6 @@
 @use '../../styles/variables.scss' as v;
 
 .menu-container{
-    position: relative;
     font-family: v.$secondary-font;
     font-size: 1.5rem;
 }
@@ -15,9 +14,9 @@
 }
 
 .menu{
-    position: absolute;
+    position: fixed;
     width: 240px;
-    background-color: #F0F0F0;
+    background-color: #f3f3f3;
     border-radius: 16px;
     z-index: 99;
     padding: 1rem;
@@ -26,7 +25,7 @@
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    transform-origin: top left;
+    box-shadow: -2px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .menu-nav {
@@ -62,10 +61,12 @@ footer {
     display: flex;
     align-items: center;
     gap: 1rem;
-    top: -16px;
+    top: 1rem;
+    left: 1rem;
 
     div{
         font-weight: 500;
+        white-space: nowrap;
     }
 }
 
@@ -79,19 +80,29 @@ footer {
     }
     
     .menu-top{
-        position: absolute;
-        direction: rtl;
+        left: auto;
+        right: 1rem;
+        flex-direction: row-reverse;
         
     }
 
     .menu{
-        align-items: end;
+        align-items: flex-end;
         gap: 0.7rem;
         transform-origin: top right;
         max-width: 200px;
 
         footer{
             font-size: 0.7rem;
+
+            a {
+                color: blue;
+                text-decoration: none;
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 

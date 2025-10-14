@@ -4,12 +4,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: clamp(0.5rem, 3vw, 1.2rem ) clamp(1rem, 3vw, 1.2rem);
+    padding: clamp(0.5rem, 5vw, 1.5rem ) clamp(1rem, 3vw, 1.2rem);
     margin: none;
     background-color: v.$background-color;
     font-family: v.$primary-font;
     position: relative;
     flex-shrink: 0;
+    width: 100%;
 
     button{
       border: none;
@@ -27,13 +28,11 @@
     2px -2px 0 #4370F4,
   -2px  2px 0 #4370F4,
     2px  2px 0 #4370F4;
-  margin: 1rem;
-  animation-delay: 0.2s;
   font-size: clamp(2rem, 8vw, 4rem);
 }
 
 .h-icon{
-  font-size: clamp(1.5rem ,5vw, 2.5rem);
+  font-size: clamp(1.8rem ,5vw, 2.5rem);
   font-variation-settings:
   'FILL' 0,
   'wght' 320,

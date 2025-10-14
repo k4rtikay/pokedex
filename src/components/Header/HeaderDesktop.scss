@@ -3,8 +3,8 @@
 .hd-container{
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    justify-content: space-between;
+    padding: 1.5rem clamp(1rem, 3vw, 2rem);
     gap: 55%;
     margin: none;
     background-color: v.$background-color;

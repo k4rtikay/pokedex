@@ -46,7 +46,7 @@ export function Header({isSideMenuOpen,setIsSideMenuOpen}){
 
         <div className="h-container">
             <div className='h-container--menu'>
-                <PopupMenu></PopupMenu>
+                <PopupMenu isMenuActive={isMenuActive} setIsMenuActive={setIsMenuActive}></PopupMenu>
             </div>
             <h1 className="h-title">Pokebook</h1>
             <button className='h-search'
