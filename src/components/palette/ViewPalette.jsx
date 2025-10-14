@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import ColorThief from 'colorthief';
 import './ViewPalette.scss'
 import { colorForIntensity, randomPokemonNumber } from "../../utils";
-import { ColorTooltip } from "./ColorTooltip";
+import { ColorTooltip } from "./Toast";
 import { usePokedex } from "../../Context/PokedexContext";
 import { Modal } from "../Modal/Modal";
 import { useDatabase } from "../../Context/DatabaseContext";
@@ -240,7 +240,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
                 </div>
 
             {copied&&
-                <ColorTooltip text={'Color Copied!'}/>
+                <ColorTooltip text={<div style={{display:'flex', alignItems:'center', gap:'8px', justifyContent:'center'}}><span class="material-symbols-rounded">check_circle</span> Color copied to clipboard!</div>}/>
             }
             
 
