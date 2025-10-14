@@ -15,7 +15,7 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format,
 
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(rgbString);
+    navigator.clipboard.writeText(displayString);
     onCopy();
   };
 
