@@ -153,10 +153,10 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
     useEffect(()=>{
         const handleSpacebar = (event) => {
             if(event.key==' ' && isSaveModalOpen==false && !isGenerating ){
+                event.preventDefault()
                 setSelectedPokemon(randomPokemonNumber())
                 setIsGenerating(true)
                 console.log('randomizing......')
-                event.preventDefault()
             }
         }
 
