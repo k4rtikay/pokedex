@@ -168,7 +168,8 @@ export default function PopupMenu({ isMenuActive, setIsMenuActive, triggerRef })
                                             }else{
                                                 setIsAuthOpen(true)
                                                 setIsMenuActive(false)
-                                        }}}>{globalUser?'Sign Out':'Sign In'}</motion.button>
+                                        }}}
+                                        style={globalUser && {color:'#cc2737'}}>{globalUser?'Sign Out':'Sign In'}</motion.button>
                                         <motion.footer variants={navItemVariants}>Made with ❤️ by <a href='https://github.com/k4rtikay' target="_blank" rel='noopener noreferrer'>k4rtikay</a> </motion.footer>
                                 </motion.div>
                         )
