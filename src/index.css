@@ -1,62 +1,16 @@
-:root{
-    --background-color:#fefee3;
-    --header-color:#77BFA3;
-    --menu-color: #77BFA3;
-    --secondary-bg-color:#98C9A3;
 
-    --button-primary-bg:#7996d9;
-    --button-primary-hover:#d1d5fb;
-    --button-primary-border:#e4e6fb;
-
-    --button-secondary-bg:#d37878;
-    --button-secondary-hover:#ffb3b3;
-    --button-secondary-border:#fab8b8;
-
-    --options-color: #F8F8F8;
-    --pokemon-entry-color:#2d3748;
-    --pokemon-entry-secondary-color:#4354e6;
-    --header-font-color:#F8F8F8;
-
-
-    --heading-font: 'Pixelify Sans';
-    --content-font: 'Inter'
-    
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body.darkmode{
-    --background-color:#22223b;
-    --header-color:#4a4e69;
-    --menu-color:#4a4e69;
-    --secondary-bg-color:#3a3a3c;
-
-    --button-primary-bg: #570211;
-    --button-primary-hover:#ee8b8b86;
-    --button-primary-border:#994646;
-
-    --button-secondary-bg:#032c4d;
-    --button-secondary-hover:#b1b8f9;
-    --button-secondary-border:#7a87f9;
-    
-    --options-color: #ffffff;
-    --pokemon-entry-color:#e2e8f0;
-    --pokemon-entry-secondary-color:#abb0ff;
-    --header-font-color:#F8F8F8;
-
-}
-
-*{
-    box-sizing: border-box;
-}
 
 button{
     cursor: pointer;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 /* pixelify-sans-regular - latin */
 @font-face {

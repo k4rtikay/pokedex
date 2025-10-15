@@ -16,7 +16,7 @@
 .menu{
     position: fixed;
     width: 240px;
-    background-color: #f3f3f3;
+    background-color: var(--card-bg-color);
     border-radius: 16px;
     z-index: 99;
     padding: 1rem;
@@ -25,7 +25,7 @@
     flex-direction: column;
     align-items: start;
     justify-content: space-between;
-    box-shadow: -2px 2px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-card-big);
 }
 
 .menu-nav {
@@ -53,6 +53,15 @@ footer {
     font-family: inherit;
     width: 100% ;
     text-align: center;
+
+    a {
+        color: rgb(97, 97, 232);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .menu-top{
@@ -94,9 +103,8 @@ footer {
 
         footer{
             font-size: 0.7rem;
-
             a {
-                color: blue;
+                color: rgb(97, 97, 232);
                 text-decoration: none;
                 
                 &:hover {

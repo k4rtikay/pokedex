@@ -13,7 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
-    const { frontSprite, selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny, isDesktop } = usePokedex()
+    const { frontSprite, selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny, isDesktop, isDarkMode } = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
     const [spriteToShow, setSpriteToShow] = useState(null);
 
@@ -27,10 +27,6 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
     // console.log(pokemonName)
 
     const handleImageLoad = (e) => {
-        // const img = imgRef.current;
-        // const img = new Image()
-        // img.src = frontSprite
-        // img.crossOrigin = 'anonymous'
 
         const img = e.target
 
@@ -40,7 +36,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
         try {
 
             const newColors = colorThief.getPalette(img, 6,1);
-            setThemeColor(`rgb(${colorThief.getColor(img,5  ).join(', ')})`)
+            setThemeColor(`rgb(${colorThief.getColor(img,1).join(', ')})`)
             // console.log('newcolors' + newColors)
             
             if(!palette){

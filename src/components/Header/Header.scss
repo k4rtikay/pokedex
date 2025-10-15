@@ -6,11 +6,12 @@
     justify-content: space-between;
     padding: clamp(0.5rem, 5vw, 1.5rem ) clamp(1rem, 3vw, 1.2rem);
     margin: none;
-    background-color: v.$background-color;
+    background-color: var(--bg-color);
     font-family: v.$primary-font;
     position: relative;
     flex-shrink: 0;
     width: 100%;
+    color: var(--font-color);
 
     button{
       border: none;
@@ -18,6 +19,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      color: var(--font-color);
     }
 }
 

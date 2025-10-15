@@ -14,7 +14,7 @@ export default function PopupMenu({ isMenuActive, setIsMenuActive, triggerRef })
     const [menuPosition, setMenuPosition] = useState({top: 0, left: 0, right: 0, iconSize: 0})
     const { globalUser,logout } = useAuth()
     const navigate = useNavigate();
-    const { isDesktop } = usePokedex()
+    const { isDesktop, isDarkMode, setIsDarkMode } = usePokedex()
     const dropdownRef = useRef(null);
 
     const variants = {
@@ -154,7 +154,8 @@ export default function PopupMenu({ isMenuActive, setIsMenuActive, triggerRef })
                                         <div className="menu-nav">
                                             {!isDesktop&&<motion.button variants={navItemVariants}>About</motion.button>}
                                             {!isDesktop&&<motion.button variants={navItemVariants}>Feedback</motion.button>}
-                                            <motion.button variants={navItemVariants}>Dark Mode</motion.button>
+                                            <motion.button variants={navItemVariants}
+                                            onClick={()=>{setIsDarkMode(!isDarkMode)}}>Dark Mode</motion.button>
                                         </div>
                                         <motion.button variants={navItemVariants}
                                         className='menu-signout'

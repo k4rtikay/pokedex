@@ -6,13 +6,15 @@ const PokedexContext = createContext();
 export function PokedexProvider({children}){
     const [selectedPokemon, setSelectedPokemon] = useState(0)
     const [isPaletteModalOpen, setIsPaletteModalOpen] = useState(false)
-    const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
+    const [isSideMenuOpen, setIsSideMenuOpen] = useState(true)
     const [palette, setPalette] = useState(null)
     const [isDesktop, setIsDesktop] = useState(window.innerWidth>=1024)
     const [themeColor, setThemeColor] = useState([0,0,0])
     const [isGenerating, setIsGenerating] = useState(false)
     const [isShiny, setIsShiny] = useState(false)
     const [isLibraryOpen, setIsLibraryOpen] = useState(false)
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    const [isDarkMode, setIsDarkMode] = useState(prefersDarkMode)
 
     const { data, pokemonList, loading } = usePokemon(selectedPokemon)
 
@@ -32,7 +34,6 @@ export function PokedexProvider({children}){
         selectedPokemon,
         setSelectedPokemon,
         data,
-        // description,
         pokemonList,
         loading,
         frontSprite: data?.sprites?.front_default,
@@ -50,7 +51,9 @@ export function PokedexProvider({children}){
         isShiny,
         setIsShiny,
         isLibraryOpen,
-        setIsLibraryOpen
+        setIsLibraryOpen,
+        isDarkMode,
+        setIsDarkMode
     }
 
     return (

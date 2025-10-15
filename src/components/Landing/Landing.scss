@@ -10,7 +10,7 @@
     margin: 0;
     padding: clamp(16px, 30vw, 50px);
     font-family: v.$secondary-font ;
-    background-color: v.$background-color;
+    background-color: var(--bg-color);
     overflow: hidden;
 }
 
@@ -91,7 +91,7 @@
     }
 
     .lp-actions--primary{
-        background-color: v.$button-primary-bg;
+        background-color: var(--font-color);
         color: white;
         font-family: v.$primary-font;
         padding: clamp(0.7rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);

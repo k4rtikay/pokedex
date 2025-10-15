@@ -1,20 +1,22 @@
-$background-color:#ECECEC;
-$menu-color: #77BFA3;
-$secondary-bg-color:#98C9A3;
-
-$button-primary-bg:#000000;
-$button-primary-hover:#4b4a4a;
-$button-primary-border:#e4e6fb;
-
-$button-secondary-bg:#CFCFCF;
-$button-secondary-hover:#ffb3b3;
-$button-secondary-border:#000000;
-
-$options-color: #F8F8F8;
-$pokemon-entry-color:#2d3748;
-$pokemon-entry-secondary-color:#4354e6;
-$header-font-color:#F8F8F8;
-
-
 $primary-font: 'Pixelify Sans','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $secondary-font: 'Inter','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+:root{ 
+    --bg-color: #F5F5F7;
+    --card-bg-color: #FFFFFF;
+    --border-color: #C2C2C2;
+    --font-color: #1A1A1A;
+    --shadow-button: 1px 1px 15px rgba(0, 0, 0, 0.1);
+    --shadow-card-small: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    --shadow-card-big: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode{
+    --bg-color: #212125;
+    --card-bg-color: #1D1D21;
+    --border-color: #313136;
+    --font-color: #EBEBEB;
+    --shadow-button: 1px 1px 15px rgba(0, 0, 0, 0.2);
+    --shadow-card-small: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    --shadow-card-big: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}

@@ -15,7 +15,6 @@
     justify-content: space-between;
     padding: 16px;
     border: none;
-    background:rgb(0,0,0, 0);
     font-size:1rem;
     // height: 100%;
     cursor: pointer;
@@ -94,7 +93,7 @@
   left: 0;
   width: 8px;
   height: 100%;
-  background-color: var(--options-color);
+  background-color: var(--font-color);
   opacity: 0.5;
 }
 
@@ -105,7 +104,7 @@
     height: clamp(600px, 70vh, 900px );
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-card-big);
     font-family: v.$secondary-font;
 
     button{

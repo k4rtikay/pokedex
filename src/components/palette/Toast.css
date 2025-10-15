@@ -2,14 +2,14 @@
   box-sizing: border-box;
   padding: 8px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--border-color);
   z-index: 100;
   text-align: center;
   font-size: 0.8rem;
   border-radius: 12px;
   width: 220px;  
-  color: var(--pokemon-entry-color);
-  background-color: #ECECEC;
+  color: var(--font-color);
+  background-color: var(--card-bg-color);
   position: absolute;
   left:50%;
   top: 2%;

@@ -5,27 +5,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.31);
+    border: 1px solid var(--border-color);
     overflow: hidden;
     border-radius: 20px;
     padding: 8px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-card-small);
     font-family: v.$secondary-font;
+    color: var(--font-color);
 } 
 
 .plc-delete{
-    background-color: #F0F0F0;
+    background-color: var(--card-bg-color);
     border-radius: 16px;
     display: flex;
     padding: clamp(2rem, 5vw, 2.5rem);
     flex-direction: column;
     align-items: center;
-    // width: 330px;
     width:min-content;
     gap: 8px;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-card-big);
     font-family: v.$secondary-font;
     font-size: 1.1rem;
+    color: var(--font-color);
 
     span{
         display: flex;
@@ -36,16 +37,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #cecdcd;
+            background-color: var(--card-bg-color);
             border-radius: 12px;
             border: none;
-            color: rgb(0, 0, 0);
+            color: var(--font-color);
             min-height: 50px;
             min-width: 110px;
             font-size: 1.1rem;
             font-family: v.$secondary-font;
-            box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-button);
             margin-top: 24px;
+            border: 2px solid var(--border-color);
 
             
         }
@@ -53,6 +55,7 @@
         .plc-delete--btn{
             color: rgb(107, 0, 0);
             background-color: rgb(226, 202, 202);
+            border: 2px solid rgba(107, 0, 0, 0.218)
         }
     }
 
@@ -77,6 +80,7 @@
     border: none;
     background: none;
     font-size: 1.1rem;
+    color: var(--font-color);
 }
 
 .paletteCard button:hover{
@@ -141,7 +145,7 @@
                 transition: border-color 0.3s ease;
 
                 &:focus{
-                    border-bottom-color: #000000;
+                    border-bottom-color: var(--font-color);
                 }
             }
 

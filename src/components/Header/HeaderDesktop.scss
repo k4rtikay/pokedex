@@ -7,18 +7,20 @@
     padding: 1.5rem clamp(1rem, 3vw, 2rem);
     gap: 55%;
     margin: none;
-    background-color: v.$background-color;
+    background-color: var(--bg-color);
     font-family: v.$primary-font;
     position: relative;
     flex-shrink: 0;
     height: 70px;
-
+    color: var(--font-color);
+    
     button{
       border: none;
       background: none;
       display: flex;
       justify-content: center;
       align-items: center;
+      color: var(--font-color);
     }
 
     nav{
