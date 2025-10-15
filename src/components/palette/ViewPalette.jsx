@@ -10,6 +10,7 @@ import { PaletteBar } from "./PaletteBar";
 import { motion, AnimatePresence } from "framer-motion";
 
 
+
 export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
     const { frontSprite, selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny, isDesktop } = usePokedex()
@@ -156,7 +157,6 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
                 event.preventDefault()
                 setSelectedPokemon(randomPokemonNumber())
                 setIsGenerating(true)
-                console.log('randomizing......')
             }
         }
 

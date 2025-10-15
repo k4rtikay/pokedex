@@ -6,15 +6,18 @@ import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './Context/AuthContext.jsx'
 import { PokedexProvider } from './Context/PokedexContext.jsx'
 import { DatabaseProvider } from './Context/DatabaseContext.jsx'
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <PokedexProvider>
         <DatabaseProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <Tooltip.Provider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </Tooltip.Provider>
         </DatabaseProvider>
       </PokedexProvider>
     </AuthProvider>

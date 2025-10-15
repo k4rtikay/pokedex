@@ -1,0 +1,15 @@
+@use '../../styles/variables.scss' as v;
+
+.custom-tooltip {
+  background-color: #242424;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  z-index: 999;
+  font-family: v.$secondary-font;
+}
+
+.tooltip-arrow {
+  fill: #242424;
+}

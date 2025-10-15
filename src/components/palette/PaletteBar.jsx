@@ -5,6 +5,7 @@ import useShadesGenerator from '../../hooks/useShades';
 import tinycolor from 'tinycolor2';
 import { Modal } from '../Modal/Modal';
 import { usePokedex } from '../../Context/PokedexContext';
+import Tooltip from '../Tooltip/Tooltip';
 
 export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format, onFormatCycle }) {
   const { isDesktop } = usePokedex()
@@ -72,30 +73,42 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format,
                 </Modal>
 
                 <div className="colorSwatch">
-                    <button className="colorValue"
-                    onClick={onFormatCycle}>{displayString}</button>
+                    <Tooltip text="Click to change format">
+                      <button className="colorValue"
+                      onClick={onFormatCycle}>{displayString}</button>
+                    </Tooltip>
                     <span className='paletteBar-actions'>
-                      <button
-                      aria-label="Copy color"
-                      className="color-options"
-                      onClick={handleCopy}
-                      >
-                      <span className="material-symbols-rounded">content_copy</span>
-                      </button>
-                      <button
-                      className={`color-options lockButton ${isLocked ? 'lockedColor' : ''}`}
-                      aria-label={isLocked ? 'Unlock color' : 'Lock color'}
-                      onClick={() => onLock(id)} // Pass the unique ID up to the parent
-                      >
-                      {isLocked
-                          ? <span className="material-symbols-rounded">lock</span>
-                          : <span className="material-symbols-rounded">lock_open_right</span>
-                      }
-                      </button>
-                      <button className='color-options' aria-label='show shades button'
-                      onClick={()=>{setIsShadesOn(true)}}>
-                          <span className="material-symbols-rounded">table_rows</span>
-                      </button>
+                       
+                      <Tooltip text="Copy Color">
+                        <button
+                          aria-label="Copy color"
+                          className="color-options"
+                          onClick={handleCopy}
+                          >
+                          <span className="material-symbols-rounded">content_copy</span>
+                        </button>
+                      </Tooltip>
+
+                      <Tooltip text="Toggle Lock">
+                        <button
+                          className={`color-options lockButton ${isLocked ? 'lockedColor' : ''}`}
+                          aria-label={isLocked ? 'Unlock color' : 'Lock color'}
+                          onClick={() => onLock(id)} // Pass the unique ID up to the parent
+                          >
+                          {isLocked
+                              ? <span className="material-symbols-rounded">lock</span>
+                              : <span className="material-symbols-rounded">lock_open_right</span>
+                          }
+                        </button>
+                      </Tooltip>
+
+                      <Tooltip text="View Shades">
+                        <button className='color-options' aria-label='show shades button'
+                        onClick={()=>{setIsShadesOn(true)}}>
+                            <span className="material-symbols-rounded">table_rows</span>
+                        </button>
+                      </Tooltip>
+              
                     </span>
                 </div>
 

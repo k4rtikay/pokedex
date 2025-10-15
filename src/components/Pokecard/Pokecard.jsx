@@ -11,6 +11,7 @@ import { usePokemonMove } from "../../hooks/usePokemonMove.js";
 import SavedPaletteWindow from "../palette/SavedPaletteWindow.jsx";
 
 
+
 export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const { skill, loading: moveLoading, fetchMove } = usePokemonMove();

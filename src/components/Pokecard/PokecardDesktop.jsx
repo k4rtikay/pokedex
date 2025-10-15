@@ -2,6 +2,7 @@ import { usePokedex } from "../../Context/PokedexContext.jsx";
 import { ViewPalette } from "../palette/ViewPalette.jsx";
 import { useState } from "react";
 import SavedPaletteWindow from "../palette/SavedPaletteWindow.jsx";
+import Tooltip from "../Tooltip/Tooltip";
 
 export default function PokecardDesktop(){
 
@@ -21,18 +22,27 @@ export default function PokecardDesktop(){
                 setIsSaveModalOpen={setIsSaveModalOpen}></ViewPalette>
             </main>
             <div className="pc-action">
-                {/* <button className="pc-action--primary"
-                onClick={()=>{setSelectedPokemon(randomPokemonNumber())}}>Generate</button> */}
+
                 <span className="secondary">
-                    <button className="pc-action--secondary"
-                    disabled={isGenerating}
-                    onClick={()=>{setIsShiny(!isShiny)}}>{!isShiny?<span className="material-symbols-rounded">star_shine</span>:<span className="material-symbols-rounded">circle</span>}</button>
-                    <button className="pc-action--secondary" disabled={isGenerating}><span className="material-symbols-rounded">ios_share</span></button>
-                    <button className="pc-action--secondary"
-                    disabled={isGenerating}
-                    onClick={()=>{setIsSaveModalOpen(true)}}><span className="material-symbols-rounded">favorite</span></button>
-                    {/* <button className="pc-action--secondary"
-                    onClick={()=>{setIsLibraryOpen(!isLibraryOpen)}}><span className="material-symbols-rounded">palette</span></button> */}
+  
+                    <Tooltip text="Toggle Shiny">
+                        <button className="pc-action--secondary"
+                        disabled={isGenerating}
+                        onClick={()=>{setIsShiny(!isShiny)}}>{!isShiny?<span className="material-symbols-rounded">star_shine</span>:<span className="material-symbols-rounded">circle</span>}
+                        </button>
+                    </Tooltip>
+
+                    <Tooltip text="Export Palette (Coming soon!)">
+                        <button className="pc-action--secondary" disabled={isGenerating}><span className="material-symbols-rounded">ios_share</span></button>
+                    </Tooltip>
+
+                    <Tooltip text="Save Palette">
+                        <button className="pc-action--secondary"
+                        disabled={isGenerating}
+                        onClick={()=>{setIsSaveModalOpen(true)}}><span className="material-symbols-rounded">favorite</span>
+                        </button>
+                    </Tooltip>
+
                 </span>
             </div>
         </div>
