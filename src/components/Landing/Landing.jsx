@@ -33,7 +33,7 @@ export default function Landing(){
             <div className="lp-container">
                 <div className="lp-content">
                     <div className="lp-image-container">
-                        <img src="pokemon-palette.png" alt="image of color palette from the pokemon pikachu" className="lp-image--primary" />
+                        <img src="pokemon-palette.png" alt="image of color palette from the pokemon pikachu" className="lp-image--primary" fetchPriority='high' />
                         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="sprite art of pikachu" className="lp-image--secondary" />
                     </div>
                     <div className="lp-text">

@@ -51,6 +51,7 @@ body{
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Material Symbols Rounded';
   src: url('fonts/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].woff2') format('woff2');
 }

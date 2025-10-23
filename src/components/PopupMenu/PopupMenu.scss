@@ -26,6 +26,7 @@
     align-items: start;
     justify-content: space-between;
     box-shadow: var(--shadow-card-big);
+    will-change: height, width, transform;
 }
 
 .menu-nav {
