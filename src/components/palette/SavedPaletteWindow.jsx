@@ -86,7 +86,7 @@ export default function SavedPaletteWindow(){
                             <div className="guestPaletteWindow">
                                 <div className="frame">
                                     <span className="frameContent">
-                                        <h1><i className="fa-solid fa-lock"></i> Login to save your palettes</h1>
+                                        <h1>Login to save your palettes.</h1>
                                     </span>
                                 </div>
                             </div>

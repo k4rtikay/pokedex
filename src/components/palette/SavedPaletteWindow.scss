@@ -87,7 +87,11 @@
     height: 100%;
     justify-content: center;
     align-items: center;
-    background:linear-gradient(#FFFFFF,#3c3c3c);
+    background:var(--bg-color);
+
+    h1{
+        font-size: 1rem;
+    }
 }
 
 .savedPalettesPane{
