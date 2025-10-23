@@ -6,11 +6,14 @@ import { Header } from '../Header/Header';
 import Auth from '../Auth/Auth';
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
+import { usePokedex } from '../../Context/PokedexContext';
+import HeaderDesktop from '../Header/HeaderDesktop';
 
 export default function Landing(){
 
     const navigate = useNavigate();
     const [isAuthOpen, setIsAuthOpen] = useState(false)
+    const { isDesktop } = usePokedex()
     
 
     return(
@@ -26,7 +29,7 @@ export default function Landing(){
             opacity: 0.3,
             filter: "blur(5px)"
         }}>
-            <Header></Header>
+            {isDesktop?<HeaderDesktop/>:<Header/>}
             <div className="lp-container">
                 <div className="lp-content">
                     <div className="lp-image-container">
@@ -44,23 +47,22 @@ export default function Landing(){
                             <span>S</span></span> FOR CREATIVE PROJECTS.</h1>
                         <p className='lp-subtitle'>Where Pokémon meets professional design tools</p>
                     </div>
-                    <div className="lp-actions">
-                        <button className='lp-actions--primary'
-                        onClick={()=>{navigate('/app')}}>Start Creating</button>
-                        <button className='lp-actions--secondary'
-                        onClick={()=>{setIsAuthOpen(true)}}>Sign In</button>
-                    </div>
-                    <div className="lp-list-wrapper">
-                        <ul className="lp-list">
-                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">lock</span> Advanced Color Locking</li>
-                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">looks</span> 20-Shade Color Explorer</li>
-                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">casino</span> Spacebar Generation</li>
-                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">bookmark_heart</span> Smart Palette Management</li>
-                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">ios_share</span> Designer-Ready Export</li>
-                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">family_star</span> Animated Sprite Integration</li>
-                        </ul>
-                    </div>
-
+                </div>
+                <div className="lp-actions">
+                    <button className='lp-actions--primary'
+                    onClick={()=>{navigate('/app')}}>Start Creating</button>
+                    <button className='lp-actions--secondary'
+                    onClick={()=>{setIsAuthOpen(true)}}>Sign In</button>
+                </div>
+                <div className="lp-list-wrapper">
+                    <ul className="lp-list">
+                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">lock</span> Advanced Color Locking</li>
+                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">looks</span> 20-Shade Color Explorer</li>
+                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">casino</span> Spacebar Generation</li>
+                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">bookmark_heart</span> Smart Palette Management</li>
+                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">ios_share</span> Designer-Ready Export</li>
+                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">family_star</span> Animated Sprite Integration</li>
+                    </ul>
                 </div>
             </div>
 

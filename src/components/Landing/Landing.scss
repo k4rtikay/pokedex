@@ -12,9 +12,7 @@
     font-family: v.$secondary-font ;
     background-color: var(--bg-color);
     overflow: hidden;
-}
-
-.lp-content{
+    color: var(--font-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,13 +28,15 @@
     position: relative;
     display: flex;
     justify-content: center;
+    flex-grow: 1;
+
     .lp-image--primary{
-        width: clamp(300px, 80vw, 500px);
+        width: clamp(300px, 50vw, 500px);
         border-radius: 0.5rem;
         box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.25);
     }
     .lp-image--secondary{
-        width: clamp(160px, 40vw, 480px);
+        width: clamp(160px, 30vw, 480px);
         position: absolute;
         top: clamp(50%, 5vw, 60%);
         left: 50%;
@@ -48,6 +48,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    font-size: clamp(1rem, 3vw, 2rem); 
 
     ul{
         margin: 0;
@@ -74,8 +75,7 @@
 
     .lp-subtitle{
         font-family: v.$primary-font;
-        margin-bottom: clamp(2rem, 3vw, 3rem);
-        font-size: clamp(1rem, 3vw, 4rem);  
+        margin-bottom: clamp(2rem, 3vw, 3rem); 
     }
 }
 
@@ -88,11 +88,12 @@
     button{
         border: none;
         cursor: pointer;
+        color: var(--font-color);
     }
 
     .lp-actions--primary{
         background-color: var(--font-color);
-        color: white;
+        color: var(--bg-color);
         font-family: v.$primary-font;
         padding: clamp(0.7rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
         border-radius: 0.5rem;
@@ -102,9 +103,8 @@
 
     .lp-actions--secondary{
         background-color: transparent;
-        color: black;
         font-family: v.$secondary-font;
-        border: 2px solid black;
+        border: 2px solid var(--font-color);
         padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
         border-radius: 0.5rem;
         font-size: clamp(1rem, 3vw, 1.5rem);
@@ -128,4 +128,40 @@
             }
         }
     }    
+}
+
+@media(min-width:1024px){
+
+    .lp-content{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .lp-image-container{
+        justify-content: end;
+        .lp-image--primary{
+            width: 60%;
+        }
+        .lp-image--secondary{
+            width: 30%;
+        }
+    }
+
+    .lp-text{
+        width: 40%;
+        gap: 1rem;
+
+        .lp-title{
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .lp-subtitle{
+            font-size: 1rem;
+        }
+    }
+
 }
