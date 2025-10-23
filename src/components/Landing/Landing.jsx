@@ -45,7 +45,22 @@ export default function Landing(){
                             <span>O</span>
                             <span>R</span>
                             <span>S</span></span> FOR CREATIVE PROJECTS.</h1>
+                        
                         <p className='lp-subtitle'>Where Pokémon meets professional design tools</p>
+
+                        {isDesktop&&
+                            <div className="lp-list-wrapper">
+                                <ul className="lp-list">
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">lock</span> Advanced Color Locking</li>
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">looks</span> 20-Shade Color Explorer</li>
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">casino</span> Spacebar Generation</li>
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">bookmark_heart</span> Smart Palette Management</li>
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">ios_share</span> Designer-Ready Export</li>
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">family_star</span> Animated Sprite Integration</li>
+                                </ul>
+                            </div>
+                        }
+
                     </div>
                 </div>
                 <div className="lp-actions">
@@ -54,16 +69,19 @@ export default function Landing(){
                     <button className='lp-actions--secondary'
                     onClick={()=>{setIsAuthOpen(true)}}>Sign In</button>
                 </div>
-                <div className="lp-list-wrapper">
-                    <ul className="lp-list">
-                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">lock</span> Advanced Color Locking</li>
-                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">looks</span> 20-Shade Color Explorer</li>
-                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">casino</span> Spacebar Generation</li>
-                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">bookmark_heart</span> Smart Palette Management</li>
-                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">ios_share</span> Designer-Ready Export</li>
-                        <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">family_star</span> Animated Sprite Integration</li>
-                    </ul>
-                </div>
+
+                {!isDesktop&&
+                    <div className="lp-list-wrapper">
+                        <ul className="lp-list">
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">lock</span> Advanced Color Locking</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">looks</span> 20-Shade Color Explorer</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">casino</span> Spacebar Generation</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">bookmark_heart</span> Smart Palette Management</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">ios_share</span> Designer-Ready Export</li>
+                            <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">family_star</span> Animated Sprite Integration</li>
+                        </ul>
+                    </div>
+                }
             </div>
 
             <Modal isModalOpen={isAuthOpen} onClose={()=>{setIsAuthOpen(false)}}>
