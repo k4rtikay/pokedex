@@ -10,7 +10,7 @@
   border-radius: 13px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  color: #1f1f1f;
+  color: var(--font-color);
   cursor: pointer;
   font-family: 'VT323', sans-serif;
   letter-spacing: 0.25px;
@@ -54,7 +54,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: top;
-    color:black;
+    color: var(--font-color);
     font-size: 16px;
 }
 

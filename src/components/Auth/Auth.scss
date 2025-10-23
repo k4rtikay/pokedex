@@ -8,10 +8,11 @@
     box-sizing: border-box;
     width: clamp(320px, 15vw, 450px);
     font-family: v.$secondary-font;
+    color: var(--font-color);
 }
 
 .auth-form{
-    background-color: var(--card-bg-color);
+    background-color: var(--bg-color);
     border-radius: 16px;
     display: flex;
     padding: clamp(2rem, 5vw, 2.5rem);
@@ -37,10 +38,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #000000;
+        background-color: var(--font-color);
         border-radius: 12px;
         border: none;
-        color: rgb(232, 232, 232);
+        color: var(--bg-color);
         min-height: 40px;
         min-width: 100px;
         font-size: 1.1rem;
@@ -52,23 +53,26 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgb(249, 254, 254);
-        color: black;
+        background-color: var(--card-bg--color);
+        color: var(--font-color);
         font-family: v.$secondary-font;
         border-radius: 16px;
+        border: 1px solid var(--border-color);
     }
 }
 
 .auth-mode--toggle{
-    height: clamp(2.2rem, 5vw, 3rem);
+    height: 2.5rem;
     width: 250px;
     display: flex;
     align-items: center;
-    background-color: rgb(249, 254, 254);
+    background-color: var(--card-bg--color);
     position: relative;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--font-color);
 
     label{
         display: flex;
@@ -76,8 +80,10 @@
         flex:1;
         background: transparent;
         z-index: 2;
-        margin-right: 10px;
         transition: 0.3s all ease-in;
+        padding: -10px;
+        margin: -10px;
+        margin-right: 10px;
     }
 
     input{
@@ -85,12 +91,13 @@
     }
 
     .auth-mode--indicator{
-        background: rgba(207, 207, 207, 1);
+        background: var(--font-color);
         height: 100%;
         width: 50%;
         position: absolute;
         border-radius: 12px;
         box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
+        opacity: 0.2;
 
         :focus{
             transition: all 0.1s ease-in;
@@ -106,12 +113,13 @@
     input{
         margin-bottom: 16px;
         margin-top: 8px;
-        border: 1px solid rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--border-color);
         font-family: v.$secondary-font;
         font-weight: 450;
         font-size: 1.1rem;
         border-radius: 12px;
         padding: 8px;
+        background-color: var(--card-bg-color);
 
         :focus{
             transition: all 0.2s ease-in;
