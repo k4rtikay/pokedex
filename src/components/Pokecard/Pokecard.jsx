@@ -9,6 +9,7 @@ import {PaletteModal} from "../palette/PaletteModal"
 import { usePokedex } from "../../Context/PokedexContext.jsx";
 import { usePokemonMove } from "../../hooks/usePokemonMove.js";
 import SavedPaletteWindow from "../palette/SavedPaletteWindow.jsx";
+import Export from "./Export.jsx";
 
 
 
@@ -19,7 +20,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
 
     const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon, isGenerating, setIsGenerating, isShiny, setIsShiny, isLibraryOpen, setIsLibraryOpen } = usePokedex();
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
-    // const [isLibraryOpen, setIsLibraryOpen] = useState(false)
+    const [ showExportModal, setShowExportModal ] = useState(false)
 
     const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
 
@@ -181,6 +182,11 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         // </div>
 
         <div className="pokecard">
+
+            <Modal isModalOpen={showExportModal} onClose={()=>{setShowExportModal(false)}}>
+                <Export></Export>
+            </Modal>
+
             <SavedPaletteWindow></SavedPaletteWindow>
             <main>
                 <ViewPalette
@@ -197,9 +203,9 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
                     <button className="pc-action--secondary"
                     disabled={isGenerating}
                     onClick={()=>{
-                        // setIsGenerating(true)
                         setIsShiny(!isShiny)}}>{!isShiny?<span className="material-symbols-rounded">star_shine</span>:<span className="material-symbols-rounded">circle</span>}</button>
-                    <button className="pc-action--secondary" disabled={isGenerating}><span className="material-symbols-rounded">ios_share</span></button>
+                    <button className="pc-action--secondary" disabled={isGenerating}
+                    onClick={()=>{setShowExportModal(!showExportModal)}}><span className="material-symbols-rounded">ios_share</span></button>
                     <button className="pc-action--secondary"
                     disabled={isGenerating}
                     onClick={()=>{setIsSaveModalOpen(true)}}><span className="material-symbols-rounded">favorite</span></button>

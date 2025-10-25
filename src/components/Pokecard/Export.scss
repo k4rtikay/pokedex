@@ -1,0 +1,19 @@
+@use '../../styles/variables.scss' as v;
+
+.export{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--bg-color);
+    font-family: v.$secondary-font;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    color: var(--font-color);
+}
+
+.code-container{
+    height: 300px;
+    aspect-ratio: 3/4;
+    border: 2px solid var(--border-color);
+}
