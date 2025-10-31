@@ -23,7 +23,5 @@ export default function useTheme(domColor){
         }
     },[domColor, isDarkMode])
 
-    // console.log(themeStyles)
-
     return themeStyles
 }
