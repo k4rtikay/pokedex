@@ -38,12 +38,11 @@
         font-size: 1.1rem;
         font-family: v.$secondary-font;
         box-shadow: var(--shadow-button);
-        margin-top: 24px;
+        margin-top: 16px;
         border: 2px solid var(--border-color);
-        
-        .download{
-            color: var(--accent-light);
-            background-color: var(--accent-dark);
-        }
     }
+}
+
+pre{
+    margin: 0;
 }

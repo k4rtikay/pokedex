@@ -31,61 +31,6 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         return `${feet}'${inch}"`
     }
 
-    // async function fetchPokemonMove(move, moveUrl){
-
-    //     if(moveLoading||!localStorage||!moveUrl) return
-
-    //     setSkill(null)
-
-    //     let moveCache={}
-
-    //     if(localStorage.getItem('poke-moves')){
-    //         moveCache=JSON.parse(localStorage.getItem('poke-moves'))
-    //     }
-
-    //     if(move in moveCache){
-    //         setSkill(moveCache[move])
-    //         console.log('move found in cache')
-    //         setIsModalOpen(true);
-    //         return
-    //     }
-
-    //     try{
-    //         setMoveLoading(true)
-    //         const moveRes = await fetch(moveUrl)
-    //         const moveData = await moveRes.json()
-
-    //         const description = moveData?.flavor_text_entries.filter(val => {
-    //             return val.version_group.name == 'firered-leafgreen'
-    //         })[0]?.flavor_text
-
-    //         const {name, accuracy, power, pp} = moveData
-
-    //         const skillData= {
-    //             name: name,
-    //             accuracy: accuracy,
-    //             power: power,
-    //             pp: pp,
-    //             description: description
-    //         }
-
-    //         moveCache[move]=skillData
-    //         localStorage.setItem('poke-moves', JSON.stringify(moveCache))
-    //         setSkill(skillData)
-
-    //         setIsModalOpen(true);
- 
-    //     }
-    //     catch(err){
-    //         console.log(err)
-    //     }
-    //     finally{
-    //         setMoveLoading(false)
-    //     }
-    // }
-
-    // console.log(isShiny)
-
     return (
         // <div className="pokeEntry">
         //     {(isModalOpen)&&(

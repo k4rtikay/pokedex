@@ -3,11 +3,14 @@ import { ViewPalette } from "../palette/ViewPalette.jsx";
 import { useState } from "react";
 import SavedPaletteWindow from "../palette/SavedPaletteWindow.jsx";
 import Tooltip from "../Tooltip/Tooltip";
+import { Modal } from "../Modal/Modal.jsx";
+import Export from "./Export.jsx";
 
 export default function PokecardDesktop(){
 
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const {isShiny, setIsShiny, isGenerating } = usePokedex()
+    const [ showExportModal, setShowExportModal ] = useState(false)
 
     return(
         <div className="pokecard">
@@ -16,6 +19,9 @@ export default function PokecardDesktop(){
                 
             </header>
             <main>
+                <Modal isModalOpen={showExportModal} onClose={()=>{setShowExportModal(false)}}>
+                    <Export></Export>
+                </Modal>
                 <SavedPaletteWindow></SavedPaletteWindow>
                 <ViewPalette
                 isSaveModalOpen={isSaveModalOpen}
@@ -32,8 +38,9 @@ export default function PokecardDesktop(){
                         </button>
                     </Tooltip>
 
-                    <Tooltip text="Export Palette (Coming soon!)">
-                        <button className="pc-action--secondary" disabled={isGenerating}><span className="material-symbols-rounded">ios_share</span></button>
+                    <Tooltip text="Export Palette">
+                        <button className="pc-action--secondary" disabled={isGenerating}
+                        onClick={()=>{setShowExportModal(!showExportModal)}}><span className="material-symbols-rounded">ios_share</span></button>
                     </Tooltip>
 
                     <Tooltip text="Save Palette">
