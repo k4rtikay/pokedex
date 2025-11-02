@@ -3,7 +3,7 @@ import './Auth.scss'
 import './google-sign-in.css'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../../Context/AuthContext'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { auth } from '../../../firebase'
 import { Link } from 'react-router-dom'
 
@@ -11,13 +11,14 @@ export default function Auth(){
 
     const navigate = useNavigate()
     const [isSignIn, setIsSignIn] = useState(true)
-    const { googleSignIn } = useAuth()
+    const { googleSignIn, globalUser } = useAuth()
 
-    function redirect(){
-        setTimeout(() => {
-            navigate('/app')
-        }, 3000);
-    }
+    useEffect(() => {
+        if (globalUser) {
+        // If the user state is set, THEN navigate.
+        navigate('/app');
+        }
+    }, [globalUser, navigate]);
 
     const variants = {
         signin:{
@@ -46,13 +47,11 @@ export default function Auth(){
             setError(null)
             if(isSignIn){
                 await login(auth,email, password)
-                redirect()
                 setIsSuccess(true)  
             }
             else{
                 await signup(auth,email, password, username)
                 setIsSuccess(true)
-                redirect()
             }        
         }catch(err){
             console.error(err.message)
@@ -89,9 +88,10 @@ export default function Auth(){
 
 
                 <button className="gsi-material-button auth-OAuth"
-                        onClick={async ()=>{
-                            await googleSignIn()
-                            navigate('/app')}}>
+                        type='button'
+                        onClick={()=>{
+                            googleSignIn()
+                        }}>
                         <div className="gsi-material-button-state"></div>
                         <div className="gsi-material-button-content-wrapper">
                             <div className="gsi-material-button-icon">
