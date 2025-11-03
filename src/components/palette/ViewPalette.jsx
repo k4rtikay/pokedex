@@ -13,7 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
-    const { frontSprite, selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny, isDesktop, isDarkMode } = usePokedex()
+    const { selectedPokemon, setSelectedPokemon, data, palette, setPalette, setThemeColor, isGenerating, setIsGenerating, isShiny, setIsShiny, isDesktop, isDarkMode } = usePokedex()
     const {savePalette, setSavePalette, addPalette} = useDatabase()
     const [spriteToShow, setSpriteToShow] = useState(null);
 
@@ -33,12 +33,17 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
         if (!img || img.naturalWidth === 0) return;
 
         const colorThief = new ColorThief();
+
+        const frontSprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${selectedPokemon + 1}.png`
+
         try {
 
             const newColors = colorThief.getPalette(img, 6,1);
+
+            //for setting the accent colors from the now loaded image
             setThemeColor(`rgb(${colorThief.getColor(img,1).join(', ')})`)
-            // console.log('newcolors' + newColors)
             
+            //updating the palette on display, and setting the initial palette if none
             if(!palette){
                 const initialPalette = newColors.map(colorVal => ({id: Math.random().toString(36).slice(2, 9),color: colorVal, isLocked: false, sourceSprite: frontSprite}))
                 setPalette(initialPalette)
@@ -53,7 +58,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
                 return {
                     ...oldColorObject,
                     color: newColors[index],
-                    sourceSprite: frontSprite,
+                    sourceSprite: frontSprite
                 }
             })
 
@@ -105,12 +110,6 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
     }
 
     const handleSavingPalettes = (name) => {
-        if (!name.trim()) {
-            // alert("Please enter a palette name.");
-            return (
-                <p>No name assigned.</p>
-            )
-        }
 
         const newSavedPalette = {
             name: name,
@@ -144,8 +143,6 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
         animate: {opacity: 1, scale: isDesktop?1.8:1.5, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }},
         exit : {opacity: 0, scale: 1, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
     }
-
-    console.log(palette)
 
     useEffect(()=>{
         const handleSpacebar = (event) => {
