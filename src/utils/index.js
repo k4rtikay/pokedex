@@ -1,3 +1,5 @@
+import tinycolor from 'tinycolor2'
+
 export const first151Pokemon = [
     "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise",
     "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot",
@@ -143,4 +145,56 @@ export function formatPokemonName(name){
 
         return formattedName
     }
+}
+
+export const handleDownload = (code, name) =>{
+    const blob = new Blob([code], {type: 'text/x-scss'})
+
+    //create temp. URL
+    const url = URL.createObjectURL(blob)
+
+    //fire a click on download link then cleanup
+    const link = document.createElement('a')
+    link.href = url
+    link.download = name + '.scss'
+    document.body.appendChild(link)
+    link.click()
+
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+}
+
+export const handleCodeFormatting = (colorArray) =>{
+    const hexLinesCSS = colorArray.map((color, colorId)=>{
+                        const tinyColorInstance = color ? tinycolor({ r: color[0], g: color[1], b: color[2] }) : tinycolor('grey')
+                        // console.log(tinyColorInstance)
+                        return `--color${colorId+1} : ${tinyColorInstance.toHexString()};`
+    }).join('\n')
+
+    const hslLinesCSS = colorArray.map((color, colorId)=>{
+                        const tinyColorInstance = color ? tinycolor({ r: color[0], g: color[1], b: color[2] }) : tinycolor('grey')
+                        return `--color${colorId+1} : ${tinyColorInstance.toHslString()};`
+    }).join('\n')
+
+    const hexLinesSCSS = colorArray.map((color, colorId)=>{
+                        const tinyColorInstance = color ? tinycolor({ r: color[0], g: color[1], b: color[2] }) : tinycolor('grey')
+                        return `$color${colorId+1} : ${tinyColorInstance.toHexString()};`
+    }).join('\n')
+
+    const hslLinesSCSS = colorArray.map((color, colorId)=>{
+                        const tinyColorInstance = color ? tinycolor({ r: color[0], g: color[1], b: color[2] }) : tinycolor('grey')
+                        return `$color${colorId+1} : ${tinyColorInstance.toHslString()};`
+    }).join('\n')
+
+    const cssHexString =`/* CSS HEX */\n${hexLinesCSS}\n`
+
+    const cssHslString =`/* CSS HSL */\n${hslLinesCSS}\n`
+
+    const scssHexString =`/* SCSS HEX */\n${hexLinesSCSS}\n`
+
+    const scssHslString =`/* SCSS HSL */\n${hslLinesSCSS}\n`
+
+    const fullCodeString = cssHexString + '\n' + cssHslString + '\n' + scssHexString + '\n' + scssHslString
+
+    return fullCodeString
 }

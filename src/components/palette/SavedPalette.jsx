@@ -2,6 +2,8 @@ import { useState,useEffect,useRef } from 'react';
 import { useDatabase } from '../../Context/DatabaseContext';
 import './SavedPalette.scss'
 import { Modal } from '../Modal/Modal';
+import Export from '../Pokecard/Export';
+import { handleDownload, handleCodeFormatting } from '../../utils'
 
 export default function SavedPalette(props){
 
@@ -11,6 +13,7 @@ export default function SavedPalette(props){
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
     const [isBeingEdited, setIsBeingEdited] = useState(false)
     const [editedName, setEditedName] = useState(name)
+    const [ showExportModal, setShowExportModal ] = useState(false)
 
     const inputRef = useRef()
 
@@ -43,6 +46,10 @@ export default function SavedPalette(props){
 
     return(
         <div>
+             <Modal isModalOpen={showExportModal} onClose={()=>{setShowExportModal(false)}}>
+                <Export colorArray={palette.map(p => p.color)} name={name} ></Export>
+            </Modal>
+
             <div className="paletteCard">
                 <Modal isModalOpen={isDeleteModalOpen} onClose={()=>{setIsDeleteModalOpen(false)}}>
                     <form className='plc-delete' method="dialog">
@@ -84,7 +91,8 @@ export default function SavedPalette(props){
 
                         <div className='saved-palette-options'>
                             <button onClick={()=>{setIsBeingEdited(true)}}><span className="material-symbols-rounded">border_color</span></button>
-                            <button><span className="material-symbols-rounded">ios_share</span></button>
+                            <button
+                            onClick={()=>{setShowExportModal(true)}}><span className="material-symbols-rounded">ios_share</span></button>
                             <button
                             onClick={()=>{setIsDeleteModalOpen(true)}}><span className="material-symbols-rounded">delete</span></button>
                         </div>

@@ -18,11 +18,15 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
     const { skill, loading: moveLoading, fetchMove } = usePokemonMove();
     // const [moveLoading, setMoveLoading]=useState(false)
 
-    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon, isGenerating, setIsGenerating, isShiny, setIsShiny, isLibraryOpen, setIsLibraryOpen } = usePokedex();
+    const { data, description, loading, isPaletteModalOpen, setIsPaletteModalOpen, setSelectedPokemon, isGenerating, setIsGenerating, isShiny, setIsShiny, isLibraryOpen, setIsLibraryOpen, palette } = usePokedex();
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const [ showExportModal, setShowExportModal ] = useState(false)
 
-    const { name, height, weight, abilities, stats, types, moves, sprites } = data || {}
+    const { name } = data
+
+    const colorArray =  palette?.map((obj, objIndex)=>{
+        return obj.color
+    })
 
     function heightInFeet(hght){
         const totalInches = hght*3.937
@@ -129,7 +133,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
         <div className="pokecard">
 
             <Modal isModalOpen={showExportModal} onClose={()=>{setShowExportModal(false)}}>
-                <Export></Export>
+                <Export colorArray={colorArray} name={name}></Export>
             </Modal>
 
             <SavedPaletteWindow></SavedPaletteWindow>

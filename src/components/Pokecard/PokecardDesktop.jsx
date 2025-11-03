@@ -9,8 +9,13 @@ import Export from "./Export.jsx";
 export default function PokecardDesktop(){
 
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
-    const {isShiny, setIsShiny, isGenerating } = usePokedex()
+    const {isShiny, setIsShiny, isGenerating, palette, data } = usePokedex()
+    const { name } = data
     const [ showExportModal, setShowExportModal ] = useState(false)
+
+    const colorArray =  palette?.map((obj, objIndex)=>{
+        return obj.color
+    })
 
     return(
         <div className="pokecard">
@@ -20,7 +25,7 @@ export default function PokecardDesktop(){
             </header>
             <main>
                 <Modal isModalOpen={showExportModal} onClose={()=>{setShowExportModal(false)}}>
-                    <Export></Export>
+                    <Export colorArray={colorArray} name={name}></Export>
                 </Modal>
                 <SavedPaletteWindow></SavedPaletteWindow>
                 <ViewPalette
