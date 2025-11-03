@@ -34,7 +34,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
 
         const colorThief = new ColorThief();
 
-        const frontSprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${selectedPokemon + 1}.png`
+        const frontSprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${isShiny?'shiny/':''}${selectedPokemon + 1}.png`
 
         try {
 

@@ -36,7 +36,6 @@ export function PokedexProvider({children}){
         data,
         pokemonList,
         loading,
-        frontSprite: data?.sprites?.front_default,
         isPaletteModalOpen,
         setIsPaletteModalOpen,
         setIsSideMenuOpen,
