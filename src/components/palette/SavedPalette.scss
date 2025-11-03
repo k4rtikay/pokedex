@@ -121,6 +121,12 @@
         justify-content: space-between;
         position: relative;
 
+        p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
         form{
             display: flex;
             justify-content: start;

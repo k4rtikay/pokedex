@@ -190,7 +190,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
                         ))}
                     </span>
                     <label htmlFor="save-palette-name">Enter a name for the palette:</label>
-                    <input id="save-palette-name" placeholder="Sample Palette" onChange={(e)=>setPaletteName(e.target.value)} required></input>
+                    <input id="save-palette-name" placeholder="Sample Palette" onChange={(e)=>setPaletteName(e.target.value)} maxLength={"25"} required></input>
                     <button type="submit" disabled={!paletteName}>Save</button>
                 </form>
             </Modal>

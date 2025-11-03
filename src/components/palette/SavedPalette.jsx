@@ -65,18 +65,23 @@ export default function SavedPalette(props){
                 <div className="palette-content">
                     <span>
                         {
-                            (!isBeingEdited)? <p>{editedName}</p> :
+                            (!isBeingEdited)?
+                            <p>{editedName}</p> :
                             <form onSubmit={()=>{handleUpdatePalette(editedName)}}>
                                 <input type="text" value={editedName} onBlur={()=>{
                                     console.log('onblur fired')
                                     setEditedName(name)
                                     setIsBeingEdited(false)
-                                }} onChange={(e)=>{
+                                }}
+                                onChange={(e)=>{
                                     setEditedName(e.target.value)
-                                }} ref={inputRef}/>
+                                }}
+                                ref={inputRef}
+                                maxLength={"25"}/>
                                 <button type='submit' onMouseDown={()=>{handleUpdatePalette(editedName)}}><span class="material-symbols-rounded">check</span></button>
                             </form>
                         }
+
                         <div className='saved-palette-options'>
                             <button onClick={()=>{setIsBeingEdited(true)}}><span className="material-symbols-rounded">border_color</span></button>
                             <button><span className="material-symbols-rounded">ios_share</span></button>
