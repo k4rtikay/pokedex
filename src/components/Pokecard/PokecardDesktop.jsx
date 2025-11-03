@@ -10,7 +10,7 @@ export default function PokecardDesktop(){
 
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const {isShiny, setIsShiny, isGenerating, palette, data } = usePokedex()
-    const { name } = data
+    const { name } = data || {}
     const [ showExportModal, setShowExportModal ] = useState(false)
 
     const colorArray =  palette?.map((obj, objIndex)=>{

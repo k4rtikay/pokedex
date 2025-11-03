@@ -22,7 +22,7 @@ export function Pokecard({selectedPokemon, setIsModalOpen, isModalOpen}){
     const [isSaveModalOpen, setIsSaveModalOpen] = useState(false)
     const [ showExportModal, setShowExportModal ] = useState(false)
 
-    const { name } = data
+    const { name } = data || {}
 
     const colorArray =  palette?.map((obj, objIndex)=>{
         return obj.color

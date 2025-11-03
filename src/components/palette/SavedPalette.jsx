@@ -3,7 +3,6 @@ import { useDatabase } from '../../Context/DatabaseContext';
 import './SavedPalette.scss'
 import { Modal } from '../Modal/Modal';
 import Export from '../Pokecard/Export';
-import { handleDownload, handleCodeFormatting } from '../../utils'
 
 export default function SavedPalette(props){
 

@@ -3,7 +3,7 @@ import SavedPalette from "./SavedPalette"
 import { useDatabase } from "../../Context/DatabaseContext"
 import { useAuth } from '../../Context/AuthContext'
 import { AnimatePresence,motion } from 'framer-motion'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState, useMemo } from 'react'
 import { usePokedex } from '../../Context/PokedexContext'
 
 export default function SavedPaletteWindow(){
@@ -12,6 +12,8 @@ export default function SavedPaletteWindow(){
     const {globalUser} = useAuth()
     const savedPalettesRef = useRef()
     const { isDesktop, isLibraryOpen, setIsLibraryOpen } = usePokedex()
+
+    const [searchTerm, setSearchTerm] = useState('');
 
     const variants = {
         hidden:{
@@ -32,6 +34,19 @@ export default function SavedPaletteWindow(){
         }
     }
 
+    const filteredPalettes = useMemo(() => {
+        const lowerCaseSearch = searchTerm.toLowerCase().trim();
+
+        // If no search term, return the full list
+        if (!lowerCaseSearch) {
+            return savePalette;
+        }
+
+        return savePalette.filter((palette) => {
+            return palette.name.toLowerCase().includes(lowerCaseSearch);
+        });
+    }, [savePalette, searchTerm]);
+
 
     useEffect(() => {
         if (isLibraryOpen) {
@@ -41,6 +56,7 @@ export default function SavedPaletteWindow(){
         }
         return () => document.body.classList.remove('menu-open')
     }, [isLibraryOpen])
+
 
     console.log(savePalette)
     
@@ -61,23 +77,34 @@ export default function SavedPaletteWindow(){
                             <button
                             onClick={()=>{setIsLibraryOpen(false)}}><span className="material-symbols-rounded">close</span></button>
                         </div>
-                        <input type="text" placeholder="Search by name..." />
+                        <input type="text"
+                        placeholder="Search by name..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}/>
+
                         {(globalUser && savePalette.length!=0)?(
-                            <div className="savedPalettesPane">
-                                {
-                                    savePalette.map((ColPalette)=>{
-                                        return(
-                                            <SavedPalette palette={ColPalette.palette} name={ColPalette.name} key={ColPalette.id} id={ColPalette.id}/>
-                                        )
-                                    })
-                                }
-                            </div>
+                            (filteredPalettes.length > 0) ? (
+                                    <div className="savedPalettesPane">
+                                        {
+                                            // Map over the filtered list
+                                            filteredPalettes.map((ColPalette)=>{
+                                                return(
+                                                    <SavedPalette palette={ColPalette.palette} name={ColPalette.name} key={ColPalette.id} id={ColPalette.id}/>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                ) : (
+                                    // if no palettes match the search
+                                    <div className="noPalettesSaved">
+                                        <p>No palettes found matching "{searchTerm}".</p>
+                                    </div>
+                                )
                         ):(globalUser && savePalette.length==0)?(
                             <div className="noPalettesSaved">
+                                
                                 <p>No palettes saved yet.</p>
                                 <p>Search up your favourite Pokemon and get inspired!!</p>
-                
-                                {/* <?xml version="1.0" encoding="UTF-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --> */}
                                 <svg viewBox="0 0 48 48" id="a" xmlns="http://www.w3.org/2000/svg"><circle id="b" className="c" cx="23.99" cy="23.99" r="8"/><path className="c" d="M2.83,27.75c1.77,10.08,10.57,17.74,21.16,17.74s19.39-7.66,21.16-17.74h-8.71c-1.61,5.35-6.58,9.24-12.45,9.24s-10.84-3.89-12.45-9.24H2.83Z"/><path className="c" d="M2.82,20.25C4.59,10.16,13.4,2.49,23.99,2.49s19.4,7.67,21.17,17.76h-8.71c-1.61-5.36-6.58-9.26-12.46-9.26s-10.85,3.9-12.46,9.26H2.82Z"/></svg>
                 
                             </div>
