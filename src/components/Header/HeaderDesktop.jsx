@@ -10,7 +10,7 @@ export default function HeaderDesktop(){
     return(
         <>
         <div className="hd-container">
-            <h1 className="hd-title">Pokebook</h1>
+            <h1 className="hd-title">HueDex</h1>
             <nav className='hd-container--nav'>
                 {/* <a href="">About</a>
                 <a href=''>Feedback</a> */}

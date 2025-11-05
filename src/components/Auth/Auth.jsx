@@ -67,7 +67,7 @@ export default function Auth(){
         >
             {<form action="" className="auth-form">
             {/* <h1>{mode=='signup'? 'Register' : 'Sign in'}</h1> */}
-                <h1>Pokebook</h1>
+                <h1>HueDex</h1>
                 <div className="auth-mode--toggle">
                     <label style={{fontFamily: isSignIn&&'Pixelify Sans,Segoe UI, Tahoma, Geneva, Verdana, sans-serif'}}>
                         <input type="radio" name='auth-mode' value={"signIn"}
