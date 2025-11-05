@@ -84,6 +84,60 @@
                 color: red;
             }
         }
+    }   
+}
+
+.about-modal-content {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+    width: clamp(300px, 60vw, 500px);
+    background-color: var(--card-bg-color);
+    color: var(--font-color);
+    font-family: v.$secondary-font;
+    border-radius: 24px;
+
+    h2 {
+        font-family: v.$primary-font;
+        color: #f3d617;
+        text-shadow:
+        -2px -2px 0 #4370f4,
+        2px -2px 0 #4370f4,
+        -2px 2px 0 #4370f4,
+        2px 2px 0 #4370f4;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.5;
+
+        a{
+            text-decoration: none;
+            color: rgb(97, 97, 232);
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .about-github-link {
+        background-color: var(--font-color);
+        color: var(--card-bg-color);
+        padding: 0.5rem 1.2rem;
+        font-size: 14px;
+        text-decoration: none;
+        box-shadow: var(--shadow-card);
+        transition: transform 0.2s ease;
+        border-radius: 0.5rem;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+        transform: scale(1.02);
+        }
     }
 }
 
