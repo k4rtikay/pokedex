@@ -4,80 +4,91 @@
 .menu-container{
     font-family: v.$secondary-font;
     font-size: 1.5rem;
-}
 
-.menu-trigger{
-    border: none;
-    background:none;
-    cursor: pointer;
-    position: relative;
-}
-
-.menu{
-    position: fixed;
-    width: 240px;
-    background-color: var(--card-bg-color);
-    border-radius: 16px;
-    z-index: 99;
-    padding: 1rem;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: space-between;
-    box-shadow: var(--shadow-card-big);
-    will-change: height, width, transform;
-}
-
-.menu-nav {
-    padding-top: 5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    align-items: start;
-
-    button {
-        font-family: inherit;
-        font-size: inherit;
+    .menu-trigger{
+        border: none;
+        background:none;
+        cursor: pointer;
+        position: relative;
     }
-}
 
-.menu-signout {
-    font-size: inherit;
-}
+    .menu{
+        position: fixed;
+        width: 240px;
+        background-color: var(--card-bg-color);
+        border-radius: 16px;
+        z-index: 99;
+        padding: 1rem;
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+        box-shadow: var(--shadow-card-big);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        will-change: height, width, transform;
 
-footer {
-    font-size: 0.75rem;
-    opacity: 0.7;
-    padding-top: 1rem;
-    font-family: inherit;
-    width: 100% ;
-    text-align: center;
+        .menu-top{
+            position: absolute;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            top: 1rem;
+            left: 1rem;
 
-    a {
-        color: rgb(97, 97, 232);
-        text-decoration: none;
+            div{
+                font-weight: 600;
+                white-space: nowrap;
+                font-family: v.$primary-font;
+            }
+        }
 
-        &:hover {
-            text-decoration: underline;
+        footer {
+            font-size: 0.75rem;
+            padding-top: 1rem;
+            font-family: inherit;
+            width: 100% ;
+            text-align: center;
+
+            a {
+                color: rgb(97, 97, 232);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .menu-nav {
+            padding-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: start;
+            font-size: 1.5rem;
+
+            button {
+                font-family: inherit;
+                font-size: inherit;
+            }
+
+            a{
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .menu-signout {
+                color: red;
+            }
         }
     }
 }
 
-.menu-top{
-    position: absolute;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    top: 1rem;
-    left: 1rem;
 
-    div{
-        font-weight: 500;
-        white-space: nowrap;
-    }
-}
+
 
 @media (min-width: 1024px) {
     .menu-container{
@@ -86,36 +97,40 @@ footer {
         flex-direction: column;
         align-items: flex-end;
         font-size: 1rem;
-    }
-    
-    .menu-top{
-        left: auto;
-        right: 1rem;
-        flex-direction: row-reverse;
-        
-    }
 
-    .menu{
-        align-items: flex-end;
-        gap: 0.7rem;
-        transform-origin: top right;
-        max-width: 200px;
+        .menu{
+            align-items: flex-end;
+            gap: 0.7rem;
+            transform-origin: top right;
+            max-width: 200px;
 
-        footer{
-            font-size: 0.7rem;
-            a {
-                color: rgb(97, 97, 232);
-                text-decoration: none;
-                
-                &:hover {
-                    text-decoration: underline;
+            .menu-nav{
+                padding-top: 3.5rem;
+                width: fit-content;
+                gap: 1rem;
+                align-items: end;
+                font-size: 1rem;
+            }
+
+            footer{
+                font-size: 0.7rem;
+                a {
+                    color: rgb(97, 97, 232);
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
-        }
-    }
 
-    .menu-nav{
-        padding-top: 3.5rem;
+            .menu-top{
+                left: auto;
+                right: 1rem;
+                flex-direction: row-reverse;
+                
+            }
+
+        }
+    
     }
 
 }

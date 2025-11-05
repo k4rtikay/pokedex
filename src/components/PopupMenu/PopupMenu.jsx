@@ -63,7 +63,7 @@ export default function PopupMenu({ isMenuActive, setIsMenuActive, triggerRef })
         open: {
             y: 0,
             x: 0,
-            opacity: 1,
+            opacity: 0.75,
             transition: {
              ease: [0.44, 1.56, 0.64, 1]
             }
@@ -151,25 +151,30 @@ export default function PopupMenu({ isMenuActive, setIsMenuActive, triggerRef })
                                             style={{}}>{(globalUser?globalUser.displayName:'Guest')}</motion.div>       
                                     </div>
 
-                                        <div className="menu-nav">
-                                            {!isDesktop&&<motion.button variants={navItemVariants}>About</motion.button>}
-                                            {!isDesktop&&<motion.button variants={navItemVariants}>Feedback</motion.button>}
+                                        <nav className="menu-nav">
+                                            <motion.button variants={navItemVariants} whileHover={{opacity:1}}>About</motion.button>
+
+                                            <motion.a variants={navItemVariants} href='https://github.com/k4rtikay/pokedex/issues' target='_blank' rel='noopener noreferrer' whileHover={{opacity:1}}>Feedback</motion.a>
+
                                             <motion.button variants={navItemVariants}
-                                            onClick={()=>{setIsDarkMode(!isDarkMode)}}>Dark Mode</motion.button>
-                                        </div>
-                                        <motion.button variants={navItemVariants}
-                                        className='menu-signout'
-                                        onClick={async ()=>{
-                                            if(globalUser){
-                                                console.log('logging out..')
-                                                await logout()
-                                                console.log('navigating..')
-                                                navigate('/')
-                                            }else{
-                                                setIsAuthOpen(true)
-                                                setIsMenuActive(false)
-                                        }}}
-                                        style={globalUser && {color:'#cc2737'}}>{globalUser?'Sign Out':'Sign In'}</motion.button>
+                                            whileHover={{opacity:1}}
+                                            onClick={()=>{setIsDarkMode(!isDarkMode)}}>Toggle Theme</motion.button>
+
+                                            <motion.button variants={navItemVariants}
+                                            whileHover={{opacity:1}}
+                                            className={globalUser && 'menu-signout'}
+                                            onClick={async ()=>{
+                                                if(globalUser){
+                                                    console.log('logging out..')
+                                                    await logout()
+                                                    console.log('navigating..')
+                                                    navigate('/')
+                                                }else{
+                                                    setIsAuthOpen(true)
+                                                    setIsMenuActive(false)
+                                            }}}>{globalUser?'Sign Out':'Sign In'}</motion.button>
+                                        </nav>
+                                        
                                         <motion.footer variants={navItemVariants}>Made with ❤️ by <a href='https://github.com/k4rtikay' target="_blank" rel='noopener noreferrer'>k4rtikay</a> </motion.footer>
                                 </motion.div>
                         )

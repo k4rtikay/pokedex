@@ -12,8 +12,8 @@ export default function HeaderDesktop(){
         <div className="hd-container">
             <h1 className="hd-title">Pokebook</h1>
             <nav className='hd-container--nav'>
-                <a href="">About</a>
-                <a href=''>Feedback</a>
+                {/* <a href="">About</a>
+                <a href=''>Feedback</a> */}
                 <button className="hd-library"
                 onClick={()=>{setIsLibraryOpen(!islibraryOpen)}}>Library</button>
                 <span>

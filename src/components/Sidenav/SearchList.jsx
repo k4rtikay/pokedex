@@ -11,7 +11,7 @@ export default function SearchList(){
     if(searchPokemon===''){
         searchedList=pokemonList;
     }
-    else if(/^[0-9]+$/.test(searchPokemon)){
+    else if(/^[0-9]+$/.test(searchPokemon)){    
         let numIndex = Number(searchPokemon)
         if(numIndex>0&&numIndex<650){
             searchedList= [pokemonList[numIndex-1]]

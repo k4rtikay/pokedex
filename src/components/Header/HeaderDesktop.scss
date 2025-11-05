@@ -13,6 +13,20 @@
     flex-shrink: 0;
     height: 70px;
     color: var(--font-color);
+
+    .hd-title{
+      color: #F3D617;
+      text-shadow:
+      -2px -2px 0 #4370F4,
+        2px -2px 0 #4370F4,
+      -2px  2px 0 #4370F4,
+        2px  2px 0 #4370F4;
+      animation-delay: 0.2s;
+      font-size: clamp(1.5rem, 8vw, 1.8rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
     
     button{
       border: none;
@@ -28,7 +42,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 30%;
+        width: fit-content;
+        gap: 2.5rem;
 
         button{
             font-family: inherit;
@@ -37,8 +52,10 @@
         }
 
         .hd-library{
+          font-size: 1.2rem;
           color: var(--accent-dark);
           font-weight: 600;
+          font-family: v.$primary-font;
           cursor: pointer;
           transition: all 0.1s ease;
           
@@ -50,20 +67,7 @@
 
         a{
           text-decoration: none;
-          color: inherit;
+          color: var(--font-color);
         }
     }
-}
-
-.hd-title{
-  color: #F3D617;
-  text-shadow:
-  -2px -2px 0 #4370F4,
-    2px -2px 0 #4370F4,
-  -2px  2px 0 #4370F4,
-    2px  2px 0 #4370F4;
-  animation-delay: 0.2s;
-  font-size: clamp(1.5rem, 8vw, 1.8rem);
-  font-weight: 600;
-  letter-spacing: 0.1em;
 }
