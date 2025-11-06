@@ -1,18 +1,11 @@
-import { Header } from "../Header/Header";
-import { Sidenav } from "../Sidenav/Sidenav";
-import { Pokecard } from "../Pokecard/Pokecard";
-import { useState } from "react";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { usePokedex } from "../../Context/PokedexContext";
-import { PaletteModal } from "../palette/PaletteModal";
-import { ViewPalette } from "../palette/ViewPalette";
 import './MainAppLayout.scss'
 import MobileLayout from "./MobileLayout";
 import DesktopLayout from "./DesktopLayout";
-import useTheme from "../../hooks/usePokemonTheme";
 
 export default function MainAppLayout() {
-    const { selectedPokemon, setSelectedPokemon,isPaletteModalOpen, setIsPaletteModalOpen, isSideMenuOpen, isDesktop, themeColor } = usePokedex();
+    const { isDesktop } = usePokedex();
 
     
 

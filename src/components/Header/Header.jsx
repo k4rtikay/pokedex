@@ -6,7 +6,7 @@ import PopupMenu from '../PopupMenu/PopupMenu'
 import { usePokedex } from '../../Context/PokedexContext'
 import { Sidenav } from '../Sidenav/Sidenav'
 
-export function Header({isSideMenuOpen,setIsSideMenuOpen}){
+export function Header(){
     const { globalUser,logout } = useAuth()
     const {selectedPokemon, setSelectedPokemon} = usePokedex()
     const [isMenuActive, setIsMenuActive] = useState(false)

@@ -12,7 +12,7 @@ export default function Layout(){
 
     return(
         <div className="app-layout" style={themeStyles}>
-        {isDesktop? <HeaderDesktop/> : <Header isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen}/>}
+        {isDesktop? <HeaderDesktop/> : <Header/>}
         <main className="app-content">
             <Outlet/>
         </main>
