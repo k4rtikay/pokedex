@@ -112,7 +112,6 @@ To run this project locally, follow these steps:
 This was my first major project built with React, and it was an incredible learning experience. While I'm proud of the final product, I'm also aware of several areas I would improve in a future refactor.
 
 * **Refactor Bloated Components:** Some components (like the main Palette generator) grew too large and handle too much logic. I plan to break these down into smaller, single-responsibility components to improve readability and maintenance.
-* **Custom Hooks vs. Helpers:** I created a custom hook that could be simplified into a pure helper function, as it doesn't rely on state or lifecycle methods. This would improve code separation.
 * **Naming Conventions:** As the project grew, my naming conventions for components and functions became inconsistent. I would enforce a stricter naming strategy (e.g., BEM for SCSS, consistent file names) from the start.
 
 This project taught me the importance of planning component architecture *before* writing code, and I look forward to applying these lessons to my next project.
