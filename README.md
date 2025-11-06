@@ -21,7 +21,6 @@
   <br>
 
 https://github.com/user-attachments/assets/411f967a-26be-43b4-af98-32ae01b7819b
-*video demon of the mobile interface*
 
 
   <em>The main page on desktop in dark theme.</em>
