@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <img src="./public/HueDex-desktop-1.png" alt="Desktop main page in dark theme" width="800">
+  <img src="./public/HueDex-Desktop-1.png" alt="Desktop main page in dark theme" width="800">
   <br>
 
 https://github.com/user-attachments/assets/411f967a-26be-43b4-af98-32ae01b7819b
