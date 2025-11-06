@@ -6,7 +6,7 @@
 > A Pokémon-themed color palette generator inspired by Coolors. Instantly create and save color schemes extracted directly from normal and shiny Pokémon sprites.
 
 
-**Live At:** [https://pokebooknew.netlify.app/]
+**Live At:** [https://huedex.netlify.app]
 
 ---
 
