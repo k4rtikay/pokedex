@@ -1,7 +1,7 @@
 import './PaletteBar.scss'
 import { useState } from 'react';
 import { colorForIntensity } from '../../utils';
-import useShadesGenerator from '../../hooks/useShades';
+import shadesGenerator from '../../utils/shadesGenerator';
 import tinycolor from 'tinycolor2';
 import { Modal } from '../Modal/Modal';
 import { usePokedex } from '../../Context/PokedexContext';
@@ -31,7 +31,7 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format,
   }
 
   const rgbString = tinyColorInstance.toRgbString();
-  const shadesArray = useShadesGenerator(rgbString,num)
+  const shadesArray = shadesGenerator(rgbString,num)
 
 
   return (
@@ -65,10 +65,6 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format,
                               )
                           })
                       }
-                      {/* <button
-                      className='closeShades'
-                      aria-label='button to close shades overlay'
-                      onClick={()=>{setIsShadesOn(false)}}><span className="fa-solid fa-xmark"></span></button> */}
                   </div>
                 </Modal>
 

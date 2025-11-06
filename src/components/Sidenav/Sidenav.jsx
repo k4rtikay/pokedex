@@ -6,28 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import SearchList from "./SearchList";
 
 export function Sidenav({setIsSearchActive, isSearchActive}){
-    // const { selectedPokemon, setSelectedPokemon } = usePokedex();
+
     const sidenavref = useRef()
     const { isDesktop } = usePokedex()
-
-    // const [searchPokemon,setSearchPokemon]=useState('');
-    // let searchedList = [];
-    // if(searchPokemon===''){
-    //     searchedList=first151Pokemon;
-    // }
-    // else if(/^[0-9]+$/.test(searchPokemon)){
-    //     let numIndex = Number(searchPokemon)
-    //     if(numIndex>0&&numIndex<152){
-    //         searchedList= [first151Pokemon[numIndex-1]]
-    //     }else{
-    //         searchedList=[]
-    //     }  
-    // }else{
-    //     searchedList=first151Pokemon.filter((poke)=>poke.toLowerCase().startsWith(searchPokemon.toLowerCase()))
-    // }
-
-
-    // const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     const variants = {
         hidden:{
@@ -39,13 +20,6 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
             transition: {duration: 0.3, ease: [0.85, 0, 0.15, 1]}
         }
     }
-
-    // useEffect(() => {
-    // const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    // window.addEventListener('resize', handleResize);
-    // handleResize();
-    // return () => window.removeEventListener('resize', handleResize);
-    // }, []);
 
     useEffect(() => {
         if (isSearchActive) {
@@ -90,6 +64,4 @@ export function Sidenav({setIsSearchActive, isSearchActive}){
             </AnimatePresence>
     )
 }
-
-// ${isMobile && !isSideMenuOpen ? 'hidden' : ''}`
 
