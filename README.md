@@ -17,12 +17,12 @@
 </p>
 
 <p align="center">
-  <img src="./public/HueDex-desktop-1.png" alt="Desktop main page in dark theme" width="800">
+  <img src="./public/HueDex-Desktop-1.png" alt="Desktop main page in dark theme" width="800">
   <br>
   <em>The main page on desktop in dark theme.</em>
 </p>
 
-![Mobile Demo Video](public/HueDex Mobile.mp4)
+![Mobile Demo Video](/public/HueDex Mobile.mp4)
 *A quick demo of the mobile layout and the interactivity*
 
 ## Summary
@@ -116,7 +116,7 @@ This project taught me the importance of planning component architecture *before
 
 ## Acknowledgements
 
-* **Inspiration:** [Coolors.co](https://coolors.co/)
+* **Inspiration:** [Coolors.co](https://coolors.co/), [Pokemonpalette.com](https://www.pokemonpalette.com/), [Pokepalettes.com](https://pokepalettes.com/)
 * **Data:** [PokéAPI](https://pokeapi.co/)
 * **Color Extraction:** [ColorThief](https://github.com/lokesh/color-thief) by Lokesh Dhakar
 
