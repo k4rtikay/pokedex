@@ -59,6 +59,15 @@
         border-radius: 16px;
         border: 1px solid var(--border-color);
     }
+
+    .error{
+        font-size: 14px;
+        color: red;
+    }
+
+    .success{
+        font-size: 14px;
+    }
 }
 
 .auth-mode--toggle{

@@ -121,7 +121,7 @@ export default function PopupMenu({ isMenuActive, setIsMenuActive, triggerRef })
         <div className="menu-container" ref = {dropdownRef}>
 
             <Modal isModalOpen={isAuthOpen} onClose={()=>{setIsAuthOpen(false)}}>
-                <Auth></Auth>
+                <Auth onClose={()=>{setIsAuthOpen(false)}} ></Auth>
             </Modal>
 
             <Modal isModalOpen={isAboutOpen} onClose={() => { setIsAboutOpen(false) }}>
