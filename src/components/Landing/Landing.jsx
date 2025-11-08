@@ -51,11 +51,11 @@ export default function Landing(){
                         {isDesktop&&
                             <div className="lp-list-wrapper">
                                 <ul className="lp-list">
-                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">lock</span> Advanced Color Locking</li>
-                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">looks</span> 20-Shade Color Explorer</li>
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">lock</span> Easy Color Locking</li>
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">looks</span> Shades Explorer</li>
                                     <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">casino</span> Spacebar Generation</li>
                                     <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">bookmark_heart</span> Smart Palette Management</li>
-                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">ios_share</span> Designer-Ready Export</li>
+                                    <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">ios_share</span> Code-Ready Export</li>
                                     <li className='lp-list--item'><span className="lp-list--icon material-symbols-rounded">family_star</span> Animated Sprite Integration</li>
                                 </ul>
                             </div>
