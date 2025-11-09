@@ -75,7 +75,7 @@ export default function Export({ colorArray, name }) {
                 justifyContent: "center",
               }}
             >
-              <span class="material-symbols-rounded">check_circle</span> Copied
+              <span className="material-symbols-rounded">check_circle</span> Copied
               to clipboard!
             </div>
           }

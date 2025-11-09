@@ -101,7 +101,7 @@ export function ViewPalette({ isSaveModalOpen, setIsSaveModalOpen }) {
   const handleShadeSelection = (shade, id) => {
     const newPalette = palette.map((colorObj) => {
       console.log("setting shade..");
-      if (colorObj.id == id) {
+      if (colorObj.id === id) {
         return {
           ...colorObj,
           color: shade,
@@ -169,7 +169,7 @@ export function ViewPalette({ isSaveModalOpen, setIsSaveModalOpen }) {
 
   useEffect(() => {
     const handleSpacebar = (event) => {
-      if (event.key == " " && isSaveModalOpen == false && !isGenerating) {
+      if (event.key === " " && isSaveModalOpen === false && !isGenerating) {
         event.preventDefault();
         setSelectedPokemon(randomPokemonNumber());
         setIsGenerating(true);

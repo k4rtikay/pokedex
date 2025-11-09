@@ -16,7 +16,7 @@ export default function SavedPalette(props) {
   const inputRef = useRef();
 
   const handleUpdatePalette = (newName) => {
-    if (newName == "") {
+    if (newName === "") {
       setEditedName(name);
       return;
     }
