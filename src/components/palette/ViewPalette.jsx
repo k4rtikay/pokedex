@@ -106,7 +106,7 @@ export function ViewPalette({isSaveModalOpen,setIsSaveModalOpen }){
         setCopied(true);
         setTimeout(() => {
             setCopied(false);
-        }, 2000);
+        }, 1000);
     }
 
     const handleSavingPalettes = (name) => {

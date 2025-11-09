@@ -31,7 +31,7 @@ export default function MainAppLayout() {
         }}
         style={{flexGrow:'1', display: 'flex', flexDirection: 'column'}}>
             <div className='app'>
-                {isDesktop?<DesktopLayout/>:<MobileLayout/>}
+                {!!isDesktop?<DesktopLayout/>:<MobileLayout/>}
             </div>
         </motion.div>
     )

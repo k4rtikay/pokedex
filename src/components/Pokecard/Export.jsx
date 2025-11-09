@@ -18,13 +18,17 @@ export default function Export({colorArray, name}){
     const codeRef = useRef()
 
     const handleCodeCopy = () =>{
-        if(codeRef.current){
-            setCopied(true);
-            const codeString = codeRef.current.innerText
-            navigator.clipboard.writeText(codeString)
-            setTimeout(() => {
-                setCopied(false);
-            }, 1000);
+        try{
+            if(codeRef.current){
+                setCopied(true);
+                const codeString = codeRef.current.innerText
+                navigator.clipboard.writeText(codeString)
+                setTimeout(() => {
+                    setCopied(false);
+                }, 1000);
+            }
+        }catch(err){
+            console.error('failed to copy color to clipboard : ',err)
         }
     }
 

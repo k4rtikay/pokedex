@@ -16,8 +16,12 @@ export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format,
 
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(displayString);
-    onCopy();
+    try{
+      navigator.clipboard.writeText(displayString);
+      onCopy();
+    }catch(err){
+      console.error('failed to copy to clipboard ',err)
+    }
   };
 
   let displayString;
