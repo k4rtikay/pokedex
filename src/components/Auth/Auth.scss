@@ -1,140 +1,139 @@
-@use '../../styles/variables.scss' as v;
+@use "../../styles/variables.scss" as v;
 
-.auth-container{
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: clamp(320px, 15vw, 450px);
+  font-family: v.$secondary-font;
+  color: var(--font-color);
+}
+
+.auth-form {
+  background-color: var(--bg-color);
+  border-radius: 16px;
+  display: flex;
+  padding: clamp(2rem, 5vw, 2.5rem);
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-card-big);
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    color: #fcff5f;
+    text-shadow:
+      -2px -2px 0 #1e3a9f,
+      2px -2px 0 #1e3a9f,
+      -2px 2px 0 #1e3a9f,
+      2px 2px 0 #1e3a9f;
+    font-family: v.$primary-font;
+  }
+
+  button {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--font-color);
+    border-radius: 12px;
+    border: none;
+    color: var(--bg-color);
+    min-height: 40px;
+    min-width: 100px;
+    font-size: 1.1rem;
+    font-family: v.$secondary-font;
+    box-shadow: var(--shadow-button);
+  }
+
+  .auth-OAuth {
+    display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    width: clamp(320px, 15vw, 450px);
-    font-family: v.$secondary-font;
-    color: var(--font-color);
-}
-
-.auth-form{
-    background-color: var(--bg-color);
-    border-radius: 16px;
-    display: flex;
-    padding: clamp(2rem, 5vw, 2.5rem);
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    box-shadow: var(--shadow-card-big);
-
-    h1{
-        margin: 0;
-        padding: 0;
-        font-size: 2rem;
-        color: #FCFF5F;
-        text-shadow:
-        -2px -2px 0 #1E3A9F,
-        2px -2px 0 #1E3A9F,
-        -2px  2px 0 #1E3A9F,
-        2px  2px 0 #1E3A9F;
-        font-family: v.$primary-font;
-    }
-
-    button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--font-color);
-        border-radius: 12px;
-        border: none;
-        color: var(--bg-color);
-        min-height: 40px;
-        min-width: 100px;
-        font-size: 1.1rem;
-        font-family: v.$secondary-font;
-        box-shadow: var(--shadow-button);
-    }
-
-    .auth-OAuth{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--card-bg--color);
-        color: var(--font-color);
-        font-family: v.$secondary-font;
-        border-radius: 16px;
-        border: 1px solid var(--border-color);
-    }
-
-    .error{
-        font-size: 14px;
-        color: red;
-    }
-
-    .success{
-        font-size: 14px;
-    }
-}
-
-.auth-mode--toggle{
-    height: 2.5rem;
-    width: 250px;
-    display: flex;
-    align-items: center;
     background-color: var(--card-bg--color);
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
     color: var(--font-color);
+    font-family: v.$secondary-font;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+  }
 
-    label{
-        display: flex;
-        justify-content: center;
-        flex:1;
-        background: transparent;
-        z-index: 2;
-        transition: 0.3s all ease-in;
-        padding: -10px;
-        margin: -10px;
-        margin-right: 10px;
-    }
+  .error {
+    font-size: 14px;
+    color: red;
+  }
 
-    input{
-        opacity: 0;
-    }
-
-    .auth-mode--indicator{
-        background: var(--font-color);
-        height: 100%;
-        width: 50%;
-        position: absolute;
-        border-radius: 12px;
-        box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
-        opacity: 0.2;
-
-        :focus{
-            transition: all 0.1s ease-in;
-            border: 2px solid var(--button-primary-bg);
-        }
-        
-    }
+  .success {
+    font-size: 14px;
+  }
 }
 
-.auth-form--input{
+.auth-mode--toggle {
+  height: 2.5rem;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg--color);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 1px 2px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  color: var(--font-color);
+
+  label {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    background: transparent;
+    z-index: 2;
+    transition: 0.3s all ease-in;
+    padding: -10px;
+    margin: -10px;
+    margin-right: 10px;
+  }
+
+  input {
+    opacity: 0;
+  }
+
+  .auth-mode--indicator {
+    background: var(--font-color);
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    border-radius: 12px;
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
+    opacity: 0.2;
+
+    :focus {
+      transition: all 0.1s ease-in;
+      border: 2px solid var(--button-primary-bg);
+    }
+  }
+}
+
+.auth-form--input {
+  margin-top: 8px;
+
+  input {
+    margin-bottom: 16px;
     margin-top: 8px;
+    border: 1px solid var(--border-color);
+    font-family: v.$secondary-font;
+    font-weight: 450;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    padding: 8px;
+    background-color: var(--card-bg-color);
+    color: var(--font-color);
 
-    input{
-        margin-bottom: 16px;
-        margin-top: 8px;
-        border: 1px solid var(--border-color);
-        font-family: v.$secondary-font;
-        font-weight: 450;
-        font-size: 1.1rem;
-        border-radius: 12px;
-        padding: 8px;
-        background-color: var(--card-bg-color);
-        color: var(--font-color);
-
-        :focus{
-            transition: all 0.2s ease-in;
-            transform: scale(1.01);
-            border: 2px solid var(--button-primary-bg);
-        }
-    }   
+    :focus {
+      transition: all 0.2s ease-in;
+      transform: scale(1.01);
+      border: 2px solid var(--button-primary-bg);
+    }
+  }
 }

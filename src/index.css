@@ -1,65 +1,63 @@
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-
-button{
-    cursor: pointer;
+button {
+  cursor: pointer;
 }
 
-body{
-  scrollbar-width: none ;
+body {
+  scrollbar-width: none;
   background-color: var(--bg-color);
 }
-
 
 /* pixelify-sans-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Pixelify Sans';
+  font-family: "Pixelify Sans";
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/pixelify-sans-v3-latin/pixelify-sans-v3-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/pixelify-sans-v3-latin/pixelify-sans-v3-latin-regular.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* pixelify-sans-600 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Pixelify Sans';
+  font-family: "Pixelify Sans";
   font-style: normal;
   font-weight: 600;
-  src: url('/fonts/pixelify-sans-v3-latin/pixelify-sans-v3-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/pixelify-sans-v3-latin/pixelify-sans-v3-latin-600.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
 
 /* inter-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/inter-v20-latin/inter-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/inter-v20-latin/inter-v20-latin-regular.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* inter-600 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  src: url('/fonts/inter-v20-latin/inter-v20-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("/fonts/inter-v20-latin/inter-v20-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 @font-face {
   font-display: block;
-  font-family: 'Material Symbols Rounded';
-  src: url('/fonts/MaterialSymbolsRounded-variable.woff2') format('woff2');
+  font-family: "Material Symbols Rounded";
+  src: url("/fonts/MaterialSymbolsRounded-variable.woff2") format("woff2");
 }
 
-
 .material-symbols-rounded {
-  font-family: 'Material Symbols Rounded';
+  font-family: "Material Symbols Rounded";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -74,7 +72,7 @@ body{
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }

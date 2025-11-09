@@ -10,7 +10,6 @@ export default function shadesGenerator(inputColor, num) {
   const shadesArray = [];
 
   for (let i = 0; i < totalShades; i++) {
-    
     // If we are at the original color's index, push the real color.
     if (i === originalIndex) {
       shadesArray.push({
@@ -19,7 +18,7 @@ export default function shadesGenerator(inputColor, num) {
       });
     } else {
       // Otherwise, push the calculated gradient shade.
-      const lightness = 1 - (i / (totalShades - 1));
+      const lightness = 1 - i / (totalShades - 1);
       const newHslColor = { h, s, l: lightness };
       shadesArray.push({
         color: tinycolor(newHslColor).toRgbString(),

@@ -1,73 +1,72 @@
-@use '../../styles/variables.scss' as v;
+@use "../../styles/variables.scss" as v;
 
-.hd-container{
+.hd-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1rem, 3vw, 2rem);
+  gap: 55%;
+  margin: none;
+  background-color: var(--bg-color);
+  font-family: v.$primary-font;
+  position: relative;
+  flex-shrink: 0;
+  height: 70px;
+  color: var(--font-color);
+
+  .hd-title {
+    color: #f3d617;
+    text-shadow:
+      -2px -2px 0 #4370f4,
+      2px -2px 0 #4370f4,
+      -2px 2px 0 #4370f4,
+      2px 2px 0 #4370f4;
+    animation-delay: 0.2s;
+    font-size: clamp(1.5rem, 8vw, 1.8rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  button {
+    border: none;
+    background: none;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem clamp(1rem, 3vw, 2rem);
-    gap: 55%;
-    margin: none;
-    background-color: var(--bg-color);
-    font-family: v.$primary-font;
-    position: relative;
-    flex-shrink: 0;
-    height: 70px;
     color: var(--font-color);
+  }
 
-    .hd-title{
-      color: #F3D617;
-      text-shadow:
-      -2px -2px 0 #4370F4,
-        2px -2px 0 #4370F4,
-      -2px  2px 0 #4370F4,
-        2px  2px 0 #4370F4;
-      animation-delay: 0.2s;
-      font-size: clamp(1.5rem, 8vw, 1.8rem);
-      font-weight: 600;
-      letter-spacing: 0.1em;
+  nav {
+    font-family: v.$secondary-font;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: fit-content;
+    gap: 2.5rem;
+
+    button {
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
     }
 
-    
-    button{
-      border: none;
-      background: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .hd-library {
+      font-size: 1.2rem;
+      color: var(--accent-dark);
+      font-weight: 600;
+      font-family: v.$primary-font;
+      cursor: pointer;
+      transition: all 0.1s ease;
+
+      &:hover {
+        opacity: 0.8;
+        transform: scale(1.02);
+      }
+    }
+
+    a {
+      text-decoration: none;
       color: var(--font-color);
     }
-
-    nav{
-        font-family: v.$secondary-font;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: fit-content;
-        gap: 2.5rem;
-
-        button{
-            font-family: inherit;
-            font-size: inherit;
-            cursor: pointer;
-        }
-
-        .hd-library{
-          font-size: 1.2rem;
-          color: var(--accent-dark);
-          font-weight: 600;
-          font-family: v.$primary-font;
-          cursor: pointer;
-          transition: all 0.1s ease;
-          
-          &:hover{
-            opacity: 0.8;
-            transform: scale(1.02);
-          }
-        }
-
-        a{
-          text-decoration: none;
-          color: var(--font-color);
-        }
-    }
+  }
 }

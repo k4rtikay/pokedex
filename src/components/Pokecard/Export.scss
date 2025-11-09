@@ -1,48 +1,48 @@
-@use '../../styles/variables.scss' as v;
+@use "../../styles/variables.scss" as v;
 
-.export{
+.export {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--bg-color);
+  font-family: v.$secondary-font;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  color: var(--font-color);
+  border-radius: 16px;
+}
+
+.code-container {
+  min-height: 300px;
+  aspect-ratio: 3/4;
+  border: 2px solid var(--border-color);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.export-actions {
+  display: flex;
+  gap: 8px;
+
+  button {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    background-color: var(--bg-color);
-    font-family: v.$secondary-font;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    border: none;
     color: var(--font-color);
-    border-radius: 16px;
-}
-
-.code-container{
-    min-height: 300px;
-    aspect-ratio: 3/4;
+    min-height: 50px;
+    min-width: 110px;
+    font-size: 1.1rem;
+    font-family: v.$secondary-font;
+    box-shadow: var(--shadow-button);
+    margin-top: 16px;
     border: 2px solid var(--border-color);
-    overflow-y: auto;
-    scrollbar-width: none;
+  }
 }
 
-.export-actions{
-    display: flex;
-    gap: 8px;
-    
-    button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--card-bg-color);
-        border-radius: 12px;
-        border: none;
-        color: var(--font-color);
-        min-height: 50px;
-        min-width: 110px;
-        font-size: 1.1rem;
-        font-family: v.$secondary-font;
-        box-shadow: var(--shadow-button);
-        margin-top: 16px;
-        border: 2px solid var(--border-color);
-    }
-}
-
-pre{
-    margin: 0;
+pre {
+  margin: 0;
 }

@@ -1,179 +1,175 @@
-@use '../../styles/variables.scss' as v;
+@use "../../styles/variables.scss" as v;
 
-.savedPaletteWindow{
-    display: flex;
-    flex-direction: column;
-    height: clamp(500px, 80vh, 1400px);
-    width: 100%;
-    position: absolute;
-    background-color: var(--card-bg-color);
-    border-radius: 24px;
-    top: 10%;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    font-family: v.$secondary-font;
-    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.15);
-    will-change: transform;
-    color: var(--font-color);
+.savedPaletteWindow {
+  display: flex;
+  flex-direction: column;
+  height: clamp(500px, 80vh, 1400px);
+  width: 100%;
+  position: absolute;
+  background-color: var(--card-bg-color);
+  border-radius: 24px;
+  top: 10%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  font-family: v.$secondary-font;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+  color: var(--font-color);
+  font-size: 1rem;
+
+  input {
+    height: 48px;
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+    padding: 8px;
+    background: transparent;
     font-size: 1rem;
-
-
-    input{
-        height: 48px;
-        border-radius: 16px;
-        border: 2px solid var(--border-color);
-        padding: 8px;
-        background: transparent;
-        font-size: 1rem;
-        letter-spacing: 0.1em;
-        margin: 8px 24px;
-        color: var(--font-color);
-    }
-}
-
-.savedPaletteContainer{
-    height: 100%;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-}
-
-.savedPaletteHeader{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    font-family: v.$primary-font;
-    position: relative;
-    /* Library */
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 38px;
     letter-spacing: 0.1em;
+    margin: 8px 24px;
     color: var(--font-color);
-
-    button{
-        padding: 0;
-        margin:0;
-        background: none;
-        position: absolute;
-        border: none;
-        right: 16px;
-        top: 16px;
-        display: inline;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        margin: -10px;
-        color: var(--font-color);
-    }
+  }
 }
 
+.savedPaletteContainer {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
 
-.savedPaletteHeader h1{
-    margin: 0;
+.savedPaletteHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  font-family: v.$primary-font;
+  position: relative;
+  /* Library */
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 38px;
+  letter-spacing: 0.1em;
+  color: var(--font-color);
+
+  button {
     padding: 0;
-}
-
-.guestPaletteWindow{
-    flex-grow: 1;
-}
-
-.frame{
-    color: var(--font-color);
-    backdrop-filter: blur(5px);
+    margin: 0;
+    background: none;
+    position: absolute;
+    border: none;
+    right: 16px;
+    top: 16px;
+    display: inline;
     display: flex;
-    height: 100%;
     justify-content: center;
     align-items: center;
-    background:var(--card-bg-color);
-    margin-top: 1rem;
-
-    h1{
-        font-size: 1rem;
-    }
+    padding: 10px;
+    margin: -10px;
+    color: var(--font-color);
+  }
 }
 
-.savedPalettesPane{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 32px 8px;
-    overflow-y: auto;
+.savedPaletteHeader h1 {
+  margin: 0;
+  padding: 0;
 }
 
-.noPalettesSaved{
-    margin-top: 48px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
+.guestPaletteWindow {
+  flex-grow: 1;
+}
+
+.frame {
+  color: var(--font-color);
+  backdrop-filter: blur(5px);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: var(--card-bg-color);
+  margin-top: 1rem;
+
+  h1 {
     font-size: 1rem;
-    line-height: 32px;
-    letter-spacing: 0.1em;
-    text-align: center;
-    position: relative;
-
-    p{
-        opacity: 0.8;
-    }
-  
-    svg{
-        // position: absolute;
-        // bottom: -28%;
-        // left: -28%;
-        width: 200px;
-        fill: none;
-        stroke: var(--font-color);
-        opacity: 0.25;
-        stroke-width: 0.5;
-        transform: rotate(45deg);
-        margin-top: 64px;
-    }
+  }
 }
 
+.savedPalettesPane {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px 8px;
+  overflow-y: auto;
+}
 
-@media(min-width:1024px){
-    .savedPaletteWindow{
-        // position: relative;
-        width: 320px;
-        height: 100%;
-        top: 0;
-        right: 0;
-        overflow: hidden;
-        border-radius: 0px;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
-        background-color: var(--bg-color);
+.noPalettesSaved {
+  margin-top: 48px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 32px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  position: relative;
 
-        input{
-            margin: 0px 8px;
-            margin-top: 8px;
-            height: 2.5rem;
-            font-size: 0.8rem;
-            border-radius: 12px;
-        }
+  p {
+    opacity: 0.8;
+  }
+
+  svg {
+    // position: absolute;
+    // bottom: -28%;
+    // left: -28%;
+    width: 200px;
+    fill: none;
+    stroke: var(--font-color);
+    opacity: 0.25;
+    stroke-width: 0.5;
+    transform: rotate(45deg);
+    margin-top: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .savedPaletteWindow {
+    // position: relative;
+    width: 320px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    border-radius: 0px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+    background-color: var(--bg-color);
+
+    input {
+      margin: 0px 8px;
+      margin-top: 8px;
+      height: 2.5rem;
+      font-size: 0.8rem;
+      border-radius: 12px;
     }
+  }
 
-    .savedPalettesPane{
-        scrollbar-width: none;
-    }
+  .savedPalettesPane {
+    scrollbar-width: none;
+  }
 
-    .savedPaletteHeader{
-        padding: 16px 8px;
-        font-size: 0.8rem;
-        line-height: 24px;
+  .savedPaletteHeader {
+    padding: 16px 8px;
+    font-size: 0.8rem;
+    line-height: 24px;
 
-        // h1{
-        //     display: none;
-        // }
-    }
+    // h1{
+    //     display: none;
+    // }
+  }
 
-    .frame{
-        background:var(--bg-color);
-
-    }
+  .frame {
+    background: var(--bg-color);
+  }
 }

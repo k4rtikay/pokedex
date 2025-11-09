@@ -1,147 +1,145 @@
-@use '../../styles/variables.scss' as v;
+@use "../../styles/variables.scss" as v;
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-.sidenav{
-    position: absolute;
-    z-index: 100;
+.sidenav {
+  position: absolute;
+  z-index: 100;
+  background-color: var(--card-bg-color);
+  top: 0;
+  right: 0;
+  height: 100vh;
+  // height: 100vh;
+  overflow: hidden;
+  padding: 16px 8px;
+  width: clamp(240px, 40vw, 560px);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+  font-family: v.$secondary-font;
+  min-height: 0;
+  color: (--font-color);
+
+  // > div{
+  //     height: 100%;
+  //     display: flex;
+  //     flex-direction: column;
+  // }
+
+  .sn-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 8px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-family: v.$primary-font;
+  }
+
+  input {
+    border: 2.5px solid rgba(0, 0, 0, 0.18);
+    width: 100%;
+    border-radius: 12px;
+    padding: 8px;
+    font-size: inherit;
+    color: var(--font-color);
     background-color: var(--card-bg-color);
-    top:0;
-    right: 0;
-    height: 100vh;
-    // height: 100vh;
+  }
+}
+
+.sn-list {
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 8px;
+  height: 100%;
+
+  .sn-button {
+    margin: 12px 0px;
+    padding: 12px 8px;
+    display: flex;
+    justify-content: start;
+    gap: 16px;
+    align-items: center;
+    border-radius: 12px;
+    width: 100%;
+    background-color: var(--card-bg-color);
+    box-shadow: var(--shadow-button);
+    font-size: 1.1rem;
+    font-family: v.$secondary-font;
+    border: 1px solid var(--border-color);
+    height: fit-content;
+    color: var(--font-color);
+
+    &:hover {
+      transform: scale(1.01) translateY(-1px);
+      transition: all 0.1s ease-in;
+    }
+
+    &:focus {
+      border: 1px solid var(--accent-dark);
+      transform: scale(1.01) translateY(-1px);
+    }
+    &:active {
+      transform: translateY(0px) scale(0.99);
+      filter: brightness(0.9); /* Make it slightly darker */
+    }
+  }
+
+  .sn-button--selected {
+    background-color: var(--accent-dark);
+    transition: all 0.3s ease-in;
+    color: var(--accent-light);
+    font-weight: 600;
+  }
+}
+
+body.menu-open {
+  overflow: hidden;
+  // position: fixed;
+
+  .app {
+    pointer-events: none;
+  }
+
+  .savedPaletteWindow {
+    pointer-events: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidenav-desktop {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    position: relative;
     overflow: hidden;
     padding: 16px 8px;
-    width: clamp(240px, 40vw, 560px);
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+    width: 250px;
     font-family: v.$secondary-font;
-    min-height: 0;
-    color: (--font-color);
+    flex-shrink: 0;
+    height: calc(
+      100vh - 70px
+    ); //subtracting the height of the header to get the height of the sidenav
 
-    // > div{
-    //     height: 100%;
-    //     display: flex;
-    //     flex-direction: column;
-    // }
-
-    .sn-header{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2px 8px;
-        margin-bottom: 16px;
-        margin-top: 8px;
-        font-size: 1.5rem;
-        letter-spacing: 1px;
-        font-family: v.$primary-font;
+    input {
+      border: 2.5px solid var(--border-color);
+      width: 100%;
+      border-radius: 12px;
+      padding: 8px;
+      font-size: inherit;
+      color: var(--font-color);
+      background-color: var(--card-bg-color);
+      z-index: 100;
     }
 
-    input{
-        border: 2.5px solid rgba(0, 0, 0, 0.18);
-        width: 100%;
-        border-radius: 12px;
-        padding: 8px;
-        font-size: inherit;
-        color: var(--font-color);
-        background-color: var(--card-bg-color);
+    .sn-list {
+      min-height: 0;
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: var(--bg-color);
     }
+  }
 }
-
-.sn-list{
-    overflow-y: auto;
-    scrollbar-width: none;
-    padding: 8px;
-    height: 100%;
-
-    .sn-button{
-        margin: 12px 0px;
-        padding: 12px 8px;
-        display: flex;
-        justify-content: start;
-        gap: 16px;
-        align-items: center;
-        border-radius: 12px;
-        width: 100%;
-        background-color: var(--card-bg-color);
-        box-shadow: var(--shadow-button);
-        font-size: 1.1rem;
-        font-family: v.$secondary-font;
-        border: 1px solid var(--border-color);
-        height: fit-content;
-        color: var(--font-color);
-
-        &:hover{
-            transform: scale(1.01) translateY(-1px);
-            transition: all 0.1s ease-in;
-        }
-
-        &:focus{
-
-            border: 1px solid var(--accent-dark);
-            transform: scale(1.01) translateY(-1px);
-        }
-        &:active {
-            transform: translateY(0px) scale(0.99);
-            filter: brightness(0.9); /* Make it slightly darker */
-        }
-    }
-
-    .sn-button--selected{
-        background-color: var(--accent-dark);
-        transition: all 0.3s ease-in;
-        color: var(--accent-light);
-        font-weight: 600;
-    }
-}
-
-body.menu-open{
-    overflow: hidden;
-    // position: fixed;
-
-    .app{
-        pointer-events: none;
-    }
-
-    .savedPaletteWindow{
-        pointer-events: auto;
-    }
-}   
-
-@media (min-width:1024px){
-    .sidenav-desktop{
-        background-color: var(--bg-color);
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        overflow: hidden;
-        padding: 16px 8px;
-        width: 250px;
-        font-family: v.$secondary-font;
-        flex-shrink: 0;
-        height: calc(100vh - 70px);  //subtracting the height of the header to get the height of the sidenav
-        
-
-        input{
-            border: 2.5px solid var(--border-color);
-            width: 100%;
-            border-radius: 12px;
-            padding: 8px;
-            font-size: inherit;
-            color: var(--font-color);
-            background-color: var(--card-bg-color);
-            z-index: 100;
-        }
-
-
-        .sn-list{   
-            min-height: 0;
-            flex-grow: 1;
-            overflow-y: auto;
-            background-color: var(--bg-color);
-        }
-    }
-}
-

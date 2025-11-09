@@ -1,57 +1,56 @@
-@use '../../styles/variables.scss' as v;
+@use "../../styles/variables.scss" as v;
 
-.h-container{
+.h-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.5rem, 5vw, 1.5rem) clamp(1rem, 3vw, 1.2rem);
+  margin: none;
+  background-color: var(--bg-color);
+  font-family: v.$primary-font;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  color: var(--font-color);
+
+  button {
+    border: none;
+    background: none;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: clamp(0.5rem, 5vw, 1.5rem ) clamp(1rem, 3vw, 1.2rem);
-    margin: none;
-    background-color: var(--bg-color);
-    font-family: v.$primary-font;
-    position: relative;
-    flex-shrink: 0;
-    width: 100%;
     color: var(--font-color);
-
-    button{
-      border: none;
-      background: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: var(--font-color); 
-    }
+  }
 }
 
-.h-title{
-  color: #F3D617;
+.h-title {
+  color: #f3d617;
   text-shadow:
-  -2px -2px 0 #4370F4,
-    2px -2px 0 #4370F4,
-  -2px  2px 0 #4370F4,
-    2px  2px 0 #4370F4;
+    -2px -2px 0 #4370f4,
+    2px -2px 0 #4370f4,
+    -2px 2px 0 #4370f4,
+    2px 2px 0 #4370f4;
   font-size: clamp(2rem, 8vw, 4rem);
 }
 
-.h-icon{
-  font-size: clamp(1.8rem ,5vw, 2.5rem);
+.h-icon {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-variation-settings:
-  'FILL' 0,
-  'wght' 320,
-  'GRAD' 0,
-  'opsz' 24
+    "FILL" 0,
+    "wght" 320,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
-.h-container--menu{
+.h-container--menu {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  
 }
 
-@media(min-width:1024px){
-  .h-icon{
+@media (min-width: 1024px) {
+  .h-icon {
     font-size: 32px;
   }
 }

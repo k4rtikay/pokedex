@@ -1,120 +1,155 @@
-import './PaletteBar.scss'
-import { useState } from 'react';
-import { colorForIntensity } from '../../utils';
-import shadesGenerator from '../../utils/shadesGenerator';
-import tinycolor from 'tinycolor2';
-import { Modal } from '../Modal/Modal';
-import { usePokedex } from '../../Context/PokedexContext';
-import Tooltip from '../Tooltip/Tooltip';
+import "./PaletteBar.scss";
+import { useState } from "react";
+import { colorForIntensity } from "../../utils";
+import shadesGenerator from "../../utils/shadesGenerator";
+import tinycolor from "tinycolor2";
+import { Modal } from "../Modal/Modal";
+import { usePokedex } from "../../Context/PokedexContext";
+import Tooltip from "../Tooltip/Tooltip";
 
-export function PaletteBar({ colorObject, onLock, onCopy, onShadeSelect, format, onFormatCycle }) {
-  const { isDesktop } = usePokedex()
+export function PaletteBar({
+  colorObject,
+  onLock,
+  onCopy,
+  onShadeSelect,
+  format,
+  onFormatCycle,
+}) {
+  const { isDesktop } = usePokedex();
   const { color, isLocked, id } = colorObject;
-  const [isShadesOn, setIsShadesOn] = useState(false)
-  const num = isDesktop?10:8
-  const tinyColorInstance = color ? tinycolor({ r: color[0], g: color[1], b: color[2] }) : tinycolor('grey')
-
+  const [isShadesOn, setIsShadesOn] = useState(false);
+  const num = isDesktop ? 10 : 8;
+  const tinyColorInstance = color
+    ? tinycolor({ r: color[0], g: color[1], b: color[2] })
+    : tinycolor("grey");
 
   const handleCopy = () => {
-    try{
+    try {
       navigator.clipboard.writeText(displayString);
       onCopy();
-    }catch(err){
-      console.error('failed to copy to clipboard ',err)
+    } catch (err) {
+      console.error("failed to copy to clipboard ", err);
     }
   };
 
   let displayString;
 
-  if (format === 'hex') {
+  if (format === "hex") {
     displayString = tinyColorInstance.toHexString();
-  } else if (format === 'hsl') {
+  } else if (format === "hsl") {
     displayString = tinyColorInstance.toHslString();
   } else {
     displayString = tinyColorInstance.toRgbString();
   }
 
   const rgbString = tinyColorInstance.toRgbString();
-  const shadesArray = shadesGenerator(rgbString,num)
-
+  const shadesArray = shadesGenerator(rgbString, num);
 
   return (
     <div
       style={{
         backgroundColor: rgbString,
-        color: color&&colorForIntensity(color[0], color[1], color[2]),
+        color: color && colorForIntensity(color[0], color[1], color[2]),
       }}
       className={`paletteBar ${isLocked ? "is-locked" : ""}`}
     >
-        {/* {
+      {/* {
             // isShadesOn ? */}
-                <Modal onClose={()=>{setIsShadesOn(false)}} isModalOpen={isShadesOn}>
-                  <div className="shadesContainer">
-                      {
-                          shadesArray.map((colorObj,colorObjIndex)=>{
-                              const rgbObj = tinycolor(colorObj.color)
-                              const rgbArray = Object.values(rgbObj).slice(1,4)
-                              return(
-                                  <button className="shade"
-                                  style={{backgroundColor:colorObj.color, color: colorForIntensity(rgbArray[0], rgbArray[1], rgbArray[2])}}
-                                  key={colorObjIndex}
-                                  onClick={()=>{
-                                      onShadeSelect(rgbArray,id)
-                                      setIsShadesOn(false)}}>
-                                      <span className='colorString'>{colorObj.color}</span>
-                                      <span className='originalMarker'
-                                      >{colorObj.isOriginal&&<span 
-                                      style={{backgroundColor: colorForIntensity(rgbArray[0], rgbArray[1], rgbArray[2])}}></span>}</span>
-                                  </button>
-                              )
-                          })
-                      }
-                  </div>
-                </Modal>
+      <Modal
+        onClose={() => {
+          setIsShadesOn(false);
+        }}
+        isModalOpen={isShadesOn}
+      >
+        <div className="shadesContainer">
+          {shadesArray.map((colorObj, colorObjIndex) => {
+            const rgbObj = tinycolor(colorObj.color);
+            const rgbArray = Object.values(rgbObj).slice(1, 4);
+            return (
+              <button
+                className="shade"
+                style={{
+                  backgroundColor: colorObj.color,
+                  color: colorForIntensity(
+                    rgbArray[0],
+                    rgbArray[1],
+                    rgbArray[2]
+                  ),
+                }}
+                key={colorObjIndex}
+                onClick={() => {
+                  onShadeSelect(rgbArray, id);
+                  setIsShadesOn(false);
+                }}
+              >
+                <span className="colorString">{colorObj.color}</span>
+                <span className="originalMarker">
+                  {colorObj.isOriginal && (
+                    <span
+                      style={{
+                        backgroundColor: colorForIntensity(
+                          rgbArray[0],
+                          rgbArray[1],
+                          rgbArray[2]
+                        ),
+                      }}
+                    ></span>
+                  )}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </Modal>
 
-                <div className="colorSwatch">
-                    <Tooltip text="Click to change format">
-                      <button className="colorValue"
-                      onClick={onFormatCycle}>{displayString}</button>
-                    </Tooltip>
-                    <span className='paletteBar-actions'>
-                       
-                      <Tooltip text="Copy Color">
-                        <button
-                          aria-label="Copy color"
-                          className="color-options"
-                          onClick={handleCopy}
-                          >
-                          <span className="material-symbols-rounded">content_copy</span>
-                        </button>
-                      </Tooltip>
+      <div className="colorSwatch">
+        <Tooltip text="Click to change format">
+          <button className="colorValue" onClick={onFormatCycle}>
+            {displayString}
+          </button>
+        </Tooltip>
+        <span className="paletteBar-actions">
+          <Tooltip text="Copy Color">
+            <button
+              aria-label="Copy color"
+              className="color-options"
+              onClick={handleCopy}
+            >
+              <span className="material-symbols-rounded">content_copy</span>
+            </button>
+          </Tooltip>
 
-                      <Tooltip text="Toggle Lock">
-                        <button
-                          className={`color-options lockButton ${isLocked ? 'lockedColor' : ''}`}
-                          aria-label={isLocked ? 'Unlock color' : 'Lock color'}
-                          onClick={() => onLock(id)} // Pass the unique ID up to the parent
-                          >
-                          {isLocked
-                              ? <span className="material-symbols-rounded">lock</span>
-                              : <span className="material-symbols-rounded">lock_open_right</span>
-                          }
-                        </button>
-                      </Tooltip>
+          <Tooltip text="Toggle Lock">
+            <button
+              className={`color-options lockButton ${isLocked ? "lockedColor" : ""}`}
+              aria-label={isLocked ? "Unlock color" : "Lock color"}
+              onClick={() => onLock(id)} // Pass the unique ID up to the parent
+            >
+              {isLocked ? (
+                <span className="material-symbols-rounded">lock</span>
+              ) : (
+                <span className="material-symbols-rounded">
+                  lock_open_right
+                </span>
+              )}
+            </button>
+          </Tooltip>
 
-                      <Tooltip text="View Shades">
-                        <button className='color-options' aria-label='show shades button'
-                        onClick={()=>{setIsShadesOn(true)}}>
-                            <span className="material-symbols-rounded">table_rows</span>
-                        </button>
-                      </Tooltip>
-              
-                    </span>
-                </div>
+          <Tooltip text="View Shades">
+            <button
+              className="color-options"
+              aria-label="show shades button"
+              onClick={() => {
+                setIsShadesOn(true);
+              }}
+            >
+              <span className="material-symbols-rounded">table_rows</span>
+            </button>
+          </Tooltip>
+        </span>
+      </div>
 
-                
-        {/* } */}
-        
+      {/* } */}
     </div>
   );
 }

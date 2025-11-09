@@ -12,15 +12,21 @@
   box-sizing: border-box;
   color: var(--font-color);
   cursor: pointer;
-  font-family: 'VT323', sans-serif;
+  font-family: "VT323", sans-serif;
   letter-spacing: 0.25px;
   outline: none;
   overflow: hidden;
   padding: 0 12px;
   position: relative;
   text-align: center;
-  -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
-  transition: background-color .218s, border-color .218s, box-shadow .218s;
+  -webkit-transition:
+    background-color 0.218s,
+    border-color 0.218s,
+    box-shadow 0.218s;
+  transition:
+    background-color 0.218s,
+    border-color 0.218s,
+    box-shadow 0.218s;
   vertical-align: middle;
   white-space: nowrap;
   max-width: 250px;
@@ -46,21 +52,20 @@
   justify-content: center;
   position: relative;
   width: 250px;
-  
 }
 
 .gsi-material-button .gsi-material-button-contents {
-    padding: 2px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: top;
-    color: var(--font-color);
-    font-size: 16px;
+  padding: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  color: var(--font-color);
+  font-size: 16px;
 }
 
 .gsi-material-button .gsi-material-button-state {
-  -webkit-transition: opacity .218s;
-  transition: opacity .218s;
+  -webkit-transition: opacity 0.218s;
+  transition: opacity 0.218s;
   bottom: 0;
   left: 0;
   opacity: 0;
@@ -69,9 +74,8 @@
   top: 0;
 }
 
-.gsi-material-button-content-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.gsi-material-button-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
