@@ -5,7 +5,7 @@ import  { PaletteIllustration,usePaletteAnimation, AnimatedColorsText } from "./
 const samplePalettes = [
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-        colors: ["#F8D030", "#A8A878", "#F85888", "#705848", "#78C850", "#FFFFFF"]
+        colors: ["#F8D030", "#A8A878", "#F85888", "#705848", "#78C850", "#f82525ff"]
     },
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
@@ -13,7 +13,7 @@ const samplePalettes = [
     },
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
-        colors: ["#A040A0", "#F8F8F8", "#705898", "#A8A8C0", "#483D8B", "#E6E6FA"]
+        colors: ["#A040A0", "#F8F8F8", "#705898", "#A8A8C0", "#483D8B", "#b2b2f7ff"]
     },
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
