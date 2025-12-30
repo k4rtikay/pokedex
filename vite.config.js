@@ -8,9 +8,7 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'https://img.pokemondb.net',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
       }
     },
     watch: {
