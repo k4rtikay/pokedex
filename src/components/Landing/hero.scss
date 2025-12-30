@@ -4,8 +4,7 @@
     height: 100vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .hero-content {
@@ -15,11 +14,13 @@
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
+    padding: 2rem;
 
 
     h1 {
-        font-size: 5rem;    
-        span{
+        font-size: 5rem;
+
+        span {
             font-family: v.$primary-font;
         }
     }
@@ -40,11 +41,21 @@
         background-color: #fff941;
         color: #1A1A1A;
         transition: background-color transform 0.1s ease-out;
+
         &:hover {
             background-color: #fffb7c;
         }
+
         &:active {
             transform: translateY(1px);
         }
     }
+}
+
+.hero-illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
 }
