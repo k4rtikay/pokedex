@@ -1,5 +1,6 @@
 import "./hero.scss";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import  { PaletteIllustration,usePaletteAnimation, AnimatedColorsText } from "./PaletteIllustration";
 
 const samplePalettes = [
@@ -27,6 +28,7 @@ const samplePalettes = [
 
 export default function Hero() {
     const { currentIndex, isGrayscale, currentPalette } = usePaletteAnimation(samplePalettes, 3500);
+    const navigate = useNavigate();
 
     return (
         <div className="hero">
@@ -35,7 +37,9 @@ export default function Hero() {
                     Iconic <span>Pokémon</span> <AnimatedColorsText text="Colors" currentPalette={currentPalette} isGrayscale={isGrayscale} />, <br /> Ready for Real Projects!
                 </h1>
                 <p>Design faster with color palettes inspired by Pokémon—crafted for designers and developers who want nostalgia and precision. Generate, lock, tweak, and export palettes in seconds.</p>
-                <button>Start Creating</button>
+                <button
+                onClick={() => {navigate("/app")}}
+                >Start Creating</button>
             </div>
             <div className="hero-illustration">
                 <PaletteIllustration
