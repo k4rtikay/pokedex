@@ -5,19 +5,19 @@ import  { PaletteIllustration,usePaletteAnimation, AnimatedColorsText } from "./
 const samplePalettes = [
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-        colors: ["#F8D030", "#A8A878", "#F85888", "#705848", "#78C850", "#f82525ff"]
+        colors: ["#F8D030", "#A8A878", "#f86058ff", "#705848", "#a24b08", "#fcc840"]
     },
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-        colors: ["#F08030", "#F8D030", "#78C850", "#6890F0", "#705848", "#A8A8C0"]
+        colors: ["#082933", "#cc5444", "#ec963b", "#84341c", "#247494", "#cccccc"]
     },
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
         colors: ["#A040A0", "#F8F8F8", "#705898", "#A8A8C0", "#483D8B", "#b2b2f7ff"]
     },
     {
-        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
-        colors: ["#705898", "#F85888", "#A040A0", "#1A1A1A", "#483D8B", "#FFFFFF"]
+        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/157.png",
+        colors: ["#34405a", "#f3e38d", "#e82804", "#fcd004", "#5c7cbc", "#a48c4c"]
     },
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png",
