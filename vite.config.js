@@ -5,13 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: true,
-    port: 3004,
+    host: '0.0.0.0',
     proxy: {
-      '/api':{
+      '/api': {
         target: 'https://img.pokemondb.net',
         changeOrigin: true,
-        rewrite: (path)=> path.replace(/^\/api/,'')
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     },
     watch: {
