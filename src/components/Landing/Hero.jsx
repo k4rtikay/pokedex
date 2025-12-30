@@ -1,6 +1,6 @@
 import "./hero.scss";
 import { motion } from "framer-motion";
-import PaletteIllustration from "./PaletteIllustration";
+import  { PaletteIllustration,usePaletteAnimation, AnimatedColorsText } from "./PaletteIllustration";
 
 const samplePalettes = [
     {
@@ -26,15 +26,24 @@ const samplePalettes = [
 ];
 
 export default function Hero() {
+    const { currentIndex, isGrayscale, currentPalette } = usePaletteAnimation(samplePalettes, 3500);
+
     return (
         <div className="hero">
             <div className="hero-content">
-                <h1>Iconic <span>Pokémon</span> Colors, <br /> Ready for Real Projects!</h1>
+                <h1>
+                    Iconic <span>Pokémon</span> <AnimatedColorsText text="Colors" currentPalette={currentPalette} isGrayscale={isGrayscale} />, <br /> Ready for Real Projects!
+                </h1>
                 <p>Design faster with color palettes inspired by Pokémon—crafted for designers and developers who want nostalgia and precision. Generate, lock, tweak, and export palettes in seconds.</p>
                 <button>Start Creating</button>
             </div>
             <div className="hero-illustration">
-                <PaletteIllustration palettes={samplePalettes} interval={3500} />
+                <PaletteIllustration
+                    palettes={samplePalettes}
+                    interval={3500}
+                    currentIndex={currentIndex}
+                    isGrayscale={isGrayscale}
+                />
             </div>
         </div>
     )

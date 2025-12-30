@@ -2,17 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./palette-illustration.scss";
 
-/**
- * PaletteIllustration Component
- * Displays 6 vertical color ribbons with a Pokemon sprite overlay
- * Animates between different Pokemon with a synchronized grayscale transition
- * 
- * @param {Object[]} palettes - Array of palette objects
- * @param {string} palettes[].spriteUrl - URL of the Pokemon sprite
- * @param {string[]} palettes[].colors - Array of 6 hex color strings
- * @param {number} interval - Transition interval in ms (default: 3000)
- */
-export default function PaletteIllustration({ palettes = [], interval = 3000 }) {
+
+export function usePaletteAnimation(palettes = [], interval = 3000) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isGrayscale, setIsGrayscale] = useState(false);
 
@@ -34,9 +25,57 @@ export default function PaletteIllustration({ palettes = [], interval = 3000 }) 
         return () => clearInterval(timer);
     }, [palettes.length, interval]);
 
+    return {
+        currentIndex,
+        isGrayscale,
+        currentPalette: palettes[currentIndex]
+    };
+}
+
+
+export function AnimatedColorsText({ text = "COLORS", currentPalette, isGrayscale }) {
+    if (!currentPalette) return <span>{text}</span>;
+
+    const letters = text.split("");
+    const colors = currentPalette.colors;
+
+    return (
+        <span className="animated-colors-text" style={{ display: "inline-flex" }}>
+            {letters.map((letter, i) => (
+                <motion.span
+                    key={`${i}-${currentPalette.spriteUrl}`}
+                    initial={{ opacity: 0.8 }}
+                    animate={{
+                        color: colors[i % colors.length],
+                        filter: isGrayscale ? "grayscale(100%) brightness(0.7)" : "grayscale(0%) brightness(1)",
+                        opacity: 1
+                    }}
+                    transition={{ duration: 0.5 }}
+                >
+                    {letter}
+                </motion.span>
+            ))}
+        </span>
+    );
+}
+
+export function PaletteIllustration({
+    palettes = [],
+    interval = 3000,
+    currentIndex: externalCurrentIndex,
+    isGrayscale: externalIsGrayscale
+}) {
+    const isControlled = externalCurrentIndex !== undefined;
+    const internalState = usePaletteAnimation(isControlled ? [] : palettes, interval);
+
+    const currentIndex = isControlled ? externalCurrentIndex : internalState.currentIndex;
+    const isGrayscale = isControlled ? externalIsGrayscale : internalState.isGrayscale;
+
     if (palettes.length === 0) return null;
 
     const currentPalette = palettes[currentIndex];
+
+    if (!currentPalette) return null;
 
     return (
         <motion.div
