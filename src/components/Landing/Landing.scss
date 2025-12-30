@@ -13,6 +13,35 @@
   gap: 24px;
 }
 
+.lp-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+
+  h1 {
+    font-family: v.$primary-font;
+    font-size: clamp(1rem, 3vw, 2rem);
+    color: #f3d617;
+    text-shadow:
+      -2px -2px 0 #4370f4,
+      2px -2px 0 #4370f4,
+      -2px 2px 0 #4370f4,
+      2px 2px 0 #4370f4;
+  }
+
+  button{
+    border: none;
+    background: var(--border-color);
+    cursor: pointer;
+    color: var(--font-color);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+}
+
 .lp-image {
   width: 100%;
   display: flex;
@@ -29,6 +58,7 @@
     border-radius: 0.5rem;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.25);
   }
+
   .lp-image--secondary {
     width: clamp(160px, 30vw, 480px);
     position: absolute;
@@ -138,9 +168,11 @@
 
   .lp-image-container {
     justify-content: end;
+
     .lp-image--primary {
       width: 60%;
     }
+
     .lp-image--secondary {
       width: 30%;
     }

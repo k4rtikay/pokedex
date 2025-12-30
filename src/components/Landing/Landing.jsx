@@ -28,7 +28,11 @@ export default function Landing() {
       }}
     >
       <div className="lp-container">
-        <Hero/>
+        <header className="lp-header">
+          <h1>Huedex</h1>
+          <button onClick={() => setIsAuthOpen(true)}>Sign In</button>
+        </header>
+        <Hero />
       </div>
 
       <Modal
