@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="hero">
             <div className="hero-content">
                 <h1>
-                    Iconic <span>Pokémon</span> <AnimatedColorsText text="Colors" currentPalette={currentPalette} isGrayscale={isGrayscale} />, <br /> Ready for Real Projects!
+                    Iconic Pokémon <AnimatedColorsText text="Colors" currentPalette={currentPalette} isGrayscale={isGrayscale} />, <br /> Ready for Real Projects!
                 </h1>
                 <p>Design faster with color palettes inspired by Pokémon—crafted for designers and developers who want nostalgia and precision. Generate, lock, tweak, and export palettes in seconds.</p>
                 <button

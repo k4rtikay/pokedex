@@ -38,12 +38,21 @@
 
   button{
     border: none;
-    background: var(--border-color);
+    background-color: rgba(0, 0, 0, 0.05);
     cursor: pointer;
     color: var(--font-color);
     font-size: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1rem;
     border-radius: 0.5rem;
+    transition: background-color transform 0.1s ease-out;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
   }
 }
 
