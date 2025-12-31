@@ -7,6 +7,7 @@ import { Modal } from "../Modal/Modal";
 import { useState } from "react";
 import { usePokedex } from "../../Context/PokedexContext";
 import Hero from "./Hero";
+import { Features } from "./Features";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ export default function Landing() {
           <button onClick={() => setIsAuthOpen(true)}>Sign In</button>
         </header>
         <Hero />
+        <Features />
       </div>
 
       <Modal
