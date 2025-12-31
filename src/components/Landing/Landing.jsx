@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Landing.scss";
 import { motion } from "framer-motion";
+import { useAuth } from "../../Context/AuthContext";
 import Auth from "../Auth/Auth";
 import { Modal } from "../Modal/Modal";
 import { useState } from "react";

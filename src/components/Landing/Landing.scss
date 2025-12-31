@@ -10,12 +10,17 @@
   font-family: v.$secondary-font;
   background-color: var(--bg-color);
   color: var(--font-color);
+
+  section {
+    width: 100%;
+  }
 }
 
 .lp-header {
   display: flex;
   height: 64px;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid var(--border-color);
@@ -27,7 +32,7 @@
 
   h1 {
     font-family: v.$primary-font;
-    font-size: clamp(1rem, 3vw, 2rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: #f3d617;
     text-shadow:
       -2px -2px 0 #4370f4,
@@ -36,7 +41,7 @@
       2px 2px 0 #4370f4;
   }
 
-  button{
+  button {
     border: none;
     background-color: rgba(0, 0, 0, 0.05);
     cursor: pointer;
@@ -47,11 +52,11 @@
     transition: background-color transform 0.1s ease-out;
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.1);
     }
 
     &:active {
-        transform: translateY(1px);
+      transform: translateY(1px);
     }
   }
 }

@@ -3,11 +3,16 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 2rem 1rem;
     background-color: var(--bg-color);
     color: var(--font-color);
-    gap: 5rem;
+    gap: 3rem;
     width: 100%;
+
+    @media (min-width: 1024px) {
+        padding: 2rem;
+        gap: 5rem;
+    }
 
     .footer-cta {
         display: flex;
@@ -15,20 +20,31 @@ footer {
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
+        text-align: center;
 
         h2 {
-            font-size: 4rem;
+            font-size: 2rem;
             font-weight: bold;
+            line-height: 1.2;
+
+            @media (min-width: 768px) {
+                font-size: 3rem;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 4rem;
+            }
         }
 
         p {
             font-size: 1rem;
             letter-spacing: 0.01em;
+            padding: 0 1rem;
         }
 
         button {
             width: fit-content;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
             margin-top: 1.5rem;
             padding: 12px 24px;
@@ -39,6 +55,10 @@ footer {
             color: #1A1A1A;
             transition: background-color transform 0.1s ease-out;
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), 0 2px 15px rgba(0, 0, 0, 0.05);
+
+            @media (min-width: 1024px) {
+                font-size: 1.2rem;
+            }
 
             &:hover {
                 background-color: #fffb7c;
@@ -52,20 +72,40 @@ footer {
 
     .footer-links {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
-        gap: 30%;
+        align-items: center;
+        gap: 2rem;
         width: 100%;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 15%;
+        }
+
+        @media (min-width: 1024px) {
+            gap: 30%;
+        }
 
         div {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: start;
+            align-items: center;
             gap: 1rem;
 
+            @media (min-width: 768px) {
+                align-items: start;
+            }
+
             h3 {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                font-weight: bold;
+
+                @media (min-width: 1024px) {
+                    font-size: 1rem;
+                }
             }
 
             ul {
@@ -73,16 +113,25 @@ footer {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: start;
-                gap: 0.5rem;
+                align-items: center;        
+                gap: 0.75rem;
+
+                @media (min-width: 768px) {
+                    align-items: start;
+                    gap: 0.5rem;
+                }
 
                 li {
                     a {
                         text-decoration: none;
                         color: var(--font-color);
-                        font-size: 14px;
+                        font-size: 16px;
                         letter-spacing: 0.01em;
                         transition: text-decoration 0.1s ease-out;
+
+                        @media (min-width: 1024px) {
+                            font-size: 14px;
+                        }
 
                         &:hover {
                             text-decoration: underline;
@@ -95,8 +144,13 @@ footer {
 
     .footer-copyright {
         font-size: 12px;
-        margin-top: 2rem;
+        margin-top: 1rem;
         opacity: 0.6;
         letter-spacing: 0.01em;
+        text-align: center;
+
+        @media (min-width: 1024px) {
+            margin-top: 2rem;
+        }
     }
 }
