@@ -41,6 +41,7 @@
         background-color: #fff941;
         color: #1A1A1A;
         transition: background-color transform 0.1s ease-out;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), 0 2px 15px rgba(0, 0, 0, 0.05);
 
         &:hover {
             background-color: #fffb7c;
