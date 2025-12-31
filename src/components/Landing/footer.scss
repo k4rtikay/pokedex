@@ -1,0 +1,94 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    gap: 5rem;
+    width: 100%;
+
+    .footer-cta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        h2 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        button {
+            width: fit-content;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            padding: 12px 24px;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            background-color: #fff941;
+            color: #1A1A1A;
+            transition: background-color transform 0.1s ease-out;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), 0 2px 15px rgba(0, 0, 0, 0.05);
+
+            &:hover {
+                background-color: #fffb7c;
+            }
+
+            &:active {
+                transform: translateY(1px);
+            }
+        }
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30%;
+        width: 100%;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap: 1rem;
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                gap: 0.5rem;
+
+                li {
+                    a {
+                        text-decoration: none;
+                        color: var(--font-color);
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-copyright {
+        font-size: 12px;
+        margin-top: 2rem;
+        opacity: 0.6;
+    }
+}

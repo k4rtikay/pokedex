@@ -8,6 +8,7 @@ import { useState } from "react";
 import { usePokedex } from "../../Context/PokedexContext";
 import Hero from "./Hero";
 import { Features } from "./Features";
+import { Footer } from "./Footer";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export default function Landing() {
         </header>
         <Hero />
         <Features />
+        <Footer />
       </div>
 
       <Modal
