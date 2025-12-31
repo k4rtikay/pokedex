@@ -22,7 +22,7 @@ const samplePalettes = [
     },
     {
         spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png",
-        colors: ["#6890F0", "#98D8D8", "#A8A8C0", "#705848", "#78C850", "#F8F8F8"]
+        colors: ["#6890F0", "#98D8D8", "#A8A8C0", "#705848", "#1c4454", "#dcc484"]
     }
 ];
 

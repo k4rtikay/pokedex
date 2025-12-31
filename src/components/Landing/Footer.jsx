@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export function Footer() {
     const navigate = useNavigate();
     return (
-        <footer>
+        <footer className="landing-footer">
             <div className="footer-cta">
                 <h2>Start creating with Pokémon colors today.</h2>
                 <p>Generate, customize, and export palettes in seconds.</p>
