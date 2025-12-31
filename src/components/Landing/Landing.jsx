@@ -34,9 +34,17 @@ export default function Landing() {
           <h1>Huedex</h1>
           <button onClick={() => setIsAuthOpen(true)}>Sign In</button>
         </header>
-        <Hero />
-        <Features />
-        <Footer />
+        <section>
+          <Hero />
+        </section>
+
+        <section>
+          <Features />
+        </section>
+
+        <section>
+          <Footer />
+        </section>
       </div>
 
       <Modal
