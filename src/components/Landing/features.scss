@@ -20,11 +20,12 @@
 .feature {
     display: flex;
     flex-direction: column;
+    color: var(--font-color);
     gap: 0.5rem;
     padding: 1rem;
     border-radius: 1rem;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg-color);
+    box-shadow: var(--shadow-button);
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
 
