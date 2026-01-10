@@ -34,16 +34,17 @@
     }
 
     h3 {
-        font-size: 1.25rem;
+        font-size: 1rem;
 
         @media (min-width: 1024px) {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
     }
 
     p {
         font-size: 0.9rem;
         letter-spacing: 0.01em;
+        opacity: 70%;
 
         @media (min-width: 1024px) {
             font-size: 1rem;
@@ -54,6 +55,7 @@
         margin-bottom: 1rem;
         height: 100%;
         min-height: 200px;
+        background-color: var(--card-bg-color);
     }
 
 }

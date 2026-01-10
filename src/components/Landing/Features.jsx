@@ -1,28 +1,26 @@
 import "./features.scss";
 import { LockSkeleton, SaveSkeleton, ExportSkeleton, ShinySkeleton } from "./Skeleton";
 
-const Skeleton = () => <div className="w-full h-full bg-gray-100 rounded-xl" />;
-
 
 const features = [
     {
         heading: "Palette Locking & Shades Generation",
-        description: "Freeze your favorite colors while generating new variations around them. Instantly explore lighter and darker shades to fine-tune contrast, depth, and accessibility.",
+        description: "Freeze your favorite colors. Instantly explore lighter and darker shades.",
         skeleton: <LockSkeleton />
     },
     {
         heading: "Your Palettes, Perfectly Organized.",
-        description: "Save, edit, and reuse palettes across projects. Manage multiple color sets without losing track—designed for fast iteration and long-term use.",
+        description: "Save, edit, and reuse palettes across projects. Manage multiple color sets without losing track.",
         skeleton: <SaveSkeleton />
     },
     {
         heading: "Design Once. Use Everywhere.",
-        description: "Export palettes in production-ready formats like HEX, RGB, and CSS variables. Drop them straight into your design files or codebase.",
+        description: "Export palettes in production-ready formats like HEX, RGB, and CSS variables.",
         skeleton: <ExportSkeleton />
     },
     {
         heading: "Built for Pokémon Fans. Designed for Creators.",
-        description: "Instantly toggle between normal and shiny variants to unlock alternate color schemes, preview palettes alongside animated Pokémon sprites upto Gen V",
+        description: "Toggle between normal and shiny variant colors, with animated Pokémon sprites upto Gen V",
         skeleton: <ShinySkeleton />
     }
 
