@@ -1,114 +1,102 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./palette-illustration.scss";
 
-
-export function usePaletteAnimation(palettes = [], interval = 3000) {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isGrayscale, setIsGrayscale] = useState(false);
-
-    useEffect(() => {
-        if (palettes.length <= 1) return;
-
-        const timer = setInterval(() => {
-            setIsGrayscale(true);
-
-            setTimeout(() => {
-                setCurrentIndex((prev) => (prev + 1) % palettes.length);
-            }, 600);
-
-            setTimeout(() => {
-                setIsGrayscale(false);
-            }, 700);
-        }, interval);
-
-        return () => clearInterval(timer);
-    }, [palettes.length, interval]);
-
-    return {
-        currentIndex,
-        isGrayscale,
-        currentPalette: palettes[currentIndex]
-    };
-}
-
-
-export function AnimatedColorsText({ text = "COLORS", currentPalette, isGrayscale }) {
-    if (!currentPalette) return <span>{text}</span>;
-
-    const letters = text.split("");
-    const colors = currentPalette.colors;
-
-    return (
-        <span className="animated-colors-text" style={{ display: "inline-flex" }}>
-            {letters.map((letter, i) => (
-                <motion.span
-                    key={`${i}-${currentPalette.spriteUrl}`}
-                    initial={{ opacity: 0.8 }}
-                    animate={{
-                        color: colors[i % colors.length],
-                        filter: isGrayscale ? "grayscale(100%) brightness(0.7)" : "grayscale(0%) brightness(1)",
-                        opacity: 1
-                    }}
-                    transition={{ duration: 0.5 }}
-                >
-                    {letter}
-                </motion.span>
-            ))}
-        </span>
-    );
-}
-
-export function PaletteIllustration({
-    palettes = [],
-    interval = 3000,
-    currentIndex: externalCurrentIndex,
-    isGrayscale: externalIsGrayscale
-}) {
-    const isControlled = externalCurrentIndex !== undefined;
-    const internalState = usePaletteAnimation(isControlled ? [] : palettes, interval);
-
-    const currentIndex = isControlled ? externalCurrentIndex : internalState.currentIndex;
-    const isGrayscale = isControlled ? externalIsGrayscale : internalState.isGrayscale;
-
+export function PaletteIllustration({ palettes = [] }) {
     if (palettes.length === 0) return null;
 
-    const currentPalette = palettes[currentIndex];
-
-    if (!currentPalette) return null;
+    // Calculate rotation and position for the arc
+    // Spread 6 cards over an angle, e.g., -15 to +15 degrees
+    const totalCards = Math.min(palettes.length, 6);
+    const centerIndex = (totalCards - 1) / 2;
+    const baseAngle = 6; // degrees per card
+    const xOffset = 30; // px per card
+    const yOffset = 10; // vertical arc offset
 
     return (
-        <motion.div
-            className="palette-illustration"
-            animate={{
-                filter: isGrayscale ? "grayscale(100%)" : "grayscale(0%)"
-            }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-        >
-            <div className="color-ribbons">
-                {currentPalette.colors.slice(0, 6).map((color, index) => (
-                    <motion.div
-                        key={`ribbon-${index}`}
-                        className="ribbon"
-                        animate={{ backgroundColor: color }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                    />
-                ))}
-            </div>
+        <div className="palette-illustration-container">
+            {palettes.slice(0, 6).map((palette, index) => {
+                // Calculate properties for the "fanned out" state
+                const offsetFromCenter = index - centerIndex;
+                const rotate = offsetFromCenter * baseAngle;
+                // Move cards slightly apart horizontally, but keep them overlapping
+                const x = offsetFromCenter * xOffset;
+                // Create an arc shape for Y (center cards higher)
+                const y = Math.abs(offsetFromCenter) * yOffset;
 
-            <motion.div
-                key={currentIndex}
-                className="sprite-overlay"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-                <img
-                    src={currentPalette.spriteUrl}
-                    alt="Pokemon sprite"
-                    className="pokemon-sprite"
-                />
-            </motion.div>
-        </motion.div>
+                return (
+                    <motion.div
+                        key={index}
+                        className="trading-card"
+                        initial={{
+                            rotate: 0,
+                            x: 0,
+                            y: 0,
+                            scale: 0.95
+                        }}
+                        animate={{
+                            rotate: rotate,
+                            x: x,
+                            y: y,
+                            scale: 1,
+                            transition: {
+                                duration: 0.4,
+                                delay: index * 0.1 + 0.2,
+                                type: "spring",
+                                stiffness: 100,
+                                damping: 20
+                            }
+                        }}
+                        whileHover={{
+                            y: y - 40,
+                            rotate: 0,
+                            transition: {
+                                type: "spring",
+                                stiffness: 200,
+                                damping: 20
+                            }
+                        }}
+                        style={{
+                            zIndex: index
+                        }}
+                    >
+
+
+                        <div className="card-content">
+                            <div className="pokemon-info">
+                                <span className="pokemon-name">{palette.name}</span>
+                                <span className="pokemon-id">{palette.id}</span>
+                            </div>
+
+                            <div className="trading-card-img">
+                                <div className="sprite-container">
+                                    <img
+                                        src={palette.spriteUrl}
+                                        alt={palette.name}
+                                        className="pokemon-sprite"
+                                    />
+                                </div>
+
+                                <div className="card-background">
+                                    {palette.colors.slice(0, 6).map((color, i) => (
+                                        <div key={i} className="ribbon" style={{ backgroundColor: color }} />
+                                    ))}
+                                </div>
+
+                                <div className="color-codes">
+                                    {palette.colors.slice(0, 6).map((color, i) => (
+                                        <div key={i} className="hex-code">
+                                            <span style={{ color: color }}>{color}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </motion.div>
+                );
+            })}
+        </div>
     );
-}
+}   
