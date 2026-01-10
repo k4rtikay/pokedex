@@ -1,5 +1,4 @@
 import "./hero.scss";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { PaletteIllustration } from "./PaletteIllustration";
 
@@ -45,7 +44,7 @@ export default function Hero() {
                 <h1>
                     Iconic Pokémon Colors <br /> Ready for Real Projects!
                 </h1>
-                <p>Design faster with color palettes inspired by Pokémon—crafted for designers and developers who want nostalgia and precision. Generate, lock, tweak, and export palettes in seconds.</p>
+                <p>Design faster with color palettes inspired by Pokémon — Generate, lock, tweak, and export palettes in seconds.</p>
                 <button
                     onClick={() => { navigate("/app") }}
                 >Start Creating</button>

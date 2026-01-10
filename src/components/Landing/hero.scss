@@ -2,21 +2,22 @@
 
 .hero {
     width: 100%;
+    background: linear-gradient(to bottom, var(--card-bg-color), var(--bg-color));
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 2rem 1rem;
     min-height: calc(100vh - 64px);
-    gap: 1.5rem;
+    gap: 1rem;
 
     @media (min-width: 768px) {
         padding: 3rem 2rem;
-        gap: 2rem;
+        gap: 1.25rem;
     }
 
     @media (min-width: 1024px) {
-        padding: 2rem;
+        padding: 1.5rem;
     }
 }
 
@@ -93,16 +94,16 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 100%; // Allow full width for scrolling
-    height: auto; // Allow growing based on content
-    min-height: 450px; // Minimum to fit the cards
+    max-width: 100%;
+    height: auto;
+    min-height: 450px;
 
     @media (min-width: 768px) {
         width: 100%;
-        max-width: 800px; // Wider on tablet
+        max-width: 800px;
     }
 
     @media (min-width: 1024px) {
-        max-width: 1000px; // Much wider on desktop to show multiple cards
+        max-width: 1000px;
     }
 }
