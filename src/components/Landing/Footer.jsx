@@ -5,6 +5,18 @@ export function Footer() {
     const navigate = useNavigate();
     return (
         <footer className="landing-footer">
+            <div className="pokemon-color-stripe-container">
+                <div className="pokemon-color-stripe"
+                    style={{
+                        backgroundColor: "#ffcb05"
+                    }}
+                ></div>
+                <div className="pokemon-color-stripe"
+                    style={{
+                        backgroundColor: "#2a75bb"
+                    }}
+                ></div>
+            </div>
             <div className="footer-cta">
                 <h2>Start creating with Pokémon colors today.</h2>
                 <p>Generate, customize, and export palettes in seconds.</p>

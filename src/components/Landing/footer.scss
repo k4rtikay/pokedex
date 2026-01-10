@@ -3,15 +3,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem 1rem;
-    background-color: var(--bg-color);
-    color: var(--font-color);
+    background-color: black;
+    color: white;
     gap: 3rem;
     width: 100%;
+    position: relative;
 
     @media (min-width: 1024px) {
-        padding: 2rem;
         gap: 5rem;
+    }
+
+    .pokemon-color-stripe-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .pokemon-color-stripe{
+        height: 32px;
+        width: 100%;
     }
 
     .footer-cta {
@@ -124,7 +136,7 @@
                 li {
                     a {
                         text-decoration: none;
-                        color: var(--font-color);
+                        color: white;
                         font-size: 16px;
                         letter-spacing: 0.01em;
                         transition: text-decoration 0.1s ease-out;
