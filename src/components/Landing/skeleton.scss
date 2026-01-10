@@ -8,9 +8,10 @@
     border-radius: 0.75rem;
     overflow: hidden;
     position: relative;
-    background-color: #f3f4f6;
+    background-color: var(--card-bg-color);
 
     .swatch-grid {
+        background-color: var(--bg-color);
         position: absolute;
         inset: -20%;
         display: grid;
@@ -18,8 +19,8 @@
         gap: 8px;
         z-index: 1;
         opacity: 0.5;
-        mask-image: radial-gradient(circle at center, black 10%, transparent 95%);
-        -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 95%);
+        mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+        -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
         transform: rotate(12deg);
 
         .grid-swatch {
@@ -32,17 +33,17 @@
     .icon-container {
         position: relative;
         z-index: 10;
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: var(--card-bg-color);
         backdrop-filter: blur(8px);
         padding: 2rem;
         border-radius: 1.5rem;
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--border-color);
 
         .main-icon {
             width: 4rem;
             height: 4rem;
-            color: #1f2937;
+            color: var(--font-color);
         }
     }
 }
@@ -57,9 +58,10 @@
     border-radius: 0.75rem;
     overflow: hidden;
     position: relative;
-    background-color: #f3f4f6;
+    background-color: var(--card-bg-color);
 
     .swatch-grid {
+        background-color: var(--bg-color);
         position: absolute;
         inset: -20%;
         display: grid;
@@ -81,17 +83,17 @@
     .folder-container {
         position: relative;
         z-index: 10;
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: var(--card-bg-color);
         backdrop-filter: blur(8px);
         padding: 2rem;
         border-radius: 1.5rem;
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--border-color);
 
         .folder-icon {
             width: 4rem;
             height: 4rem;
-            color: #1f2937;
+            color: var(--font-color);
         }
     }
 }
@@ -106,9 +108,10 @@
     border-radius: 0.75rem;
     overflow: hidden;
     position: relative;
-    background-color: #f3f4f6;
+    background-color: var(--card-bg-color);
 
     .code-background {
+        background-color: var(--bg-color);
         position: absolute;
         inset: -20%;
         display: flex;
@@ -143,17 +146,17 @@
     .icon-container {
         position: relative;
         z-index: 10;
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: var(--card-bg-color);
         backdrop-filter: blur(8px);
         padding: 2rem;
         border-radius: 1.5rem;
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--border-color);
 
         .main-icon {
             width: 4rem;
             height: 4rem;
-            color: #1f2937;
+            color: var(--font-color);
         }
     }
 }
@@ -168,9 +171,10 @@
     border-radius: 0.75rem;
     overflow: hidden;
     position: relative;
-    background-color: #f3f4f6; // gray-100
+    background-color: var(--card-bg-color); // gray-100
 
     .particles-container {
+        background-color: var(--bg-color);
         position: absolute;
         inset: 0;
         z-index: 1;
@@ -189,17 +193,17 @@
     .icon-container {
         position: relative;
         z-index: 10;
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: var(--card-bg-color);
         backdrop-filter: blur(8px);
         padding: 2rem;
         border-radius: 1.5rem;
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--border-color);
 
         .main-icon {
             width: 4rem;
             height: 4rem;
-            color: #1f2937;
+            color: var(--font-color);
         }
     }
 }
