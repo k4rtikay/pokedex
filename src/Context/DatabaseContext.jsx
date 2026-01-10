@@ -8,6 +8,7 @@ import {
   addDoc,
   onSnapshot,
   updateDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useAuth } from "./AuthContext";
@@ -25,7 +26,7 @@ export function DatabaseProvider({ children }) {
   const [savePalette, setSavePalette] = useState([]);
 
   useEffect(() => {
-    let unsubscribe = () => {};
+    let unsubscribe = () => { };
     if (globalUser) {
       setLoading(true);
       const palettesRef = collection(db, "palettes");
@@ -37,6 +38,14 @@ export function DatabaseProvider({ children }) {
           id: doc.id,
           ...doc.data(),
         }));
+
+        // Sort by createdAt descending (newest first)
+        paletteData.sort((a, b) => {
+          const timeA = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
+          const timeB = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
+          return timeB - timeA;
+        });
+
         setSavePalette(paletteData);
         setLoading(false);
       });
@@ -51,7 +60,11 @@ export function DatabaseProvider({ children }) {
 
   function addPalette(paletteData) {
     if (globalUser) {
-      const dataToSave = { ...paletteData, userId: globalUser.uid };
+      const dataToSave = {
+        ...paletteData,
+        userId: globalUser.uid,
+        createdAt: serverTimestamp(),
+      };
       return addDoc(collection(db, "palettes"), dataToSave);
     }
   }

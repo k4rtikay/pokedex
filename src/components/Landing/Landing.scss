@@ -49,10 +49,10 @@
     font-size: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    transition: background-color transform 0.1s ease-out;
+    transition: background-color opacity transform 0.1s ease-out;
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
+      opacity: 0.8;
     }
 
     &:active {

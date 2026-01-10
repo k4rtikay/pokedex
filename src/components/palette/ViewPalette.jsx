@@ -129,8 +129,8 @@ export function ViewPalette({ isSaveModalOpen, setIsSaveModalOpen }) {
     };
 
     setSavePalette((prevSavedPalettes) => [
-      ...prevSavedPalettes,
       newSavedPalette,
+      ...prevSavedPalettes,
     ]);
 
     console.log(newSavedPalette);
