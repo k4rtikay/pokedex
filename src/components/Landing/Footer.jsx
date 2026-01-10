@@ -27,24 +27,22 @@ export function Footer() {
                     <h3>Product</h3>
                     <ul>
                         <li><a href="#" rel="noopener noreferrer" target="_blank" onClick={() => navigate("/")}>Home</a></li>
-                        <li><a href="#" rel="noopener noreferrer" target="_blank">Features</a></li>
-                        <li><a href="#" rel="noopener noreferrer" target="_blank">Issues</a></li>
-                        <li><a href="#" rel="noopener noreferrer" target="_blank">Repository</a></li>
+                        <li><a href="https://github.com/k4rtikay/pokedex/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen" rel="noopener noreferrer" target="_blank">Issues</a></li>
+                        <li><a href="https://github.com/k4rtikay/pokedex" rel="noopener noreferrer" target="_blank">Repository</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3>Links</h3>
                     <ul>
-                        <li><a href="#" rel="noopener noreferrer" target="_blank">X/Twitter</a></li>
-                        <li><a href="#" rel="noopener noreferrer" target="_blank">GitHub</a></li>
-                        <li><a href="#" rel="noopener noreferrer" target="_blank">Contact</a></li>
+                        <li><a href="https://x.com/br1dge_" rel="noopener noreferrer" target="_blank">X/Twitter</a></li>
+                        <li><a href="https://github.com/k4rtikay" rel="noopener noreferrer" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="#" rel="noopener noreferrer" target="_blank">Terms</a></li>
-                        <li><a href="#" rel="noopener noreferrer" target="_blank">Privacy</a></li>
+                        <li><a href="https://github.com/k4rtikay/pokedex/blob/main/LICENSE" rel="noopener noreferrer" target="_blank">License</a></li>
+                        <li><a href="https://github.com/k4rtikay/pokedex/blob/main/README.md" rel="noopener noreferrer" target="_blank">README</a></li>
                     </ul>
                 </div>
             </div>
