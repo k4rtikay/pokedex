@@ -27,7 +27,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--bg-color);
+  background-color: var(--card-bg-color);
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
 
   h1 {
@@ -43,9 +43,9 @@
 
   button {
     border: none;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: var(--font-color);
     cursor: pointer;
-    color: var(--font-color);
+    color: var(--bg-color);
     font-size: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
