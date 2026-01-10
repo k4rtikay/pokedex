@@ -13,7 +13,6 @@ import { Footer } from "./Footer";
 export default function Landing() {
   const navigate = useNavigate();
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const { isDesktop } = usePokedex();
 
   return (
     <motion.div

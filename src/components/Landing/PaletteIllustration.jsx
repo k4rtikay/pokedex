@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 import "./palette-illustration.scss";
+import { useDeviceContext } from "../../Context/DeviceContext";
 
 export function PaletteIllustration({ palettes = [] }) {
     if (palettes.length === 0) return null;
+    const { isDesktop } = useDeviceContext();
+
+    const maxCards = isDesktop ? 6 : 4;
 
     // Calculate rotation and position for the arc
     // Spread 6 cards over an angle, e.g., -15 to +15 degrees
-    const totalCards = Math.min(palettes.length, 6);
+    const totalCards = Math.min(palettes.length, maxCards);
     const centerIndex = (totalCards - 1) / 2;
     const baseAngle = 6; // degrees per card
     const xOffset = 30; // px per card
@@ -14,7 +18,7 @@ export function PaletteIllustration({ palettes = [] }) {
 
     return (
         <div className="palette-illustration-container">
-            {palettes.slice(0, 6).map((palette, index) => {
+            {palettes.slice(0, maxCards).map((palette, index) => {
                 // Calculate properties for the "fanned out" state
                 const offsetFromCenter = index - centerIndex;
                 const rotate = offsetFromCenter * baseAngle;
