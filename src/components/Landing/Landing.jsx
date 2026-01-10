@@ -1,18 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import "./Landing.scss";
 import { motion } from "framer-motion";
-import { useAuth } from "../../Context/AuthContext";
 import Auth from "../Auth/Auth";
 import { Modal } from "../Modal/Modal";
 import { useState } from "react";
-import { usePokedex } from "../../Context/PokedexContext";
 import Hero from "./Hero";
 import { Features } from "./Features";
 import { Footer } from "./Footer";
 
 export default function Landing() {
-  const navigate = useNavigate();
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+ 
 
   return (
     <motion.div

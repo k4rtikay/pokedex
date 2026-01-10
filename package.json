@@ -19,7 +19,6 @@
     "lucide-react": "^0.562.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-helmet-async": "^2.0.5",
     "react-router-dom": "^7.6.3",
     "react-syntax-highlighter": "^16.1.0",
     "sass": "^1.91.0",

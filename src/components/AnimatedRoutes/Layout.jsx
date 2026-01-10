@@ -6,8 +6,7 @@ import "./Layout.scss";
 import useTheme from "../../hooks/usePokemonTheme";
 
 export default function Layout() {
-  const { isSideMenuOpen, setIsSideMenuOpen, isDesktop, themeColor } =
-    usePokedex();
+  const { isDesktop, themeColor } = usePokedex();
 
   const themeStyles = useTheme(themeColor);
 
