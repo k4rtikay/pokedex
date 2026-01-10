@@ -12,18 +12,25 @@
 
 .trading-card {
     position: absolute;
-    width: 240px;
-    height: 360px;
-    border-radius: 1rem;
+    width: 180px;
+    height: 270px;
+    border-radius: 0.75rem;
     overflow: hidden;
     background: #fff;
     box-shadow:
         0 10px 20px rgba(0, 0, 0, 0.1),
         0 2px 5px rgba(0, 0, 0, 0.05);
-    border: 8px solid #fff;
+    border: 6px solid #fff;
     transform-origin: bottom center;
     /* Pivot from bottom for arc effect */
     cursor: pointer;
+
+    @media (min-width: 768px) {
+        width: 240px;
+        height: 360px;
+        border-radius: 1rem;
+        border: 8px solid #fff;
+    }
 
     &:hover {
         transform: translateY(-5px);
@@ -81,18 +88,26 @@
 
 
 .pokemon-name {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 800;
     color: #1a1a1a;
     letter-spacing: -0.5px;
     text-transform: capitalize;
+
+    @media (min-width: 768px) {
+        font-size: 1rem;
+    }
 }
 
 .pokemon-id {
     font-family: monospace;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #888;
     font-weight: 600;
+
+    @media (min-width: 768px) {
+        font-size: 0.8rem;
+    }
 }
 
 .trading-card-img {
@@ -108,15 +123,21 @@
 
 .sprite-container {
     position: absolute;
-    top: 2rem;
+    top: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (min-width: 768px) {
+        top: 2rem;
+        width: 160px;
+        height: 160px;
+    }
 }
 
 .pokemon-sprite {
@@ -127,17 +148,22 @@
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
 }
 
-.color-codes { 
-    width: 100%; 
-    padding: 1rem;
+.color-codes {
+    width: 100%;
+    padding: 0.75rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: 0.25rem;
     background: rgba(255, 255, 255, 0.5);
     margin: 0.5rem;
     border-radius: 0.5rem;
     backdrop-filter: blur(5px);
     margin-top: auto;
+
+    @media (min-width: 768px) {
+        padding: 1rem;
+        gap: 0.5rem;
+    }
 }
 
 .hex-code {
