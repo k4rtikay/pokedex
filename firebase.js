@@ -1,4 +1,4 @@
-
+import { getAnalytics } from "firebase/analytics";
 
 import { initializeApp } from "firebase/app";
 
@@ -29,6 +29,12 @@ const firebaseConfig = {
 // Initialize Firebase
 
 const app = initializeApp(firebaseConfig);
+
+let analytics; 
+
+if (!import.meta.env.DEV) {
+  analytics = getAnalytics(app);
+}
 
 export const auth = getAuth(app)
 
