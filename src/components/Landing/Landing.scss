@@ -41,14 +41,14 @@
   }
 
   button {
-    border: none;
-    background-color: var(--font-color);
+    border: 2px solid var(--font-color);
+    background-color: transparent;
     cursor: pointer;
-    color: var(--bg-color);
-    font-size: 1rem;
+    color: var(--font-color);
+    font-size: 14px;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    transition: background-color opacity transform 0.1s ease-out;
+    transition: opacity transform 0.1s ease-out;
 
     &:hover {
       opacity: 0.8;
