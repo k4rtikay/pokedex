@@ -178,8 +178,8 @@
         position: absolute;
         inset: 0;
         z-index: 1;
-        mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
-        -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+        mask-image: radial-gradient(circle at center, black 20%, transparent 92%);
+        -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 92%);
 
         .particle {
             position: absolute;
