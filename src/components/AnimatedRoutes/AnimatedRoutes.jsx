@@ -9,8 +9,12 @@ export default function AnimatedRoutes() {
   const { globalUser, isLoading } = useAuth();
   let location = useLocation();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if (isLoading && location.pathname !== "/") {
+    return (
+      <div className="app-loader">
+        <div className="spinner"></div>
+      </div>
+    );
   }
 
   return (
