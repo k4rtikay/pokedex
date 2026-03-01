@@ -20,7 +20,7 @@ export function Footer() {
             <div className="footer-cta">
                 <h2>Start creating with Pokémon colors today.</h2>
                 <p>Generate, customize, and export palettes in seconds.</p>
-                <button onClick={() => navigate("/create")}>Start Creating</button>
+                <button onClick={() => navigate("/app")}>Start Creating</button>
             </div>
             <div className="footer-links">
                 <div>
