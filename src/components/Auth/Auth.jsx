@@ -291,7 +291,7 @@ export default function Auth({ onClose }) {
         {isSuccess && <p className="success">Success! Redirecting...</p>}
 
         <footer>
-          Don't wanna sign in? Continue as <Link to={"/app"}>GUEST</Link>
+          For more information read our <Link to={""}>Privacy Policy</Link>
         </footer>
       </form>
     </motion.div>

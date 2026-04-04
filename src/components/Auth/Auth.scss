@@ -68,6 +68,29 @@
   .success {
     font-size: 14px;
   }
+
+  footer {
+    font-size: 12px;
+    color: var(--font-color);
+    text-align: center;
+    margin-top: 8px;
+    text-wrap: nowrap;
+
+    a {
+      color: var(--font-color);
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:active {
+        transform: scale(0.99);
+        transition: ease-out;
+      }
+    }
+  }
 }
 
 .auth-mode--toggle {
