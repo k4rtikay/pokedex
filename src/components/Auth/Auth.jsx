@@ -12,17 +12,6 @@ export default function Auth({ onClose }) {
   const [isSignIn, setIsSignIn] = useState(true);
   const { googleSignIn, globalUser } = useAuth();
 
-  const variants = {
-    signin: {
-      x: "0%",
-      transition: { duration: 0.3, ease: [0.68, -0.6, 0.32, 1.35] },
-    },
-    signout: {
-      x: "100%",
-      transition: { duration: 0.3, ease: [0.68, -0.6, 0.32, 1.35] },
-    },
-  };
-
   const { login, signup } = useAuth();
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [email, setEmail] = useState("");
@@ -171,9 +160,8 @@ export default function Auth({ onClose }) {
           </label>
           <motion.span
             className="auth-mode--indicator"
-            variants={variants}
-            initial={isSignIn ? "signin" : "signout"}
-            animate={isSignIn ? "signin" : "signout"}
+            animate={{ left: isSignIn ? "0%" : "50%" }}
+            transition={{ type: "spring", stiffness: 500, damping: 35 }}
           />
         </div>
 
