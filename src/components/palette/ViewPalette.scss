@@ -114,10 +114,10 @@
     // overflow: hidden;
     // min-height: 0;
 
-    display: grid; /* ✅ CHANGE to grid */
-    grid-template-rows: repeat(6, 1fr); /* ✅ ADD this line */
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
 
-    flex-grow: 1; // Keep this so the container gets the right height
+    flex-grow: 1;
     overflow: hidden;
     min-height: 0;
   }
@@ -221,6 +221,24 @@
       opacity: 0.2;
       cursor: not-allowed;
     }
+  }
+}
+
+.vp-auth-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  >p {
+    font-family: v.$secondary-font;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+    background-color: rgb(52, 101, 180);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card-small);
   }
 }
 

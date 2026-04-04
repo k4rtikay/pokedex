@@ -4,10 +4,12 @@ import "./ViewPalette.scss";
 import { colorForIntensity, randomPokemonNumber } from "../../utils";
 import { ColorTooltip } from "./Toast";
 import { usePokedex } from "../../Context/PokedexContext";
+import { useAuth } from "../../Context/AuthContext";
 import { Modal } from "../Modal/Modal";
 import { useDatabase } from "../../Context/DatabaseContext";
 import { PaletteBar } from "./PaletteBar";
 import { motion, AnimatePresence } from "framer-motion";
+import Auth from "../Auth/Auth";
 
 export function ViewPalette({ isSaveModalOpen, setIsSaveModalOpen }) {
   const {
@@ -25,7 +27,9 @@ export function ViewPalette({ isSaveModalOpen, setIsSaveModalOpen }) {
     isDarkMode,
   } = usePokedex();
   const { savePalette, setSavePalette, addPalette } = useDatabase();
+  const { globalUser } = useAuth();
   const [spriteToShow, setSpriteToShow] = useState(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   // const [palette, setPalette] = useState(null)
   const [copied, setCopied] = useState(false);
@@ -184,6 +188,13 @@ export function ViewPalette({ isSaveModalOpen, setIsSaveModalOpen }) {
   }, [setSelectedPokemon, isSaveModalOpen, isGenerating]);
 
   useEffect(() => {
+    if (isSaveModalOpen && !globalUser) {
+      setIsSaveModalOpen(false);
+      setIsAuthModalOpen(true);
+    }
+  }, [isSaveModalOpen, globalUser, setIsSaveModalOpen]);
+
+  useEffect(() => {
     setIsImgLoading(true);
     const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${isShiny ? "shiny/" : ""}${selectedPokemon + 1}.gif`;
 
@@ -238,6 +249,16 @@ export function ViewPalette({ isSaveModalOpen, setIsSaveModalOpen }) {
             Save
           </button>
         </form>
+      </Modal>
+
+      <Modal
+        isModalOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+      >
+        <div className="vp-auth-prompt">
+          <p>Sign in to save your palettes!❤️</p>
+          <Auth onClose={() => setIsAuthModalOpen(false)} />
+        </div>
       </Modal>
 
       <AnimatePresence>
