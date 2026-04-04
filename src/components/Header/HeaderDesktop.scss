@@ -51,8 +51,12 @@
     }
 
     .hd-library {
-      font-size: 1.2rem;
-      color: var(--accent-dark);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      background-color: var(--accent-dark);
+      color: var(--accent-light);
       font-weight: 600;
       font-family: v.$primary-font;
       cursor: pointer;
@@ -60,7 +64,13 @@
 
       &:hover {
         opacity: 0.8;
-        transform: scale(1.02);
+        transform: scale(1.01);
+        transition: ease-out
+      }
+
+      &:active {
+        transform: scale(0.99);
+        transition: ease-out;
       }
     }
 

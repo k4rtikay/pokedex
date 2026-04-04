@@ -20,7 +20,7 @@ export default function HeaderDesktop() {
               setIsLibraryOpen(!islibraryOpen);
             }}
           >
-            Library
+            My Palettes
           </button>
           <span>
             <PopupMenu
