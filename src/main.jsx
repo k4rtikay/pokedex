@@ -13,7 +13,7 @@ createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <PokedexProvider>
         <DatabaseProvider>
-          <Tooltip.Provider>
+          <Tooltip.Provider delayDuration={350}>
             <BrowserRouter>
               <App />
             </BrowserRouter>
