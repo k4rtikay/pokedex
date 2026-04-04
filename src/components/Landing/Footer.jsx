@@ -41,7 +41,7 @@ export function Footer() {
                 <div>
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="https://github.com/k4rtikay/pokedex/blob/main/LICENSE" rel="noopener noreferrer" target="_blank">License</a></li>
+                        <li><a href="/privacy" rel="noopener noreferrer" target="_blank">Privacy Policy</a></li>
                         <li><a href="https://github.com/k4rtikay/pokedex/blob/main/README.md" rel="noopener noreferrer" target="_blank">README</a></li>
                     </ul>
                 </div>
