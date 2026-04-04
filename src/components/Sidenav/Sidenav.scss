@@ -5,7 +5,7 @@
 }
 
 .sidenav {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   background-color: var(--card-bg-color);
   top: 0;
