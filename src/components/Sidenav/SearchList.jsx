@@ -70,7 +70,7 @@ export default function SearchList() {
     }
 
     return indexedPokemonList.filter((poke) =>
-      poke.name.toLowerCase().startsWith(searchPokemon.toLowerCase())
+      poke.name.toLowerCase().includes(searchPokemon.toLowerCase())
     );
   }, [searchPokemon, pokemonList]);
 
