@@ -96,11 +96,12 @@
     width: 100%;
     max-width: 100%;
     height: auto;
-    min-height: 450px;
+    min-height: 650px;
 
     @media (min-width: 768px) {
         width: 100%;
         max-width: 800px;
+        min-height: 550px;
     }
 
     @media (min-width: 1024px) {

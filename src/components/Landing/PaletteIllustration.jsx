@@ -30,10 +30,10 @@ const palettes = [
         }
     },
     {
-        name: "Mewtwo",
-        id: "#150",
-        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
-        colors: ["#A040A0", "#F8F8F8", "#705898", "#A8A8C0", "#483D8B", "#b2b2f7ff"],
+        name: "Sceptile",
+        id: "#254",
+        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/254.png",
+        colors: ["#4E8234", "#78C850", "#1B4D1B", "#C03028", "#F8D030", "#A8D8A0"],
         config: {
             y: -20,
             x: 300,
@@ -122,8 +122,8 @@ export function PaletteIllustration() {
                         filter: "blur(10px)",
                     }}
                     animate={{
-                        y: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ? 260 : palette.config.y),
-                        x: isCurrentCardActive(palette) ? -140 : (isAnyCardActive() ? palette.config.x * 0.4 - 266 : palette.config.x + centerOffset),
+                        y: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ? 230 : palette.config.y),
+                        x: isCurrentCardActive(palette) ? -140 : (isAnyCardActive() ? palette.config.x * 0.42 - 230 : palette.config.x + centerOffset),
                         zIndex: palette.config.zIndex,
                         rotate: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ? palette.config.rotate * 0.5 : palette.config.rotate),
                         scale: isCurrentCardActive(palette) ? 1 : (isAnyCardActive() ? 0.7 : 1),
@@ -149,10 +149,20 @@ export function PaletteIllustration() {
 
                         <div className="trading-card-img">
                             <div className="sprite-container">
-                                <img
+                                <motion.img
                                     src={palette.spriteUrl}
                                     alt={palette.name}
                                     className="pokemon-sprite"
+                                    initial={{
+                                        width: "120px",
+                                    }}
+                                    animate={{
+                                        width: isCurrentCardActive(palette) ? "200px" : "120px",
+                                    }}
+                                    transition={{
+                                        ease: "easeInOut",
+                                        duration: 0.3,
+                                    }}
                                 />
                             </div>
 
