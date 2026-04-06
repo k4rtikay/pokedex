@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "./palette-illustration.scss";
 import { useDeviceContext } from "../../Context/DeviceContext";
 import { useState, useRef } from "react";
@@ -60,8 +60,8 @@ const palettes = [
         colors: ["#6890F0", "#98D8D8", "#A8A8C0", "#705848", "#1c4454", "#dcc484"],
         config: {
             y: 20,
-            x: 640,
-            zIndex: 5,
+            x: 600,
+            zIndex: 6,
             rotate: 8,
         }
     }
@@ -73,30 +73,31 @@ export function PaletteIllustration() {
 
     const ref = useRef(null);
 
-    useEffect(()=>{
-        const handleOutsideClick = (e)=>{
-            if(ref.current && !ref.current.contains(e.target)){
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+            if (ref.current && !ref.current.contains(e.target)) {
                 setActive(null);
             }
         }
 
         document.addEventListener("mousedown", handleOutsideClick);
-        return ()=>{
+        return () => {
             document.removeEventListener("mousedown", handleOutsideClick);
         }
-        
-    },[])
+
+    }, [])
 
 
     const maxCards = isDesktop ? 6 : 4;
 
-    // Center the card group: offset so the midpoint of the spread aligns with the container center
-    const cardWidth = 240;
+    // Center the card group: offset so the midpoint of t
+    // +he spread aligns with the container center
+    const cardWidth = 200;
     const visiblePalettes = palettes.slice(0, maxCards);
     const maxX = Math.max(...visiblePalettes.map(p => p.config.x));
     const centerOffset = -(maxX + cardWidth) / 2;
 
-    const isAnyCardActive = () =>{
+    const isAnyCardActive = () => {
         return active?.name
     }
 
@@ -105,27 +106,29 @@ export function PaletteIllustration() {
     }
 
     return (
-        <div className="palette-illustration-container">
+        <div
+            ref={ref}
+            className="palette-illustration-container"
+        >
             {visiblePalettes.map((palette, index) => (
                 <motion.button
-                    ref={ref}
-                    onClick={()=>{setActive(palette)}}
+                    onClick={() => { setActive(palette) }}
                     key={palette.name}
                     className="trading-card"
-                    initial = {{
+                    initial={{
                         y: 400,
                         x: 0,
                         scale: 0,
                         filter: "blur(10px)",
                     }}
                     animate={{
-                        y: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ?  300 : palette.config.y),
-                        x: isCurrentCardActive(palette) ? 320 : (isAnyCardActive() ?  palette.config.x * 0.6 - 266 : palette.config.x + centerOffset),
+                        y: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ? 260 : palette.config.y),
+                        x: isCurrentCardActive(palette) ? -140 : (isAnyCardActive() ? palette.config.x * 0.4 - 266 : palette.config.x + centerOffset),
                         zIndex: palette.config.zIndex,
-                        rotate: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ? palette.config.rotate*0.2 : palette.config.rotate),
+                        rotate: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ? palette.config.rotate * 0.5 : palette.config.rotate),
                         scale: isCurrentCardActive(palette) ? 1 : (isAnyCardActive() ? 0.7 : 1),
-                        width: isCurrentCardActive(palette) ? 360 : cardWidth,
-                        height: isCurrentCardActive(palette) ? 480 : 360,
+                        width: isCurrentCardActive(palette) ? 280 : cardWidth,
+                        height: isCurrentCardActive(palette) ? 392 : 280,
                         filter: "blur(0px)",
                     }}
                     transition={{
@@ -133,7 +136,7 @@ export function PaletteIllustration() {
                         stiffness: 100,
                         damping: 15
                     }}
-                    whileHover={{scale: isCurrentCardActive(palette) ? 1 : (isAnyCardActive() ? 0.7 : 1.02)}}
+                    whileHover={{ scale: isCurrentCardActive(palette) ? 1 : (isAnyCardActive() ? 0.7 : 1.02) }}
                     style={{
                         zIndex: active?.config.zIndex,
                     }}
@@ -159,13 +162,28 @@ export function PaletteIllustration() {
                                 ))}
                             </div>
 
-                            <div className="color-codes">
-                                {palette.colors.slice(0, 6).map((color, i) => (
-                                    <div key={i} className="hex-code">
-                                        <span style={{ color: color }}>{color}</span>
-                                    </div>
-                                ))}
-                            </div>
+                            <AnimatePresence>
+                                {isCurrentCardActive(palette) && (
+                                    <motion.div
+                                        className="color-codes"
+                                        layout
+                                        initial={{ opacity: 0, y: 100 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 100 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 150,
+                                            damping: 20
+                                        }}
+                                    >
+                                        {palette.colors.slice(0, 6).map((color, i) => (
+                                            <div key={i} className="hex-code">
+                                                <span style={{ color: color }}>{color}</span>
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     </div>
                 </motion.button>
