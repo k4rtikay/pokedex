@@ -1,9 +1,12 @@
 import "./hero.scss";
 import { useNavigate } from "react-router-dom";
 import { PaletteIllustration } from "./PaletteIllustration";
+import { useDeviceContext } from "../../Context/DeviceContext";
+import Stack from "./CardsMobile";
 
 export default function Hero() {
     const navigate = useNavigate();
+    const { isDesktop } = useDeviceContext();
 
     return (
         <div className="hero">
@@ -17,7 +20,11 @@ export default function Hero() {
                 >Start Creating</button>
             </div>
             <div className="hero-illustration">
-                <PaletteIllustration/>
+                {isDesktop ? (
+                    <PaletteIllustration />
+                ) : (
+                    <Stack />
+                )}
             </div>
         </div>
     )
