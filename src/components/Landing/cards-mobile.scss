@@ -1,0 +1,141 @@
+@use "../../styles/variables.scss" as v;
+
+.mobile-stack-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    margin-top: 16px;
+
+    @media (max-width: 390px) {
+        width: 250px;
+        height: 350px;
+    }
+}
+
+.mobile-card-rotate {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+.mobile-card-rotate-disabled {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+}
+
+.mobile-card {
+    position: relative;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.1),
+        0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 6px solid #fff;
+}
+
+.mobile-card img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.mobile-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.mobile-card-background {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+}
+
+.mobile-ribbon {
+    flex: 1;
+    width: 100%;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
+    }
+}
+
+.mobile-card-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-pokemon-info {
+    padding: 0.25rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.mobile-pokemon-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    letter-spacing: 0.25px;
+    text-transform: capitalize;
+}
+
+.mobile-pokemon-id {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: #888;
+    font-weight: 600;
+}
+
+.mobile-trading-card-img {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mobile-sprite-container {
+    z-index: 2;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-pokemon-sprite {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+}

@@ -1,106 +1,203 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "./palette-illustration.scss";
 import { useDeviceContext } from "../../Context/DeviceContext";
+import { useState, useRef } from "react";
+import { useEffect } from "react";
 
-export function PaletteIllustration({ palettes = [] }) {
-    if (palettes.length === 0) return null;
+const palettes = [
+    {
+        name: "Pikachu",
+        id: "#025",
+        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+        colors: ["#F8D030", "#A8A878", "#f86058ff", "#705848", "#a24b08", "#fcc840"],
+        config: {
+            y: -20,
+            x: 0,
+            zIndex: 1,
+            rotate: -8,
+        }
+    },
+    {
+        name: "Charizard",
+        id: "#006",
+        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+        colors: ["#082933", "#cc5444", "#ec963b", "#84341c", "#247494", "#cccccc"],
+        config: {
+            y: 28,
+            x: 100,
+            zIndex: 2,
+            rotate: 5,
+        }
+    },
+    {
+        name: "Sceptile",
+        id: "#254",
+        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/254.png",
+        colors: ["#4E8234", "#78C850", "#1B4D1B", "#C03028", "#F8D030", "#A8D8A0"],
+        config: {
+            y: -20,
+            x: 300,
+            zIndex: 3,
+            rotate: -2,
+        }
+    },
+    {
+        name: "Typhlosion",
+        id: "#157",
+        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/157.png",
+        colors: ["#34405a", "#f3e38d", "#e82804", "#fcd004", "#5c7cbc", "#a48c4c"],
+        config: {
+            y: 28,
+            x: 420,
+            zIndex: 4,
+            rotate: 5,
+        }
+    },
+    {
+        name: "Lapras",
+        id: "#131",
+        spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png",
+        colors: ["#6890F0", "#98D8D8", "#A8A8C0", "#705848", "#1c4454", "#dcc484"],
+        config: {
+            y: 20,
+            x: 600,
+            zIndex: 6,
+            rotate: 8,
+        }
+    }
+];
+
+export function PaletteIllustration() {
     const { isDesktop } = useDeviceContext();
+    const [active, setActive] = useState(null);
+
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+            if (ref.current && !ref.current.contains(e.target)) {
+                setActive(null);
+            }
+        }
+
+        document.addEventListener("mousedown", handleOutsideClick);
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        }
+
+    }, [])
+
 
     const maxCards = isDesktop ? 6 : 4;
 
-    // Calculate rotation and position for the arc
-    // Spread 6 cards over an angle, e.g., -15 to +15 degrees
-    const totalCards = Math.min(palettes.length, maxCards);
-    const centerIndex = (totalCards - 1) / 2;
-    const baseAngle = 6; // degrees per card
-    const xOffset = 30; // px per card
-    const yOffset = 10; // vertical arc offset
+    // Center the card group: offset so the midpoint of t
+    // +he spread aligns with the container center
+    const cardWidth = 200;
+    const visiblePalettes = palettes.slice(0, maxCards);
+    const maxX = Math.max(...visiblePalettes.map(p => p.config.x));
+    const centerOffset = -(maxX + cardWidth) / 2;
+
+    const isAnyCardActive = () => {
+        return active?.name
+    }
+
+    const isCurrentCardActive = (palette) => {
+        return active?.name === palette.name
+    }
 
     return (
-        <div className="palette-illustration-container">
-            {palettes.slice(0, maxCards).map((palette, index) => {
-                // Calculate properties for the "fanned out" state
-                const offsetFromCenter = index - centerIndex;
-                const rotate = offsetFromCenter * baseAngle;
-                // Move cards slightly apart horizontally, but keep them overlapping
-                const x = offsetFromCenter * xOffset;
-                // Create an arc shape for Y (center cards higher)
-                const y = Math.abs(offsetFromCenter) * yOffset;
-
-                return (
-                    <motion.div
-                        key={index}
-                        className="trading-card"
-                        initial={{
-                            rotate: 0,
-                            x: 0,
-                            y: 0,
-                            scale: 0.95
-                        }}
-                        animate={{
-                            rotate: rotate,
-                            x: x,
-                            y: y,
-                            scale: 1,
-                            transition: {
-                                duration: 0.4,
-                                delay: index * 0.1 + 0.2,
-                                type: "spring",
-                                stiffness: 100,
-                                damping: 20
-                            }
-                        }}
-                        whileHover={{
-                            y: y - 40,
-                            rotate: 0,
-                            transition: {
-                                type: "spring",
-                                stiffness: 200,
-                                damping: 20
-                            }
-                        }}
-                        style={{
-                            zIndex: index
-                        }}
-                    >
-
-
-                        <div className="card-content">
-                            <div className="pokemon-info">
-                                <span className="pokemon-name">{palette.name}</span>
-                                <span className="pokemon-id">{palette.id}</span>
-                            </div>
-
-                            <div className="trading-card-img">
-                                <div className="sprite-container">
-                                    <img
-                                        src={palette.spriteUrl}
-                                        alt={palette.name}
-                                        className="pokemon-sprite"
-                                    />
-                                </div>
-
-                                <div className="card-background">
-                                    {palette.colors.slice(0, 6).map((color, i) => (
-                                        <div key={i} className="ribbon" style={{ backgroundColor: color }} />
-                                    ))}
-                                </div>
-
-                                <div className="color-codes">
-                                    {palette.colors.slice(0, 6).map((color, i) => (
-                                        <div key={i} className="hex-code">
-                                            <span style={{ color: color }}>{color}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                            </div>
-
-
+        <div
+            ref={ref}
+            className="palette-illustration-container"
+        >
+            {visiblePalettes.map((palette, index) => (
+                <motion.button
+                    onClick={() => { setActive(palette) }}
+                    key={palette.name}
+                    className="trading-card"
+                    initial={{
+                        y: 400,
+                        x: 0,
+                        scale: 0,
+                        filter: "blur(10px)",
+                    }}
+                    animate={{
+                        y: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ? 230 : palette.config.y),
+                        x: isCurrentCardActive(palette) ? -140 : (isAnyCardActive() ? palette.config.x * 0.42 - 230 : palette.config.x + centerOffset),
+                        zIndex: palette.config.zIndex,
+                        rotate: isCurrentCardActive(palette) ? 0 : (isAnyCardActive() ? palette.config.rotate * 0.5 : palette.config.rotate),
+                        scale: isCurrentCardActive(palette) ? 1 : (isAnyCardActive() ? 0.7 : 1),
+                        width: isCurrentCardActive(palette) ? 280 : cardWidth,
+                        height: isCurrentCardActive(palette) ? 392 : 280,
+                        filter: "blur(0px)",
+                    }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15
+                    }}
+                    whileHover={{ scale: isCurrentCardActive(palette) ? 1 : (isAnyCardActive() ? 0.7 : 1.02) }}
+                    style={{
+                        zIndex: active?.config.zIndex,
+                    }}
+                >
+                    <div className="card-content">
+                        <div className="pokemon-info">
+                            <span className="pokemon-name">{palette.name}</span>
+                            <span className="pokemon-id">{palette.id}</span>
                         </div>
-                    </motion.div>
-                );
-            })}
+
+                        <div className="trading-card-img">
+                            <div className="sprite-container">
+                                <motion.img
+                                    src={palette.spriteUrl}
+                                    alt={palette.name}
+                                    className="pokemon-sprite"
+                                    initial={{
+                                        width: "120px",
+                                    }}
+                                    animate={{
+                                        width: isCurrentCardActive(palette) ? "200px" : "120px",
+                                    }}
+                                    transition={{
+                                        ease: "easeInOut",
+                                        duration: 0.3,
+                                    }}
+                                />
+                            </div>
+
+                            <div className="card-background">
+                                {palette.colors.slice(0, 6).map((color, i) => (
+                                    <div key={i} className="ribbon" style={{ backgroundColor: color }} />
+                                ))}
+                            </div>
+
+                            <AnimatePresence>
+                                {isCurrentCardActive(palette) && (
+                                    <motion.div
+                                        className="color-codes"
+                                        layout
+                                        initial={{ opacity: 0, y: 100 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 100 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 150,
+                                            damping: 20
+                                        }}
+                                    >
+                                        {palette.colors.slice(0, 6).map((color, i) => (
+                                            <div key={i} className="hex-code">
+                                                <span style={{ color: color }}>{color}</span>
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                    </div>
+                </motion.button>
+            ))}
         </div>
     );
-}   
+}
