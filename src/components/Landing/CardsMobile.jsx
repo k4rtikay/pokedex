@@ -1,7 +1,6 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import './cards-mobile.scss';
-import './palette-illustration.scss';
 
 
 const palettes = [
@@ -73,7 +72,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }
 
     if (disableDrag) {
         return (
-            <motion.div className="card-rotate-disabled" style={{ x: 0, y: 0 }}>
+            <motion.div className="mobile-card-rotate-disabled" style={{ x: 0, y: 0 }}>
                 {children}
             </motion.div>
         );
@@ -81,7 +80,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }
 
     return (
         <motion.div
-            className="card-rotate"
+            className="mobile-card-rotate"
             style={{ x, y, rotateX, rotateY }}
             drag
             dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -200,7 +199,7 @@ export default function Stack({
 
     return (
         <div
-            className="stack-container"
+            className="mobile-stack-container"
             onMouseEnter={() => pauseOnHover && setIsPaused(true)}
             onMouseLeave={() => pauseOnHover && setIsPaused(false)}
         >
@@ -215,7 +214,7 @@ export default function Stack({
                     >
 
                         <motion.div
-                            className="card"
+                            className="mobile-card"
                             onClick={() => shouldEnableClick && sendToBack(card.id)}
                             animate={{
                                 rotateZ: (stack.length - index - 1) * 4 + randomRotate,
@@ -229,24 +228,25 @@ export default function Stack({
                                 damping: animationConfig.damping
                             }}
                         >
-                            <div className="card-background">
-                                {card.content.colors && card.content.colors.slice(0, 6).map((color, i) => (
-                                    <div key={i} className="ribbon" style={{ backgroundColor: color }} />
-                                ))}
-                            </div>
-                            <div className="card-content">
-                                <div className="pokemon-info">
-                                    <span className="pokemon-name">{card.content.name}</span>
-                                    <span className="pokemon-id">{card.content.id}</span>
+                            <div className="mobile-card-content">
+                                <div className="mobile-pokemon-info">
+                                    <span className="mobile-pokemon-name">{card.content.name}</span>
+                                    <span className="mobile-pokemon-id">{card.content.id}</span>
                                 </div>
 
-                                <div className="trading-card-img">
-                                    <div className="sprite-container">
+                                <div className="mobile-trading-card-img">
+                                    <div className="mobile-sprite-container">
                                         <img
                                             src={card.content.spriteUrl}
                                             alt={card.content.name}
-                                            className="pokemon-sprite"
+                                            className="mobile-pokemon-sprite"
                                         />
+                                    </div>
+
+                                    <div className="mobile-card-background">
+                                        {card.content.colors && card.content.colors.slice(0, 6).map((color, i) => (
+                                            <div key={i} className="mobile-ribbon" style={{ backgroundColor: color }} />
+                                        ))}
                                     </div>
                                 </div>
                             </div>
